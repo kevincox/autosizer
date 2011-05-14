@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Настройки Autosizer">
+<!ENTITY pref.wizard "Мастер настройки">
+<!ENTITY pref.wizard.accesskey "М">
+<!ENTITY pref.width.title "Ширина панели поиска">
+<!ENTITY pref.width.desc "Все значения в пикселях, чтобы запретить Autosizer изменять размер, введите 0 (ноль).">
+<!ENTITY pref.width.min "Минимум:">
+<!ENTITY pref.width.min.accesskey "и">
+<!ENTITY pref.width.max "Максимум:">
+<!ENTITY pref.width.max.accesskey "а">
+<!ENTITY pref.padding.title "Расстояние до текста">
+<!ENTITY pref.padding.desc "Все значения в пикселях, допускаются отрицательные значения.">
+<!ENTITY pref.padding.query "Поисковый запрос:">
+<!ENTITY pref.padding.query.accesskey "з">
+<!ENTITY pref.padding.engine "Название поисковика:">
+<!ENTITY pref.padding.engine.accesskey "Н">
+<!ENTITY pref.other.title "Другое">
+<!ENTITY pref.other.autocomplete "Ширина поисковых предположений:">
+<!ENTITY pref.other.autocomplete.accesskey "Ш">
+<!ENTITY pref.other.cleanOnSubmit "Очищать панель поиска после выполнения запроса">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "О">
+<!ENTITY pref.other.revertOnSubmit "После выполнения запроса возвращать поисковый плагин по умолчанию">
+<!ENTITY pref.other.revertOnSubmit.accesskey "у">
+<!ENTITY pref.other.revertOnSubmit.desc "Независимо от того, какой поисковый плагин вами выбран, после выполнения запроса будет установлен плагин по умолчанию. Для управления поисковыми плагинами нажмите на значок поискового плагина и выберите требуемый в окне &apos;&apos;Управление списком поисковых плагинов&apos;&apos; нажав на пункт &apos;&apos;Управление поисковыми плагинами&apos;&apos;.">
+<!ENTITY pref.other.skipWizard "Открывать это окно вместо мастера настройки">
+<!ENTITY pref.other.skipWizard.accesskey "м">
+<!ENTITY wiz.title "Мастер настройки конфигурации Autosizer">
+<!ENTITY wiz.start.desc "Какие действия должен выполнять Autosizer по мере набора текста в панели поиска?">
+<!ENTITY wiz.start.inc "Постепенно увеличивать размер панели поиска">
+<!ENTITY wiz.start.inc.accesskey "П">
+<!ENTITY wiz.start.alt "Увеличить панель поиска после ввода первого символа">
+<!ENTITY wiz.start.alt.accesskey "У">
+<!ENTITY wiz.start.fix "Сохранять ширину постоянной">
+<!ENTITY wiz.start.fix.accesskey "С">
+<!ENTITY wiz.norMinWidth.title "Какая ширина будет у панели поиска?">
+<!ENTITY wiz.norMinWidth.desc "Определите минимальную ширину">
+<!ENTITY wiz.norMaxWidth.title "Какая максимальная ширина будет у панели поиска?">
+<!ENTITY wiz.norMaxWidth.desc "Определите максимальную ширину">
+<!ENTITY wiz.altWidth.title "Какой будет ширина активной панели поиска?">
+<!ENTITY wiz.altWidth.desc "Определите ширину активной панели поиска">
+<!ENTITY wiz.fixWidth.title "Какой будет ширина панели поиска?">
+<!ENTITY wiz.fixWidth.desc "Определите ширину">
+<!ENTITY wiz.aftersearch.title "Какое действие выполнять после передачи запроса?">
+<!ENTITY wiz.resize "Измените размер панели поиска, как показано на рисунке.">
+<!ENTITY wiz.autodetect "Выберите, перемещая мышкой, необходимый вам размер панели. Autosizer отобразит выбранное значение.">
+<!ENTITY pref.other.shrinkToButton "Сжимать панель поиска до кнопки, если она пуста">
+<!ENTITY pref.other.shrinkToButton.accesskey "ж">
+<!ENTITY pref.other.addBtn "Добавить кнопку на панель инструментов">
+<!ENTITY pref.other.addBtn.accesskey "Д">

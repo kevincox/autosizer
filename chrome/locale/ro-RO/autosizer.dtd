@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Opţiuni Searchbar Autosizer">
+<!ENTITY pref.wizard "Asistent">
+<!ENTITY pref.wizard.accesskey "A">
+<!ENTITY pref.width.title "Dimensiune casetă de căutare">
+<!ENTITY pref.width.desc "Toate valorile sunt în pixeli.  Introduceţi 0 (zero) pentru a lăsa Autosizer să decidă.">
+<!ENTITY pref.width.min "Minimum:">
+<!ENTITY pref.width.min.accesskey "i">
+<!ENTITY pref.width.max "Maximum:">
+<!ENTITY pref.width.max.accesskey "a">
+<!ENTITY pref.padding.title "Delimitare text">
+<!ENTITY pref.padding.desc "Toate valorile sunt în pixeli.  Sunt permise şi valori negative.">
+<!ENTITY pref.padding.query "Text de căutat:">
+<!ENTITY pref.padding.query.accesskey "T">
+<!ENTITY pref.padding.engine "Titlu motor de căutare:">
+<!ENTITY pref.padding.engine.accesskey "m">
+<!ENTITY pref.other.title "Diverse">
+<!ENTITY pref.other.autocomplete "Lăţimea listei cu sugestii de căutare:">
+<!ENTITY pref.other.autocomplete.accesskey "l">
+<!ENTITY pref.other.cleanOnSubmit "Goleşte caseta de căutare după trimiterea interogării">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "G">
+<!ENTITY pref.other.revertOnSubmit "Reselectează motorul de căutare implicit după trimiterea interogării">
+<!ENTITY pref.other.revertOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit.desc "Motorul de căutare implicit este cel din capul listei derulante, oricare ar fi el.  Pentru a gestiona lista, faceţi clic pe pictogramă şi selectaţi &quot;Gestionează motoarele de căutare…&quot;">
+<!ENTITY pref.other.skipWizard "Deschide această casetă de dialog în locul asistentului">
+<!ENTITY pref.other.skipWizard.accesskey "D">
+<!ENTITY wiz.title "Asistent de configurare Autosizer">
+<!ENTITY wiz.start.desc "Ce ar trebui să facă Autosizer când tastaţi în caseta de căutare?">
+<!ENTITY wiz.start.inc "Să redimensioneze incremental caseta după tastarea fiecărui caracter">
+<!ENTITY wiz.start.inc.accesskey "r">
+<!ENTITY wiz.start.alt "Să mărească dimensiunea casetei la începutul tastării">
+<!ENTITY wiz.start.alt.accesskey "m">
+<!ENTITY wiz.start.fix "Să păstreze permanent aceeaşi dimensine a casetei">
+<!ENTITY wiz.start.fix.accesskey "p">
+<!ENTITY wiz.norMinWidth.title "Ce dimensiune minimă ar trebui să aibă caseta de căutare?">
+<!ENTITY wiz.norMinWidth.desc "Stabiliţi dimensiunea minimă">
+<!ENTITY wiz.norMaxWidth.title "Ce dimensiune maximă ar trebui să aibă caseta de căutare?">
+<!ENTITY wiz.norMaxWidth.desc "Stabiliţi dimensiunea maximă">
+<!ENTITY wiz.altWidth.title "Ce dimensiune maximă ar trebui să aibă caseta de căutare când este folsită?">
+<!ENTITY wiz.altWidth.desc "Stabiliţi dimensiunea în timpul folosirii">
+<!ENTITY wiz.fixWidth.title "Ce dimensiune fixă ar trebui să aibă caseta de căutare?">
+<!ENTITY wiz.fixWidth.desc "Stabiliţi dimensiunea fixă">
+<!ENTITY wiz.aftersearch.title "Ce ar trebui făcut după trimiterea interogării?">
+<!ENTITY wiz.resize "Redimensionaţi caseta de căutare după preferinţă, aşa cum se observă în imagine.">
+<!ENTITY wiz.autodetect "Autosizer va ghici intenţia Dvs., deci mişcaţi mausul câte puţin până când veţi obţine rezultatul dorit.">
+<!ENTITY pref.other.shrinkToButton "Înlocuieşte caseta de căutare cu un buton dacă este goală">
+<!ENTITY pref.other.shrinkToButton.accesskey "o">
+<!ENTITY pref.other.addBtn "Adaugă butonul pe bara de instrumente">
+<!ENTITY pref.other.addBtn.accesskey "b">

@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Autosizer Einstellungen">
+<!ENTITY pref.wizard "Assistent">
+<!ENTITY pref.wizard.accesskey "t">
+<!ENTITY pref.width.title "Suchleistenbreite">
+<!ENTITY pref.width.desc "Alle Werte sind in Pixel, eine 0 (null) lässt Autosizer entscheiden.">
+<!ENTITY pref.width.min "Mindestens:">
+<!ENTITY pref.width.min.accesskey "i">
+<!ENTITY pref.width.max "Höchstens:">
+<!ENTITY pref.width.max.accesskey "H">
+<!ENTITY pref.padding.title "Text Abstand">
+<!ENTITY pref.padding.desc "Alle Werte sind in Pixel, negative Werte sind erlaubt.">
+<!ENTITY pref.padding.query "Suchanfrage:">
+<!ENTITY pref.padding.query.accesskey "a">
+<!ENTITY pref.padding.engine "Suchmaschinentitel:">
+<!ENTITY pref.padding.engine.accesskey "S">
+<!ENTITY pref.other.title "Sonstige">
+<!ENTITY pref.other.autocomplete "Breite der Suchvorschläge:">
+<!ENTITY pref.other.autocomplete.accesskey "v">
+<!ENTITY pref.other.cleanOnSubmit "Leere Suchleiste, wenn die Anfrage abgeschickt wurde">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "L">
+<!ENTITY pref.other.revertOnSubmit "Standard Suchmaschine auswählen, wenn die Anfrage abgeschickt wurde">
+<!ENTITY pref.other.revertOnSubmit.accesskey "d">
+<!ENTITY pref.other.revertOnSubmit.desc "Die oberste Suchmaschine ist Standard. Um die Suchmaschinen zu verwalten auf das Suchmaschinen Symbol klicken und &apos;Suchmaschinen verwalten...&apos; auswählen.">
+<!ENTITY pref.other.skipWizard "Öffne dieses Fenster statt dem Assistenten">
+<!ENTITY pref.other.skipWizard.accesskey "Ö">
+<!ENTITY wiz.title "Autosizer Einstellungsassistent">
+<!ENTITY wiz.start.desc "Was soll Autosizer machen, wenn etwas in die Suchleiste eingegeben wird?">
+<!ENTITY wiz.start.inc "Schrittweise anpassen, zu jedem Buchstaben">
+<!ENTITY wiz.start.inc.accesskey "S">
+<!ENTITY wiz.start.alt "Erweitere Suchleiste mit dem ersten Tastendruck">
+<!ENTITY wiz.start.alt.accesskey "E">
+<!ENTITY wiz.start.fix "Bestimmte Breite immer beibehalten">
+<!ENTITY wiz.start.fix.accesskey "B">
+<!ENTITY wiz.norMinWidth.title "Wie breit sollte die Suchleiste mindestens sein?">
+<!ENTITY wiz.norMinWidth.desc "Mindestbreite angeben">
+<!ENTITY wiz.norMaxWidth.title "Wie breit sollte die Suchleiste höchstens sein?">
+<!ENTITY wiz.norMaxWidth.desc "Höchstbreite angeben">
+<!ENTITY wiz.altWidth.title "Wie breit sollte die Suchleiste sein, wenn sie benutzt wird?">
+<!ENTITY wiz.altWidth.desc "Benutzungsbreite angeben">
+<!ENTITY wiz.fixWidth.title "Wie breit sollte die Suchleiste sein?">
+<!ENTITY wiz.fixWidth.desc "Breite angeben">
+<!ENTITY wiz.aftersearch.title "Was sollte nach dem Abschicken einer Anfrage passieren?">
+<!ENTITY wiz.resize "Passen Sie die Größe der Suchleiste wie in der Grafik gezeigt Ihrem Geschmack an.">
+<!ENTITY wiz.autodetect "Autosizer erkennt was Sie erreichen möchten, bewegen Sie die Maus also etwas, bis es funktioniert.">
+<!ENTITY pref.other.shrinkToButton "Suchleiste zu Symbol schrumpfen wenn leer">
+<!ENTITY pref.other.shrinkToButton.accesskey "y">
+<!ENTITY pref.other.addBtn "Symbol zur Symbolleiste hinzufügen">
+<!ENTITY pref.other.addBtn.accesskey "z">

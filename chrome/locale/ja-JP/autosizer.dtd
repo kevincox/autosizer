@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Autosizer オプション">
+<!ENTITY pref.wizard "かんたん設定">
+<!ENTITY pref.wizard.accesskey "t">
+<!ENTITY pref.width.title "検索バーの横幅">
+<!ENTITY pref.width.desc "入力される値の単位はすべてピクセルです。値を 0 に設定すると Autosizer が自動的に調整します。">
+<!ENTITY pref.width.min "最小:">
+<!ENTITY pref.width.min.accesskey "i">
+<!ENTITY pref.width.max "最大:">
+<!ENTITY pref.width.max.accesskey "a">
+<!ENTITY pref.padding.title "文字の余白">
+<!ENTITY pref.padding.desc "入力される値の単位はすべてピクセルで 0 以下の値も使用できます。">
+<!ENTITY pref.padding.query "検索ワード:">
+<!ENTITY pref.padding.query.accesskey "Q">
+<!ENTITY pref.padding.engine "検索エンジンの名前:">
+<!ENTITY pref.padding.engine.accesskey "E">
+<!ENTITY pref.other.title "その他">
+<!ENTITY pref.other.autocomplete "検索候補の横幅:">
+<!ENTITY pref.other.autocomplete.accesskey "S">
+<!ENTITY pref.other.cleanOnSubmit "検索の開始時に検索バーの内容を消去します">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "p">
+<!ENTITY pref.other.revertOnSubmit "検索後にデフォルトの検索エンジンに戻す">
+<!ENTITY pref.other.revertOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit.desc "&apos;検索エンジンの管理&apos; 画面で一番上に表示される検索エンジンが、デフォルトのデフォルトの検索エンジンになります。">
+<!ENTITY pref.other.skipWizard "Autosizer かんたん設定を使用しない">
+<!ENTITY pref.other.skipWizard.accesskey "O">
+<!ENTITY wiz.title "Autosizer かんたん設定">
+<!ENTITY wiz.start.desc "検索バーの使用時に Autosizer をどのように動作させますか?">
+<!ENTITY wiz.start.inc "入力に応じて横幅を変更する">
+<!ENTITY wiz.start.inc.accesskey "S">
+<!ENTITY wiz.start.alt "検索バーの入力時のみ横幅を変更する">
+<!ENTITY wiz.start.alt.accesskey "E">
+<!ENTITY wiz.start.fix "常に一定の横幅を維持する">
+<!ENTITY wiz.start.fix.accesskey "K">
+<!ENTITY wiz.norMinWidth.title "検索バーをどれだけ小さくしますか?">
+<!ENTITY wiz.norMinWidth.desc "横幅の最小値を指定してください">
+<!ENTITY wiz.norMaxWidth.title "検索バーをどれだけ広げますか?">
+<!ENTITY wiz.norMaxWidth.desc "横幅の最大値を指定してください">
+<!ENTITY wiz.altWidth.title "入力時に検索バーの横幅をどれだけ広げますか?">
+<!ENTITY wiz.altWidth.desc "入力時の横幅を指定してください">
+<!ENTITY wiz.fixWidth.title "検索バーをどれだけ広げますか?">
+<!ENTITY wiz.fixWidth.desc "横幅を指定してください">
+<!ENTITY wiz.aftersearch.title "検索後の動作を設定してください">
+<!ENTITY wiz.resize "画像のように検索バーを好きな大きさに変更してください。">
+<!ENTITY wiz.autodetect "検索バーをマウスで動かす事によって Autosizer は自動的に設定を行ないます。">
+<!ENTITY pref.other.shrinkToButton "検索バーが空のときはボタンと置き換える">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "ツールバーにボタンを追加">
+<!ENTITY pref.other.addBtn.accesskey "u">

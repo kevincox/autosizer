@@ -1,0 +1,15 @@
+.resize {
+  padding-right:145px;
+	background:no-repeat url('resize.png') center right;
+	min-height:30px;
+	text-align:justify;
+}
+.action {
+  padding-right:145px;
+	background:no-repeat center right;
+	min-height:22px;
+}
+
+spacer {
+  min-height:10px;
+}

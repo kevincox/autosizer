@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Επιλογές Autosizer">
+<!ENTITY pref.wizard "Βοηθός">
+<!ENTITY pref.wizard.accesskey "η">
+<!ENTITY pref.width.title "Μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY pref.width.desc "Όλες οι τιμές είναι σε πίξελ, Βάλτε 0 (μηδέν) για να ρυθμιστεί αυτόματα από το Autosizer.">
+<!ENTITY pref.width.min "Ελάχιστο:">
+<!ENTITY pref.width.min.accesskey "ά">
+<!ENTITY pref.width.max "Μέγιστο:">
+<!ENTITY pref.width.max.accesskey "έ">
+<!ENTITY pref.padding.title "Γέμισμα κειμένου">
+<!ENTITY pref.padding.desc "Όλες οι τιμές είναι σε πίξελ, επιτρέπονται και αρνητικές τιμές.">
+<!ENTITY pref.padding.query "Αλφαριθμητικό αναζήτησης:">
+<!ENTITY pref.padding.query.accesskey "λ">
+<!ENTITY pref.padding.engine "Όνομα μηχανής αναζήτησης:">
+<!ENTITY pref.padding.engine.accesskey "ζ">
+<!ENTITY pref.other.title "Διάφορα">
+<!ENTITY pref.other.autocomplete "Μήκος προτάσεων:">
+<!ENTITY pref.other.autocomplete.accesskey "τ">
+<!ENTITY pref.other.cleanOnSubmit "Καθαρισμός της εργαλειοθήκης μετά την αναζήτηση αλφαριθμητικού.">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "κ">
+<!ENTITY pref.other.revertOnSubmit "Επαναφορά της αρχικής μηχανής αναζήτησης μετά την αναζήτηση αλφαριθμητικού">
+<!ENTITY pref.other.revertOnSubmit.accesskey "π">
+<!ENTITY pref.other.revertOnSubmit.desc "Οποιαδήποτε μηχανή αναζήτησης είναι πρώτη στη λίστα θα θεωρηθεί αρχική. Για να διαχειριστείτε τη λίστα, κάντε κλικ στο εικονίδιο της μηχανής και επιλέξτε «Διαχείριση μηχανών αναζήτησης...»">
+<!ENTITY pref.other.skipWizard "Άνοιγμα αυτού του διαλόγου αντί για το βοηθό">
+<!ENTITY pref.other.skipWizard.accesskey "ν">
+<!ENTITY wiz.title "Βοηθός ρυθμίσεων Autosizer">
+<!ENTITY wiz.start.desc "Επιλογή ενέργειας του Autosizer όταν πληκτρολογείτε στο πεδίο αναζήτησης">
+<!ENTITY wiz.start.inc "Αύξηση του μήκους προοδευτικά με κάθε χαρακτήρα">
+<!ENTITY wiz.start.inc.accesskey "δ">
+<!ENTITY wiz.start.alt "Αύξηση του μήκους από τον πρώτο χαρακτήρα">
+<!ENTITY wiz.start.alt.accesskey "ρ">
+<!ENTITY wiz.start.fix "Διατήρηση πάντα του ίδιου μήκους">
+<!ENTITY wiz.start.fix.accesskey "τ">
+<!ENTITY wiz.norMinWidth.title "Ελάχιστο μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY wiz.norMinWidth.desc "Καθορισμός ελάχιστου μήκους">
+<!ENTITY wiz.norMaxWidth.title "Μέγιστο μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY wiz.norMaxWidth.desc "Καθορισμός μέγιστου μήκους">
+<!ENTITY wiz.altWidth.title "Μήκος εργαλειοθήκης αναζήτησης κατά τη χρήση της">
+<!ENTITY wiz.altWidth.desc "Καθορισμός μήκους κατά τη χρήση">
+<!ENTITY wiz.fixWidth.title "Μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY wiz.fixWidth.desc "Καθορισμός μήκους">
+<!ENTITY wiz.aftersearch.title "Ενέργεια μετά την εισαγωγή αλφαριθμητικού για αναζήτηση">
+<!ENTITY wiz.resize "Αλλάξτε τις διαστάσεις (όπως βλέπετε στην εικόνα) σύμφωνα με τις επιθυμίες σας">
+<!ENTITY wiz.autodetect "Μετακινήστε λίγο το ποντίκι ώστε το Autosizer να υπολογίσει σωστά το επιθυμητό μήκος">
+<!ENTITY pref.other.shrinkToButton "Ελαχιστοποίηση εργαλειοθήκης αναζήτησης σε μέγεθος κουμπιού αν είναι κενή">
+<!ENTITY pref.other.shrinkToButton.accesskey "λ">
+<!ENTITY pref.other.addBtn "Προσθήκη κουμπιού στην εργαλειοθήκη">
+<!ENTITY pref.other.addBtn.accesskey "ο">

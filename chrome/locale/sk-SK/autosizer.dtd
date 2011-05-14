@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Automatické nastavenie veľkosti">
+<!ENTITY pref.wizard "Asistent">
+<!ENTITY pref.wizard.accesskey "t">
+<!ENTITY pref.width.title "Šírka panela Vyhľadávanie">
+<!ENTITY pref.width.desc "Všetky hodnoty sú v pixeloch. Ak chcete automatické nastavenie, zadajte 0.">
+<!ENTITY pref.width.min "Minimálna:">
+<!ENTITY pref.width.min.accesskey "i">
+<!ENTITY pref.width.max "Maximálna:">
+<!ENTITY pref.width.max.accesskey "a">
+<!ENTITY pref.padding.title "Odsadenie textu">
+<!ENTITY pref.padding.desc "Všetky hodnoty sú v pixeloch, povolené sú aj záporné hodnoty.">
+<!ENTITY pref.padding.query "Vyhľadávaný reťazec">
+<!ENTITY pref.padding.query.accesskey "r">
+<!ENTITY pref.padding.engine "Vyhľadávací modul">
+<!ENTITY pref.padding.engine.accesskey "V">
+<!ENTITY pref.other.title "Iné">
+<!ENTITY pref.other.autocomplete "Šírka pre návrhy:">
+<!ENTITY pref.other.autocomplete.accesskey "k">
+<!ENTITY pref.other.cleanOnSubmit "Po odoslaní požiadavky vymazať vyhľadávacie pole">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "p">
+<!ENTITY pref.other.revertOnSubmit "Po odoslaní požiadavky nastaviť predvolený vyhľadávací modul">
+<!ENTITY pref.other.revertOnSubmit.accesskey "r">
+<!ENTITY pref.other.revertOnSubmit.desc "Vyhľadávací modul navrchu bude predvolený. Ak chcete spravovať vyhľadávacie moduly, kliknite na ikonu vyhľadávacieho modulu a z ponuky vyberte položku &apos;Správa vyhľadávacích modulov&apos;.">
+<!ENTITY pref.other.skipWizard "Otvoriť toto okno namiesto asistenta">
+<!ENTITY pref.other.skipWizard.accesskey "O">
+<!ENTITY wiz.title "Asistent nastavenia rozšírenia">
+<!ENTITY wiz.start.desc "Čo má Autosizer vykonať, keď zadáte niečo do panela Vyhľadávanie?">
+<!ENTITY wiz.start.inc "Rozšíriť pri každom zadanom písmene">
+<!ENTITY wiz.start.inc.accesskey "o">
+<!ENTITY wiz.start.alt "Rozšíriť pri prvom zadanom písmene">
+<!ENTITY wiz.start.alt.accesskey "R">
+<!ENTITY wiz.start.fix "Vždy zachovať rovnakú šírku">
+<!ENTITY wiz.start.fix.accesskey "k">
+<!ENTITY wiz.norMinWidth.title "Aká má byť minimálna šírka panela Vyhľadávanie?">
+<!ENTITY wiz.norMinWidth.desc "Určte minimálne šírku">
+<!ENTITY wiz.norMaxWidth.title "Aká má byť maximálna šírka panela Vyhľadávanie?">
+<!ENTITY wiz.norMaxWidth.desc "Určte maximálne šírku">
+<!ENTITY wiz.altWidth.title "Aký široký má byť panel Vyhľadávanie pri používaní?">
+<!ENTITY wiz.altWidth.desc "Určte šírku pri používaní">
+<!ENTITY wiz.fixWidth.title "Aký široký má byť panel Vyhľadávanie?">
+<!ENTITY wiz.fixWidth.desc "Určte šírku">
+<!ENTITY wiz.aftersearch.title "Čo sa má vykonať po odoslaní požiadavky?">
+<!ENTITY wiz.resize "Zmeňte veľkosť panela Vyhľadávanie ako je na obrázku podľa vašich prianí.">
+<!ENTITY wiz.autodetect "Autosizer sa pokúsi odhadnúť, čo chcete, takže pomaly hýbte myšou až kým nastavenie nebude korektné.">
+<!ENTITY pref.other.shrinkToButton "Zmenšiť vyhľadávací panel len na tlačidlo, ak je prázdny">
+<!ENTITY pref.other.shrinkToButton.accesskey "Z">
+<!ENTITY pref.other.addBtn "Pridať tlačidlo na panel nástrojov">
+<!ENTITY pref.other.addBtn.accesskey "d">

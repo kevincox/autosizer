@@ -1,0 +1,95 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://autosizer/locale/autosizer.dtd">
+
+<dialog
+		id="autosizeroptions"
+		title="&pref.title;"
+		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		buttons="cancel,accept,extra2"
+		buttonaccesskeyextra2="&pref.wizard.accesskey;"
+		buttonlabelextra2="&pref.wizard;"
+		onload="autosizerPref.init();"
+		ondialogaccept="autosizerPref.save();window.close();window.opener.focus();"
+    ondialogcancel="window.close();window.opener.focus();"
+		ondialogextra2="window.openDialog('chrome://autosizer/content/wizard.xul', '_blank', 'chrome,titlebar,toolbar,centerscreen,dialog=no',window.opener);window.close();">
+      
+
+  <script type="application/x-javascript" src="prefs.js"/> 
+  	
+  <groupbox orient="vertical">
+    <caption label="&pref.width.title;" />
+		<description>&pref.width.desc;</description>	
+		<grid flex="1">
+		  <columns>
+		    <column/>
+		    <column/>
+				<column flex="999"/>
+		  </columns>
+		  <rows>
+		    <row align="center">
+				  <label control="minwidth" value="&pref.width.min;" accesskey="&pref.width.min.accesskey;"/>
+					<textbox type="number" increment="5" size="4" id="minwidth"/>
+					<vbox align="right"><image src="width_min.png"/></vbox>
+				</row>
+				<row align="center">
+				  <label control="maxwidth" value="&pref.width.max;" accesskey="&pref.width.max.accesskey;"/>
+					<textbox type="number" increment="5" size="4" id="maxwidth" />
+					<vbox align="right" style="min-width:138px;"><image src="width_max.png"/></vbox>
+				</row>
+			</rows>
+		</grid>
+  </groupbox>
+
+  <groupbox orient="vertical">
+    <caption label="&pref.padding.title;"/>
+		<description>&pref.padding.desc;</description>	
+		<grid flex="1">
+		  <columns>
+		    <column/>
+		    <column/>
+				<column flex="999"/>
+		  </columns>
+		  <rows>
+		    <row align="center">
+				  <label control="offset" value="&pref.padding.query;" accesskey="&pref.padding.query.accesskey;"/>
+					<textbox type="number" min="-Infinity" size="4" id="offset"/>
+					<vbox align="right"><image src="offset_text.png"/></vbox>
+				</row>
+				<row align="center">
+				  <label control="labelOffset" value="&pref.padding.engine;" accesskey="&pref.padding.engine.accesskey;"/>
+					<textbox type="number" min="-Infinity" size="4" id="labelOffset"/>
+					<vbox align="right" style="min-width:138px;"><image src="offset_label.png"/></vbox>
+				</row>
+			</rows>
+		</grid>   
+  </groupbox>
+	
+	<groupbox orient="horizontal">
+    <caption label="&pref.other.title;"/>
+    <vbox>
+      <hbox>
+    		<vbox>
+    			<hbox align="center">
+    				<label value="&pref.other.autocomplete;" control="autocompletePopupMinWidth" accesskey="&pref.other.autocomplete.accesskey;"/>
+    				<textbox type="number" increment="5" size="4" id="autocompletePopupMinWidth"/>
+    			</hbox>	    
+    			<checkbox id="skipWizard" accesskey="&pref.other.skipWizard.accesskey;" label="&pref.other.skipWizard;"/>
+          <checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;"/>
+    		</vbox>
+    		<vbox flex="999" align="right" style="min-width:138px;">
+    		  <image src="autocomplete.png"/>
+    		</vbox>
+      </hbox>
+      <checkbox id="revertOnSubmit" accesskey="&pref.other.revertOnSubmit.accesskey;" label="&pref.other.revertOnSubmit;" checked="false"/>
+			<hbox>
+				<command id="setEnDis" oncommand="autosizerPref.setEnDis()"/>
+				<checkbox id="shrinkToButton" accesskey="&pref.other.shrinkToButton.accesskey;" label="&pref.other.shrinkToButton;" checked="false" command="setEnDis"/>
+				<vbox align="right" flex="999">
+					<button id="addBtn2Toolbar" accesskey="&pref.other.addBtn.accesskey;" label="&pref.other.addBtn;" oncommand="autosizerPref.prefs.setBoolPref('browser.search.addSBtoToolbar', true);"/>
+				</vbox>
+			</hbox>
+    </vbox>
+	</groupbox>
+</dialog>

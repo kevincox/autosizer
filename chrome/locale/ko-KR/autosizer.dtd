@@ -1,0 +1,48 @@
+<!ENTITY pref.title "Autosizer 선택사항">
+<!ENTITY pref.wizard "마법사">
+<!ENTITY pref.wizard.accesskey "t">
+<!ENTITY pref.width.title "검색막대 폭">
+<!ENTITY pref.width.desc "모든 값의 단위는 픽셀이며, 0를 입력하면 Autosizer가 알아서 결정합니다.">
+<!ENTITY pref.width.min "최소:">
+<!ENTITY pref.width.min.accesskey "i">
+<!ENTITY pref.width.max "최대:">
+<!ENTITY pref.width.max.accesskey "a">
+<!ENTITY pref.padding.title "문자 여백">
+<!ENTITY pref.padding.desc "모든 값의 단위는 픽셀이며, 음수 값도 허용합니다.">
+<!ENTITY pref.padding.query "검색 조회:">
+<!ENTITY pref.padding.query.accesskey "Q">
+<!ENTITY pref.padding.engine "엔진 제목:">
+<!ENTITY pref.padding.engine.accesskey "E">
+<!ENTITY pref.other.title "기타">
+<!ENTITY pref.other.autocomplete "자동 완성 폭:">
+<!ENTITY pref.other.autocomplete.accesskey "S">
+<!ENTITY pref.other.cleanOnSubmit "조회값 제출시 검색막대를 비웁니다.">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "p">
+<!ENTITY pref.other.revertOnSubmit "검색어를 제출시 기본 검색엔진으로 되돌아감">
+<!ENTITY pref.other.revertOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit.desc "검색 엔진의 최상단이 무엇이든지 기본이 됩니다. 검색 엔진을 관리하고자 한다면 엔진 아이콘을 클릭해 &apos;검색 엔진 관리&apos;를 선택하십시오.">
+<!ENTITY pref.other.skipWizard "마법사 대신에 이 창을 엽니다">
+<!ENTITY pref.other.skipWizard.accesskey "O">
+<!ENTITY wiz.title "Autosizer 설정 마법사">
+<!ENTITY wiz.start.desc "검색상자에 입력시 Autosizer가 어떻게 동작합니까?">
+<!ENTITY wiz.start.inc "입력에 맞춰 점진적으로 폭을 변경">
+<!ENTITY wiz.start.inc.accesskey "S">
+<!ENTITY wiz.start.alt "첫 글자 입력시 검색막대 확대">
+<!ENTITY wiz.start.alt.accesskey "E">
+<!ENTITY wiz.start.fix "언제나 일정한 폭을 유지">
+<!ENTITY wiz.start.fix.accesskey "K">
+<!ENTITY wiz.norMinWidth.title "검색막대를 얼마나 작게 할까요?">
+<!ENTITY wiz.norMinWidth.desc "최소 폭 지정">
+<!ENTITY wiz.norMaxWidth.title "검색막대를 얼마나 크게 할까요?">
+<!ENTITY wiz.norMaxWidth.desc "최대 폭 지정">
+<!ENTITY wiz.altWidth.title "사용시에 검색막대의 폭을 얼마나 넓힐까요?">
+<!ENTITY wiz.altWidth.desc "사용시의 폭 지정">
+<!ENTITY wiz.fixWidth.title "검색 막대를 얼마나 넓힐까요?">
+<!ENTITY wiz.fixWidth.desc "폭 지정">
+<!ENTITY wiz.aftersearch.title "검색값 제출 후 무엇을 합니까?">
+<!ENTITY wiz.resize "이미지와 같이 검색 막대를 좋아하는 크기로 변경하십시오.">
+<!ENTITY wiz.autodetect "옳은 값을 얻을 때 까지 마우스를 움직이면 Autosizer는 원하는 값을 알아 맞출겁니다.">
+<!ENTITY pref.other.shrinkToButton "비어있는 경우 버튼쪽으로 검색막대 축소">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "도구막대에 버튼 추가">
+<!ENTITY pref.other.addBtn.accesskey "u">
