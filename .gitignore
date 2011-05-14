@@ -1,0 +1,9 @@
+# Files to ignore
+
+
+# backup files
+*~
+*.bak
+
+# pakages
+*.xpi
