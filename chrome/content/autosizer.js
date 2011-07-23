@@ -10,75 +10,75 @@ var autosizerProgressListener = {
 	onSecurityChange: function(aWebProgress, aRequest, aState) {},
 	onLinkIconAvailable: function(a) {},
 	onStateChange: function (aWebProgress, aRequest, aStateFlags, aStatus) {},
-	onLocationChange: function(aProgress, aRequest, aLocation) { if (aLocation) setTimeout("autosizer.genWidthCheck('onLocChange')", 40); }
+	onLocationChange: function(aProgress, aRequest, aLocation) { if (aLocation) setTimeout(function(){autosizer.genWidthCheck('onLocChange')}, 40); }
 }
 
 var autosizer = {
 	booted: false,
 	////////////////////////////////////////////////////////
 	// Service Functions (init, elem "observer", prefserv)
-	init: function() {	
+	init: function() {
 		window.removeEventListener("load",function() { autosizer.init(); }, false);
 		this.prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBranch('browser.search.');
-		
-		this.updateElementRefs(); 
+
+		this.updateElementRefs();
 		this.setupPrefObsrv();
-		this.copyStylesToLabel();	
-		
+		this.copyStylesToLabel();
+
 		addEventListener("resize",function() { autosizer.onResize(); }, false);
 		getBrowser().addProgressListener(autosizerProgressListener, Ci.nsIWebProgress.STATE_STOP);
 
-		
-		setTimeout("autosizer.booted=true;autosizer.genWidthCheck('startup');",0);
+		var self = this;
+		setTimeout(function () {
+			self.booted = true;
+			self.genWidthCheck('startup');
+		}, 0);
 	},
-	
+
+	originalHandleSearchCommand: null,
 	addAfterSubmitCheck: function() {
-	       // Inject code instead of XBL binding
-	       if (this.txt && "handleSearchCommand" in this.txt)
-	       {
-	           var addString = 'autosizer.afterSubmit();'    //    The string to be inserted
+		if (this.originalHandleSearchCommand) return; // Already did it.
 
-	           if ( this.txt.handleSearchCommand.toString().match(addString) == null )    //    If we haven't already modified the search command
-	           {
-	               var findSpot = /^([\s\S]*)(})$/;    // A RegEx to find the last bracket (where we want to insert our command)
-	               var SComParts = findSpot.exec(this.txt.handleSearchCommand.toString());
+		this.originalHandleSearchCommand = this.txt.handleSearchCommand;
 
-	               eval('this.txt.handleSearchCommand = ' + SComParts[1] + addString + SComParts[2]);    // Place the addString in the search handler
-	           }
-	       }
-	       else this.d("Couldn't add after submit check. Cleaning & Reverting will not work");
-	   },
-	
+		var self = this;
+		this.txt.handleSearchCommand = function () {
+			self.originalHandleSearchCommand.apply(this, arguments);
+
+			self.afterSubmit();
+		};
+	},
+
 	copyStylesToLabel: function() {
 		var s=['font-Size','font-Size-Adjust','font-Stretch','font-Style','font-Variant','font-Weight','letter-Spacing','word-Spacing'];
 		for(let a in s)
 			this.label.style[s[a].replace(/-/g, "")]=document.defaultView.getComputedStyle(this.input, '').getPropertyValue(s[a]);
 	},
-	
-	updateElementRefs: function() { 	
+
+	updateElementRefs: function() {
 		this.txt=this.byId("searchbar");
 		this.sBox = this.byId("search-container");
-		this.label=this.byId('autosizer-label'); 		
+		this.label=this.byId('autosizer-label');
 		var tb=this.txt._textbox;
 		this.button=this.byId("autosizer-button");
-		
+
 		var splitter = this.byId("urlbar-search-splitter");
 		if(splitter) splitter.parentNode.removeChild(splitter);
-		
-		this.sBox.flex=0;	
-		 
+
+		this.sBox.flex=0;
+
 		// Only needed when interface is rebuilt
-		if(!tb.hasAttribute('popMinWidth')) {		 
-			tb.setAttribute("popMinWidth", this.prefs.getIntPref('autocompletePopupMinWidth'));			
+		if(!tb.hasAttribute('popMinWidth')) {
+			tb.setAttribute("popMinWidth", this.prefs.getIntPref('autocompletePopupMinWidth'));
 			if(tb && "openPopup" in tb)
 				eval("tb.openPopup ="+tb.openPopup.toString().replace(
 					'width > 100 ? width : 100',
 					'Math.max(this.getAttribute("popMinWidth"), width)'
 					));
-							 
-			this.getNeededWidth();		
-			this.showHideGrippys();			
-			
+
+			this.getNeededWidth();
+			this.showHideGrippys();
+
 			// Detect SearchWP
 			this.searchwp=false;
 			if(document.getAnonymousElementByAttribute(tb, "anonid", "tokens-container")) {
@@ -86,39 +86,40 @@ var autosizer = {
 									document.getAnonymousElementByAttribute(tb, "anonid", "tokens-container"),
 									"class", "box-inherit scrollbox-innerbox");
 			}
-			
+
 			this.addAfterSubmitCheck();
-		}	 
-		
-		this.input=tb.inputField; 	
-		this.diffWidth=(1+this.sBox.boxObject.width)-this.input.offsetWidth; 
+		}
+
+		this.input=tb.inputField;
+		this.diffWidth=(1+this.sBox.boxObject.width)-this.input.offsetWidth;
 		if(this.tooltipDiffWidth!=this.diffWidth) {
 			this.getTooltipWidth();
 			this.genWidth();
 		}
 	},
-	
+
 	setupPrefObsrv: function() {
 		this.prefs.QueryInterface(Ci.nsIPrefBranch2);
 		this.prefs.addObserver("", this, false);
-		this.checkPrefs();		
-		window.addEventListener("unload", function() { autosizer.prefs = null; }, false); 		
+		this.checkPrefs();
+		window.addEventListener("unload", function() { autosizer.prefs = null; }, false);
 	},
-	
+
 	observe: function (subject, topic, data) {
 		if (topic == "nsPref:changed") {
 			this.checkPrefs();
 		}
 	},
-		
-	checkPrefs: function() {	 		
+
+	checkPrefs: function() {
 		if(!this.booted) {
-			setTimeout("autosizer.checkPrefs();",30); // Wait while Firefox still opens a browser window
+			var self = this;
+			setTimeout(function(){self.checkPrefs();}, 30); // Wait while Firefox still opens a browser window
 			return;
 		}
-	
+
 		if(this.prefs.getBoolPref('addSBtoToolbar')) this.addSBtoToolbar();
-		
+
 		this.shrinkToButton=this.prefs.getBoolPref('shrinkToButton');
 		this.offset=this.prefs.getIntPref('offset');
 		this.labelOffset=this.prefs.getIntPref('labelOffset');
@@ -126,70 +127,70 @@ var autosizer = {
 		this.maxwidth=this.prefs.getIntPref('maxwidth');
 		this.cleanOnSubmit=this.prefs.getBoolPref('cleanOnSubmit');
 		this.revertOnSubmit=this.prefs.getBoolPref('revertOnSubmit');
-		
+
 		if(!this.txt._textbox) this.updateElementRefs();
 		this.txt._textbox.setAttribute("popMinWidth", this.prefs.getIntPref('autocompletePopupMinWidth'));
 		this.txt._popup.setAttribute("onclick", "autosizer.skipOnce=true;"); // Prevents shrinking to button if engine selected
-		
+
 		setTimeout("autosizer.getTooltipWidth();autosizer.genWidth();autosizer.genWidthCheck('checkPrefs');",0);
-		
+
 		// For the wizard only
-		this.manualResize=this.prefs.getCharPref('manualResize'); 		
+		this.manualResize=this.prefs.getCharPref('manualResize');
 		this.showHideGrippys();
-		
-		if(!this.manualResize.length || this.dragging) return;	
-		
+
+		if(!this.manualResize.length || this.dragging) return;
+
 		if(this.manualResize=='max') this.sBox.width=(window.outerWidth-this.neededWidth);
 		else if(this.manualResize=='label') this.sBox.width=this.tooltipwidth;
 		else if(this.manualResize=='nosize') {}
 		else this.sBox.width=this.manualResize;
-		
+
 		this.txt.value='';
 		setTimeout("autosizer.moveGrippys();autosizer.flashGrippys(10);",0);
 	},
-	
+
 	////////////////////////////////////////////////////////
 	// Autosize "Core" Functions
 	genWidthCheck: function(type,evt) {
 		if(this.manualResize.length) return;
 		//this.d("Caller: "+type);
 		this.updateElementRefs();
-		
+
 		// Otherwise the searchbar won't shrink when tokenized
-		var tokenCheck=(this.isTokenized() && type=="onLocChange") || (this.isTokenized()!=this.lastState); 		
-		if(tokenCheck) this.sBox.width=this.minwidth;	
-		
-		if(this.label.value!=this.txt.value || tokenCheck) this.genWidth();		
-		
+		var tokenCheck=(this.isTokenized() && type=="onLocChange") || (this.isTokenized()!=this.lastState);
+		if(tokenCheck) this.sBox.width=this.minwidth;
+
+		if(this.label.value!=this.txt.value || tokenCheck) this.genWidth();
+
 		// Prevents uneeded calls in "event chains" (e.g. onBlur, onFocus and checkPrefs when selecting engine)
 		clearTimeout(this.hideTimeout);
 		this.hideTimeout=setTimeout("autosizer.hideSB('"+type+"')", 10);
-	},	
-	
-	genWidth: function() {	
+	},
+
+	genWidth: function() {
 		// When sizing manually, we don't want any events to break this. If search bar is hidden, results are useless
-		if(this.manualResize.length || this.sBox.hidden) return; 
+		if(this.manualResize.length || this.sBox.hidden) return;
 		this.lastState=this.isTokenized();
-		
-		var availableWidth=window.outerWidth-this.neededWidth-this.diffWidth;			
+
+		var availableWidth=window.outerWidth-this.neededWidth-this.diffWidth;
 		this.label.value=this.txt.value;
-				
+
 		if(this.lastState)
 			var width=this.searchwp.boxObject.width+this.diffWidth+this.offset+12; // +12 explanation: This is the amout of additional space SearchWP needs in order not to display "..."
-		else		
+		else
 			var width=this.label.boxObject.width+this.diffWidth+this.offset+9; // +9 explanation: When the user hits a letter and the searchbox is too small, Gecko realigns the text before Autosizer can expand the box. Expanding doesn't realign automatically though, and there is no way to force it. Instead, the searchbox is sized in advance. The widest letter is W and it's 9 pixels in width for most fonts, hence the number.
 
 		if((this.isEmpty() || width<this.tooltipwidth) && this.tooltipwidth>0 && this.minwidth==0) // Set size for search engine title
 			width=this.tooltipwidth+this.labelOffset; // set tooltip width (grey text)
 
-		if(width>this.maxwidth && this.maxwidth>0) width=this.maxwidth; // set max width 
+		if(width>this.maxwidth && this.maxwidth>0) width=this.maxwidth; // set max width
 		if(width<this.minwidth && this.minwidth>0) width=this.minwidth; // set min width
 		if(width>availableWidth && availableWidth>0) width=availableWidth; // available width
-		if(width<this.diffWidth) width=this.diffWidth; // needed width	
-		
+		if(width<this.diffWidth) width=this.diffWidth; // needed width
+
 		this.sBox.width=width;
 	},
-	
+
  	////////////////////////////////////////////////////////
 	// Clean & Revert after Submit Feature
 	afterSubmit: function() {
@@ -200,10 +201,10 @@ var autosizer = {
 		}
 		if(this.revertOnSubmit) {
 			if(!this.txt.engines) this.txt.rebuildPopup()
-			this.txt.currentEngine=this.txt.engines[0];	 
+			this.txt.currentEngine=this.txt.engines[0];
 		}
 	},
-	
+
 	////////////////////////////////////////////////////////
 	// Shrink To Button Feature
 	showSB: function(btn) {
@@ -213,7 +214,7 @@ var autosizer = {
 		if(btn) this.button.hidden=true;
 		this.txt.focus();
 	},
-	
+
 	hideSB: function(type) {
 		if(this.skipOnce) setTimeout("autosizer.skipOnce=false;", 0);
 		var prevState=this.sBox.hidden;
@@ -226,8 +227,8 @@ var autosizer = {
 			if(this.button) this.button.hidden=true;
 		}
 		if(prevState!=this.sBox.hidden && prevState) autosizer.genWidthCheck('unhideSB');
-	},	
-	
+	},
+
 	addSBtoToolbar: function() {
 		this.prefs.setBoolPref('addSBtoToolbar', false); // Add it only once. If this fails, we're doomed.
 		try {
@@ -247,11 +248,11 @@ var autosizer = {
 			try {
 				BrowserToolboxCustomizeDone(true);
 			} catch (e) { this.d("Failed to call CustomizeDone(). Funny things are about to happen now! "+e); }
-			
+
 			setTimeout('autosizer.genWidthCheck("buttonAdd")', 0);
 		} catch(e) { this.d("Failed to add toolbar button, please add it yourself if you wish so "+e); }
 	},
-	
+
 	// For dropping text on the	button
 	getSupportedFlavours : function () {
     var flavours = new FlavourSet();
@@ -267,20 +268,20 @@ var autosizer = {
 		autosizer.showSB();
 		autosizer.txt.handleSearchCommand();
   },
-	
+
 	////////////////////////////////////////////////////////
 	// Helper & convenience functions
 	getTooltipWidth: function() {
 		if(!this.txt.currentEngine) return;
 		this.tooltipDiffWidth=(1+this.sBox.boxObject.width)-this.input.offsetWidth;
-		let temp=this.label.value;	 
+		let temp=this.label.value;
 		this.label.value=this.txt.currentEngine.name;
-		this.tooltipwidth=this.label.boxObject.width+this.tooltipDiffWidth; 
+		this.tooltipwidth=this.label.boxObject.width+this.tooltipDiffWidth;
 
-		this.label.value=temp; 
-	},	
-	
-	getNeededWidth: function() { 
+		this.label.value=temp;
+	},
+
+	getNeededWidth: function() {
 		var toolbaritems=this.sBox.parentNode.childNodes,i,x;
 		this.neededWidth=0;
 		for(i=0;x=toolbaritems[i];i++) {
@@ -292,8 +293,8 @@ var autosizer = {
 			x.setAttribute('flex',flextemp);
 		}
 		this.neededWidth++;
-	}, 
-	
+	},
+
 	onResize: function() {
 		var old=this.sBox.width;
 		this.genWidth();
@@ -306,30 +307,30 @@ var autosizer = {
 		x.selectionStart=selStart;
 		x.selectionEnd=selEnd;
 	},
-	
+
 	d: function(t) {
 		Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage('autosizer: '+t);
 	},
-	
+
 	isEmpty: function() {
 		return (this.txt.value.length==0);
 	},
-	
+
 	isTokenized: function() {
 		return (this.searchwp && this.txt._textbox.hasAttribute("tokenized"));
 	},
-	
+
 	byId: function(i) {
 		return window.document.getElementById(i);
 	},
-	
+
 	fixPopup: function() {
 		// onfocus: Work around autocomplete bug 414134
 		var p=this.txt._textbox.popup;
 		if(p.popupOpen) return;
 		p.hidden=true;
 	},
-	
+
 	////////////////////////////////////////////////////////
 	// MANUAL RESIZING FUNCTION, thanks to resize search box
 	startDrag: function(aEvent, ltr) {
@@ -339,7 +340,7 @@ var autosizer = {
 			a.startY = aEvent.clientY;
 			a.dragging = true;
 			a.ltr = ltr;
-						
+
 			a.sLen = a.sBox.width;	//store original width for calculations
 
 			window.addEventListener("mousemove", a.whileDrag, true);
@@ -379,7 +380,7 @@ var autosizer = {
 	},
 
 	clearDrag: function(revert) {
-		const a=autosizer; 
+		const a=autosizer;
 		a.dragging = false;
 		window.removeEventListener("mousemove", a.whileDrag, true);
 		window.removeEventListener("mouseup", a.endDrag, true);
@@ -389,26 +390,26 @@ var autosizer = {
 			this.moveGrippys();
 		}
 	},
-	
+
 	saveDrag: function(f) {
 		const a=autosizer;
 		// Send info back to wizard. Contains current width+comparison values in order to make useful suggestions
 		a.prefs.setCharPref("autosizerwizard", a.sBox.width+'|'+a.diffWidth+'|'+a.tooltipwidth+'|'+(window.outerWidth-a.neededWidth)+'|'+f);
 	},
-	
-	showHideGrippys: function() {	
+
+	showHideGrippys: function() {
 		if(!this.manualResize) this.manualResize='';
 		var show=this.manualResize.length?true:false;
 		if(this.shrinkToButton && show) this.showSB();
 		var display = show?"block":"none";
-		
+
 		var r=this.byId('autosizer-size-right');
 		var l=this.byId('autosizer-size-left');
-		
+
 		l.style.display = display;
 		r.style.display = display;
 	},
-	
+
 	moveGrippys: function() {
 		const a=autosizer.sBox.boxObject;
 		const t=autosizer.txt.boxObject;
@@ -418,21 +419,21 @@ var autosizer = {
 		l.style.left=a.x+'px';
 		l.style.height=(t.height-4)+'px';
 		l.style.top=t.y+'px';
-		
+
 		r.style.left=(a.x+a.width-(2+r.boxObject.width))+'px';
 		r.style.height=(t.height-4)+'px';
 		r.style.top=(t.y)+'px';
 	},
-	
+
 	flashGrippys: function( num ) {
 		var r=this.byId('autosizer-size-right');
 		var l=this.byId('autosizer-size-left');
-		
+
 		var vis = ( num % 2 )?"hidden":"visible"; // None is first so we end on "visible"
-		
+
 		l.style.visibility = vis;
 		r.style.visibility = vis;
-		
+
 		if ( num > 0 ) window.setTimeout("autosizer.flashGrippys("+(num-1)+");", 200);
 	},
 }
