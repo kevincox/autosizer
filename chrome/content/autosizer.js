@@ -309,6 +309,7 @@ var autosizer = {
 	},
 
 	d: function(t) {
+		dump('autosizer: '+t);
 		Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage('autosizer: '+t);
 	},
 

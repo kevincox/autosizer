@@ -98,13 +98,13 @@ xpi = zipfile.ZipFile(xpiname, "w", zipfile.ZIP_STORED, True)
 
 ### Add Files ###
 for root, dirs, files in os.walk(extdir):
-	for file in files:	
+	for file in files:
 		file = root+'/'+file
 		filename = getRelPath(file)
-		
+
 		if os.path.isdir(file):
 			filename = filename + '/'
-		
+
 		for rei in includere:
 			if rei.search(filename):
 				for ree in excludere:
@@ -115,13 +115,13 @@ for root, dirs, files in os.walk(extdir):
 					isinignore = False
 					break
 		else: isinignore = True
-		
+
 		#print("Isignore: ", isinignore)
 
 		if not isinignore:
 			print("Adding", filename)
 			xpi.write(file, filename)
-		
+
 		#input("Please enter an integer: ")
 
 xpi.close() # Finalize the archive
