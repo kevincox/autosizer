@@ -1,11 +1,11 @@
-pref("extensions.{655397ca-4766-496b-b7a8-3a5b176ee4c2}.description", "chrome://autosizer/locale/autosizer.properties");
-pref("browser.search.minwidth", 0);
-pref("browser.search.maxwidth", 400);
-pref("browser.search.autocompletePopupMinWidth", 200); // dito
-pref("browser.search.cleanOnSubmit", false);
-pref("browser.search.revertOnSubmit", false);
-pref("browser.search.shrinkToButton", false);
-pref("browser.search.addSBtoToolbar", true);
-pref("browser.search.offset", 0);
-pref("browser.search.labelOffset", 3);
-pref("browser.search.manualResize", "");
+pref("extentions.autosizer.description", "chrome://autosizer/locale/autosizer.properties");
+pref("extentions.autosizer.minwidth", 0);
+pref("extentions.autosizer.maxwidth", 400);
+pref("extentions.autosizer.autocompletePopupMinWidth", 200); // dito
+pref("extentions.autosizer.cleanOnSubmit", false);
+pref("extentions.autosizer.revertOnSubmit", false);
+pref("extentions.autosizer.shrinkToButton", false);
+pref("extentions.autosizer.addSBtoToolbar", true);
+pref("extentions.autosizer.offset", 0);
+pref("extentions.autosizer.labelOffset", 3);
+pref("extentions.autosizer.manualResize", "");
