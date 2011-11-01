@@ -20,7 +20,7 @@ function Autosizer ( )
 		////////////////////////////////////////////////////////
 		// Service Functions (init, elem "observer", prefserv)
 		init: function() {
-			this.prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBranch('extentions.autosizer.');
+			this.prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBranch('extensions.autosizer.');
 
 			this.updateElementRefs();
 			this.setupPrefObsrv();

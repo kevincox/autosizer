@@ -22,7 +22,7 @@ while (wins.hasMoreElements() && open)
 }
 if(open)
 {
-	var file=(Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBoolPref("extentions.autosizer.skipWizard","")?"prefs":"wizard")+".xul";
+	var file=(Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBoolPref("extensions.autosizer.skipWizard","")?"prefs":"wizard")+".xul";
 	openDialog(path+file,"","chrome,titlebar,toolbar,centerscreen,dialog=no", window.opener);
 }
 window.close();*/
@@ -37,12 +37,12 @@ var asw = {
 		asw.mayChange=false;
 
 		/* Load Saved Settings */
-		var min=asw.prefs.getIntPref('extentions.autosizer.minwidth');
-		var max=asw.prefs.getIntPref('extentions.autosizer.maxwidth');
-		var off=asw.prefs.getIntPref('extentions.autosizer.offset');
-		document.getElementById('cleanOnSubmit').checked=asw.prefs.getBoolPref('extentions.autosizer.cleanOnSubmit');
-		document.getElementById('revertOnSubmit').checked=asw.prefs.getBoolPref('extentions.autosizer.revertOnSubmit');
-		document.getElementById('shrinkToButton').checked=asw.prefs.getBoolPref('extentions.autosizer.shrinkToButton');
+		var min=asw.prefs.getIntPref('extensions.autosizer.minwidth');
+		var max=asw.prefs.getIntPref('extensions.autosizer.maxwidth');
+		var off=asw.prefs.getIntPref('extensions.autosizer.offset');
+		document.getElementById('cleanOnSubmit').checked=asw.prefs.getBoolPref('extensions.autosizer.cleanOnSubmit');
+		document.getElementById('revertOnSubmit').checked=asw.prefs.getBoolPref('extensions.autosizer.revertOnSubmit');
+		document.getElementById('shrinkToButton').checked=asw.prefs.getBoolPref('extensions.autosizer.shrinkToButton');
 
 		if(max==off && max>0) {
 			this.path=1; // Alternative
@@ -151,7 +151,7 @@ var asw = {
 				else value=asw.sandbox[0][1];
 			}
 
-			asw.prefs.setCharPref('extentions.autosizer.manualResize',value);
+			asw.prefs.setCharPref('extensions.autosizer.manualResize',value);
 
 			// Focus/Open Window
 			var wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
@@ -160,9 +160,9 @@ var asw = {
 			else asw.win=window.openDialog("chrome://browser/content/", "_blank", "chrome,all,dialog=no");
 			setTimeout("window.focus()",10);
 
-		} else asw.prefs.setCharPref('extentions.autosizer.manualResize','');
+		} else asw.prefs.setCharPref('extensions.autosizer.manualResize','');
 
-		asw.prefs.setCharPref('extentions.autosizer.autosizerwizard','');
+		asw.prefs.setCharPref('extensions.autosizer.autosizerwizard','');
 		// Displaying the grippys is handled in autosizer.js/checkPrefs function.
 		setTimeout('asw.registerPrevObsrv('+what+');',0);
 	},
@@ -195,7 +195,7 @@ var asw = {
 	manualSizingChange: function() {
 		if(!asw.mayChange) return;
 		try {
-			var newValue=asw.prefs.getCharPref('extentions.autosizer.autosizerwizard');
+			var newValue=asw.prefs.getCharPref('extensions.autosizer.autosizerwizard');
 			newValue=newValue.split('|');
 			if(newValue[0]==0 || newValue[0] == undefined) return;
 			// width neededWidth tooltipwidth availableWidth focus?
@@ -257,17 +257,17 @@ var asw = {
 		var p=document.getElementById('startBehaviour').selectedIndex;
 		var intP1=["minwidth","maxwidth","offset","labelOffset","autocompletePopupMinWidth"];
 		var intP2=[asw.sandbox[p][0],asw.sandbox[p][1],asw.sandbox[p][2],1,200];
-		for(p in intP1) asw.prefs.setIntPref('extentions.autosizer.'+intP1[p], intP2[p]);
+		for(p in intP1) asw.prefs.setIntPref('extensions.autosizer.'+intP1[p], intP2[p]);
 
 		var boolP=["cleanOnSubmit","revertOnSubmit","shrinkToButton"]
-		for(p in boolP) asw.prefs.setBoolPref('extentions.autosizer.'+boolP[p], document.getElementById(boolP[p]).checked);
+		for(p in boolP) asw.prefs.setBoolPref('extensions.autosizer.'+boolP[p], document.getElementById(boolP[p]).checked);
 
 		if(document.getElementById('shrinkToButton').checked) {
-			asw.prefs.setBoolPref("extentions.autosizer.addSBtoToolbar", true);
+			asw.prefs.setBoolPref("extensions.autosizer.addSBtoToolbar", true);
 			// In "enlarge on first strike" mode, it's useful to skip the middle step and enlarge immmediately:
 			// (empty) Button, (focused but empty) small searchbar, (not empty) large searchbar
 			// It behaves identical to "fixed width" in this case.
-			if(this.path==1) asw.prefs.setIntPref('extentions.autosizer.'+intP1[0], intP2[1]);
+			if(this.path==1) asw.prefs.setIntPref('extensions.autosizer.'+intP1[0], intP2[1]);
 		}
 		asw.cleanUp();
 	},
@@ -279,8 +279,8 @@ var asw = {
 	cleanUp: function() {
 		asw.dragDropOsrv(false); // Force in case of cancel
 		asw.toggleSizing(false);
-		asw.prefs.setCharPref('extentions.autosizer.autosizerwizard','');
-		asw.prefs.setCharPref('extentions.autosizer.manualResize','');
+		asw.prefs.setCharPref('extensions.autosizer.autosizerwizard','');
+		asw.prefs.setCharPref('extensions.autosizer.manualResize','');
 		try { window.opener.focus(); } catch(e) {}
 	}
 }
@@ -291,7 +291,7 @@ function AutosizerWizPrefObserver() {
 
 AutosizerWizPrefObserver.prototype = {
 	observe: function(subject, topic, pref) {
-		if (topic == 'nsPref:changed' && pref=='extentions.autosizer.autosizerwizard') {
+		if (topic == 'nsPref:changed' && pref=='extensions.autosizer.autosizerwizard') {
 			try { asw.manualSizingChange(); } catch(e) {}
 		}
 	}
