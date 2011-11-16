@@ -26,7 +26,7 @@ function Autosizer ( )
 			this.setupPrefObsrv();
 			this.copyStylesToLabel();
 
-			addEventListener("resize",function() { autosizer.onResize(); }, false);
+			addEventListener("resize", function() { autosizer.onResize(); }, false);
 			getBrowser().addProgressListener(autosizerProgressListener, Ci.nsIWebProgress.STATE_STOP);
 
 			var self = this;

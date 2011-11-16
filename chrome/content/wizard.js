@@ -158,19 +158,19 @@ var asw = {
 			asw.win = wm.getMostRecentWindow("navigator:browser");
 			if(asw.win) asw.win.focus();
 			else asw.win=window.openDialog("chrome://browser/content/", "_blank", "chrome,all,dialog=no");
-			setTimeout("window.focus()",10);
+			setTimeout(function(){ window.focus(); ),10);
 
 		} else asw.prefs.setCharPref('extensions.autosizer.manualResize','');
 
 		asw.prefs.setCharPref('extensions.autosizer.autosizerwizard','');
 		// Displaying the grippys is handled in autosizer.js/checkPrefs function.
-		setTimeout('asw.registerPrevObsrv('+what+');',0);
+		setTimeout(function(){ asw.registerPrevObsrv(what); },0);
 	},
 
 	registerPrevObsrv: function(what) {
 		//if(!asw.win || (asw.win && asw.win.autosizer.booted)) asw.dragDropOsrv(what);
 		if (asw) asw.dragDropOsrv(what);
-		else setTimeout('asw.registerPrevObsrv('+what+');',10);
+		else setTimeout(function(){asw.registerPrevObsrv(what); },10);
 	},
 
 	dragDropOsrv: function(what) {
