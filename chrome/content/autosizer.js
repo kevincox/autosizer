@@ -205,7 +205,7 @@ function Autosizer ( )
 		////////////////////////////////////////////////////////
 		// Clean & Revert after Submit Feature
 		afterSubmit: function() {
-			this.d("autosizer.afterSubmit() called.");
+			//this.d("autosizer.afterSubmit() called.");
 			if(this.cleanOnSubmit) {
 				this.txt.value='';
 				this.txt.empty=true;
