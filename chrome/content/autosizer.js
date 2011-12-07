@@ -30,6 +30,8 @@ function Autosizer ( )
 			addEventListener("resize", function() { autosizer.onResize(); }, false);
 			getBrowser().addProgressListener(autosizerProgressListener, Ci.nsIWebProgress.STATE_STOP);
 
+			this.addAfterSubmitCheck();
+
 			var self = this;
 			setTimeout(function () {
 				self.booted = true;
@@ -203,6 +205,7 @@ function Autosizer ( )
 		////////////////////////////////////////////////////////
 		// Clean & Revert after Submit Feature
 		afterSubmit: function() {
+			this.d("autosizer.afterSubmit() called.");
 			if(this.cleanOnSubmit) {
 				this.txt.value='';
 				this.txt.empty=true;
