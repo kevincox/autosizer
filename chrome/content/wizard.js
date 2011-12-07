@@ -29,8 +29,20 @@ window.close();*/
 /** End Of Stuff from helpers **/
 
 
+function d ( msg, seroius )
+{
+	//seroius = true // For debugging.
+	if (!seroius) return;
+
+	dump('ginstantint: '+msg+'\n');
+	Components.classes["@mozilla.org/consoleservice;1"]
+		.getService(Components.interfaces.nsIConsoleService)
+		.logStringMessage('ginstantint: '+msg);
+}
+
 var asw = {
 	init: function() {
+		d("asw.init() called.")
 		try { if(window.arguments[0]) window.opener=window.arguments[0]; } catch(e){}
 		asw.prefs=Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
 		asw.sandbox=[[],[],[]];
@@ -114,6 +126,8 @@ var asw = {
 		extra2.setAttribute('onclick',"window.openDialog('chrome://autosizer/content/prefs.xul', '_blank', 'chrome,titlebar,toolbar,centerscreen,dialog=no',window.opener);window.close();");
 		extra2.label=asw.lang('buttonAdvanced','');
 		extra2.setAttribute('accesskey',asw.lang('buttonAdvancedAccesskey',''));
+
+		d("asw.init() returning.")
 	},
 
 	lang: function(v,t) {
@@ -121,11 +135,13 @@ var asw = {
 	},
 
 	nextPageOnFirstPage: function() {
+		d("asw.nextPageOnFirstPage() called.")
 		nextItemVal=document.getElementById('startBehaviour').selectedItem.value;
 		if(nextItemVal=='normal') newPage='norMinWidth';
 		if(nextItemVal=='alternative') newPage='altWidth';
 		if(nextItemVal=='fixed') newPage='fixWidth';
 		document.getElementById('start').setAttribute('next',newPage);
+		d("asw.nextPageOnFirstPage() returning.")
 	},
 
 	canAdv: function(what) {
@@ -158,7 +174,7 @@ var asw = {
 			asw.win = wm.getMostRecentWindow("navigator:browser");
 			if(asw.win) asw.win.focus();
 			else asw.win=window.openDialog("chrome://browser/content/", "_blank", "chrome,all,dialog=no");
-			setTimeout(function(){ window.focus(); ),10);
+			setTimeout(function(){ window.focus(); },10);
 
 		} else asw.prefs.setCharPref('extensions.autosizer.manualResize','');
 

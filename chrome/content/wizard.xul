@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="style.css" type="text/css"?>
 <!DOCTYPE wizard SYSTEM "chrome://autosizer/locale/autosizer.dtd">
@@ -8,7 +8,7 @@
 	<stringbundleset>
 		<stringbundle id="locale" src="chrome://autosizer/locale/autosizer.properties"/>
 	</stringbundleset>
-		 
+
 	<wizardpage id="start" pageid="start" onpagehide="return asw.nextPageOnFirstPage();" next="norMinWidth">
 		<radiogroup id="startBehaviour">
 			<description>&wiz.start.desc;</description>
@@ -25,7 +25,7 @@
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize; &wiz.autodetect;</description>
 	</wizardpage>
-	
+
 	<wizardpage id="norMaxWidth" label="&wiz.norMaxWidth.title;" pageid="norMaxWidth" onpageshow="if(document.getElementById('norMaxWidthPixels').hasAttribute('value')) asw.canAdv(false); asw.toggleSizing(true);" onpagehide="return asw.toggleSizing(false);" next="aftersearch">
 		<description class="action" style="background-image:url('width_max.png');">&wiz.norMaxWidth.desc;</description>
 		<spacer/>
@@ -33,7 +33,7 @@
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize; &wiz.autodetect;</description>
 	</wizardpage>
-	
+
 	<wizardpage id="altWidth" label="&wiz.altWidth.title;" pageid="altWidth" onpageshow="if(document.getElementById('altWidthPixels').hasAttribute('value')) asw.canAdv(false); asw.toggleSizing(true);" onpagehide="return asw.toggleSizing(false);" next="aftersearch">
 		<description class="action" style="background-image:url('width_fixalt.png');">&wiz.altWidth.desc;</description>
 		<spacer/>
@@ -41,7 +41,7 @@
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize;</description>
 	</wizardpage>
-	
+
 	<wizardpage id="fixWidth" label="&wiz.fixWidth.title;" pageid="fixWidth" onpageshow="if(document.getElementById('fixWidthPixels').hasAttribute('value')) asw.canAdv(false); asw.toggleSizing(true);" onpagehide="return asw.toggleSizing(false);" next="aftersearch">
 		<description class="action" style="background-image:url('width_fixalt.png');">&wiz.fixWidth.desc;</description>
 		<spacer/>
@@ -49,7 +49,7 @@
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize;</description>
 	</wizardpage>
-	
+
 	<wizardpage id="aftersearch" label="&wiz.aftersearch.title;" pageid="aftersearch">
 		<checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;"/>
 		<checkbox id="revertOnSubmit" accesskey="&pref.other.revertOnSubmit.accesskey;" label="&pref.other.revertOnSubmit; *"/>
