@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://autosizer/locale/autosizer.dtd">
 
@@ -14,13 +14,13 @@
 		ondialogaccept="autosizerPref.save();window.close();window.opener.focus();"
 		ondialogcancel="window.close();window.opener.focus();"
 		ondialogextra2="window.openDialog('chrome://autosizer/content/wizard.xul', '_blank', 'chrome,titlebar,toolbar,centerscreen,dialog=no',window.opener);">
-			
 
-	<script type="application/x-javascript" src="prefs.js"/> 
-		
+
+	<script type="application/x-javascript" src="prefs.js"/>
+
 	<groupbox orient="vertical">
 		<caption label="&pref.width.title;" />
-		<description>&pref.width.desc;</description>	
+		<description>&pref.width.desc;</description>
 		<grid flex="1">
 			<columns>
 				<column/>
@@ -44,7 +44,7 @@
 
 	<groupbox orient="vertical">
 		<caption label="&pref.padding.title;"/>
-		<description>&pref.padding.desc;</description>	
+		<description>&pref.padding.desc;</description>
 		<grid flex="1">
 			<columns>
 				<column/>
@@ -63,9 +63,9 @@
 					<vbox align="right" style="min-width:138px;"><image src="offset_label.png"/></vbox>
 				</row>
 			</rows>
-		</grid>	 
+		</grid>
 	</groupbox>
-	
+
 	<groupbox orient="horizontal">
 		<caption label="&pref.other.title;"/>
 		<vbox>
@@ -74,8 +74,7 @@
 					<hbox align="center">
 						<label value="&pref.other.autocomplete;" control="autocompletePopupMinWidth" accesskey="&pref.other.autocomplete.accesskey;"/>
 						<textbox type="number" increment="5" size="4" id="autocompletePopupMinWidth"/>
-					</hbox>			
-					<checkbox id="skipWizard" accesskey="&pref.other.skipWizard.accesskey;" label="&pref.other.skipWizard;"/>
+					</hbox>
 					<checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;"/>
 				</vbox>
 				<vbox flex="999" align="right" style="min-width:138px;">
