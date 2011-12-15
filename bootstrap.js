@@ -159,11 +159,13 @@ function Autosizer ( window )
 	/*** Information Functions ***/
 	
 	function getRequiredWidth ( ) // Returns the length of the searchbox's
-	{                            // content in pixels
+	{                             // content in pixels
 		d("getRequiredWidth() called.");
 		
-		var tc = e.searchbox.value+'W' || e.searchbox.currentEngine.name;
-		// The 'W' is to/ prepare for the next letter.
+		var tc;
+		if ( e.searchbox.value != "" ) tc = e.searchbox.value+'W';
+		else                           tc = e.searchbox.currentEngine.name;
+		// The 'W' is to prepare for the next letter.
 
 		var w = getOverheadWidth();
 		w += measureText(tc); 
@@ -181,8 +183,8 @@ function Autosizer ( window )
 		return w;
 	}
 	
-	function getAvailableWidth ( ) // Returns the length of the searchbox's
-	{                              // content in pixels
+	function getAvailableWidth ( ) // Returns the maximum width the
+	{                              // searchbar can expand to.
 		d("getAvailableWidth() called.");
 		
 		var w = window.outerWidth; // The size of the window.
@@ -205,8 +207,10 @@ function Autosizer ( window )
 		return w;
 	}
 	
-	function getAllAvailableWidth ( ) // Returns the length of the searchbox's
-	{                              // content in pixels
+	function getAllAvailableWidth ( ) // Returns the maximum width the
+	{                                 // searchbar can expand to if
+	                                  // allowing items to be pushed out
+	                                  // of the window.
 		d("getAllAvailableWidth() called.");
 		
 		var w = window.outerWidth; // The size of the window.
@@ -225,7 +229,6 @@ function Autosizer ( window )
 			w -= ele.boxObject.width+1; // minus the used width.
 			ele.setAttribute('flex', f);
 		}
-		
 		
 		d("getAllAvailableWidth() returned '"+w+"'.");
 		return w;
