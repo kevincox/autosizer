@@ -13,6 +13,18 @@ var autosizerPref = {
 	save: function() {
 		for(p in this.intP) this.prefs.setIntPref('extensions.autosizer.'+this.intP[p],document.getElementById(this.intP[p]).value);
 		for(p in this.boolP) this.prefs.setBoolPref('extensions.autosizer.'+this.boolP[p],document.getElementById(this.boolP[p]).checked);
+		
+		/*** Update the searchbars acording to the new prefrence. *** /
+		var ws = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+                           .getService(Components.interfaces.nsIWindowMediator)
+                           .getEnumerator(null);
+        
+        var w;
+        for ( w in ws )
+        {
+        	console.log(w);
+        	w.document.getElementById("searchbar").autosizer.autosize();
+        }*/
 	},
 
 	setEnDis: function() {

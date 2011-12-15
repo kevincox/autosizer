@@ -22,5 +22,3 @@ locale	autosizer	zh-CN	chrome/locale/zh-CN/
 locale	autosizer	zh-TW	chrome/locale/zh-TW/
 
 skin	autosizer	classic	chrome/skin/classic/autosizer/
-
-overlay	chrome://browser/content/browser.xul	chrome://autosizer/content/autosizeroverlay.xul

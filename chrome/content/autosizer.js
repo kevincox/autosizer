@@ -1,4 +1,4 @@
-function Autosizer ( )
+affunction Autosizer ( )
 {
 	// URL change observer
 	var autosizerProgressListener = {
