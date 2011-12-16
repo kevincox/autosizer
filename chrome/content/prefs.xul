@@ -13,7 +13,7 @@
 		onload="autosizerPref.init();"
 		ondialogaccept="autosizerPref.save();window.close();window.opener.focus();"
 		ondialogcancel="window.close();window.opener.focus();"
-		ondialogextra2="window.openDialog('chrome://autosizer/content/wizard.xul', '_blank', 'chrome,titlebar,toolbar,centerscreen,dialog=no',window.opener);">
+		ondialogextra2="window.openDialog('chrome://autosizer/content/wizard.xul', '_blank', 'chrome,titlebar,toolbar,centerscreen,dialog=no',window.opener);window.close();">
 
 
 	<script type="application/x-javascript" src="prefs.js"/>

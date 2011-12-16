@@ -189,6 +189,7 @@ function Autosizer ( window )
 		d("getRequiredWidth() returned '"+w+"'.");
 		return w;
 	}
+	this.getRequiredWidth = getRequiredWidth;
 	
 	function getAvailableWidth ( ) // Returns the maximum width the
 	{                              // searchbar can expand to.
@@ -213,6 +214,7 @@ function Autosizer ( window )
 		d("getAvailableWidth() returned '"+w+"'.");
 		return w;
 	}
+	this.getAvailableWidth = getAvailableWidth;
 	
 	function getAllAvailableWidth ( ) // Returns the maximum width the
 	{                                 // searchbar can expand to if
@@ -240,6 +242,7 @@ function Autosizer ( window )
 		d("getAllAvailableWidth() returned '"+w+"'.");
 		return w;
 	}
+	this.getAllAvailableWidth = getAllAvailableWidth;
 	
 	function getOverheadWidth ( ) // Returns with of the stuff that will
 	{                             // always be in the searchbox.
@@ -275,7 +278,7 @@ function Autosizer ( window )
 	
 	/*** Manual Resizing ***/
 	
-	manualResize = false;
+	var manualResize = false;
 	
 	function startManualResize ( )
 	{
@@ -291,8 +294,6 @@ function Autosizer ( window )
 		
 		var sb = e.searchbox;
 		var height = window.getComputedStyle(sb).getPropertyValue("height");
-		
-		log(sb);
 		
 		var sharedStyle = "padding: 0px;"                +
 		                  "border: 4px solid red;"       +
@@ -324,10 +325,11 @@ function Autosizer ( window )
 		
 		if (!manualResize) return; // We are not currently manually resizing.
 		
-		mr = manualResize;
+		var mr = manualResize;
+		var sb = e.searchbox;
 
-		sa.parentNode.removeChild(mr.leftGrip);
-		sa.parentNode.removeChild(mr.rightGrip);
+		sb.parentNode.removeChild(mr.leftGrip);
+		sb.parentNode.removeChild(mr.rightGrip);
 		
 		manualResize = false;
 		
@@ -407,6 +409,10 @@ function Autosizer ( window )
 			
 			e.searcharea.width = drag.startWidth + dx;
 			
+			var event = document.createEvent("Event");
+			event.initEvent("autosizer-manualresize", true, false);
+			e.searchbox.dispatchEvent(event);
+			
 			d("resizeDrag.move() returned.");
 		}
 		function end ( ev )
@@ -428,7 +434,6 @@ function Autosizer ( window )
 	
 	/*** Cleanup ***/
 	init();
-	window.setTimeout(startManualResize, 0);
 	d("new Autosizer() returning.");
 	return this;
 	
@@ -445,10 +450,12 @@ defaultPrefrences = {
 //	offset: 0,
 //	labelOffset: 3,
 
+	sizeOn: "key",
+
 	cleanOnSubmit: false,
 	revertOnSubmit: false,
-	
-//	shrinkToButton: false,
+	shrinkToButton: false,
+
 //	addSBtoToolbar: true,
 	
 //	manualResize: "",
