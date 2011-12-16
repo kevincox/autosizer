@@ -247,16 +247,12 @@ function Autosizer ( window )
 
 		var w = e.searcharea.width;
 		e.searcharea.width = 0;
-		var t = e.searchbox.value;
-		//e.searchbox.value = '';
 
-		var width = e.searchbox.boxObject.width;
-		
+		var width = e.searcharea.boxObject.width;
 		width -= e.input.offsetWidth; // Get the minimum size of the
 		                              // input element.
 		
 		e.searcharea.width = w;
-		e.searchbox.value = t;
 		
 		d("getOverheadWidth() returned '"+width+"'.");
 		return width;
