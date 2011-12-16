@@ -1,43 +1,15 @@
 var Ci = Components.interfaces;
 var Cc = Components.classes;
 
-/** Stuff from helpers **/
-/*var c=window.parent.gExtensionsViewController.commands;
-eval("c.cmd_options ="+c.cmd_options.toString().replace(
-		 'instantApply =',
-		 'instantApply = (aSelectedItem.getAttribute("addonID")=="{655397ca-4766-496b-b7a8-3a5b176ee4c2}") ||'
-		));
-
-var wins = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator).getEnumerator(null);
-var path="chrome://autosizer/content/";
-open=true;
-while (wins.hasMoreElements() && open)
-{
-	var win = wins.getNext();
-	if (win.document.documentURI == path+"prefs.xul" || win.document.documentURI == path+"wizard.xul")
-	{
-		win.focus();
-		open=false;
-	}
-}
-if(open)
-{
-	var file=(Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch).getBoolPref("extensions.autosizer.skipWizard","")?"prefs":"wizard")+".xul";
-	openDialog(path+file,"","chrome,titlebar,toolbar,centerscreen,dialog=no", window.opener);
-}
-window.close();*/
-/** End Of Stuff from helpers **/
-
-
 function d ( msg, seroius )
 {
-	//seroius = true // For debugging.
+	seroius = true // For debugging.
 	if (!seroius) return;
 
-	dump('ginstantint: '+msg+'\n');
+	dump('autosizer: '+msg+'\n');
 	Components.classes["@mozilla.org/consoleservice;1"]
 		.getService(Components.interfaces.nsIConsoleService)
-		.logStringMessage('ginstantint: '+msg);
+		.logStringMessage('autosizer: '+msg);
 }
 
 var asw = {

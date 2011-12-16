@@ -2,15 +2,15 @@
 <?xml-stylesheet href="chrome://autosizer/skin/autosizer.css" type="text/css"?>
 <!DOCTYPE dialog SYSTEM "chrome://autosizer/locale/button.dtd">
 <overlay id="autosizeroverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script type="application/x-javascript" src="chrome://autosizer/content/autosizer.js"/>
-  <toolbaritem id="search-container">   
-    <toolbaritem
+	<script type="application/x-javascript" src="chrome://autosizer/content/autosizer.js"/>
+	<toolbaritem id="search-container">   
+		<toolbaritem
 			id="autosizer-size-left"
 			insertbefore="searchbar"
 			class="autosizer-grippy autosizer-grippy-left"
 			onmousedown="autosizer.startDrag(event, true);"
-		/> 	
-    <searchbar
+		/>
+		<searchbar
 			id="searchbar"
 			onchange="autosizer.genWidth('onChange');"
 			oninput="autosizer.genWidth('onInput');"

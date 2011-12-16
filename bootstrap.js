@@ -45,6 +45,12 @@ function Autosizer ( window )
 		labelItem: null,
 	};
 	
+	function log ( obj )
+	{
+		window.gBrowser.getBrowserForTab(window.gBrowser.selectedTab)
+		               .contentWindow.wrappedJSObject.console.log(obj);
+	}
+	
 	/*** Initialization and Shutdown ***/
 	function init ( ) {
 		d("init() called.");
@@ -60,14 +66,15 @@ function Autosizer ( window )
 		
 		e.searchbox.autosizer = self; // Just incase other addons want
 		                              // to get a hold of us.
-		
-		window.setTimeout(autosize(), 0);
+
+		window.setTimeout(autosize, 0);
 		
 		d("init() returning.");
 	}
 
 	this.shutdown = function ( ) {
 		d(".shutdown() called.");
+		e.searchbox.autosizer = undefined;
 		
 		e.searchbox.removeEventListener("input", inputReciever, true);
 		
@@ -132,7 +139,7 @@ function Autosizer ( window )
 	
 	function addMeasuringLabel ( )
 	{
-		d("removeSremoveLabelubmitBlock() called.")
+		d("addMeasuringLabel() called.")
 		
 		e.labelItem = document.createElement("toolbaritem")
 		e.labelItem.setAttribute("style","width:0px;height:0px;overflow:hidden;");
@@ -142,7 +149,7 @@ function Autosizer ( window )
 		e.label = document.createElement("label");
 		e.labelItem.appendChild(e.label);
 		
-		d("removeLabel() returning.")
+		d("addMeasuringLabel() returning.")
 	}
 	
 	function removeMeasuringLabel ( )
@@ -270,6 +277,68 @@ function Autosizer ( window )
 	}
 	this.measureText = measureText;
 	
+	/*** Manual Resizing ***/
+	
+	manualResize = false;
+	
+	function startManualResize ( )
+	{
+		d("startManualResize() called.");
+		
+		if (manualResize) return; // We are already manually resizing.
+		
+		var mr = {
+			leftGrip:  document.createElement("toolbaritem"),
+			rightGrip: document.createElement("toolbaritem"),
+		}
+		manualResize = mr;
+		
+		var sb = e.searchbox;
+		var height = window.getComputedStyle(sb).getPropertyValue("height");
+		
+		log(sb);
+		
+		var sharedStyle = "padding: 0px;"                +
+		                  "border: 4px solid red;"       +
+		                  "opacity: 0.6;"                +
+		                  "background: transparent;"     +
+		                  "width:  7px;"                 +
+		                  "height: "+height+";"          +
+		                  "margin: 0;"                   +
+		                  "position: relative;"          +
+		                  "left: 60px;"                   +
+		                  "cursor: w-resize;"
+		
+		mr.leftGrip.setAttribute("style", sharedStyle+"border-right:0");
+		mr.rightGrip.setAttribute("style", sharedStyle+"border-left:0");
+		
+		mr.leftGrip.addEventListener("mousedown", leftGripDragCallback, true);
+		mr.rightGrip.addEventListener("mousedown", rightGripDragCallback, true);
+		
+		sb.parentNode.insertBefore(mr.leftGrip,  sb);
+		sb.parentNode.insertBefore(mr.rightGrip, sb.nextSibling);
+		
+		d("startManualResize() returned.");
+	}
+	this.startManualResize = startManualResize;
+	
+	function stopManualResize ( )
+	{
+		d("stopManualResize() called.");
+		
+		if (!manualResize) return; // We are not currently manually resizing.
+		
+		mr = manualResize;
+
+		sa.parentNode.removeChild(mr.leftGrip);
+		sa.parentNode.removeChild(mr.rightGrip);
+		
+		manualResize = false;
+		
+		d("stopManualResize() returned.");
+	}
+	this.stopManualResize = stopManualResize;
+	
 	/*** Callbacks ***/
 	
 	function afterSubmit ( ) // Called after a search is submitted.
@@ -308,8 +377,62 @@ function Autosizer ( window )
 		d("inputReciever() returned.");
 	}
 	
+	function leftGripDragCallback ( e )
+	{
+		return resizeDrag(e, "left");
+	}
+	function rightGripDragCallback ( e )
+	{
+		return resizeDrag(e, "right");
+	}
+	
+	function resizeDrag ( ev, side )
+	{
+		d("resizeDrag() called.");
+		
+		drag = {
+			startWidth: parseInt(e.searcharea.width),
+			startx: ev.clientX,
+			starty: ev.clientY,
+		};
+		
+		
+		function move ( ev )
+		{
+			d("resizeDrag.move() called.");
+	
+			var dx = ev.clientX - drag.startx;
+			
+			if ( side == "left" ) dx *= -1;
+			
+			d(dx);
+			d(drag.startWidth);
+			d(drag.startWidth + dx)
+			
+			e.searcharea.width = drag.startWidth + dx;
+			
+			d("resizeDrag.move() returned.");
+		}
+		function end ( ev )
+		{
+			d("resizeDrag.end() called.");
+			
+			
+			window.removeEventListener("mousemove", move, true);
+			window.removeEventListener("mouseup", end, true);
+			
+			d("resizeDrag.end() returned.");
+		}
+		
+		window.addEventListener("mousemove", move, true);
+		window.addEventListener("mouseup", end, true);
+		
+		d("resizeDrag() returned.");
+	}
+	
 	/*** Cleanup ***/
 	init();
+	window.setTimeout(startManualResize, 0);
 	d("new Autosizer() returning.");
 	return this;
 	
