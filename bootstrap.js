@@ -78,7 +78,9 @@ function Autosizer ( window )
 		
 		e.searchbox.removeEventListener("input", inputReciever, true);
 		
-		removeSubmitBlock();
+		e.searcharea.flex = 100; // This appears to be the default.
+		
+		removeAfterSubmitCheck();
 		removeMeasuringLabel();
 		
 		d(".shutdown() returning.");
@@ -117,9 +119,9 @@ function Autosizer ( window )
 		d("addAfterSubmitCheck() returning.")
 	}
 	
-	function removeSubmitBlock ( )
+	function removeAfterSubmitCheck ( )
 	{
-		d("removeSubmitBlock() called.")
+		d("removeAfterSubmitCheck() called.")
 		
 		if (!origSearchHandler) return; // We haven't blocked it.
 
@@ -134,7 +136,7 @@ function Autosizer ( window )
 			};
 		}
 		
-		d("removeSubmitBlock() returning.")
+		d("removeAfterSubmitCheck() returning.")
 	}
 	
 	function addMeasuringLabel ( )
