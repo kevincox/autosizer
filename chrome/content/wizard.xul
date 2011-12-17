@@ -39,7 +39,7 @@
 
 	<wizardpage id="maxwidth" label="&wiz.norMaxWidth.title;" pageid="maxwidth"
 		onpageshow="asw.initMaxWidth();" onpagehide="asw.endMaxWidth();" next="aftersearch">
-		
+
 		<description class="action" style="background-image:url('width_max.png');">&wiz.norMaxWidth.desc;</description>
 		<spacer/>
 		<description value="" id="maxwidthouput"></description>
