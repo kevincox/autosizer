@@ -48,9 +48,9 @@ var asw = {
 
 		var mode = prefs.getCharPref("sizeOn");
 
-		if      ( mode == "none"  ) rbuttons.selectedIndex = 2;
-		else if ( mode == "focus" ) rbuttons.selectedIndex = 1;
-		else                        rbuttons.selectedIndex = 0;
+		if      ( mode == "none"   ) rbuttons.selectedIndex = 2;
+		else if ( mode == "atonce" ) rbuttons.selectedIndex = 1;
+		else                         rbuttons.selectedIndex = 0;
 
 		d("asw.initSize() returned.");
 	},

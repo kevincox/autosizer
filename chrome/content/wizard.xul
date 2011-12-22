@@ -16,9 +16,9 @@
 				accesskey="&wiz.start.inc.accesskey;"
 				label="&wiz.start.inc;" value="key"
 			/>
-			<radio onclick="asw.size('focus');"
+			<radio onclick="asw.size('atonce');"
 				accesskey="&wiz.start.alt.accesskey;"
-				label="&wiz.start.alt;" value="focus"
+				label="&wiz.start.alt;" value="atonce"
 			/>
 			<radio onclick="asw.size('none');"
 				 accesskey="&wiz.start.fix.accesskey;"
