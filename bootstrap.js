@@ -32,8 +32,7 @@ function Autosizer ( window )
 	this.window = window;
 	this.document = document;
 
-	var prefs = Services.prefs.getBranch(constants.prefBranch);
-	this.prefs = prefs;
+	this.pref = pref;
 
 	var e = { // Element refrences
 		searchbox: document.getElementById("searchbar"),
@@ -179,8 +178,8 @@ function Autosizer ( window )
 		var w = getOverheadWidth();
 		w += measureText(tc);
 
-		var minwidth = prefs.getIntPref("minwidth");
-		var maxwidth = prefs.getIntPref("maxwidth");
+		var minwidth = pref.minwidth;
+		var maxwidth = pref.maxwidth;
 
 		if     ( maxwidth == 0 ) maxwidth = getAvailableWidth();
 		else if ( maxwidth < 0 ) maxwidth = getAllAvailableWidth();
@@ -343,13 +342,11 @@ function Autosizer ( window )
 
 	function afterSubmit ( ) // Called after a search is submitted.
 	{
-		d("afterSubmit() called.");
-
-		if(prefs.getBoolPref("cleanOnSubmit")) {
+		if(pref.cleanOnSubmit) {
 			e.searchbox.value='';
 			window.setTimeout(autosize, 0);
 		}
-		if(prefs.getBoolPref("revertOnSubmit")) {
+		if(pref.revertOnSubmit) {
 			searchBar.currentEngine = searchBar.engines[0];
 		}
 
@@ -360,7 +357,22 @@ function Autosizer ( window )
 	{
 		d("autosize() called.");
 
-		var width = getRequiredWidth();
+		var width = 0;
+		if ( pref.sizeOn == "none" ) return; // They don't want us to size it.
+		else if ( pref.sizeOn == "atonce" )
+		{
+			var width;
+			if (e.searchbox.value)
+			{
+				width = pref.maxwidth;
+				if     ( width == 0 ) width = getAvailableWidth();
+				else if ( width < 0 ) width = getAllAvailableWidth();
+
+			}
+			else width = getRequiredWidth();
+
+		}
+		else width = getRequiredWidth();
 
 		e.searcharea.width = width;
 
@@ -444,10 +456,10 @@ function Autosizer ( window )
 
 var instances = [];
 
-defaultPrefrences = {
+pref = {
 //	strings: "chrome://autosizer/locale/autosizer.properties",
 	minwidth: 0,
-	maxwidth: 400,
+	maxwidth: 0,
 //	autocompletePopupMinWidth: 200,
 //	offset: 0,
 //	labelOffset: 3,
@@ -463,25 +475,54 @@ defaultPrefrences = {
 //	manualResize: "",
 }
 
-function setDefaultPrefs ( )
-{
-	var prefs = Services.prefs.getDefaultBranch(constants.prefBranch);
+var prefs = Services.prefs.getBranch(constants.prefBranch);
+prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
 
-	for (let [key, val] in Iterator(defaultPrefrences))
+var prefObserver = {
+	observe: function (aSubject, aTopic, aData)
+	{
+		if( aTopic != "nsPref:changed" ) return;
+
+		switch (typeof pref[aData])
+		{
+			case "boolean":
+				pref[aData] = aSubject.getBoolPref(aData);
+				break;
+			case "number":
+				pref[aData] = aSubject.getIntPref(aData);
+				break;
+			case "string":
+				pref[aData] = aSubject.getCharPref(aData);
+				break;
+		}
+	}
+};
+
+function initPrefs ( )
+{
+	/*** Set Default Prefrences and Get Prefrences ***/
+	var dprefs = Services.prefs.getDefaultBranch(constants.prefBranch);
+	for (let [key, val] in Iterator(pref))
 	{
 		switch (typeof val)
 		{
 			case "boolean":
-				prefs.setBoolPref(key, val);
+				dprefs.setBoolPref(key, val);
+				pref[key] = prefs.getBoolPref(key);
 				break;
 			case "number":
-				prefs.setIntPref(key, val);
+				dprefs.setIntPref(key, val);
+				pref[key] = prefs.getIntPref(key);
 				break;
 			case "string":
-				prefs.setCharPref(key, val);
+				dprefs.setCharPref(key, val);
+				pref[key] = prefs.getCharPref(key);
 				break;
 		}
 	}
+
+	/*** Add Prefrence Listener ***/
+	prefs.addObserver("", prefObserver, false);
 }
 
 function runOnLoad(window) {
@@ -506,9 +547,10 @@ function runOnLoad(window) {
 /*** Bootstrap Functions ***/
 function startup(data, reason)
 {
-	Components.manager.addBootstrappedManifestLocation(data.installPath);
+	//if (Services.vc.compare(Services.appinfo.platformVersion, "10.0") < 0)
+		Components.manager.addBootstrappedManifestLocation(data.installPath);
 
-	setDefaultPrefs();
+	initPrefs();
 
 	/*** Add to new windows when they are opened ***/
 	function windowWatcher(subject, topic)
@@ -531,10 +573,13 @@ function shutdown(data, reason)
 {
 	if ( reason == APP_SHUTDOWN ) return;
 
+	prefs.removeObserver("", prefObserver, false);
+
 	while ( instances.length )
 		instances.pop().shutdown(); // Get rid of the refrence
 
-	Components.manager.removeBootstrappedManifestLocation(data.installPath);
+	//if (Services.vc.compare(Services.appinfo.platformVersion, "10.0") < 0)
+		Components.manager.removeBootstrappedManifestLocation(data.installPath);
 }
 
 function uninstall ( data, reason )
