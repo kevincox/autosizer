@@ -54,6 +54,8 @@ function Autosizer ( window )
 		addMeasuringLabel();
 
 		e.searchbox.addEventListener("input", inputReciever, true);
+		window.addEventListener("unload", shutdown, false);
+
 		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
 		                       // to be.
 
@@ -67,11 +69,12 @@ function Autosizer ( window )
 		d("init() returning.");
 	}
 
-	this.shutdown = function ( ) {
+	function shutdown ( ) {
 		d(".shutdown() called.");
 		e.searchbox.autosizer = undefined;
 
 		e.searchbox.removeEventListener("input", inputReciever, true);
+		window.removeEventListener("unload", shutdown, false);
 
 		e.searcharea.flex = 100; // This appears to be the default.
 
@@ -80,6 +83,7 @@ function Autosizer ( window )
 
 		d(".shutdown() returning.");
 	};
+	this.shutdown = shutdown;
 
 	var origSearchHandler = null;
 	var ourSearchHandler  = {handler: null}; // Refrence.
@@ -527,7 +531,7 @@ function runOnLoad(window) {
 	{
 		if (window.document.documentElement.getAttribute("windowtype") == "navigator:browser")
 		{
-			instances.push(new Autosizer(window));
+			instances.push(Components.utils.getWeakReference(new Autosizer(window)));
 		}
 	}
 	else
@@ -572,7 +576,14 @@ function shutdown(data, reason)
 	prefs.removeObserver("", prefObserver, false);
 
 	while ( instances.length )
-		instances.pop().shutdown(); // Get rid of the refrence
+	{
+		var ref = instances.pop().get();
+		if (ref) // Make sure the refrence still exists.
+		{
+			ref.shutdown();
+		}
+		else d("GC'd");
+	}
 
 	//if (Services.vc.compare(Services.appinfo.platformVersion, "10.0") < 0)
 		Components.manager.removeBootstrappedManifestLocation(data.installPath);
