@@ -1,8 +1,6 @@
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
-Ci = Components.interfaces;
-
 function d ( msg, important )
 {
 	important = true; // Uncomment for debuging.
@@ -10,9 +8,7 @@ function d ( msg, important )
 	if (!important) return;
 
 	dump('autosizer: '+msg+'\n');
-	Components.classes["@mozilla.org/consoleservice;1"]
-		.getService(Components.interfaces.nsIConsoleService)
-		.logStringMessage('autosizer: '+msg);
+	Services.console.logStringMessage('autosizer: '+msg);
 }
 
 d("bootstrap.js loaded.");
