@@ -38,6 +38,11 @@ function Autosizer ( window )
 
 		label: null,
 		labelItem: null,
+
+		button: null,
+//		buttonContainer: null,
+
+		stylesheet: null,
 	};
 
 	function log ( obj )
@@ -52,6 +57,8 @@ function Autosizer ( window )
 
 		addAfterSubmitCheck();
 		addMeasuringLabel();
+		addButton();
+		addStyleSheet();
 
 		e.searchbox.addEventListener("input", inputReciever, true);
 		window.addEventListener("unload", shutdown, false);
@@ -64,7 +71,8 @@ function Autosizer ( window )
 		e.searchbox.autosizer = self; // Just incase other addons want
 		                              // to get a hold of us.
 
-		window.setTimeout(autosize, 0);
+		if(pref.shrinkToButton) window.setTimeout(toButton, 0);
+		else                    window.setTimeout(autosize, 0);
 
 		d("init() returning.");
 	}
@@ -80,6 +88,8 @@ function Autosizer ( window )
 
 		removeAfterSubmitCheck();
 		removeMeasuringLabel();
+		removeButton();
+		removeStyleSheet();
 
 		d(".shutdown() returning.");
 	};
@@ -161,7 +171,68 @@ function Autosizer ( window )
 
 		document.getElementById("search-container").removeChild(e.labelItem);
 
+		e.labelItem = null;
+
 		d("removeMeasuringLabel() returning.")
+	}
+
+	function addButton ( )
+	{
+		d("addButton() called.")
+
+		e.button = document.createElement("toolbarbutton")
+		e.button.setAttribute("id", "autosizer-button");
+		e.button.setAttribute("label", "&autosizer.button.label;");
+		e.button.setAttribute("tooltiptext", "&autosizer.button.tooltip;");
+
+		e.button.addEventListener("command", fromButton, true);
+
+		e.searcharea.parentNode.insertBefore(e.button, e.searcharea);
+
+		d("addButton() returning.")
+	}
+
+	function removeButton ( )
+	{
+		d("removeButton() called.")
+
+		if (!e.button) return;
+
+		e.button.removeEventListener("command", fromButton, true);
+		e.button.parentNode.removeChild(e.button);
+
+		e.button = null;
+
+		d("removeButton() returning.")
+	}
+
+	function addStyleSheet ( )
+	{
+		d("addStyleSheet() called.")
+
+		var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
+		                    .getService(Components.interfaces.nsIStyleSheetService);
+		var ios = Components.classes["@mozilla.org/network/io-service;1"]
+		                    .getService(Components.interfaces.nsIIOService);
+		var uri = ios.newURI("chrome://autosizer/skin/autosizer.css", null, null);
+		sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+
+		d("addStyleSheet() returning.")
+	}
+
+	function removeStyleSheet ( )
+	{
+		d("removeStyleSheet() called.")
+
+		var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
+		                    .getService(Components.interfaces.nsIStyleSheetService);
+		var ios = Components.classes["@mozilla.org/network/io-service;1"]
+		                    .getService(Components.interfaces.nsIIOService);
+		var uri = ios.newURI("chrome://autosizer/skin/autosizer.css", null, null);
+		if(sss.sheetRegistered(uri, sss.USER_SHEET))
+			sss.unregisterSheet(uri, sss.USER_SHEET);
+
+		d("removeStyleSheet() returning.")
 	}
 
 	/*** Information Functions ***/
@@ -338,17 +409,53 @@ function Autosizer ( window )
 	}
 	this.stopManualResize = stopManualResize;
 
+	function fromButton ( )
+	{
+		d("fromButton() called.");
+
+		e.button.style.display = "none";
+		e.searcharea.style.display = "block";
+
+		autosize();
+
+		e.searchbox.focus();
+
+		d("fromButton() returned.");
+	}
+	this.fromButton = fromButton;
+
+	function toButton ( )
+	{
+		d("toButton() called.");
+
+		e.button.style.display = "block";
+		e.searcharea.style.display = "none";
+
+		d("toButton() returned.");
+	}
+	this.fromButton = fromButton;
+
 	/*** Callbacks ***/
 
 	function afterSubmit ( ) // Called after a search is submitted.
 	{
-		if(pref.cleanOnSubmit) {
+		d("afterSubmit() called.");
+
+		if(pref.cleanOnSubmit)
+		{
 			e.searchbox.value='';
 			window.setTimeout(autosize, 0);
 		}
-		if(pref.revertOnSubmit) {
-			searchBar.currentEngine = searchBar.engines[0];
+		if(pref.revertOnSubmit)
+		{
+			e.searchbox.currentEngine = e.searchbox.engines[0];
 		}
+		if(pref.shrinkToButton)
+		{
+			toButton();
+		}
+
+		autosize();
 
 		d("afterSubmit() returned.");
 	}
