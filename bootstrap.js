@@ -414,7 +414,9 @@ function Autosizer ( window )
 		d("fromButton() called.");
 
 		e.button.style.display = "none";
-		e.searcharea.style.display = "block";
+		e.searcharea.style.display = ""; // For some reason "block" prevents the
+		                                 // search box from filling the search
+										 // area.
 
 		autosize();
 
@@ -427,6 +429,8 @@ function Autosizer ( window )
 	function toButton ( )
 	{
 		d("toButton() called.");
+
+		d(e.searcharea.style.display);
 
 		e.button.style.display = "block";
 		e.searcharea.style.display = "none";
