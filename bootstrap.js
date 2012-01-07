@@ -71,7 +71,7 @@ function Autosizer ( window )
 		e.searchbox.autosizer = self; // Just incase other addons want
 		                              // to get a hold of us.
 
-		if(pref.shrinkToButton) window.setTimeout(toButton, 0);
+		if(pref.shrinkToButton) toButton();
 		else                    window.setTimeout(autosize, 0);
 
 		d("init() returning.");
