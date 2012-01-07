@@ -1,5 +1,5 @@
 var autosizerPref = {
-	intP: ['minwidth','maxwidth','autocompletePopupMinWidth', 'offset', 'labelOffset'],
+	intP: ['minwidth','maxwidth','popupwidth', 'padding'],
 	boolP: ['cleanOnSubmit','revertOnSubmit','shrinkToButton'],
 	prefs: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 	init: function() {
@@ -8,7 +8,7 @@ var autosizerPref = {
 		for(p in this.boolP) document.getElementById(this.boolP[p]).checked=this.prefs.getBoolPref('extensions.autosizer.'+this.boolP[p]);
 
 		this.setEnDis();
-  },
+	},
 
 	save: function() {
 		for(p in this.intP) this.prefs.setIntPref('extensions.autosizer.'+this.intP[p],document.getElementById(this.intP[p]).value);

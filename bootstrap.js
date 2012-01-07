@@ -485,7 +485,7 @@ function Autosizer ( window )
 		}
 		else width = getRequiredWidth();
 
-		e.searcharea.width = width;
+		e.searcharea.width = width + pref.padding;
 
 		d("autosize() returned.");
 	}
@@ -571,6 +571,8 @@ pref = {
 //	strings: "chrome://autosizer/locale/autosizer.properties",
 	minwidth: 0,
 	maxwidth: 0,
+
+	padding: 0,
 //	autocompletePopupMinWidth: 200,
 //	offset: 0,
 //	labelOffset: 3,

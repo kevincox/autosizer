@@ -53,13 +53,8 @@
 			</columns>
 			<rows>
 				<row align="center">
-					<label control="offset" value="&pref.padding.query;" accesskey="&pref.padding.query.accesskey;"/>
-					<textbox type="number" min="-Infinity" size="4" id="offset"/>
-					<vbox align="right"><image src="offset_text.png"/></vbox>
-				</row>
-				<row align="center">
-					<label control="labelOffset" value="&pref.padding.engine;" accesskey="&pref.padding.engine.accesskey;"/>
-					<textbox type="number" min="-Infinity" size="4" id="labelOffset"/>
+					<label control="padding" value="&pref.padding.engine;" accesskey="&pref.padding.engine.accesskey;"/>
+					<textbox type="number" min="-Infinity" size="4" id="padding"/>
 					<vbox align="right" style="min-width:138px;"><image src="offset_label.png"/></vbox>
 				</row>
 			</rows>
@@ -72,8 +67,8 @@
 			<hbox>
 				<vbox>
 					<hbox align="center">
-						<label value="&pref.other.autocomplete;" control="autocompletePopupMinWidth" accesskey="&pref.other.autocomplete.accesskey;"/>
-						<textbox type="number" increment="5" size="4" id="autocompletePopupMinWidth"/>
+						<label value="&pref.other.autocomplete;" control="popupwidth" accesskey="&pref.other.autocomplete.accesskey;"/>
+						<textbox type="number" increment="5" size="4" id="popupwidth"/>
 					</hbox>
 					<checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;"/>
 				</vbox>
@@ -85,9 +80,6 @@
 			<hbox>
 				<command id="setEnDis" oncommand="autosizerPref.setEnDis()"/>
 				<checkbox id="shrinkToButton" accesskey="&pref.other.shrinkToButton.accesskey;" label="&pref.other.shrinkToButton;" checked="false" command="setEnDis"/>
-				<vbox align="right" flex="999">
-					<button id="addBtn2Toolbar" accesskey="&pref.other.addBtn.accesskey;" label="&pref.other.addBtn;" oncommand="autosizerPref.prefs.setBoolPref('browser.search.addSBtoToolbar', true);"/>
-				</vbox>
 			</hbox>
 		</vbox>
 	</groupbox>
