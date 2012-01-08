@@ -3,7 +3,8 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 function d ( msg, important )
 {
-	important = true; // Uncomment for debuging.
+	if (  pref.debug ) // Uncomment line for always on.
+		important = true;
 
 	if (!important) return;
 
@@ -11,7 +12,7 @@ function d ( msg, important )
 	Services.console.logStringMessage('autosizer: '+msg);
 }
 
-d("bootstrap.js loaded.");
+//d("bootstrap.js loaded.");
 
 constants = {
 	prefBranch: "extensions.autosizer.",
@@ -33,14 +34,13 @@ function Autosizer ( window )
 	var e = { // Element refrences
 		searchbox: document.getElementById("searchbar"),
 		searcharea: document.getElementById("search-container"),
-
 		input: null,
+		popup: null,
 
 		label: null,
 		labelItem: null,
 
 		button: null,
-//		buttonContainer: null,
 
 		stylesheet: null,
 	};
@@ -70,6 +70,8 @@ function Autosizer ( window )
 
 		e.searchbox.autosizer = self; // Just incase other addons want
 		                              // to get a hold of us.
+
+		e.popup = document.getElementById("PopupAutoComplete");
 
 		if(pref.shrinkToButton) toButton();
 		else                    window.setTimeout(autosize, 0);
@@ -416,7 +418,7 @@ function Autosizer ( window )
 		e.button.style.display = "none";
 		e.searcharea.style.display = ""; // For some reason "block" prevents the
 		                                 // search box from filling the search
-										 // area.
+		                                 // area.
 
 		autosize();
 
@@ -486,6 +488,12 @@ function Autosizer ( window )
 		else width = getRequiredWidth();
 
 		e.searcharea.width = width + pref.padding;
+
+		if      ( pref.popupwidth <= -100 ) width += (-100) - pref.popupwidth;
+		else if ( pref.popupwidth == -1   ) width = window.outerWidth;
+		else                                width = pref.popupwidth
+
+		if ( width != 0 ) e.popup.width = width;
 
 		d("autosize() returned.");
 	}
@@ -573,7 +581,8 @@ pref = {
 	maxwidth: 0,
 
 	padding: 0,
-//	autocompletePopupMinWidth: 200,
+
+	popupwidth: 0,
 //	offset: 0,
 //	labelOffset: 3,
 
@@ -582,6 +591,8 @@ pref = {
 	cleanOnSubmit: false,
 	revertOnSubmit: false,
 	shrinkToButton: false,
+
+	debug: false,
 
 //	addSBtoToolbar: true,
 
