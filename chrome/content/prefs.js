@@ -3,7 +3,7 @@ var autosizerPref = {
 	boolP: ['cleanOnSubmit','revertOnSubmit','shrinkToButton'],
 	prefs: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 	init: function() {
-		try { if(window.arguments[0]) window.opener=window.arguments[0]; } catch(e){}
+		//try { if(window.arguments[0]) window.opener=window.arguments[0]; } catch(e){}
 		for(var p in this.intP) document.getElementById(this.intP[p]).value=this.prefs.getIntPref('extensions.autosizer.'+this.intP[p]);
 		for(var p in this.boolP) document.getElementById(this.boolP[p]).checked=this.prefs.getBoolPref('extensions.autosizer.'+this.boolP[p]);
 
