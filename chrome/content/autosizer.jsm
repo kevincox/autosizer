@@ -36,7 +36,7 @@ function d ( msg, important )
 	if (!important) return;
 
 	dump("autosizer: "+msg+'\n');
-	Services.console.logStringMessage("autosizer", '+msg);
+	Services.console.logStringMessage("autosizer"+msg);
 }
 
 constants = {
