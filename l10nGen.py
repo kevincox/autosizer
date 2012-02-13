@@ -52,7 +52,7 @@ class ParserProperties(Parser):
 	"""Able to parse a properties file."""
 	name    = re.compile(r".*\.properties")
 	comment = re.compile(r"#.*")
-	get     = re.compile(r"([^=]*)=(.*)")
+	get     = re.compile(r"([^=]*)=.*")
 
 	def parse ( self, file ):
 		r = []
@@ -62,7 +62,7 @@ class ParserProperties(Parser):
 			else:
 				m = self.get.match(l)
 				if not m: raise Exception("Input not valid")
-				r.append(m.group(1, 2))
+				r.append(m.group(1, 0))
 
 		return r
 
@@ -135,7 +135,6 @@ for locale in os.listdir():
 		try: chunks = p.parse(open(f))
 		except: raise Exception("File '{file}' is invalid.".format(file=os.path.join(locale, f)))
 
-
 		i = -1
 
 		keys = set()
@@ -169,7 +168,8 @@ for locale in os.listdir():
 					continue
 
 		n = tempfile.NamedTemporaryFile(dir=".", mode="w", delete=False)
-		n.write(c for _, c in chunks)
+		#print("".join(c+"\n" for _, c in chunks))
+		n.write("".join(c for _, c in chunks))
 		os.rename(n.name, f)
 
 
