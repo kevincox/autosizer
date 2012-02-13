@@ -9,8 +9,8 @@ baseLocale = "en-US" # The locale to match other locales to.
 addFiles = True # Wether to add new files.
 addKeys = True # Wether to add new keys or not.
 
-removeFiles = False # Wether to remove extra files or not.
-removeKeys = False # Wether to remove extra keys or not.
+removeFiles = True # Wether to remove extra files or not.
+removeKeys = True # Wether to remove extra keys or not.
 
 
 
@@ -108,6 +108,8 @@ for f in baseFiles:
 os.chdir(locales)
 
 for locale in os.listdir():
+	if locale == baseLocale: continue
+
 	os.chdir(os.path.join(locales, locale))
 	files = frozenset(os.listdir())
 
@@ -135,6 +137,8 @@ for locale in os.listdir():
 		try: chunks = p.parse(open(f))
 		except: raise Exception("File '{file}' is invalid.".format(file=os.path.join(locale, f)))
 
+		changed = False
+
 		i = -1
 
 		keys = set()
@@ -150,6 +154,7 @@ for locale in os.listdir():
 				if removeKeys:
 					print("{locale} has unessary key '{key}', removing.".format(locale=locale, key=k))
 					del chunks[i]
+					changed = True
 					continue
 				else:
 					print("{locale} has unessary key '{key}', ignoring.".format(locale=locale, key=k))
@@ -162,15 +167,16 @@ for locale in os.listdir():
 				if addKeys:
 					print("{locale} is missing key '{key}', adding.".format(locale=locale, key=k))
 					chunks.append((k, baseContent[f][k]))
+					changed = True
 					continue
 				else:
 					print("{locale} is missing key '{key}', ignoring.".format(locale=locale, key=k))
 					continue
 
-		n = tempfile.NamedTemporaryFile(dir=".", mode="w", delete=False)
-		#print("".join(c+"\n" for _, c in chunks))
-		n.write("".join(c for _, c in chunks))
-		os.rename(n.name, f)
+		if changed:
+			n = tempfile.NamedTemporaryFile(dir=".", mode="w", delete=False)
+			n.write("".join(c+'\n' for _, c in chunks))
+			os.rename(n.name, f)
 
 
 
