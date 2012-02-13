@@ -16,6 +16,12 @@ removeKeys = True # Wether to remove extra keys or not.
 
 
 
+
+
+
+
+
+
 ########## START INTERNAL WORK ##########
 
 import os, sys
@@ -25,9 +31,9 @@ import string, re
 
 class Parser:
 	"""Able to parse a line into a k/v pair"""
-	name = re.compile(r"a^")
+	name    = re.compile(r"a^")
 	comment = re.compile(r"a^"), # Won't match anything.
-	get     = re.compile(r"([^=])*=(.*)")
+	get     = re.compile(r"([^=])*=.*")
 	def parse ( self, file ):
 		r = []
 		for l in file:
@@ -35,7 +41,7 @@ class Parser:
 				r.append((False, l))
 			else:
 				m = re.match(l)
-				r.append(m.groups)
+				r.append(m.group(1, 0))
 
 		return r
 
@@ -51,7 +57,7 @@ class Parser:
 class ParserProperties(Parser):
 	"""Able to parse a properties file."""
 	name    = re.compile(r".*\.properties")
-	comment = re.compile(r"#.*")
+	comment = re.compile(r"#.*|^$")
 	get     = re.compile(r"([^=]*)=.*")
 
 	def parse ( self, file ):
@@ -62,7 +68,10 @@ class ParserProperties(Parser):
 			else:
 				m = self.get.match(l)
 				if not m: raise Exception("Input not valid")
-				r.append(m.group(1, 0))
+				k, v = m.group(1, 0)
+				v = v+'\n'
+
+				r.append((k, v))
 
 		return r
 
@@ -73,9 +82,8 @@ class ParserDtd(Parser):
 	get     = re.compile(r'(<!ENTITY[\s]*([\S]*)[\s]*"[^"]*">)')
 	def parse ( self, file ):
 		c = self.get.split(file.read()) # The whole match comes first.
-		del c[::3] # Remove every third element (the stuff in between the matches.)
 
-		return list(zip(c[1::2], c[0::2])) # Zip the keys and values.
+		return [ (k, j+v) for k, j, v in zip(c[2::3], c[0::3], c[1::3]) ]
 
 parsers = [ParserProperties(), ParserDtd()]
 
@@ -175,7 +183,7 @@ for locale in os.listdir():
 
 		if changed:
 			n = tempfile.NamedTemporaryFile(dir=".", mode="w", delete=False)
-			n.write("".join(c+'\n' for _, c in chunks))
+			n.write("".join(c for _, c in chunks))
 			os.rename(n.name, f)
 
 
