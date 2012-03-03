@@ -48,11 +48,10 @@ pref = {
 	minwidth: 0,
 	maxwidth: 0,
 
-	padding: 0,
-
+	padding: 0,     // Padding from search text.
+	namePadding: 5, // Padding from search engine title.
+	
 	popupwidth: 0,
-//	offset: 0,
-//	labelOffset: 3,
 
 	sizeOn: "key",
 
@@ -167,8 +166,10 @@ function Autosizer ( window )
 		addButton();
 		addStyleSheet();
 
-		e.searchbox.addEventListener("input", inputReciever, true);
 		window.addEventListener("unload", shutdown, false);
+		e.searchbox.addEventListener("focus", inputReciever, true);
+		e.searchbox.addEventListener("blur", inputReciever, true);
+		e.searchbox.addEventListener("input", inputReciever, true);
 
 		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
 		                       // to be.
@@ -193,6 +194,8 @@ function Autosizer ( window )
 		e.searchbox.autosizer = undefined;
 
 		e.searchbox.removeEventListener("input", inputReciever, true);
+		e.searchbox.removeEventListener("focus", inputReciever, true);
+		e.searchbox.removeEventListener("blur", inputReciever, true);
 		window.removeEventListener("unload", shutdown, false);
 
 		e.searcharea.flex = 100; // This appears to be the default.
@@ -361,17 +364,26 @@ function Autosizer ( window )
 		d("getRequiredWidth() called.");
 
 		var tc;
-		if ( e.searchbox.value != "" ) tc = e.searchbox.value+'W';
-		else                           tc = e.searchbox.currentEngine.name;
-		// The 'W' is to prepare for the next letter.
+		var pad;
+		if ( e.searchbox.value != "" )
+		{
+			tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
+			pad = pref.padding;
+		}
+		else
+        {
+			tc = e.searchbox.currentEngine.name;
+			pad = pref.namePadding;
+		}
 
 		var w = getOverheadWidth();
 		w += measureText(tc);
+		w += pad;
 
 		var minwidth = pref.minwidth;
 		var maxwidth = pref.maxwidth;
 
-		if     ( maxwidth == 0 ) maxwidth = getAvailableWidth();
+		if      ( maxwidth == 0 ) maxwidth = getAvailableWidth();
 		else if ( maxwidth < 0 ) maxwidth = getAllAvailableWidth();
 
 		if      ( w < minwidth ) w = minwidth;
