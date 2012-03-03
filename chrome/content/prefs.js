@@ -1,5 +1,5 @@
 var autosizerPref = {
-	intP: ['minwidth','maxwidth','popupwidth', 'padding'],
+	intP: ['minwidth','maxwidth','popupwidth', 'padding', 'namePadding'],
 	boolP: ['cleanOnSubmit','revertOnSubmit','shrinkToButton'],
 	prefs: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
 	init: function() {

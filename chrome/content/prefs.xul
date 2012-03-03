@@ -51,6 +51,7 @@
 				<column/>
 				<column flex="999"/>
 			</columns>
+		</grid>
 			<rows>
 				<row align="center">
 					<label control="padding" value="&pref.padding.engine;" accesskey="&pref.padding.engine.accesskey;"/>
@@ -58,7 +59,13 @@
 					<vbox align="right" style="min-width:138px;"><image src="offset_label.png"/></vbox>
 				</row>
 			</rows>
-		</grid>
+			<rows>
+				<row align="center">
+				  <label control="namePadding" value="&pref.padding.query;" accesskey="&pref.padding.query.accesskey;"/>
+					<textbox type="number" min="-Infinity" size="4" id="namePadding"/>
+					<vbox align="right" style="min-width:138px;"><image src="offset_text.png"/></vbox>
+				</row>
+			</rows>
 	</groupbox>
 
 	<groupbox orient="horizontal">
