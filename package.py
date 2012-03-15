@@ -34,6 +34,9 @@ xpiname = '{code}-{ver}' # The name of the .xpi package (".xpi" is appended)
 import os
 extdir = os.getcwd()
 
+os.system('./l10nGen.py')
+
+
 
 
 
