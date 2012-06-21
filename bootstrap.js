@@ -54,6 +54,12 @@ function runOnLoad(window) {
 	}
 }
 
+function windowWatcher(subject, topic)
+{
+	if (topic == "domwindowopened")
+		runOnLoad(subject);
+}
+
 /*** Bootstrap Functions ***/
 function startup(data, reason)
 {
@@ -61,11 +67,6 @@ function startup(data, reason)
 	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
 	/*** Add to new windows when they are opened ***/
-	function windowWatcher(subject, topic)
-	{
-		if (topic == "domwindowopened")
-			runOnLoad(subject);
-	}
 	Services.ww.registerNotification(windowWatcher);
 
 	/*** Add to currently open windows ***/
@@ -81,6 +82,7 @@ function shutdown(data, reason)
 {
 	if ( reason == APP_SHUTDOWN ) return;
 
+	Services.ww.unregisterNotification(windowWatcher);
 	var as = new autosizer(null);
 
 	as.prefs.removeObserver("", as.prefObserver, false);
@@ -94,5 +96,6 @@ function shutdown(data, reason)
 		}
 	}
 
+	Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 	Components.manager.removeBootstrappedManifestLocation(data.installPath);
 }
