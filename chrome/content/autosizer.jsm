@@ -571,6 +571,17 @@ function Autosizer ( window )
 	}
 	this.stopManualResize = stopManualResize;
 
+	function expandButton ( )
+	{
+		d("expandButton() called.");
+
+		fromButton();
+		e.searchbox.focus();
+
+		d("expandButton() returned.");
+	}
+	this.fromButton = fromButton;
+
 	function fromButton ( )
 	{
 		d("fromButton() called.");
@@ -579,8 +590,6 @@ function Autosizer ( window )
 		e.searcharea.style.display = ""; // For some reason "block" prevents the
 		                                 // search box from filling the search
 		                                 // area.
-		e.searchbox.focus();
-
 		d("fromButton() returned.");
 	}
 	this.fromButton = fromButton;
