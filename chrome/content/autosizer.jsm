@@ -115,7 +115,11 @@ for (let [key, val] in Iterator(pref))
 /*** Add Prefrence Listener ***/
 prefs.addObserver("", prefObserver, false);
 
-strings = Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties");
+var strings = {
+	stringbundle: Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties"),
+	get: function(n){return strings.stringbundle.GetStringFromName(n);},
+	getf: function(n,a){return strings.stringbundle.formatStringFromName(n,a,a.length);},
+};
 
 var instances = [];
 
@@ -331,8 +335,8 @@ function Autosizer ( window )
 
 		e.button = document.createElement("toolbarbutton")
 		e.button.setAttribute("id", "autosizer-button");
-		e.button.setAttribute("label", strings.GetStringFromName("buttonLabel"));
-		e.button.setAttribute("tooltiptext", strings.GetStringFromName("buttonTooltip"));
+		e.button.setAttribute("label", strings.get("buttonLabel"));
+		e.button.setAttribute("tooltiptext", strings.get("buttonTooltip"));
 
 		e.button.addEventListener("command", fromButton, true);
 

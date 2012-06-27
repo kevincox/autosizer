@@ -23,10 +23,9 @@ var e = {
 };
 
 var autosizer = e.searchbox.autosizer;
-
-var prefs = Cc["@mozilla.org/preferences-service;1"]
-              .getService(Ci.nsIPrefService)
-              .getBranch("extensions.autosizer.");
+var strings   = autosizer.strings;
+var pref      = autosizer.pref;
+var prefs     = autosizer.prefs;
 
 var asw = {
 	init: function ( ) {
@@ -46,7 +45,7 @@ var asw = {
 
 		var rbuttons = document.getElementById("sizemode");
 
-		var mode = prefs.getCharPref("sizeOn");
+		var mode = pref.sizeOn;
 
 		if      ( mode == "none"   ) rbuttons.selectedIndex = 2;
 		else if ( mode == "atonce" ) rbuttons.selectedIndex = 1;
@@ -58,7 +57,7 @@ var asw = {
 	{
 		d("asw.size() called.");
 
-		prefs.setCharPref("sizeOn", mode);
+		pref.sizeOn = mode;
 
 		d("asw.size() returned.");
 	},
@@ -80,7 +79,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.minwidthSizeChange, true);
 
-		prefs.setIntPref("minwidth", asw.minWidthSolve())
+		prefs.setIntPref("minwidth", asw.minWidthSolve());
 
 		d("asw.initMinWidth() returned.");
 	},
@@ -113,11 +112,10 @@ var asw = {
 
 		var g = asw.minWidthSolve();
 
-		if ( g == 0 ) g = "as large as the search engine's title.";
-		else          g = g+" pixels long";
+		if ( g == 0 ) g = strings.get("minWidthTitle");
+		else          g = strings.getf("minWidthPx", [g]);
 
-		d("The searchbar will be at least "+g);
-		l.value = "The searchbar will be at least "+g;
+		l.value = g;
 
 		window.focus(); // So that they can see our dialog.
 
@@ -141,7 +139,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.maxwidthSizeChange, true);
 
-		prefs.setIntPref("maxwidth", asw.maxWidthSolve())
+		prefs.setIntPref("maxwidth", asw.maxWidthSolve());
 
 		d("asw.endMaxWidth() returned.");
 	},
@@ -153,13 +151,13 @@ var asw = {
 		var l = document.getElementById("maxwidthouput");
 
 		var g = asw.maxWidthSolve();
+		d(g)
 
-		if      ( g == 0 ) g = "as large as the space available.";
-		else if ( g <  0 ) g = "the maximum visible size.";
-		else               g = "at most "+g+" pixels long.";
+		if      ( g == 0 ) g = strings.get("maxWidthFull");
+		else if ( g <  0 ) g = strings.get("maxWidthMax");
+		else               g = strings.getf("maxWidthPx", [g]);
 
-		d("The searchbar will be at least "+g);
-		l.value = "The searchbar will be at least "+g;
+		l.value = g;
 
 		window.focus(); // So that they can see our dialog.
 
@@ -168,7 +166,7 @@ var asw = {
 
 	maxWidthSolve: function ( )
 	{
-		d("asw.maxWidthSolve() returned.");
+		d("asw.maxWidthSolve() called.");
 
 		var w = e.searcharea.width;
 
@@ -177,19 +175,18 @@ var asw = {
 		else if ( Math.abs(w-autosizer.getAvailableWidth()) < 100 )
 			w = 0;
 
-		return w;
-
 		d("asw.maxWidthSolve() returned "+w+".");
+		return w;
 	},
 
-	/*** Third Page - Maximum width ***/
+	/*** Fourth Page - Settings ***/
 	initAfterSearch: function ( mode )
 	{
 		d("asw.initAfterSearch() called.");
 
-		document.getElementById("cleanOnSubmit").checked = prefs.getBoolPref("cleanOnSubmit");
-		document.getElementById("revertOnSubmit").checked = prefs.getBoolPref("revertOnSubmit");
-		document.getElementById("shrinkToButton").checked = prefs.getBoolPref("shrinkToButton");
+		document.getElementById("cleanOnSubmit").checked = pref.cleanOnSubmit;
+		document.getElementById("revertOnSubmit").checked = pref.revertOnSubmit;
+		document.getElementById("shrinkToButton").checked = pref.shrinkToButton;
 
 		d("asw.initAfterSearch() returned.");
 	},
