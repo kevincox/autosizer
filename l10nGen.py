@@ -162,6 +162,7 @@ for locale in os.listdir():
 				if removeKeys:
 					print("{locale} has unessary key '{key}', removing.".format(locale=locale, key=k))
 					del chunks[i]
+					i = i-1
 					changed = True
 					continue
 				else:
