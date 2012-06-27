@@ -50,7 +50,7 @@ pref = {
 
 	padding: 0,     // Padding from search text.
 	namePadding: 5, // Padding from search engine title.
-	
+
 	popupwidth: 0,
 
 	sizeOn: "key",
@@ -181,8 +181,8 @@ function Autosizer ( window )
 
 		e.popup = document.getElementById("PopupAutoComplete");
 
-		if(pref.shrinkToButton) toButton();
-		else                    window.setTimeout(autosize, 0);
+		if (pref.shrinkToButton) toButton();
+		else                     window.setTimeout(autosize, 0);
 
 		instances.push(Components.utils.getWeakReference(self));
 
@@ -576,16 +576,16 @@ function Autosizer ( window )
 	{
 		d("afterSubmit() called.");
 
-		if(pref.cleanOnSubmit)
+		if (pref.cleanOnSubmit)
 		{
 			e.searchbox.value='';
 			window.setTimeout(autosize, 0);
 		}
-		if(pref.revertOnSubmit)
+		if (pref.revertOnSubmit)
 		{
 			e.searchbox.currentEngine = e.searchbox.engines[0];
 		}
-		if(pref.shrinkToButton)
+		if (pref.shrinkToButton)
 		{
 			toButton();
 		}
