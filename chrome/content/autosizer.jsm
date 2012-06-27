@@ -117,6 +117,25 @@ prefs.addObserver("", prefObserver, false);
 
 var instances = [];
 
+function focusWatch_focus ( )
+{
+	this.hasFocus = true;
+}
+function focusWatch_blur ( )
+{
+	this.hasFocus = false;
+}
+function addFocusWatch ( el )
+{
+	el.addEventListener("focus", focusWatch_focus, true);
+	el.addEventListener("blur",  focusWatch_blur, true);
+}
+function removeFocusWatch ( el )
+{
+	el.removeEventListener("focus", focusWatch_focus, true);
+	el.removeEventListener("blur",  focusWatch_blur, true);
+}
+
 /*** Our "Class" ***/
 function Autosizer ( window )
 {
@@ -166,10 +185,11 @@ function Autosizer ( window )
 		addButton();
 		addStyleSheet();
 
+		addFocusWatch(e.searchbox);
+
 		window.addEventListener("unload", shutdown, false);
 		e.searchbox.addEventListener("focus", inputReciever, true);
 		e.searchbox.addEventListener("blur", inputReciever, true);
-		e.searchbox.addEventListener("blur", shrinkToButtonIfEmpty, true);
 		e.searchbox.addEventListener("input", inputReciever, true);
 
 		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
@@ -197,8 +217,9 @@ function Autosizer ( window )
 		e.searchbox.removeEventListener("input", inputReciever, true);
 		e.searchbox.removeEventListener("focus", inputReciever, true);
 		e.searchbox.removeEventListener("blur", inputReciever, true);
-		e.searchbox.removeEventListener("blur", shrinkToButtonIfEmpty, true);
 		window.removeEventListener("unload", shutdown, false);
+
+		removeFocusWatch(e.searchbox);
 
 		e.searcharea.flex = 100; // This appears to be the default.
 
@@ -550,9 +571,6 @@ function Autosizer ( window )
 		e.searcharea.style.display = ""; // For some reason "block" prevents the
 		                                 // search box from filling the search
 		                                 // area.
-
-		autosize();
-
 		e.searchbox.focus();
 
 		d("fromButton() returned.");
@@ -570,11 +588,23 @@ function Autosizer ( window )
 	}
 	this.fromButton = fromButton;
 
-	function shrinkToButtonIfEmpty ( )
+	function doShrinkToButton ( )
 	{
-		if ( e.searchbox.value == "" ) toButton();
+		if ( e.searchbox.hasFocus    || // The searchbar is avtive.
+		     !pref.shrinkToButton    || // Shrinking is disabled.
+		     e.searchbox.value != ""    // Searchbar is not empty.
+		   )
+		{
+			fromButton();
+			d("doShrinkToButton() returned false.");
+			return false;
+		}
+
+		toButton();
+		d("doShrinkToButton() returned false.");
+		return true;
 	}
-	this.shrinkToButtonIfEmpty = shrinkToButtonIfEmpty;
+	this.doShrinkToButton = doShrinkToButton;
 
 	/*** Callbacks ***/
 
@@ -604,6 +634,8 @@ function Autosizer ( window )
 	function autosize ( ) // Make the searchbar the correct size.
 	{
 		d("autosize() called.");
+
+		if (doShrinkToButton()) return; // If we are a button we don't have to size.
 
 		var width = 0;
 		if ( pref.sizeOn == "none" ) return; // They don't want us to size it.
