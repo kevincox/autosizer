@@ -520,6 +520,8 @@ function Autosizer ( window )
 
 		if (manualResize) return; // We are already manually resizing.
 
+		expandButton();
+
 		var mr = {
 			leftGrip:  document.createElement("toolbaritem"),
 			rightGrip: document.createElement("toolbaritem"),
@@ -537,7 +539,7 @@ function Autosizer ( window )
 		                  "height: "+height+";"          +
 		                  "margin: 0;"                   +
 		                  "position: relative;"          +
-		                  "left: 60px;"                   +
+		                  "left: 60px;"                  +
 		                  "cursor: w-resize;"
 
 		mr.leftGrip.setAttribute("style", sharedStyle+"border-right:0");
@@ -652,6 +654,7 @@ function Autosizer ( window )
 	{
 		d("autosize() called.");
 
+		if (manualResize) return; // Don't mess arround when we are doing manual resize.
 		if (doShrinkToButton()) return; // If we are a button we don't have to size.
 
 		var width = 0;
