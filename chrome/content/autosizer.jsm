@@ -338,7 +338,7 @@ function Autosizer ( window )
 		e.button.setAttribute("label", strings.get("buttonLabel"));
 		e.button.setAttribute("tooltiptext", strings.get("buttonTooltip"));
 
-		e.button.addEventListener("command", fromButton, true);
+		e.button.addEventListener("command", expandButton, true);
 
 		e.searcharea.parentNode.insertBefore(e.button, e.searcharea);
 
