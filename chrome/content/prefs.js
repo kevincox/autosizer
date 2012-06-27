@@ -6,8 +6,6 @@ var autosizerPref = {
 		//try { if(window.arguments[0]) window.opener=window.arguments[0]; } catch(e){}
 		for(var p in this.intP) document.getElementById(this.intP[p]).value=this.prefs.getIntPref('extensions.autosizer.'+this.intP[p]);
 		for(var p in this.boolP) document.getElementById(this.boolP[p]).checked=this.prefs.getBoolPref('extensions.autosizer.'+this.boolP[p]);
-
-		this.setEnDis();
 	},
 
 	save: function() {
@@ -22,8 +20,4 @@ var autosizerPref = {
 		while (wi.hasMoreElements())
 			wi.getNext().document.getElementById("searchbar").autosizer.autosize();
 	},
-
-	setEnDis: function() {
-		document.getElementById('addBtn2Toolbar').disabled=!document.getElementById('shrinkToButton').checked;
-	}
 }
