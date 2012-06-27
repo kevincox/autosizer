@@ -115,6 +115,8 @@ for (let [key, val] in Iterator(pref))
 /*** Add Prefrence Listener ***/
 prefs.addObserver("", prefObserver, false);
 
+strings = Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties");
+
 var instances = [];
 
 function focusWatch_focus ( )
@@ -145,6 +147,8 @@ function Autosizer ( window )
 	this.prefs = prefs;
 	this.instances = instances;
 	this.prefObserver = prefObserver;
+
+	this.strings = strings;
 
 	if (!window) return this;
 
@@ -327,8 +331,8 @@ function Autosizer ( window )
 
 		e.button = document.createElement("toolbarbutton")
 		e.button.setAttribute("id", "autosizer-button");
-		e.button.setAttribute("label", "&autosizer.button.label;");
-		e.button.setAttribute("tooltiptext", "&autosizer.button.tooltip;");
+		e.button.setAttribute("label", strings.GetStringFromName("buttonLabel"));
+		e.button.setAttribute("tooltiptext", strings.GetStringFromName("buttonTooltip"));
 
 		e.button.addEventListener("command", fromButton, true);
 
