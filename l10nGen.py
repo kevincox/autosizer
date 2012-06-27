@@ -176,6 +176,7 @@ for locale in os.listdir():
 				if addKeys:
 					print("{locale} is missing key '{key}', adding.".format(locale=locale, key=k))
 					chunks.append((k, baseContent[f][k]))
+					i = i-1
 					changed = True
 					continue
 				else:
