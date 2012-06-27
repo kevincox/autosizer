@@ -169,6 +169,7 @@ function Autosizer ( window )
 		window.addEventListener("unload", shutdown, false);
 		e.searchbox.addEventListener("focus", inputReciever, true);
 		e.searchbox.addEventListener("blur", inputReciever, true);
+		e.searchbox.addEventListener("blur", shrinkToButtonIfEmpty, true);
 		e.searchbox.addEventListener("input", inputReciever, true);
 
 		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
@@ -196,6 +197,7 @@ function Autosizer ( window )
 		e.searchbox.removeEventListener("input", inputReciever, true);
 		e.searchbox.removeEventListener("focus", inputReciever, true);
 		e.searchbox.removeEventListener("blur", inputReciever, true);
+		e.searchbox.removeEventListener("blur", shrinkToButtonIfEmpty, true);
 		window.removeEventListener("unload", shutdown, false);
 
 		e.searcharea.flex = 100; // This appears to be the default.
@@ -561,14 +563,18 @@ function Autosizer ( window )
 	{
 		d("toButton() called.");
 
-		d(e.searcharea.style.display);
-
 		e.button.style.display = "block";
 		e.searcharea.style.display = "none";
 
 		d("toButton() returned.");
 	}
 	this.fromButton = fromButton;
+
+	function shrinkToButtonIfEmpty ( )
+	{
+		if ( e.searchbox.value == "" ) toButton();
+	}
+	this.shrinkToButtonIfEmpty = shrinkToButtonIfEmpty;
 
 	/*** Callbacks ***/
 
