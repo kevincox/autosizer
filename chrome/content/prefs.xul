@@ -75,7 +75,7 @@
 				<vbox>
 					<hbox align="center">
 						<label value="&pref.other.autocomplete;" control="popupwidth" accesskey="&pref.other.autocomplete.accesskey;"/>
-						<textbox type="number" increment="5" size="4" id="popupwidth"/>
+						<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth"/>
 					</hbox>
 					<checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;"/>
 				</vbox>
