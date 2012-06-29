@@ -542,8 +542,8 @@ function Autosizer ( window )
 		                  "left: 60px;"                  +
 		                  "cursor: w-resize;"
 
-		mr.leftGrip.setAttribute("style", sharedStyle+"border-right:0");
-		mr.rightGrip.setAttribute("style", sharedStyle+"border-left:0");
+		mr.leftGrip.setAttribute("style", sharedStyle+"border-right:0;");
+		mr.rightGrip.setAttribute("style", sharedStyle+"border-left:0;");
 
 		mr.leftGrip.addEventListener("mousedown", leftGripDragCallback, true);
 		mr.rightGrip.addEventListener("mousedown", rightGripDragCallback, true);
@@ -676,11 +676,11 @@ function Autosizer ( window )
 
 		e.searcharea.width = width + pref.padding;
 
-		if      ( pref.popupwidth <= -100 ) width += (-100) - pref.popupwidth;
+		if      ( pref.popupwidth <= -100 ) width += -(100 + pref.popupwidth);
 		else if ( pref.popupwidth == -1   ) width = window.outerWidth;
 		else                                width = pref.popupwidth
 
-		if ( width != 0 ) e.popup.width = width;
+		if ( pref.popupwidth != 0 ) e.popup.width = width;
 
 		d("autosize() returned.");
 	}
