@@ -609,9 +609,11 @@ function Autosizer ( window )
 
 	function doShrinkToButton ( )
 	{
-		if ( e.searchbox.hasFocus    || // The searchbar is avtive.
-		     !pref.shrinkToButton    || // Shrinking is disabled.
-		     e.searchbox.value != ""    // Searchbar is not empty.
+		d(e.searchbox._popup.state);
+		if ( e.searchbox.hasFocus                  || // The searchbar is avtive.
+		     e.searchbox._popup.state == "showing" || // Selecting search engine.
+		     !pref.shrinkToButton                  || // Shrinking is disabled.
+		     e.searchbox.value != ""                  // Searchbar is not empty.
 		   )
 		{
 			fromButton();
