@@ -83,13 +83,13 @@ function shutdown(data, reason)
 	if ( reason == APP_SHUTDOWN ) return;
 
 	Services.ww.unregisterNotification(windowWatcher);
-	var as = new autosizer(null);
+	var as = new Autosizer(null);
 
 	as.prefs.removeObserver("", as.prefObserver, false);
 
 	while ( as.instances.length )
 	{
-		var ref = gii.instances.pop().get();
+		var ref = as.instances.pop().get();
 		if (ref) // Make sure the refrence still exists.
 		{
 			ref.shutdown();

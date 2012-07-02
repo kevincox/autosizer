@@ -142,6 +142,52 @@ function removeFocusWatch ( el )
 	el.removeEventListener("blur",  focusWatch_blur, true);
 }
 
+function modifyFunction ( parent, index, func, where )
+{
+	//if ( where == undefined ) where = "before";
+
+	var newf = null;
+
+	var orig    = parent[index];
+	var wrapper = function ()
+	{
+		newf.apply(this, arguments);
+	};
+
+	if ( where == "after" )
+	{
+		newf = function ( )
+		{
+			orig.apply(this, arguments);
+			func.apply(this, arguments);
+		};
+	}
+	else
+	{
+		newf = function ( )
+		{
+			if (func.apply(this, arguments)) return;
+			orig.apply(this, arguments);
+		};
+	}
+
+	parent[index] = wrapper;
+
+	return function ( )
+	{
+		if ( wrapper === parent[index] ) // Nobody modified it after us.
+		{
+			parent[index] = orig;
+		}
+		else // We have to descretly remove our functionality
+		{
+			newf = function ( ) { // Change our function to remove our check.
+				orig.apply(this, arguments);
+			};
+		}
+	};
+}
+
 /*** Our "Class" ***/
 function Autosizer ( window )
 {
@@ -229,6 +275,7 @@ function Autosizer ( window )
 
 		removeFocusWatch(e.searchbox);
 
+		fromButton();
 		e.searcharea.flex = 100; // This appears to be the default.
 
 		removeAfterSubmitCheck();
@@ -248,57 +295,10 @@ function Autosizer ( window )
 	};
 	this.shutdown = shutdown;
 
-	var origSearchHandler = null;
-	var ourSearchHandler  = {handler: null}; // Refrence.
-	var searchHandlerWrapper = null;
-	function addAfterSubmitCheck () {
-		d("addAfterSubmitCheck() called.")
-
-		if (origSearchHandler) return; // We already did this.
-
-		origSearchHandler = e.searchbox.handleSearchCommand;
-
-		if (!ourSearchHandler.handler)
-		{
-			ourSearchHandler.handler = function ( )
-			{
-				origSearchHandler.apply(this, arguments);
-
-				afterSubmit();
-			};
-		}
-
-		if (!searchHandlerWrapper)
-		{
-			searchHandlerWrapper = function ()
-			{
-				ourSearchHandler.handler.apply(this, arguments);
-			};
-		}
-
-		e.searchbox.handleSearchCommand = searchHandlerWrapper;
-
-		d("addAfterSubmitCheck() returning.")
-	}
-
-	function removeAfterSubmitCheck ( )
+	var removeAfterSubmitCheck = null;
+	function addAfterSubmitCheck ()
 	{
-		d("removeAfterSubmitCheck() called.")
-
-		if (!origSearchHandler) return; // We haven't blocked it.
-
-		if ( searchHandlerWrapper === e.searchbox.handleSearchCommand ) // Nobody modified it after us.
-		{
-			e.searchbox.handleSearchCommand = origSearchHandler;
-		}
-		else // We have to descretly remove our functionality
-		{
-			ourSearchHandler.handler = function ( ) { // Change our function to remove our check.
-				origSearchHandler.apply(this, arguments);
-			};
-		}
-
-		d("removeAfterSubmitCheck() returning.")
+		removeAfterSubmitCheck = modifyFunction(e.searchbox, "handleSearchCommand", afterSubmit, "after");
 	}
 
 	function addMeasuringLabel ( )
@@ -609,7 +609,6 @@ function Autosizer ( window )
 
 	function doShrinkToButton ( )
 	{
-		d(e.searchbox._popup.state);
 		if ( e.searchbox.hasFocus                  || // The searchbar is avtive.
 		     e.searchbox._popup.state == "showing" || // Selecting search engine.
 		     !pref.shrinkToButton                  || // Shrinking is disabled.
@@ -636,18 +635,19 @@ function Autosizer ( window )
 		if (pref.cleanOnSubmit)
 		{
 			e.searchbox.value='';
-			window.setTimeout(autosize, 0);
 		}
 		if (pref.revertOnSubmit)
 		{
 			e.searchbox.currentEngine = e.searchbox.engines[0];
 		}
-		if (pref.shrinkToButton)
-		{
-			toButton();
-		}
 
 		autosize();
+
+		if (pref.shrinkToButton)
+		{
+			d("Shrinking");
+			toButton();
+		}
 
 		d("afterSubmit() returned.");
 	}
