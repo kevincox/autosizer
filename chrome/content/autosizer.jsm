@@ -184,6 +184,8 @@ function modifyFunction ( parent, index, func, where )
 			newf = function ( ) { // Change our function to remove our check.
 				orig.apply(this, arguments);
 			};
+
+
 		}
 	};
 }
@@ -235,6 +237,7 @@ function Autosizer ( window )
 		d("init() called.");
 
 		addAfterSubmitCheck();
+		addSearchbarJumpHelper();
 		addMeasuringLabel();
 		addButton();
 		addStyleSheet();
@@ -279,6 +282,7 @@ function Autosizer ( window )
 		e.searcharea.flex = 100; // This appears to be the default.
 
 		removeAfterSubmitCheck();
+		removeSearchbarJumpHelper();
 		removeMeasuringLabel();
 		removeButton();
 		removeStyleSheet();
@@ -299,6 +303,12 @@ function Autosizer ( window )
 	function addAfterSubmitCheck ()
 	{
 		removeAfterSubmitCheck = modifyFunction(e.searchbox, "handleSearchCommand", afterSubmit, "after");
+	}
+
+	var removeSearchbarJumpHelper = null;
+	function addSearchbarJumpHelper ()
+	{
+		removeSearchbarJumpHelper = modifyFunction(window.BrowserSearch, "webSearch", fromButton, "before");
 	}
 
 	function addMeasuringLabel ( )
