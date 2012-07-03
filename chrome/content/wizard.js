@@ -15,12 +15,34 @@ function d ( msg, seroius )
 var w = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                   .getService(Components.interfaces.nsIWindowMediator)
                   .getMostRecentWindow("navigator:browser");
+
+if (!w.document.getElementById("searchbar"))
+{
+	var wi = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+	                   .getService(Components.interfaces.nsIWindowMediator)
+	                   .getEnumerator("navigator:browser");
+
+	while (wi.hasMoreElements())
+	{
+		w = wi.getNext()
+		var sb = w.document.getElementById("searchbar");
+		if (sb)
+		{
+			break;
+		}
+	}
+}
 var doc = w.document
 
 var e = {
 	searchbox: doc.getElementById("searchbar"),
 	searcharea: doc.getElementById("search-container"),
 };
+if ((!e.searchbox) || (!e.searcharea))
+{
+	alert("Error, no searchbar found.");
+	window.close();
+}
 
 var autosizer = e.searchbox.autosizer;
 var strings   = autosizer.strings;

@@ -20,4 +20,26 @@ var autosizerPref = {
 		while (wi.hasMoreElements())
 			wi.getNext().document.getElementById("searchbar").autosizer.autosize();
 	},
+	launchWizard: function () {
+		var wi = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+		                   .getService(Components.interfaces.nsIWindowMediator)
+		                   .getEnumerator("navigator:browser");
+
+		while (wi.hasMoreElements())
+		{
+			var w = wi.getNext()
+			var sb = w.document.getElementById("searchbar");
+			if (sb)
+			{
+				w.gBrowser.selectedTab = w.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
+				w.focus();
+				window.close();
+				return;
+			}
+		}
+
+		var win = window.open("chrome://autosizer/content/wizard.xul",
+                              "Searchbar Autosizer Setup Wizard", "resizable=yes,scrollbars=yes,status=yes,chrome=no");
+		window.close();
+	},
 }
