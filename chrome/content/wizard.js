@@ -120,7 +120,7 @@ var asw = {
 		e.searchbox.value = v;
 
 		if ( Math.abs(w-smallSize) < 50 )
-			return 0;
+			w = -1;
 
 		d("asw.minWidthSolve() returned "+w+".");
 		return w;
@@ -134,8 +134,8 @@ var asw = {
 
 		var g = asw.minWidthSolve();
 
-		if ( g == 0 ) g = strings.get("minWidthTitle");
-		else          g = strings.getf("minWidthPx", [g]);
+		if ( g == -1 ) g = strings.get("minWidthTitle");
+		else           g = strings.getf("minWidthPx", [g]);
 
 		l.value = g;
 

@@ -404,15 +404,10 @@ function Autosizer ( window )
 	{                             // content in pixels
 		d("getRequiredWidth() called.");
 
-		var tc;
-		var pad;
-		if ( e.searchbox.value != "" )
+		var tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
+		var pad = pref.padding;
+		if ( e.searchbox.value == "" && pref.minwidth == -1 )
 		{
-			tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
-			pad = pref.padding;
-		}
-		else
-        {
 			tc = e.searchbox.currentEngine.name;
 			pad = pref.namePadding;
 		}
@@ -425,7 +420,7 @@ function Autosizer ( window )
 		var maxwidth = pref.maxwidth;
 
 		if      ( maxwidth == 0 ) maxwidth = getAvailableWidth();
-		else if ( maxwidth < 0 ) maxwidth = getAllAvailableWidth();
+		else if ( maxwidth <  0 ) maxwidth = getAllAvailableWidth();
 
 		if      ( w < minwidth ) w = minwidth;
 		else if ( w > maxwidth ) w = maxwidth;
