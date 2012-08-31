@@ -30,7 +30,7 @@
 			<rows>
 				<row align="center">
 					<label control="minwidth" value="&pref.width.min;" accesskey="&pref.width.min.accesskey;"/>
-					<textbox type="number" increment="5" size="4" id="minwidth"/>
+					<textbox type="number" increment="5" min="-Infinity" size="4" id="minwidth"/>
 					<vbox align="right"><image src="width_min.png"/></vbox>
 				</row>
 				<row align="center">
