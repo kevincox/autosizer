@@ -9,18 +9,19 @@
 		<stringbundle id="locale" src="chrome://autosizer/locale/autosizer.properties"/>
 	</stringbundleset>
 
-	<wizardpage id="size" pageid="size" onpageshow="asw.initSize();" next="minwidth">
+	<wizardpage id="size" pageid="size"
+		onpageshow="asw.initSize();" onpagehide="asw.endSize();" next="minwidth">
 		<radiogroup id="sizemode">
 			<description>&wiz.start.desc;</description>
-			<radio onclick="asw.size('yes');"
+			<radio
 				accesskey="&wiz.start.inc.accesskey;"
 				label="&wiz.start.inc;" value="key"
 			/>
-			<radio onclick="asw.size('atonce');"
+			<radio
 				accesskey="&wiz.start.alt.accesskey;"
 				label="&wiz.start.alt;" value="atonce"
 			/>
-			<radio onclick="asw.size('none');"
+			<radio
 				 accesskey="&wiz.start.fix.accesskey;"
 				 label="&wiz.start.fix;" value="none"
 			/>

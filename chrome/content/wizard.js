@@ -75,13 +75,13 @@ var asw = {
 
 		d("asw.initSize() returned.");
 	},
-	size: function ( mode )
+	endSize: function ( )
 	{
-		d("asw.size() called.");
+		d("asw.endSize() called.");
 
-		pref.sizeOn = mode;
+		prefs.setCharPref("sizeOn", document.getElementById("sizemode").value);
 
-		d("asw.size() returned.");
+		d("asw.endSize() returned.");
 	},
 
 	/*** Seccond Page - Minimum width ***/
