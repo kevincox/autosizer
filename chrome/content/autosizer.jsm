@@ -210,7 +210,7 @@ function Autosizer ( window )
 	this.window = window;
 	this.document = document;
 
-	this.pref = pref;
+	if ( window.document.readyState != "complete" ) return this;
 
 	var e = { // Element refrences
 		searchbox: document.getElementById("searchbar"),
@@ -761,6 +761,7 @@ function Autosizer ( window )
 
 	/*** Cleanup ***/
 	init();
+	autosize();
 	d("new Autosizer() returning.");
 	return this;
 
