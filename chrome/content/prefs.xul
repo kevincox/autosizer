@@ -30,6 +30,7 @@
 				<column/>
 				<column/>
 				<column flex="999"/>
+				<column/>
 			</columns>
 			<rows>
 				<row align="center">
@@ -38,7 +39,8 @@
 					         class="pref" data-pref="int"
 					         oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
 					<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
-					<vbox align="right"><image src="width_min.png"/></vbox>
+					<vbox flex="999"></vbox>
+					<image src="width_min.png"/>
 				</row>
 				<row align="center">
 					<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
@@ -50,7 +52,8 @@
 						<menuitem value="full" label="&width.max.special.full;" />
 						<menuitem value="max"  label="&width.max.special.max;"  />
 					</menupopup></menulist>
-					<vbox align="right" style="min-width:138px;"><image src="width_max.png"/></vbox>
+					<vbox flex="999"></vbox>
+					<image src="width_max.png"/>
 				</row>
 			</rows>
 		</grid>
@@ -61,27 +64,28 @@
 		<description>&padding.desc;</description>
 		<grid flex="1">
 			<columns>
-				<column/>
-				<column/>
+				<column align="right"/>
+				<column align="left"/>
 				<column flex="999"/>
+				<column/>
 			</columns>
-		</grid>
 			<rows>
 				<row align="center">
 					<label control="padding" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
 					<textbox type="number" min="-Infinity" size="4" id="padding"
 					         class="pref" data-pref="int" />
-					<vbox align="right" style="min-width:138px;"><image src="offset_label.png"/></vbox>
+					<vbox flex="999"></vbox>
+					<image src="offset_label.png"/>
 				</row>
-			</rows>
-			<rows>
 				<row align="center">
 				  <label control="namePadding" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
 					<textbox type="number" min="-Infinity" size="4" id="namePadding"
 					         class="pref" data-pref="int" />
-					<vbox align="right" style="min-width:138px;"><image src="offset_text.png"/></vbox>
+					<vbox flex="999"></vbox>
+					<image src="offset_text.png"/>
 				</row>
 			</rows>
+		</grid>
 	</groupbox>
 
 	<groupbox>
