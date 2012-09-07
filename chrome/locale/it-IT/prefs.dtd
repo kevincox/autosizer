@@ -1,6 +1,5 @@
 <!ENTITY title "Autosizer Options">
 <!ENTITY intro.title "About Prefrences">
-<!ENTITY intro.desc "For more information about what each prefrence means look at <a href='https://sourceforge.net/p/autosizer/wiki/Prefrences/'>this wiki page</a>">
 <!ENTITY width.title "Searchbar Width">
 <!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Minimum:">
@@ -31,3 +30,6 @@
 <!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.before "For more information about what each prefrence means see">
