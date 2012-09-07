@@ -1,25 +1,94 @@
-var autosizerPref = {
-	intP: ['minwidth','maxwidth','popupwidth', 'padding', 'namePadding'],
-	boolP: ['cleanOnSubmit','revertOnSubmit','shrinkToButton'],
-	prefs: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
-	init: function() {
-		//try { if(window.arguments[0]) window.opener=window.arguments[0]; } catch(e){}
-		for(var p in this.intP) document.getElementById(this.intP[p]).value=this.prefs.getIntPref('extensions.autosizer.'+this.intP[p]);
-		for(var p in this.boolP) document.getElementById(this.boolP[p]).checked=this.prefs.getBoolPref('extensions.autosizer.'+this.boolP[p]);
+var Ci = Components.interfaces;
+var Cc = Components.classes;
+var Cu = Components.utils;
+
+Cu.import("chrome://autosizer/content/autosizer.jsm");
+
+function d ( msg, seroius )
+{
+	seroius = true // For debugging.
+	if (!seroius) return;
+
+	dump('autosizer: '+msg+'\n');
+	Components.classes["@mozilla.org/consoleservice;1"]
+		.getService(Components.interfaces.nsIConsoleService)
+		.logStringMessage('autosizer: '+msg);
+}
+
+var autosizer = new Autosizer();
+var strings   = autosizer.strings;
+var pref      = autosizer.pref;
+var prefs     = autosizer.prefs;
+
+var asp = {
+	init: function () {
+		asp.load();
+	},
+	exit: function () {
+		asp.save();
+		window.close();
 	},
 
-	save: function() {
-		for(var p in this.intP) this.prefs.setIntPref('extensions.autosizer.'+this.intP[p],document.getElementById(this.intP[p]).value);
-		for(var p in this.boolP) this.prefs.setBoolPref('extensions.autosizer.'+this.boolP[p],document.getElementById(this.boolP[p]).checked);
+	load: function () {
+		var prefs = document.querySelectorAll(".pref");
+		for (var i = 0; i < prefs.length; ++i)
+		{
+			var item = prefs[i];
+			var type = item.getAttribute("data-pref");
+			if      ( type == "int"  ) item.value   = pref[item.id];
+			else if ( type == "char" ) item.value   = pref[item.id];
+			else if ( type == "bool" ) item.checked = pref[item.id];
+		}
 
-		/*** Update the searchbars acording to the new prefrence. ***/
-		var wi = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-		                   .getService(Components.interfaces.nsIWindowMediator)
-		                   .getEnumerator("navigator:browser");
-
-		while (wi.hasMoreElements())
-			wi.getNext().document.getElementById("searchbar").autosizer.autosize();
+		asp.updateMinWidthCheck();
+		asp.updateMaxWidthList();
 	},
+	save: function () {
+		var prefElements = document.querySelectorAll(".pref");
+		for (var i = 0; i < prefElements.length; ++i)
+		{
+			var item = prefElements[i];
+			var type = item.getAttribute("data-pref");
+			if      ( type == "int"  ) prefs.setIntPref(item.id, item.value);
+			else if ( type == "char" ) prefs.setCharPref(item.id, item.value);
+			else if ( type == "bool" ) prefs.setBoolPref(item.id, item.checked);
+		}
+	},
+
+	updateMinWidthCheck: function () {
+		var b = document.getElementById("minwidth");
+		var l = document.getElementById("minwidthcheck");
+
+		var v = parseInt(b.value);
+
+		l.checked = ( v == -1 );
+	},
+	updateMinWidthBox: function () {
+		var b = document.getElementById("minwidth");
+		var l = document.getElementById("minwidthcheck");
+
+		if (l.checked) b.value = -1;
+	},
+
+	updateMaxWidthList: function () {
+		var b = document.getElementById("maxwidth");
+		var l = document.getElementById("maxwidthlist");
+
+		var v = parseInt(b.value);
+		d(v)
+
+		if      ( v ==  0 ) l.value = "full";
+		else if ( v == -1 ) l.value = "max";
+		else                l.value = "none";
+	},
+	updateMaxWidthBox: function () {
+		var b = document.getElementById("maxwidth");
+		var l = document.getElementById("maxwidthlist");
+
+		if ( l.value == "full" ) b.value = 0;
+		if ( l.value == "max"  ) b.value = -1;
+	},
+
 	launchWizard: function () {
 		var wi = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 		                   .getService(Components.interfaces.nsIWindowMediator)
