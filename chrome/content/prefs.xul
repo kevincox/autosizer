@@ -19,7 +19,11 @@
 
 	<groupbox>
 		<caption label="&intro.title;" />
-		<description>&intro.desc;</description>
+		<description>
+			&intro.desc.before;
+			<label class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</label>
+			&intro.desc.after;
+		</description>
 	</groupbox>
 	<groupbox>
 		<caption label="&width.title;" />
