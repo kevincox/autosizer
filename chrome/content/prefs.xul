@@ -21,7 +21,7 @@
 		<caption label="&intro.title;" />
 		<description>
 			&intro.desc.before;
-			<label class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</label>
+			<box class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</box>
 			&intro.desc.after;
 		</description>
 	</groupbox>
