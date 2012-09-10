@@ -35,7 +35,7 @@
 		<em:translator>zh-TW (partly): hit1205</em:translator>
 		<em:translator>www.BabelZilla.org</em:translator>
 
-		<em:contributor>Kevin (Code fixes)</em:contributor>
+		<em:contributor>DarkAthena (Past Maintainer)</em:contributor>
 		<em:contributor>David (Code fixes)</em:contributor>
 		<em:contributor>LMLB (Code fixes)</em:contributor>
 		<em:contributor>Aronnax (Mac testing)</em:contributor>
@@ -186,7 +186,7 @@
 		<em:name>Searchbar Autosizer</em:name>
 		<em:description>Expands the searchbox as you type.</em:description>
 
-		<em:creator>DarkAthena</em:creator>
+		<em:creator>Kevin Cox</em:creator>
 		<em:optionsURL>chrome://autosizer/content/prefs.xul</em:optionsURL>
 		<em:iconURL>chrome://autosizer/content/logo.png</em:iconURL>
 	</Description>
