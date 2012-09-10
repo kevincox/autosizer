@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Opciones de Autosizer">
-<!ENTITY pref.wizard "Asistente">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "Ancho de barra de búsquedas">
-<!ENTITY pref.width.desc "Todos los valores están en pixels, inserte 0 (cero) para que Autosizer decida por sí misma.">
-<!ENTITY pref.width.min "Mínimo:">
-<!ENTITY pref.width.min.accesskey "n">
-<!ENTITY pref.width.max "Máximo:">
-<!ENTITY pref.width.max.accesskey "x">
-<!ENTITY pref.padding.title "Espaciado del texto">
-<!ENTITY pref.padding.desc "Todos los valores en pixels, se permiten valores negativos.">
-<!ENTITY pref.padding.query "Texto de consulta:">
-<!ENTITY pref.padding.query.accesskey "e">
-<!ENTITY pref.padding.engine "Nombre del motor:">
-<!ENTITY pref.padding.engine.accesskey "o">
-<!ENTITY pref.other.title "Otros">
+
 <!ENTITY pref.other.autocomplete "Anchura de sugerencias:">
 <!ENTITY pref.other.autocomplete.accesskey "s">
 <!ENTITY pref.other.cleanOnSubmit "Vaciar la barra de búsquedas tras iniciar una búsqueda">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Recuperar el motor de búsqueda predeterminado tras iniciar una búsqueda">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "El motor de búsqueda que ocupe el primer lugar será el predeterminado. Para administrar sus motores pulse en el icono de motores y seleccione &apos;Administrar motores de búsqueda...&apos;">
-<!ENTITY pref.other.skipWizard "Abrir esta ventana en vez del asistente">
-<!ENTITY pref.other.skipWizard.accesskey "A">
 <!ENTITY wiz.title "Asistente de configuración de Autosizer">
 <!ENTITY wiz.start.desc "¿Qué debe hacer Autosizer cuando Ud. escriba algo en la ventana de búsquedas?">
 <!ENTITY wiz.start.inc "Incrementar tamaño con cada letra introducida">

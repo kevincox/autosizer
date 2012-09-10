@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer seçenekleri">
-<!ENTITY pref.wizard "Yardımcı">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "Arama kutucuğu genişliği">
-<!ENTITY pref.width.desc "All values are in pixels, insert 0 (zero) to let Autosizer decide.">
-<!ENTITY pref.width.min "En az">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "En çok">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Text Padding">
-<!ENTITY pref.padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY pref.padding.query "Arama Kuyruğu">
-<!ENTITY pref.padding.query.accesskey "Q">
-<!ENTITY pref.padding.engine "Arama Motoru Başlığı">
-<!ENTITY pref.padding.engine.accesskey "E">
-<!ENTITY pref.other.title "Diğer">
+
 <!ENTITY pref.other.autocomplete "Suggestions Width:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "Empty searchbar when a query is submitted">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Revert to default search engine when a query is submitted">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY pref.other.skipWizard "Open this window instead of assistant">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Autosizer Yapılandırma Yardımcısı">
 <!ENTITY wiz.start.desc "What should Autosizer do, when you type something into the searchbox?">
 <!ENTITY wiz.start.inc "Size incrementally, to each letter">

@@ -1,35 +1,35 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
-<!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
+<!ENTITY title "Επιλογές Autosizer">
+<!ENTITY wizard.accesskey "η">
+<!ENTITY width.title "Μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY width.desc "Όλες οι τιμές είναι σε πίξελ, Βάλτε 0 (μηδέν) για να ρυθμιστεί αυτόματα από το Autosizer.">
+<!ENTITY width.min "Ελάχιστο:">
+<!ENTITY width.min.accesskey "ά">
+<!ENTITY width.max "Μέγιστο:">
+<!ENTITY width.max.accesskey "έ">
+<!ENTITY padding.title "Γέμισμα κειμένου">
+<!ENTITY padding.desc "Όλες οι τιμές είναι σε πίξελ, επιτρέπονται και αρνητικές τιμές.">
+<!ENTITY padding.query "Αλφαριθμητικό αναζήτησης:">
+<!ENTITY padding.query.accesskey "λ">
+<!ENTITY padding.engine "Όνομα μηχανής αναζήτησης:">
+<!ENTITY padding.engine.accesskey "ζ">
+<!ENTITY other.title "Διάφορα">
+<!ENTITY other.autocomplete "Μήκος προτάσεων:">
+<!ENTITY other.autocomplete.accesskey "τ">
+<!ENTITY other.cleanOnSubmit "Καθαρισμός της εργαλειοθήκης μετά την αναζήτηση αλφαριθμητικού.">
+<!ENTITY other.cleanOnSubmit.accesskey "κ">
+<!ENTITY other.revertOnSubmit "Επαναφορά της αρχικής μηχανής αναζήτησης μετά την αναζήτηση αλφαριθμητικού">
+<!ENTITY other.revertOnSubmit.accesskey "π">
+<!ENTITY other.revertOnSubmit.desc "Οποιαδήποτε μηχανή αναζήτησης είναι πρώτη στη λίστα θα θεωρηθεί αρχική. Για να διαχειριστείτε τη λίστα, κάντε κλικ στο εικονίδιο της μηχανής και επιλέξτε «Διαχείριση μηχανών αναζήτησης...»">
+<!ENTITY other.shrinkToButton "Ελαχιστοποίηση εργαλειοθήκης αναζήτησης σε μέγεθος κουμπιού αν είναι κενή">
+<!ENTITY other.shrinkToButton.accesskey "λ">
+<!ENTITY other.addBtn "Προσθήκη κουμπιού στην εργαλειοθήκη">
+<!ENTITY other.addBtn.accesskey "ο">
 <!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
-<!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
-<!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

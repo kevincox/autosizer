@@ -1,35 +1,35 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY title "Autosizer 選項">
+<!ENTITY wizard.accesskey "t">
+<!ENTITY width.title "搜尋列寬度">
+<!ENTITY width.desc "如輸入 0 則 Autosizer 將會自行決定 (單位：像素) 。">
+<!ENTITY width.min "最小值:">
 <!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max "最大值:">
 <!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
+<!ENTITY padding.title "文字與右方距離">
+<!ENTITY padding.desc "允許負值 (單位：像素) 。">
+<!ENTITY padding.query "搜尋關鍵字:">
 <!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
+<!ENTITY padding.engine "搜尋引擎標題:">
 <!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
+<!ENTITY other.title "其他">
+<!ENTITY other.autocomplete "「搜尋建議」的寬度:">
 <!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
+<!ENTITY other.cleanOnSubmit "關鍵字送出查詢後，清空搜尋列中的文字">
 <!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
+<!ENTITY other.revertOnSubmit "送出關鍵字後自動跳回預設的搜尋引擎">
 <!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
+<!ENTITY other.revertOnSubmit.desc "「預設的搜尋引擎」是指排在最上面的那個。如果要改變順序，請按下搜尋引擎圖示，並選擇「管理搜尋引擎...」">
 <!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
 <!ENTITY other.shrinkToButton.accesskey "k">
 <!ENTITY other.addBtn "Add Button to Toolbar">
 <!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY width.max.special.max "Maximum Visible Size">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

@@ -1,35 +1,35 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
-<!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
-<!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
-<!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
+<!ENTITY title "Autosizer 选项">
 <!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY width.title "搜索栏宽度">
+<!ENTITY width.desc "单位为像素, 输入 0 则 Autosizer 将会自行设定.">
+<!ENTITY width.min "最小值:">
+<!ENTITY width.min.accesskey "i">
+<!ENTITY width.max "最大值:">
+<!ENTITY width.max.accesskey "a">
+<!ENTITY padding.title "文字与右边距离">
+<!ENTITY padding.desc "单位为像素, 允许为负.">
+<!ENTITY padding.query "搜索关键字:">
+<!ENTITY padding.query.accesskey "Q">
+<!ENTITY padding.engine "搜索引擎标题:">
+<!ENTITY padding.engine.accesskey "E">
+<!ENTITY other.title "其它">
+<!ENTITY other.autocomplete "搜索建议宽度:">
+<!ENTITY other.autocomplete.accesskey "S">
+<!ENTITY other.cleanOnSubmit "关键字提交搜索后, 清除搜索栏中的文字">
+<!ENTITY other.cleanOnSubmit.accesskey "p">
+<!ENTITY other.revertOnSubmit "搜索提交后恢复默认的搜索引擎">
+<!ENTITY other.revertOnSubmit.accesskey "R">
+<!ENTITY other.revertOnSubmit.desc "位于顶端的搜索引擎将为默认搜索引擎. 你可以点击搜索引擎图标选择[管理搜索引擎...]来进行修改.">
+<!ENTITY other.shrinkToButton "无内容时收缩搜索栏为按钮">
+<!ENTITY other.shrinkToButton.accesskey "k">
+<!ENTITY other.addBtn "添加按钮到工具栏">
+<!ENTITY other.addBtn.accesskey "u">
+<!ENTITY width.max.special.max "Maximum Visible Size">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

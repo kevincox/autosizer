@@ -1,35 +1,35 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
-<!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
+<!ENTITY title "Настройки Autosizer">
+<!ENTITY wizard.accesskey "М">
+<!ENTITY width.title "Ширина панели поиска">
+<!ENTITY width.desc "Все значения в пикселях, чтобы запретить Autosizer изменять размер, введите 0 (ноль).">
+<!ENTITY width.min "Минимум:">
+<!ENTITY width.min.accesskey "и">
+<!ENTITY width.max "Максимум:">
+<!ENTITY width.max.accesskey "а">
+<!ENTITY padding.title "Расстояние до текста">
+<!ENTITY padding.desc "Все значения в пикселях, допускаются отрицательные значения.">
+<!ENTITY padding.query "Поисковый запрос:">
+<!ENTITY padding.query.accesskey "з">
+<!ENTITY padding.engine "Название поисковика:">
+<!ENTITY padding.engine.accesskey "Н">
+<!ENTITY other.title "Другое">
+<!ENTITY other.autocomplete "Ширина поисковых предположений:">
+<!ENTITY other.autocomplete.accesskey "Ш">
+<!ENTITY other.cleanOnSubmit "Очищать панель поиска после выполнения запроса">
+<!ENTITY other.cleanOnSubmit.accesskey "О">
+<!ENTITY other.revertOnSubmit "После выполнения запроса возвращать поисковый плагин по умолчанию">
+<!ENTITY other.revertOnSubmit.accesskey "у">
+<!ENTITY other.revertOnSubmit.desc "Независимо от того, какой поисковый плагин вами выбран, после выполнения запроса будет установлен плагин по умолчанию. Для управления поисковыми плагинами нажмите на значок поискового плагина и выберите требуемый в окне &apos;&apos;Управление списком поисковых плагинов&apos;&apos; нажав на пункт &apos;&apos;Управление поисковыми плагинами&apos;&apos;.">
+<!ENTITY other.shrinkToButton "Сжимать панель поиска до кнопки, если она пуста">
+<!ENTITY other.shrinkToButton.accesskey "ж">
+<!ENTITY other.addBtn "Добавить кнопку на панель инструментов">
+<!ENTITY other.addBtn.accesskey "Д">
 <!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
-<!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
-<!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

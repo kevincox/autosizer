@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer opties">
-<!ENTITY pref.wizard "Assistent">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "Zoekbalkbreedte">
-<!ENTITY pref.width.desc "Alle waarden zijn in pixels; voer 0 (nul) in om Autosizer te laten beslissen.">
-<!ENTITY pref.width.min "Minimum:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Maximum:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Tekstweergave">
-<!ENTITY pref.padding.desc "Alle waarden zijn in pixels; negatieve waarden zijn toegestaan.">
-<!ENTITY pref.padding.query "Zoekopdracht:">
-<!ENTITY pref.padding.query.accesskey "Z">
-<!ENTITY pref.padding.engine "Zoekmachinetitel:">
-<!ENTITY pref.padding.engine.accesskey "e">
-<!ENTITY pref.other.title "Overig">
+
 <!ENTITY pref.other.autocomplete "Suggestiesbreedte:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "Zoekbalk leegmaken wanneer een opdracht wordt ingegeven">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Standaardzoekmachine terugzetten wanneer een zoekopdracht is ingegeven">
 <!ENTITY pref.other.revertOnSubmit.accesskey "T">
 <!ENTITY pref.other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies &apos;Zoekmachines beheren...&apos;">
-<!ENTITY pref.other.skipWizard "Dit venster in plaats van de assistent openen">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Autosizer configuratie-assistent">
 <!ENTITY wiz.start.desc "Wat moet Autosizer doen wanneer u iets in het zoekveld intypt?">
 <!ENTITY wiz.start.inc "Incrementeel vergroten, per letter">

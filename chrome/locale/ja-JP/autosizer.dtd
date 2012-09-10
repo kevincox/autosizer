@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer オプション">
-<!ENTITY pref.wizard "かんたん設定">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "検索バーの横幅">
-<!ENTITY pref.width.desc "入力される値の単位はすべてピクセルです。値を 0 に設定すると Autosizer が自動的に調整します。">
-<!ENTITY pref.width.min "最小:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "最大:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "文字の余白">
-<!ENTITY pref.padding.desc "入力される値の単位はすべてピクセルで 0 以下の値も使用できます。">
-<!ENTITY pref.padding.query "検索ワード:">
-<!ENTITY pref.padding.query.accesskey "Q">
-<!ENTITY pref.padding.engine "検索エンジンの名前:">
-<!ENTITY pref.padding.engine.accesskey "E">
-<!ENTITY pref.other.title "その他">
+
 <!ENTITY pref.other.autocomplete "検索候補の横幅:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "検索の開始時に検索バーの内容を消去します">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "検索後にデフォルトの検索エンジンに戻す">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "&apos;検索エンジンの管理&apos; 画面で一番上に表示される検索エンジンが、デフォルトのデフォルトの検索エンジンになります。">
-<!ENTITY pref.other.skipWizard "Autosizer かんたん設定を使用しない">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Autosizer かんたん設定">
 <!ENTITY wiz.start.desc "検索バーの使用時に Autosizer をどのように動作させますか?">
 <!ENTITY wiz.start.inc "入力に応じて横幅を変更する">

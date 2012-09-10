@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer Einstellungen">
-<!ENTITY pref.wizard "Assistent">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "Suchleistenbreite">
-<!ENTITY pref.width.desc "Alle Werte sind in Pixel, eine 0 (null) lässt Autosizer entscheiden.">
-<!ENTITY pref.width.min "Mindestens:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Höchstens:">
-<!ENTITY pref.width.max.accesskey "H">
-<!ENTITY pref.padding.title "Text Abstand">
-<!ENTITY pref.padding.desc "Alle Werte sind in Pixel, negative Werte sind erlaubt.">
-<!ENTITY pref.padding.query "Suchanfrage:">
-<!ENTITY pref.padding.query.accesskey "a">
-<!ENTITY pref.padding.engine "Suchmaschinentitel:">
-<!ENTITY pref.padding.engine.accesskey "S">
-<!ENTITY pref.other.title "Sonstige">
+
 <!ENTITY pref.other.autocomplete "Breite der Suchvorschläge:">
 <!ENTITY pref.other.autocomplete.accesskey "v">
 <!ENTITY pref.other.cleanOnSubmit "Leere Suchleiste, wenn die Anfrage abgeschickt wurde">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Standard Suchmaschine auswählen, wenn die Anfrage abgeschickt wurde">
 <!ENTITY pref.other.revertOnSubmit.accesskey "d">
 <!ENTITY pref.other.revertOnSubmit.desc "Die oberste Suchmaschine ist Standard. Um die Suchmaschinen zu verwalten auf das Suchmaschinen Symbol klicken und &apos;Suchmaschinen verwalten...&apos; auswählen.">
-<!ENTITY pref.other.skipWizard "Öffne dieses Fenster statt dem Assistenten">
-<!ENTITY pref.other.skipWizard.accesskey "Ö">
 <!ENTITY wiz.title "Autosizer Einstellungsassistent">
 <!ENTITY wiz.start.desc "Was soll Autosizer machen, wenn etwas in die Suchleiste eingegeben wird?">
 <!ENTITY wiz.start.inc "Schrittweise anpassen, zu jedem Buchstaben">

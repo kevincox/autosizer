@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Méret automatikus beállítása">
-<!ENTITY pref.wizard "Segítő">
-<!ENTITY pref.wizard.accesskey "T">
-<!ENTITY pref.width.title "Keresőmező szélessége">
-<!ENTITY pref.width.desc "Az értékek képpontokat jelölnek. Automatikus beállításhoz írjon 0-t.">
-<!ENTITY pref.width.min "Minimális:">
-<!ENTITY pref.width.min.accesskey "I">
-<!ENTITY pref.width.max "Maximális:">
-<!ENTITY pref.width.max.accesskey "A">
-<!ENTITY pref.padding.title "Szöveg kitöltése">
-<!ENTITY pref.padding.desc "Az értékek képpontokat jelölnek. Negatív számokat is megadhat.">
-<!ENTITY pref.padding.query "Szöveg keresése:">
-<!ENTITY pref.padding.query.accesskey "V">
-<!ENTITY pref.padding.engine "Keresőszolgáltatás:">
-<!ENTITY pref.padding.engine.accesskey "S">
-<!ENTITY pref.other.title "Egyéb">
+
 <!ENTITY pref.other.autocomplete "Ajánlatok szélessége:">
 <!ENTITY pref.other.autocomplete.accesskey "J">
 <!ENTITY pref.other.cleanOnSubmit "Keresőmező törlése keresés után">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Alapértelmezett keresőszolgáltatás visszaállítása keresés után">
 <!ENTITY pref.other.revertOnSubmit.accesskey "U">
 <!ENTITY pref.other.revertOnSubmit.desc "A legfelső keresőszolgáltatás lesz az alapértelmezett. A keresőszolgáltatások kezeléséhez kattintson a keresőszolgáltatás ikonjára, és a menüből válassza ki a &apos;Keresőszolgáltatások kezelése&apos; menüpontot.">
-<!ENTITY pref.other.skipWizard "Nyissa meg ezt az ablakot a Segítő helyett">
-<!ENTITY pref.other.skipWizard.accesskey "E">
 <!ENTITY wiz.title "Beállítás Segítő">
 <!ENTITY wiz.start.desc "Mit tegyen az Autosizer, ha beír valamit a Keresőmezőbe?">
 <!ENTITY wiz.start.inc "Méretváltoztatás minden beírt karakter után">

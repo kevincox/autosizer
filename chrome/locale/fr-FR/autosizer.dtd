@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Options d&apos;Autosizer">
-<!ENTITY pref.wizard "Interactif">
-<!ENTITY pref.wizard.accesskey "I">
-<!ENTITY pref.width.title "Taille de la barre de recherche">
-<!ENTITY pref.width.desc "Toutes les valeurs sont exprimées en pixels, mettre 0 (zéro) laissera Autosizer décider.">
-<!ENTITY pref.width.min "Minimum :">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Maximum :">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Espacement">
-<!ENTITY pref.padding.desc "Toutes les valeurs sont exprimées en pixels, les valeurs négatives sont acceptées.">
-<!ENTITY pref.padding.query "après le texte recherché :">
-<!ENTITY pref.padding.query.accesskey "T">
-<!ENTITY pref.padding.engine "après le nom du moteur :">
-<!ENTITY pref.padding.engine.accesskey "M">
-<!ENTITY pref.other.title "Autres options">
+
 <!ENTITY pref.other.autocomplete "Taille de la bulle de suggestions :">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "Vide la barre de recherche après soumission d&apos;une demande">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Revenir au moteur de recherche par défaut lorsqu&apos;une question est soumise">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "Le moteur de recherche présent tout en haut est le moteur par défaut. Pour changer de moteur, cliquer sur l&apos;icône et choisissez &quot;Gérer les moteurs de recherches...&quot;">
-<!ENTITY pref.other.skipWizard "Ouvrir cette fenêtre plutôt que le mode interactif">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Configuration interactive avec Autosizer">
 <!ENTITY wiz.start.desc "Que doit faire Autosizer, lorsque l&apos;on saisit quelque chose dans la barre de recherche ?">
 <!ENTITY wiz.start.inc "A chaque caractère saisi, augmenter la taille">

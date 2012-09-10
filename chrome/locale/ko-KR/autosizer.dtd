@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer 선택사항">
-<!ENTITY pref.wizard "마법사">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "검색막대 폭">
-<!ENTITY pref.width.desc "모든 값의 단위는 픽셀이며, 0를 입력하면 Autosizer가 알아서 결정합니다.">
-<!ENTITY pref.width.min "최소:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "최대:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "문자 여백">
-<!ENTITY pref.padding.desc "모든 값의 단위는 픽셀이며, 음수 값도 허용합니다.">
-<!ENTITY pref.padding.query "검색 조회:">
-<!ENTITY pref.padding.query.accesskey "Q">
-<!ENTITY pref.padding.engine "엔진 제목:">
-<!ENTITY pref.padding.engine.accesskey "E">
-<!ENTITY pref.other.title "기타">
+
 <!ENTITY pref.other.autocomplete "자동 완성 폭:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "조회값 제출시 검색막대를 비웁니다.">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "검색어를 제출시 기본 검색엔진으로 되돌아감">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "검색 엔진의 최상단이 무엇이든지 기본이 됩니다. 검색 엔진을 관리하고자 한다면 엔진 아이콘을 클릭해 &apos;검색 엔진 관리&apos;를 선택하십시오.">
-<!ENTITY pref.other.skipWizard "마법사 대신에 이 창을 엽니다">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Autosizer 설정 마법사">
 <!ENTITY wiz.start.desc "검색상자에 입력시 Autosizer가 어떻게 동작합니까?">
 <!ENTITY wiz.start.inc "입력에 맞춰 점진적으로 폭을 변경">

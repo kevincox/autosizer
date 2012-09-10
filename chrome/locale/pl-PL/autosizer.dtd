@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Opcje Searchbar Autosizer">
-<!ENTITY pref.wizard "Pomocnik">
-<!ENTITY pref.wizard.accesskey "P">
-<!ENTITY pref.width.title "Szerokość pola wyszukiwania">
-<!ENTITY pref.width.desc "Wszystkie wartości są w pikselach, wpisz 0 (zero) by pozwolić Autosizerowi decydować.">
-<!ENTITY pref.width.min "Minimum:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Maksimum:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Margines dla tekstu">
-<!ENTITY pref.padding.desc "Wszystkie wartości są w pikselach, wartości ujemne są dozwolone.">
-<!ENTITY pref.padding.query "Szukany tekst:">
-<!ENTITY pref.padding.query.accesskey "t">
-<!ENTITY pref.padding.engine "Tytuł wyszukiwarki:">
-<!ENTITY pref.padding.engine.accesskey "w">
-<!ENTITY pref.other.title "Inne">
+
 <!ENTITY pref.other.autocomplete "Szerokość podpowiedzi:">
 <!ENTITY pref.other.autocomplete.accesskey "p">
 <!ENTITY pref.other.cleanOnSubmit "Wyczyść pole wyszukiwania po wysłaniu zapytania">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Zmień wyszukiwarkę na domyślną po wysłaniu zapytania">
 <!ENTITY pref.other.revertOnSubmit.accesskey "Z">
 <!ENTITY pref.other.revertOnSubmit.desc "Domyślną wyszukiwarką jest ta znajdująca się na szczycie listy. By ją zmienić kliknij na ikonę wyszukiwarki i wybierz &apos;Zarządzaj wyszukiwarkami...&apos;">
-<!ENTITY pref.other.skipWizard "Otwórz to okno zamiast pomocnika">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Pomocnik konfiguracji Searcbar Autosizer">
 <!ENTITY wiz.start.desc "Co powinien Autosizer zrobić gdy wpisujesz coś do pola wyszukiwania?">
 <!ENTITY wiz.start.inc "Zwiększaj rozmiar proporcjonalnie dla każdej litery">

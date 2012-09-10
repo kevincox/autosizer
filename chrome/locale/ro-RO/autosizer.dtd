@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Opţiuni Searchbar Autosizer">
-<!ENTITY pref.wizard "Asistent">
-<!ENTITY pref.wizard.accesskey "A">
-<!ENTITY pref.width.title "Dimensiune casetă de căutare">
-<!ENTITY pref.width.desc "Toate valorile sunt în pixeli.  Introduceţi 0 (zero) pentru a lăsa Autosizer să decidă.">
-<!ENTITY pref.width.min "Minimum:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Maximum:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Delimitare text">
-<!ENTITY pref.padding.desc "Toate valorile sunt în pixeli.  Sunt permise şi valori negative.">
-<!ENTITY pref.padding.query "Text de căutat:">
-<!ENTITY pref.padding.query.accesskey "T">
-<!ENTITY pref.padding.engine "Titlu motor de căutare:">
-<!ENTITY pref.padding.engine.accesskey "m">
-<!ENTITY pref.other.title "Diverse">
+
 <!ENTITY pref.other.autocomplete "Lăţimea listei cu sugestii de căutare:">
 <!ENTITY pref.other.autocomplete.accesskey "l">
 <!ENTITY pref.other.cleanOnSubmit "Goleşte caseta de căutare după trimiterea interogării">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Reselectează motorul de căutare implicit după trimiterea interogării">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "Motorul de căutare implicit este cel din capul listei derulante, oricare ar fi el.  Pentru a gestiona lista, faceţi clic pe pictogramă şi selectaţi &quot;Gestionează motoarele de căutare…&quot;">
-<!ENTITY pref.other.skipWizard "Deschide această casetă de dialog în locul asistentului">
-<!ENTITY pref.other.skipWizard.accesskey "D">
 <!ENTITY wiz.title "Asistent de configurare Autosizer">
 <!ENTITY wiz.start.desc "Ce ar trebui să facă Autosizer când tastaţi în caseta de căutare?">
 <!ENTITY wiz.start.inc "Să redimensioneze incremental caseta după tastarea fiecărui caracter">

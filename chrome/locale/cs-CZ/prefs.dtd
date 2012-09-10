@@ -1,6 +1,6 @@
-<!ENTITY title "Autosizer Options">
+<!ENTITY title "Nastavení rozšíření">
 <!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
+<!ENTITY width.title "Šířka vyhledávacího pole">
 <!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Minimum:">
 <!ENTITY width.min.special.showTitle "Show search engine title.">
@@ -10,21 +10,21 @@
 <!ENTITY width.max.special.full "Full Size">
 <!ENTITY width.max.special.max "Maximum Visible Size">
 <!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
+<!ENTITY padding.title "Odsazení textu">
+<!ENTITY padding.desc "Všechny hodnoty jsou v pixelech, záporné hodnoty jsou povoleny.">
+<!ENTITY padding.query "Vyhledávací dotaz:">
+<!ENTITY padding.query.accesskey "V">
+<!ENTITY padding.engine "Titulek vyhledávače:">
+<!ENTITY padding.engine.accesskey "T">
+<!ENTITY other.title "Ostatní">
+<!ENTITY other.autocomplete "Šířka našeptávače:">
+<!ENTITY other.autocomplete.accesskey "N">
+<!ENTITY other.cleanOnSubmit "Vyprázdnit vyhledávací pole po odeslání dotazu">
+<!ENTITY other.cleanOnSubmit.accesskey "Y">
+<!ENTITY other.revertOnSubmit "Po dokončení vyhledávání vrátit k výchozímu vyhledávači">
 <!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
+<!ENTITY other.revertOnSubmit.desc "Vyhledávač nahoře bude považován za výchozí. Správu vyhledávačů otevřete klepnutím na ikonu a vyberte &apos;Správce vyhledávacích modulů...&apos;">
+<!ENTITY other.shrinkToButton "Zkrátit vyhledávací pole až po tlačítko">
 <!ENTITY other.shrinkToButton.accesskey "k">
 <!ENTITY other.addBtn "Add Button to Toolbar">
 <!ENTITY other.addBtn.accesskey "u">

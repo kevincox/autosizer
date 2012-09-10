@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Automatické nastavenie veľkosti">
-<!ENTITY pref.wizard "Asistent">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "Šírka panela Vyhľadávanie">
-<!ENTITY pref.width.desc "Všetky hodnoty sú v pixeloch. Ak chcete automatické nastavenie, zadajte 0.">
-<!ENTITY pref.width.min "Minimálna:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "Maximálna:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "Odsadenie textu">
-<!ENTITY pref.padding.desc "Všetky hodnoty sú v pixeloch, povolené sú aj záporné hodnoty.">
-<!ENTITY pref.padding.query "Vyhľadávaný reťazec">
-<!ENTITY pref.padding.query.accesskey "r">
-<!ENTITY pref.padding.engine "Vyhľadávací modul">
-<!ENTITY pref.padding.engine.accesskey "V">
-<!ENTITY pref.other.title "Iné">
+
 <!ENTITY pref.other.autocomplete "Šírka pre návrhy:">
 <!ENTITY pref.other.autocomplete.accesskey "k">
 <!ENTITY pref.other.cleanOnSubmit "Po odoslaní požiadavky vymazať vyhľadávacie pole">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Po odoslaní požiadavky nastaviť predvolený vyhľadávací modul">
 <!ENTITY pref.other.revertOnSubmit.accesskey "r">
 <!ENTITY pref.other.revertOnSubmit.desc "Vyhľadávací modul navrchu bude predvolený. Ak chcete spravovať vyhľadávacie moduly, kliknite na ikonu vyhľadávacieho modulu a z ponuky vyberte položku &apos;Správa vyhľadávacích modulov&apos;.">
-<!ENTITY pref.other.skipWizard "Otvoriť toto okno namiesto asistenta">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Asistent nastavenia rozšírenia">
 <!ENTITY wiz.start.desc "Čo má Autosizer vykonať, keď zadáte niečo do panela Vyhľadávanie?">
 <!ENTITY wiz.start.inc "Rozšíriť pri každom zadanom písmene">

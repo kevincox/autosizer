@@ -1,22 +1,18 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY title "Autosizer Opções">
+<!ENTITY wizard.accesskey "t">
+<!ENTITY width.title "Largura da Caixa de Pesquisa">
+<!ENTITY width.desc "Todos os valores estão em pixels, digite 0 (zero) para deixar que o Autosizer decida.">
+<!ENTITY width.min "Mínimo:">
 <!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max "Máximo:">
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
+<!ENTITY padding.desc "Todos os valores estão em pixels, valores negativos são permitidos.">
 <!ENTITY padding.query "Search Query:">
 <!ENTITY padding.query.accesskey "Q">
 <!ENTITY padding.engine "Engine Title:">
 <!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
+<!ENTITY other.title "Outros">
 <!ENTITY other.autocomplete "Suggestions Width:">
 <!ENTITY other.autocomplete.accesskey "S">
 <!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
@@ -28,8 +24,12 @@
 <!ENTITY other.shrinkToButton.accesskey "k">
 <!ENTITY other.addBtn "Add Button to Toolbar">
 <!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY width.max.special.max "Maximum Visible Size">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

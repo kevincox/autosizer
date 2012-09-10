@@ -1,35 +1,35 @@
-<!ENTITY title "Autosizer Options">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
-<!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "Text Padding">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Other">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
-<!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
-<!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
-<!ENTITY wizard.button "Assistant">
+<!ENTITY title "Autosizer オプション">
 <!ENTITY wizard.accesskey "t">
-<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY width.title "検索バーの横幅">
+<!ENTITY width.desc "入力される値の単位はすべてピクセルです。値を 0 に設定すると Autosizer が自動的に調整します。">
+<!ENTITY width.min "最小:">
+<!ENTITY width.min.accesskey "i">
+<!ENTITY width.max "最大:">
+<!ENTITY width.max.accesskey "a">
+<!ENTITY padding.title "文字の余白">
+<!ENTITY padding.desc "入力される値の単位はすべてピクセルで 0 以下の値も使用できます。">
+<!ENTITY padding.query "検索ワード:">
+<!ENTITY padding.query.accesskey "Q">
+<!ENTITY padding.engine "検索エンジンの名前:">
+<!ENTITY padding.engine.accesskey "E">
+<!ENTITY other.title "その他">
+<!ENTITY other.autocomplete "検索候補の横幅:">
+<!ENTITY other.autocomplete.accesskey "S">
+<!ENTITY other.cleanOnSubmit "検索の開始時に検索バーの内容を消去します">
+<!ENTITY other.cleanOnSubmit.accesskey "p">
+<!ENTITY other.revertOnSubmit "検索後にデフォルトの検索エンジンに戻す">
+<!ENTITY other.revertOnSubmit.accesskey "R">
+<!ENTITY other.revertOnSubmit.desc "&apos;検索エンジンの管理&apos; 画面で一番上に表示される検索エンジンが、デフォルトのデフォルトの検索エンジンになります。">
+<!ENTITY other.shrinkToButton "検索バーが空のときはボタンと置き換える">
+<!ENTITY other.shrinkToButton.accesskey "k">
+<!ENTITY other.addBtn "ツールバーにボタンを追加">
+<!ENTITY other.addBtn.accesskey "u">
+<!ENTITY width.max.special.max "Maximum Visible Size">
 <!ENTITY intro.desc.after ".">
+<!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY width.max.special.none "regular">

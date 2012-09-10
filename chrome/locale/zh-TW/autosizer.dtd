@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Autosizer 選項">
-<!ENTITY pref.wizard "設定精靈">
-<!ENTITY pref.wizard.accesskey "t">
-<!ENTITY pref.width.title "搜尋列寬度">
-<!ENTITY pref.width.desc "如輸入 0 則 Autosizer 將會自行決定 (單位：像素) 。">
-<!ENTITY pref.width.min "最小值:">
-<!ENTITY pref.width.min.accesskey "i">
-<!ENTITY pref.width.max "最大值:">
-<!ENTITY pref.width.max.accesskey "a">
-<!ENTITY pref.padding.title "文字與右方距離">
-<!ENTITY pref.padding.desc "允許負值 (單位：像素) 。">
-<!ENTITY pref.padding.query "搜尋關鍵字:">
-<!ENTITY pref.padding.query.accesskey "Q">
-<!ENTITY pref.padding.engine "搜尋引擎標題:">
-<!ENTITY pref.padding.engine.accesskey "E">
-<!ENTITY pref.other.title "其他">
+
 <!ENTITY pref.other.autocomplete "「搜尋建議」的寬度:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "關鍵字送出查詢後，清空搜尋列中的文字">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "送出關鍵字後自動跳回預設的搜尋引擎">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "「預設的搜尋引擎」是指排在最上面的那個。如果要改變順序，請按下搜尋引擎圖示，並選擇「管理搜尋引擎...」">
-<!ENTITY pref.other.skipWizard "下次設定時顯示這個視窗，而非設定精靈">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Autosizer 設定精靈">
 <!ENTITY wiz.start.desc "當您在搜尋列裡輸入文字時，Autosizer 應該要執行什麼動作呢？">
 <!ENTITY wiz.start.inc "寬度隨著字數變化">

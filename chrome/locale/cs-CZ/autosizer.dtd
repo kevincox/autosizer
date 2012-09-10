@@ -1,19 +1,4 @@
-<!ENTITY pref.title "Nastavení rozšíření">
-<!ENTITY pref.wizard "Průvodce">
-<!ENTITY pref.wizard.accesskey "P">
-<!ENTITY pref.width.title "Šířka vyhledávacího pole">
-<!ENTITY pref.width.desc "Všechny hodnoty jsou v pixelech, zadejte 0 (nula) pro automatický výběr.">
-<!ENTITY pref.width.min "Minimum:">
-<!ENTITY pref.width.min.accesskey "I">
-<!ENTITY pref.width.max "Maximum:">
-<!ENTITY pref.width.max.accesskey "A">
-<!ENTITY pref.padding.title "Odsazení textu">
-<!ENTITY pref.padding.desc "Všechny hodnoty jsou v pixelech, záporné hodnoty jsou povoleny.">
-<!ENTITY pref.padding.query "Vyhledávací dotaz:">
-<!ENTITY pref.padding.query.accesskey "V">
-<!ENTITY pref.padding.engine "Titulek vyhledávače:">
-<!ENTITY pref.padding.engine.accesskey "T">
-<!ENTITY pref.other.title "Ostatní">
+
 <!ENTITY pref.other.autocomplete "Šířka našeptávače:">
 <!ENTITY pref.other.autocomplete.accesskey "N">
 <!ENTITY pref.other.cleanOnSubmit "Vyprázdnit vyhledávací pole po odeslání dotazu">
@@ -21,8 +6,6 @@
 <!ENTITY pref.other.revertOnSubmit "Po dokončení vyhledávání vrátit k výchozímu vyhledávači">
 <!ENTITY pref.other.revertOnSubmit.accesskey "r">
 <!ENTITY pref.other.revertOnSubmit.desc "Vyhledávač nahoře bude považován za výchozí. Správu vyhledávačů otevřete klepnutím na ikonu a vyberte &apos;Správce vyhledávacích modulů...&apos;">
-<!ENTITY pref.other.skipWizard "Otevřít toto okno namísto průvodce">
-<!ENTITY pref.other.skipWizard.accesskey "O">
 <!ENTITY wiz.title "Průvodce nastavením rozšíření">
 <!ENTITY wiz.start.desc "Jak se má Autosizer zachovat, když napíšete něco do vyhledávacího pole?">
 <!ENTITY wiz.start.inc "Zvětšovat přírůstkově po každém písmenu">
