@@ -1,7 +1,6 @@
 <!ENTITY title "Opciones de Autosizer">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "Ancho de barra de búsquedas">
-<!ENTITY width.desc "Todos los valores están en pixels, inserte 0 (cero) para que Autosizer decida por sí misma.">
 <!ENTITY width.min "Mínimo:">
 <!ENTITY width.min.accesskey "n">
 <!ENTITY width.max "Máximo:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

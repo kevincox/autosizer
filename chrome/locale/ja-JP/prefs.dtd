@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer オプション">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "検索バーの横幅">
-<!ENTITY width.desc "入力される値の単位はすべてピクセルです。値を 0 に設定すると Autosizer が自動的に調整します。">
 <!ENTITY width.min "最小:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "最大:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

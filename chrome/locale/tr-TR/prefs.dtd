@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer seçenekleri">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "Arama kutucuğu genişliği">
-<!ENTITY width.desc "All values are in pixels, insert 0 (zero) to let Autosizer decide.">
 <!ENTITY width.min "En az">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "En çok">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

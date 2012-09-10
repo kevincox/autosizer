@@ -1,7 +1,6 @@
 <!ENTITY title "Méret automatikus beállítása">
 <!ENTITY wizard.accesskey "T">
 <!ENTITY width.title "Keresőmező szélessége">
-<!ENTITY width.desc "Az értékek képpontokat jelölnek. Automatikus beállításhoz írjon 0-t.">
 <!ENTITY width.min "Minimális:">
 <!ENTITY width.min.accesskey "I">
 <!ENTITY width.max "Maximális:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

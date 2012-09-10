@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer opties">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "Zoekbalkbreedte">
-<!ENTITY width.desc "Alle waarden zijn in pixels; voer 0 (nul) in om Autosizer te laten beslissen.">
 <!ENTITY width.min "Minimum:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maximum:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

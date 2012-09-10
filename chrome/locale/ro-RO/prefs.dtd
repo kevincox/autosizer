@@ -1,7 +1,6 @@
 <!ENTITY title "Opţiuni Searchbar Autosizer">
 <!ENTITY wizard.accesskey "A">
 <!ENTITY width.title "Dimensiune casetă de căutare">
-<!ENTITY width.desc "Toate valorile sunt în pixeli.  Introduceţi 0 (zero) pentru a lăsa Autosizer să decidă.">
 <!ENTITY width.min "Minimum:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maximum:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

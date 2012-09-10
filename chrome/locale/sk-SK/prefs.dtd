@@ -1,7 +1,6 @@
 <!ENTITY title "Automatické nastavenie veľkosti">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "Šírka panela Vyhľadávanie">
-<!ENTITY width.desc "Všetky hodnoty sú v pixeloch. Ak chcete automatické nastavenie, zadajte 0.">
 <!ENTITY width.min "Minimálna:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maximálna:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

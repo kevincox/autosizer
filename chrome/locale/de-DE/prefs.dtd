@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer Einstellungen">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.title "Suchleistenbreite">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Mindestens:">
 <!ENTITY width.min.special.showTitle "Show search engine title.">
 <!ENTITY width.min.accesskey "I">
@@ -33,3 +32,4 @@
 <!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.after ".">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

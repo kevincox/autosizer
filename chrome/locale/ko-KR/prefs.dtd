@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer 선택사항">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "검색막대 폭">
-<!ENTITY width.desc "모든 값의 단위는 픽셀이며, 0를 입력하면 Autosizer가 알아서 결정합니다.">
 <!ENTITY width.min "최소:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "최대:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

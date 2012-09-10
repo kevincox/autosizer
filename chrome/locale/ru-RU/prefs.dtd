@@ -1,7 +1,6 @@
 <!ENTITY title "Настройки Autosizer">
 <!ENTITY wizard.accesskey "М">
 <!ENTITY width.title "Ширина панели поиска">
-<!ENTITY width.desc "Все значения в пикселях, чтобы запретить Autosizer изменять размер, введите 0 (ноль).">
 <!ENTITY width.min "Минимум:">
 <!ENTITY width.min.accesskey "и">
 <!ENTITY width.max "Максимум:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

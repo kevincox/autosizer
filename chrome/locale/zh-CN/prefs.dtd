@@ -1,7 +1,6 @@
 <!ENTITY title "Autosizer 选项">
 <!ENTITY wizard.accesskey "t">
 <!ENTITY width.title "搜索栏宽度">
-<!ENTITY width.desc "单位为像素, 输入 0 则 Autosizer 将会自行设定.">
 <!ENTITY width.min "最小值:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "最大值:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

@@ -1,7 +1,6 @@
 <!ENTITY title "Opcje Searchbar Autosizer">
 <!ENTITY wizard.accesskey "P">
 <!ENTITY width.title "Szerokość pola wyszukiwania">
-<!ENTITY width.desc "Wszystkie wartości są w pikselach, wpisz 0 (zero) by pozwolić Autosizerowi decydować.">
 <!ENTITY width.min "Minimum:">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maksimum:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

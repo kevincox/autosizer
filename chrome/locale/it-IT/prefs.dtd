@@ -1,7 +1,6 @@
 <!ENTITY title "Opzioni di Searchbar Autosizer">
 <!ENTITY wizard.accesskey "C">
 <!ENTITY width.title "Larghezza della barra di ricerca">
-<!ENTITY width.desc "Tutti i valori sono in pixel, inserire 0 (zero) per lasciare impostare la larghezza all&apos;estensione">
 <!ENTITY width.min "Larghezza minima:">
 <!ENTITY width.min.accesskey "m">
 <!ENTITY width.max "Larghezza massima:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">

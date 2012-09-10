@@ -1,7 +1,6 @@
 <!ENTITY title "Επιλογές Autosizer">
 <!ENTITY wizard.accesskey "η">
 <!ENTITY width.title "Μήκος εργαλειοθήκης αναζήτησης">
-<!ENTITY width.desc "Όλες οι τιμές είναι σε πίξελ, Βάλτε 0 (μηδέν) για να ρυθμιστεί αυτόματα από το Autosizer.">
 <!ENTITY width.min "Ελάχιστο:">
 <!ENTITY width.min.accesskey "ά">
 <!ENTITY width.max "Μέγιστο:">
@@ -33,3 +32,4 @@
 <!ENTITY wizard.button "Assistant">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY width.max.special.none "regular">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
