@@ -11,7 +11,7 @@
 # relative path is matched (begining with a /).  Directories are not listed
 # and are created as needed.  This means you can not have empty directories.
 include = [r"\.(jsm?|css|xul|properties|dtd|rdf)$", r"\.png$",
-		   r"/chrome.manifest"]
+		   r"^/chrome.manifest$"]
 exclude = [r"/\."]
 
 # The way to name the package.  This will be parsed using Python's Format

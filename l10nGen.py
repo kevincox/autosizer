@@ -12,6 +12,10 @@ addKeys = True # Wether to add new keys or not.
 removeFiles = True # Wether to remove extra files or not.
 removeKeys = True # Wether to remove extra keys or not.
 
+generateManifest = True # Wether or not to generate a chrome.manifest from
+                        # chrome.mainfesft.head and the locales in {locales}.
+chromePrefix = "autosizer"
+
 
 
 
@@ -94,11 +98,28 @@ def findParser ( name ):
 
 	return None
 
-locales = os.path.join(sys.path[0], locales)
+alocals = os.path.join(sys.path[0], locales)
+availLocales = os.listdir(locales)
 
-### Get base locale values.
+del availLocales[availLocales.index(baseLocale)] # Put the base locale in front.
+availLocales.insert(0, baseLocale)
 
-os.chdir(os.path.join(locales, baseLocale))
+##### Generate chrome.manifest.
+manifest = open("chrome.manifest", "w")
+
+if os.path.exists("chrome.manifest.head"):
+	manifest.write(open("chrome.manifest.head").read());
+
+for l in availLocales:
+	manifest.write("locale  {pre} {lan:<4} {path}\n".format(pre=chromePrefix, lan=l, path=os.path.join(locales, l)))
+
+manifest.close()
+
+
+
+##### Get base locale values.
+
+os.chdir(os.path.join(alocals, baseLocale))
 baseFiles = frozenset(os.listdir())
 baseContent = dict()
 
@@ -113,19 +134,17 @@ for f in baseFiles:
 
 ### Make other locales match.
 
-os.chdir(locales)
+os.chdir(alocals)
 
-for locale in os.listdir():
-	if locale == baseLocale: continue
-
-	os.chdir(os.path.join(locales, locale))
+for locale in availLocales[1:]: # Skip base locale
+	os.chdir(os.path.join(alocals, locale))
 	files = frozenset(os.listdir())
 
 	missing = baseFiles.difference(files)
 	for f in missing:
 		if addFiles:
 			print("{locale} is missing '{file}', coppying over.".format(locale=locale, file=f))
-			shutil.copyfile(os.path.join(locales, baseLocale, f), os.path.join(locales, locale, f))
+			shutil.copyfile(os.path.join(alocals, baseLocale, f), os.path.join(alocals, locale, f))
 		else:
 			print("{locale} is missing '{file}', ingoring.".format(locale=locale, file=f))
 
@@ -187,8 +206,6 @@ for locale in os.listdir():
 			n = tempfile.NamedTemporaryFile(dir=".", mode="w", delete=False)
 			n.write("".join(c for _, c in chunks))
 			os.rename(n.name, f)
-
-
 
 
 
