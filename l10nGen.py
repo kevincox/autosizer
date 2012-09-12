@@ -111,7 +111,7 @@ if os.path.exists("chrome.manifest.head"):
 	manifest.write(open("chrome.manifest.head").read());
 
 for l in availLocales:
-	manifest.write("locale  {pre} {lan:<4} {path}\n".format(pre=chromePrefix, lan=l, path=os.path.join(locales, l)))
+	manifest.write("locale  {pre} {lan:<4} {path}/\n".format(pre=chromePrefix, lan=l, path=os.path.join(locales, l)))
 
 manifest.close()
 
