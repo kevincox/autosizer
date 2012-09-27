@@ -33,3 +33,5 @@
 <!ENTITY intro.desc.after ".">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
 <!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
