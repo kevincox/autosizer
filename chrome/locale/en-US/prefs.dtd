@@ -11,7 +11,9 @@
 <!ENTITY width.max "Maximum:">
 <!ENTITY width.max.special.none "regular">
 <!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
 <!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "Text Padding">
 <!ENTITY padding.desc "All values are in pixels, negative values are allowed.">

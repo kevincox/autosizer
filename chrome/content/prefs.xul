@@ -53,8 +53,8 @@
 					         oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
 					<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
 						<menuitem value="none" label="&width.max.special.none;" disabled="true" />
-						<menuitem value="full" label="&width.max.special.full;" />
-						<menuitem value="max"  label="&width.max.special.max;"  />
+						<menuitem value="full" label="&width.max.special.full;" tooltiptext="&width.max.special.full.tooltip;"/>
+						<menuitem value="max"  label="&width.max.special.max;"  tooltiptext="&width.max.special.max.tooltip;" />
 					</menupopup></menulist>
 					<vbox flex="999"></vbox>
 					<image src="width_max.png"/>
