@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Независимо от того, какой поисковый плагин вами выбран, после выполнения запроса будет установлен плагин по умолчанию. Для управления поисковыми плагинами нажмите на значок поискового плагина и выберите требуемый в окне &apos;&apos;Управление списком поисковых плагинов&apos;&apos; нажав на пункт &apos;&apos;Управление поисковыми плагинами&apos;&apos;.">
 <!ENTITY other.shrinkToButton "Сжимать панель поиска до кнопки, если она пуста">
 <!ENTITY other.shrinkToButton.accesskey "ж">
-<!ENTITY other.addBtn "Добавить кнопку на панель инструментов">
-<!ENTITY other.addBtn.accesskey "Д">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "М">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

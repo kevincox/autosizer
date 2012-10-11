@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "位于顶端的搜索引擎将为默认搜索引擎. 你可以点击搜索引擎图标选择[管理搜索引擎...]来进行修改.">
 <!ENTITY other.shrinkToButton "无内容时收缩搜索栏为按钮">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "添加按钮到工具栏">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

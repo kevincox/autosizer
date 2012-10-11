@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "검색 엔진의 최상단이 무엇이든지 기본이 됩니다. 검색 엔진을 관리하고자 한다면 엔진 아이콘을 클릭해 &apos;검색 엔진 관리&apos;를 선택하십시오.">
 <!ENTITY other.shrinkToButton "비어있는 경우 버튼쪽으로 검색막대 축소">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "도구막대에 버튼 추가">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

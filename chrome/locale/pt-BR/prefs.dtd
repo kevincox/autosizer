@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
 <!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

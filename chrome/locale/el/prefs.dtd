@@ -1,0 +1,40 @@
+<!ENTITY title "Επιλογές Autosizer">
+<!ENTITY intro.title "Περί ρυθμίσεων">
+<!ENTITY intro.desc.before "Για περισσότερες πληροφορίες σχετικά με το τι σημαίνει κάθε ρύθμιση, δείτε">
+<!ENTITY intro.desc.link "αυτή τη σελίδα wiki">
+<!ENTITY intro.desc.after ".">
+<!ENTITY width.title "Μήκος εργαλειοθήκης αναζήτησης">
+<!ENTITY width.desc "Όλες οι τιμές είναι σε πίξελ, μπορείτε να επιλέξετε ειδικές ρυθμίσεις από το αναδυόμενο μενού.">
+<!ENTITY width.min "Ελάχιστο:">
+<!ENTITY width.min.special.showTitle "Εμφάνιση ονόματος μηχανής αναζήτησης.">
+<!ENTITY width.min.accesskey "χ">
+<!ENTITY width.max "Μέγιστο">
+<!ENTITY width.max.special.none "Κανονικό">
+<!ENTITY width.max.special.full "Πλήρες μέγεθος">
+<!ENTITY width.max.special.full.tooltip "Η εργαλειοθήκη θα επεκταθεί στο μέγιστο μήκος που μπορεί να έχει χωρίς να εμποδίζει κάτι άλλο.">
+<!ENTITY width.max.special.max "Μέγιστο ορατό μέγεθος">
+<!ENTITY width.max.special.max.tooltip "Η εργαλειοθήκη θα επεκταθεί, μετακινώντας άλλα στοιχεία εκτός οθόνης ώσπου να μετακινηθεί κι αυτή εκτός.">
+<!ENTITY width.max.accesskey "γ">
+<!ENTITY padding.title "Γέμισμα κειμένου">
+<!ENTITY padding.desc "Όλες οι τιμές είναι σε πίξελ, επιτρέπονται αρνητικές τιμές.">
+<!ENTITY padding.query "Αλφαριθμητικό αναζήτησης:">
+<!ENTITY padding.query.accesskey "ζ">
+<!ENTITY padding.engine "Όνομα μηχανής αναζήτησης">
+<!ENTITY padding.engine.accesskey "ν">
+<!ENTITY other.title "Άλλο">
+<!ENTITY other.autocomplete "Μήκος προτάσεων:">
+<!ENTITY other.autocomplete.accesskey "π">
+<!ENTITY other.cleanOnSubmit "Εκκαθάριση εργαλειοθήκης μετά την αναζήτηση">
+<!ENTITY other.cleanOnSubmit.accesskey "θ">
+<!ENTITY other.revertOnSubmit "Επαναφορά της αρχικής μηχανής αναζήτησης μετά την αναζήτηση">
+<!ENTITY other.revertOnSubmit.accesskey "φ">
+<!ENTITY other.revertOnSubmit.desc "Η μηχανή αναζήτησης που είναι στην κορυφή της λίστας θα θεωρείται αρχική. Για να διαχειριστείτε τις μηχανές σας, κάντε κλικ στο εικονίδιο της μηχανής και επιλέξτε «Διαχείριση μηχανών αναζήτησης...»">
+<!ENTITY other.shrinkToButton "Μετατροπή της εργαλειοθήκης σε κουμπί όταν είναι κενή">
+<!ENTITY other.shrinkToButton.accesskey "κ">
+<!ENTITY wizard.button "Βοηθός">
+<!ENTITY wizard.accesskey "ο">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

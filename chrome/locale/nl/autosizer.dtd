@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Suggestiesbreedte:">
+<!ENTITY pref.other.autocomplete.accesskey "S">
+<!ENTITY pref.other.cleanOnSubmit "Zoekbalk leegmaken wanneer een opdracht wordt ingegeven">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "l">
+<!ENTITY pref.other.revertOnSubmit "Standaardzoekmachine terugzetten wanneer een zoekopdracht is ingegeven">
+<!ENTITY pref.other.revertOnSubmit.accesskey "T">
+<!ENTITY pref.other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies ‘Zoekmachines beheren…’">
+<!ENTITY wiz.title "Autosizer configuratie-assistent">
+<!ENTITY wiz.start.desc "Wat moet Autosizer doen wanneer u iets in het zoekveld intypt?">
+<!ENTITY wiz.start.inc "Incrementeel vergroten, per letter">
+<!ENTITY wiz.start.inc.accesskey "V">
+<!ENTITY wiz.start.alt "Zoekbalk bij eerste toetsaanslag vergroten">
+<!ENTITY wiz.start.alt.accesskey "T">
+<!ENTITY wiz.start.fix "Altijd de zelfde breedte aanhouden">
+<!ENTITY wiz.start.fix.accesskey "A">
+<!ENTITY wiz.norMinWidth.title "Hoe breed moet de zoekbalk tenminste zijn?">
+<!ENTITY wiz.norMinWidth.desc "Specificeer minimumbreedte">
+<!ENTITY wiz.norMaxWidth.title "Hoe breed mag de zoekbalk ten hoogste zijn?">
+<!ENTITY wiz.norMaxWidth.desc "Specificeer maximumbreedte">
+<!ENTITY wiz.altWidth.title "Hoe breed moet de zoekbalk zijn wanneer deze gebruikt wordt?">
+<!ENTITY wiz.altWidth.desc "Specificeer breedte bij gebruik">
+<!ENTITY wiz.fixWidth.title "Hoe breed moet de zoekbalk zijn?">
+<!ENTITY wiz.fixWidth.desc "Specificeer breedte">
+<!ENTITY wiz.aftersearch.title "Wat moet er gebeuren nadat een zoekopdracht is ingegeven?">
+<!ENTITY wiz.resize "Vergroot/verklein de zoekbalk naar believen zoals weergegeven in de afbeelding.">
+<!ENTITY wiz.autodetect "Autosizer zal raden wat u wilt, dus beweeg uw muis een beetje totdat het goed wordt geraden.">
+<!ENTITY pref.other.shrinkToButton "De zoekbalk tot een knop verkleinen als deze leeg is">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "Knop aan werkbalk toevoegen">
+<!ENTITY pref.other.addBtn.accesskey "n">

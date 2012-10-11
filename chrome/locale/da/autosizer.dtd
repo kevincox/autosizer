@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Forslag bredde:">
+<!ENTITY pref.other.autocomplete.accesskey "b">
+<!ENTITY pref.other.cleanOnSubmit "Ryd søgefeltet når en forespørgsel indsendes">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit "Nulstil til standard søgemaskine når en forespørgsel indsendes">
+<!ENTITY pref.other.revertOnSubmit.accesskey "N">
+<!ENTITY pref.other.revertOnSubmit.desc "Den øverste søgemaskine vil være standard. For at administrere dine søgetjenester, klik på motor-ikonet og vælg &apos;Håndter søgetjenester...&apos;">
+<!ENTITY wiz.title "Autosizer konfigurations-assistent">
+<!ENTITY wiz.start.desc "Hvad skal Autosizer gøre når du indtaster noget i søgefeltet?">
+<!ENTITY wiz.start.inc "Tilpas løbende til hvert bogstav">
+<!ENTITY wiz.start.inc.accesskey "T">
+<!ENTITY wiz.start.alt "Forstør søgefeltet ved første tegn">
+<!ENTITY wiz.start.alt.accesskey "o">
+<!ENTITY wiz.start.fix "Behold samme bredde hele tiden">
+<!ENTITY wiz.start.fix.accesskey "B">
+<!ENTITY wiz.norMinWidth.title "Hvor bredt skal søgefeltet mindst være?">
+<!ENTITY wiz.norMinWidth.desc "Angiv minimal bredde">
+<!ENTITY wiz.norMaxWidth.title "Hvor bredt skal søgefeltet maksimalt være?">
+<!ENTITY wiz.norMaxWidth.desc "Angiv maksimal bredde">
+<!ENTITY wiz.altWidth.title "Hvor bred skal søgefeltet være når i brug?">
+<!ENTITY wiz.altWidth.desc "Angiv når-i-brug bredde">
+<!ENTITY wiz.fixWidth.title "Hvor bred skal søgefeltet være?">
+<!ENTITY wiz.fixWidth.desc "Angiv bredde">
+<!ENTITY wiz.aftersearch.title "Hvad skal der ske efter indsendelse af en forespørgsel?">
+<!ENTITY wiz.resize "Tilpas størrelsen på søgefeltet som vist i billedet så det passer dig.">
+<!ENTITY wiz.autodetect "Autosizer vil gætte på hvad du ønsker, så flyt lidt på musen indtil den har det rigtigt.">
+<!ENTITY pref.other.shrinkToButton "Skrump søgefelt til knap hvis tom">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "Tilføj knap til Værktøjslinje">
+<!ENTITY pref.other.addBtn.accesskey "V">

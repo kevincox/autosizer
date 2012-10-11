@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Die oberste Suchmaschine ist Standard. Um die Suchmaschinen zu verwalten auf das Suchmaschinen Symbol klicken und &apos;Suchmaschinen verwalten...&apos; auswählen.">
 <!ENTITY other.shrinkToButton "Suchleiste zu Symbol schrumpfen wenn leer">
 <!ENTITY other.shrinkToButton.accesskey "Y">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

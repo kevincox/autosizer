@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies &apos;Zoekmachines beheren...&apos;">
 <!ENTITY other.shrinkToButton "Verklein de zoekbalk tot een knop als deze leeg is">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Knop aan werkbalk toevoegen">
-<!ENTITY other.addBtn.accesskey "n">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

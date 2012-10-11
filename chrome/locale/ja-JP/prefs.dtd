@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "&apos;検索エンジンの管理&apos; 画面で一番上に表示される検索エンジンが、デフォルトのデフォルトの検索エンジンになります。">
 <!ENTITY other.shrinkToButton "検索バーが空のときはボタンと置き換える">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "ツールバーにボタンを追加">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

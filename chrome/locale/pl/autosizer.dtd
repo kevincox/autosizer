@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Szerokość podpowiedzi:">
+<!ENTITY pref.other.autocomplete.accesskey "p">
+<!ENTITY pref.other.cleanOnSubmit "Wyczyść pole wyszukiwania po wysłaniu zapytania">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "E">
+<!ENTITY pref.other.revertOnSubmit "Zmień wyszukiwarkę na domyślną po wysłaniu zapytania">
+<!ENTITY pref.other.revertOnSubmit.accesskey "Z">
+<!ENTITY pref.other.revertOnSubmit.desc "Domyślną wyszukiwarką jest ta znajdująca się na szczycie listy. By ją zmienić kliknij na ikonę wyszukiwarki i wybierz &apos;Zarządzaj wyszukiwarkami...&apos;">
+<!ENTITY wiz.title "Pomocnik konfiguracji Searcbar Autosizer">
+<!ENTITY wiz.start.desc "Co powinien Autosizer zrobić gdy wpisujesz coś do pola wyszukiwania?">
+<!ENTITY wiz.start.inc "Zwiększaj rozmiar proporcjonalnie dla każdej litery">
+<!ENTITY wiz.start.inc.accesskey "Z">
+<!ENTITY wiz.start.alt "Powiększ pole wyszukiwania gdy zaczniesz wpisywać">
+<!ENTITY wiz.start.alt.accesskey "P">
+<!ENTITY wiz.start.fix "Utrzymuj cały czas stałą szerokość">
+<!ENTITY wiz.start.fix.accesskey "U">
+<!ENTITY wiz.norMinWidth.title "Co najmniej jak szerokie powinno być pole wyszukiwanie?">
+<!ENTITY wiz.norMinWidth.desc "Określ minimalną szerokość">
+<!ENTITY wiz.norMaxWidth.title "Co najwyżej jak szerokie powinno być pole wyszukiwania?">
+<!ENTITY wiz.norMaxWidth.desc "Określ maksymalną szerokość">
+<!ENTITY wiz.altWidth.title "Jak szerokie powinno być pole wyszukiwania w trakcie użytkowania?">
+<!ENTITY wiz.altWidth.desc "Określ szerokość w trakcie użytkowania">
+<!ENTITY wiz.fixWidth.title "Jak szerokie powinno być pole wyszukiwania?">
+<!ENTITY wiz.fixWidth.desc "Określ szerokość">
+<!ENTITY wiz.aftersearch.title "Co zrobić po wysłaniu zapytania?">
+<!ENTITY wiz.resize "Zmień szerokość pola wyszukiwania zgodnie z upodobaniami tak jak na rysunku.">
+<!ENTITY wiz.autodetect "Autosizer zgadnie odpowiednią wartość, ustaw więc myszą odpowiednią szerokość.">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn.accesskey "u">
+<!ENTITY pref.other.addBtn "Add Button to Toolbar">
+<!ENTITY pref.other.shrinkToButton "Shrink searchbar to Button if empty">

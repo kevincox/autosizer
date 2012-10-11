@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Sökförslagsrutans bredd:">
+<!ENTITY pref.other.autocomplete.accesskey "S">
+<!ENTITY pref.other.cleanOnSubmit "Töm sökfältet när en fråga har skickats">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "k">
+<!ENTITY pref.other.revertOnSubmit "Återgå till standardsökmotorn när en fråga har skickats">
+<!ENTITY pref.other.revertOnSubmit.accesskey "Å">
+<!ENTITY pref.other.revertOnSubmit.desc "Den sökmotor som ligger överst kommer att vara standard. För att hantera dina motorer, klicka på motorns ikon och välj &quot;Hantera sökmotorer...&quot;.">
+<!ENTITY wiz.title "Konfigurationsguiden för Autosizer">
+<!ENTITY wiz.start.desc "Vad skall Autosizer göra när du skriver någonting i sökfältet?">
+<!ENTITY wiz.start.inc "Ändra storlek stegvis, för varje tecken">
+<!ENTITY wiz.start.inc.accesskey "s">
+<!ENTITY wiz.start.alt "Expandera sökfältet vid första tangentnedslaget">
+<!ENTITY wiz.start.alt.accesskey "E">
+<!ENTITY wiz.start.fix "Behåll samma bredd hela tiden">
+<!ENTITY wiz.start.fix.accesskey "B">
+<!ENTITY wiz.norMinWidth.title "Hur brett skall sökfältet vara som minst?">
+<!ENTITY wiz.norMinWidth.desc "Ange minsta bredd">
+<!ENTITY wiz.norMaxWidth.title "Hur brett skall sökfältet vara som mest?">
+<!ENTITY wiz.norMaxWidth.desc "Ange största bredd">
+<!ENTITY wiz.altWidth.title "Hur brett skall sökfältet vara när det används?">
+<!ENTITY wiz.altWidth.desc "Ange bredd vid bruk">
+<!ENTITY wiz.fixWidth.title "Hur brett skall sökfältet vara?">
+<!ENTITY wiz.fixWidth.desc "Ange bredd">
+<!ENTITY wiz.aftersearch.title "Vad skall göras när en fråga har skickats?">
+<!ENTITY wiz.resize "Ställ in den storlek på sökfältet som du önskar. Dra i de röda hakparenteserna (se bilden).">
+<!ENTITY wiz.autodetect "Autosizer kommer att gissa vad du önskar, så flytta din muspekare en bit tills det blir rätt.">
+<!ENTITY pref.other.shrinkToButton "Krymp sökfältet till en knapp när det är tomt">
+<!ENTITY pref.other.shrinkToButton.accesskey "y">
+<!ENTITY pref.other.addBtn "Visa knapp i verktygsfältet">
+<!ENTITY pref.other.addBtn.accesskey "v">

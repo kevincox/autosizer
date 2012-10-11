@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "A legfelső keresőszolgáltatás lesz az alapértelmezett. A keresőszolgáltatások kezeléséhez kattintson a keresőszolgáltatás ikonjára, és a menüből válassza ki a &apos;Keresőszolgáltatások kezelése&apos; menüpontot.">
 <!ENTITY other.shrinkToButton "Keresőmező kicsinyítése gombméretre ha üres">
 <!ENTITY other.shrinkToButton.accesskey "g">
-<!ENTITY other.addBtn "Gomb hozzáadása az eszköztárhoz">
-<!ENTITY other.addBtn.accesskey "h">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "T">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

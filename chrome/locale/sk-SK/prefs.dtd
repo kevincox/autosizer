@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Vyhľadávací modul navrchu bude predvolený. Ak chcete spravovať vyhľadávacie moduly, kliknite na ikonu vyhľadávacieho modulu a z ponuky vyberte položku &apos;Správa vyhľadávacích modulov&apos;.">
 <!ENTITY other.shrinkToButton "Zmenšiť vyhľadávací panel len na tlačidlo, ak je prázdny">
 <!ENTITY other.shrinkToButton.accesskey "Z">
-<!ENTITY other.addBtn "Pridať tlačidlo na panel nástrojov">
-<!ENTITY other.addBtn.accesskey "d">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

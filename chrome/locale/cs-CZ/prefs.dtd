@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Vyhledávač nahoře bude považován za výchozí. Správu vyhledávačů otevřete klepnutím na ikonu a vyberte &apos;Správce vyhledávacích modulů...&apos;">
 <!ENTITY other.shrinkToButton "Zkrátit vyhledávací pole až po tlačítko">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY other.addBtn "Add Button to Toolbar">
-<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
