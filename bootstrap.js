@@ -123,5 +123,9 @@ function install (data, reason)
 		}
 	
 	}
+	//if ( reason == ADDON_INSTALL )
+	{
+		
+	}
 	
 } 
