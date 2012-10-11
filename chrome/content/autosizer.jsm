@@ -41,34 +41,107 @@ function d ( msg, important )
 
 constants = {
 	prefBranch: "extensions.autosizer.",
+	syncPrefBranch: "services.sync.prefs.sync.",
 }
 
-pref = {
-//	strings: "chrome://autosizer/locale/autosizer.properties",
-	minwidth: 0,
-	maxwidth: 0,
+var pref = {};
+var prefo = {};
+var fpref = {};
+{
+	var rbranch = Services.prefs.getBranch("");
+	rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
+	var dbranch = Services.prefs.getDefaultBranch("");
+	
+	var syncPref = { type: "boolean" }; // Will only ever get written.
+	
+	function setPref ( key, val, def )
+	{
+		var b = def?dbranch:rbranch;
+		
+		d(key+"("+(fpref[key].type)+"): "+val+" - "+def);
+		
+		switch (fpref[key].type)
+		{
+			case "boolean":
+				b.setBoolPref(key, val);
+				break;
+			case "number":
+				b.setIntPref(key, val);
+				break;
+			case "string":
+				b.setCharPref(key, val);
+				break;
+		}
+	}
+	function getPref ( key )
+	{
+		switch (fpref[key].type)
+		{
+			case "boolean":
+				return rbranch.getBoolPref(key);
+			case "number":
+				return rbranch.getIntPref(key);
+			case "string":
+				return rbranch.getCharPref(key);
+		}
+	}
+	
+	function addPref ( name, dflt )
+	{
+		var r = {
+			name: name,
+			absname: constants.prefBranch+name,
+			
+			type: typeof dflt,
+		};
+		
+		r.syncname = constants.syncPrefBranch+r.absname;
+		
+		prefo[r.name] = r;
+		fpref[r.absname] = r;
+		fpref[r.syncname] = syncPref;
+		
+		///// Set up defaults.
+		setPref(r.syncname, false, true);
+		setPref(r.absname, dflt, true);
+		
+		///// The API.
+		r.set = function ( v ) {
+			setPref(r.absname, v);
+		};
+		pref[name] = getPref(r.absname);
+		r.get = function ( ) {
+			return pref[name];
+		};
+		
+		r.sync = function ( sync ) {
+			setPref(r.syncname, sync);	
+		};
+		r.isSynced = function () {
+			return getPref(r.syncname);
+		};
+	}
+	
+	addPref("minwidth", 0);
+	addPref("maxwidth", 0);
 
-	padding: 0,     // Padding from search text.
-	namePadding: 5, // Padding from search engine title.
+	addPref("padding",     0); // Padding from search text.
+	addPref("namePadding", 5); // Padding from search engine title.
 
-	popupwidth: 0,
+	addPref("popupwidth", 0);
 
-	sizeOn: "key",
+	addPref("sizeOn", "key");
 
-	cleanOnSubmit: false,
-	revertOnSubmit: false,
-	shrinkToButton: false,
+	addPref("cleanOnSubmit",  false);
+	addPref("revertOnSubmit", false);
+	addPref("shrinkToButton", false);
 
-	debug: false,
-
-//	addSBtoToolbar: true,
-
-//	manualResize: "",
+	addPref("debug", false);
 }
 
+/*** Add Prefrence Listener ***/
 var prefs = Services.prefs.getBranch(constants.prefBranch);
 prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
-
 var prefObserver = {
 	observe: function (aSubject, aTopic, aData)
 	{
@@ -88,31 +161,6 @@ var prefObserver = {
 		}
 	}
 };
-
-/*** Set Default Prefrences and Get Prefrences ***/
-{
-let dprefs = Services.prefs.getDefaultBranch(constants.prefBranch);
-for (let [key, val] in Iterator(pref))
-{
-	switch (typeof val)
-	{
-		case "boolean":
-			dprefs.setBoolPref(key, val);
-			pref[key] = prefs.getBoolPref(key);
-			break;
-		case "number":
-			dprefs.setIntPref(key, val);
-			pref[key] = prefs.getIntPref(key);
-			break;
-		case "string":
-			dprefs.setCharPref(key, val);
-			pref[key] = prefs.getCharPref(key);
-			break;
-	}
-}
-}
-
-/*** Add Prefrence Listener ***/
 prefs.addObserver("", prefObserver, false);
 
 var strings = {
@@ -196,6 +244,7 @@ function Autosizer ( window )
 	d("new Autosizer() called.");
 
 	this.pref = pref;
+	this.prefo = prefo;
 	this.prefs = prefs;
 	this.instances = instances;
 	this.prefObserver = prefObserver;

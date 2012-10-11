@@ -18,6 +18,7 @@ function d ( msg, seroius )
 var autosizer = new Autosizer();
 var strings   = autosizer.strings;
 var pref      = autosizer.pref;
+var prefo     = autosizer.prefo;
 var prefs     = autosizer.prefs;
 
 var asp = {
@@ -49,9 +50,9 @@ var asp = {
 		{
 			var item = prefElements[i];
 			var type = item.getAttribute("data-pref");
-			if      ( type == "int"  ) prefs.setIntPref(item.id, item.value);
-			else if ( type == "char" ) prefs.setCharPref(item.id, item.value);
-			else if ( type == "bool" ) prefs.setBoolPref(item.id, item.checked);
+			if      ( type == "int"  ) prefo[item.id].set(item.value);
+			else if ( type == "char" ) prefo[item.id].set(item.value);
+			else if ( type == "bool" ) prefo[item.id].set(item.checked);
 		}
 	},
 
