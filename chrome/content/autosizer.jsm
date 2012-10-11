@@ -58,8 +58,6 @@ var fpref = {};
 	{
 		var b = def?dbranch:rbranch;
 		
-		d(key+"("+(fpref[key].type)+"): "+val+" - "+def);
-		
 		switch (fpref[key].type)
 		{
 			case "boolean":

@@ -6,7 +6,7 @@ Cu.import("chrome://autosizer/content/autosizer.jsm");
 
 function d ( msg, seroius )
 {
-	seroius = true // For debugging.
+	//seroius = true // For debugging.
 	if (!seroius) return;
 
 	dump('autosizer: '+msg+'\n');
@@ -35,10 +35,12 @@ var asp = {
 		for (var i = 0; i < prefs.length; ++i)
 		{
 			var item = prefs[i];
-			var type = item.getAttribute("data-pref");
-			if      ( type == "int"  ) item.value   = pref[item.id];
-			else if ( type == "char" ) item.value   = pref[item.id];
-			else if ( type == "bool" ) item.checked = pref[item.id];
+			var type = item.tagName;
+			
+			if ( type == "textbox"  )        item.value = pref[item.id];
+			else if ( type == "checkbox" )   item.checked = pref[item.id];
+			else if ( type == "radiogroup" ) item.value = pref[item.id];
+			else d("Don't know how to load '"+type+"' for pref '"+item+"'.");
 		}
 
 		asp.updateMinWidthCheck();
@@ -49,10 +51,12 @@ var asp = {
 		for (var i = 0; i < prefElements.length; ++i)
 		{
 			var item = prefElements[i];
-			var type = item.getAttribute("data-pref");
-			if      ( type == "int"  ) prefo[item.id].set(item.value);
-			else if ( type == "char" ) prefo[item.id].set(item.value);
-			else if ( type == "bool" ) prefo[item.id].set(item.checked);
+			var type = item.tagName;
+			
+			if      ( type == "textbox" )    prefo[item.id].set(item.value);
+			else if ( type == "checkbox" )   prefo[item.id].set(item.checked);
+			else if ( type == "radiogroup" ) prefo[item.id].set(item.value);
+			else d("Don't know how to store '"+type+"' for pref '"+item+"'.");
 		}
 	},
 

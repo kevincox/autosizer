@@ -40,7 +40,7 @@
 				<row align="center">
 					<label control="minwidth" value="&width.min;" accesskey="&width.min.accesskey;"/>
 					<textbox id="minwidth" type="number" increment="5" min="-Infinity" size="4"
-					         class="pref" data-pref="int"
+					         class="pref"
 					         oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
 					<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
 					<vbox flex="999"></vbox>
@@ -49,7 +49,7 @@
 				<row align="center">
 					<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
 					<textbox id="maxwidth" type="number" increment="5" min="-Infinity" size="4"
-					         class="pref" data-pref="int"
+					         class="pref"
 					         oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
 					<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
 						<menuitem value="none" label="&width.max.special.none;" disabled="true" />
@@ -61,6 +61,15 @@
 				</row>
 			</rows>
 		</grid>
+	</groupbox>
+
+	<groupbox>
+		<caption label="&width.sizeOn;" />
+		<radiogroup id="sizeOn" class="pref">
+			<radio value="key"    label="&width.sizeOn.key;"/>
+			<radio value="atonce" label="&width.sizeOn.atonce;"/>
+			<radio value="none"   label="&width.sizeOn.none;"/>
+		</radiogroup>
 	</groupbox>
 
 	<groupbox>
@@ -77,14 +86,14 @@
 				<row align="center">
 					<label control="padding" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
 					<textbox type="number" min="-Infinity" size="4" id="padding"
-					         class="pref" data-pref="int" />
+					         class="pref" />
 					<vbox flex="999"></vbox>
 					<image src="offset_label.png"/>
 				</row>
 				<row align="center">
 				  <label control="namePadding" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
 					<textbox type="number" min="-Infinity" size="4" id="namePadding"
-					         class="pref" data-pref="int" />
+					         class="pref" />
 					<vbox flex="999"></vbox>
 					<image src="offset_text.png"/>
 				</row>
@@ -100,21 +109,20 @@
 					<hbox align="center">
 						<label value="&other.autocomplete;" control="popupwidth" accesskey="&other.autocomplete.accesskey;"/>
 						<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth"
-						         class="pref" data-pref="int" />
+						         class="pref" />
 					</hbox>
 					<checkbox id="cleanOnSubmit" accesskey="&other.cleanOnSubmit.accesskey;" label="&other.cleanOnSubmit;"
-					          class="pref" data-pref="bool" />
+					          class="pref" />
 				</vbox>
 				<vbox flex="999" align="right" style="min-width:138px;">
 					<image src="autocomplete.png"/>
 				</vbox>
 			</hbox>
 			<checkbox id="revertOnSubmit" accesskey="&other.revertOnSubmit.accesskey;" label="&other.revertOnSubmit;"
-			          class="pref" data-pref="bool"/>
-			<hbox>
-				<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
-				          class="pref" data-pref="bool"/>
-			</hbox>
+			          class="pref"/>
+			<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
+			          class="pref"/>
 		</vbox>
+		<box class="text-link" onclick="window.openDialog('chrome://autosizer/content/sync.xul')">&sync.link;</box>
 	</groupbox>
 </dialog>
