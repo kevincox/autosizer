@@ -1,9 +1,19 @@
 <!ENTITY title "Opciones de Autosizer">
-<!ENTITY wizard.accesskey "t">
+<!ENTITY intro.title "Acerca de preferencias">
+<!ENTITY intro.desc.before "Para más información sobre cada preferencia consulte">
+<!ENTITY intro.desc.link "está wiki">
+<!ENTITY intro.desc.after ".">
 <!ENTITY width.title "Ancho de barra de búsquedas">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Mínimo:">
+<!ENTITY width.min.special.showTitle "Mostrar título del motor de búsqueda.">
 <!ENTITY width.min.accesskey "n">
 <!ENTITY width.max "Máximo:">
+<!ENTITY width.max.special.none "regular">
+<!ENTITY width.max.special.full "Tamaño completo">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
 <!ENTITY width.max.accesskey "x">
 <!ENTITY padding.title "Espaciado del texto">
 <!ENTITY padding.desc "Todos los valores en pixels, se permiten valores negativos.">
@@ -18,23 +28,10 @@
 <!ENTITY other.cleanOnSubmit.accesskey "V">
 <!ENTITY other.revertOnSubmit "Recuperar el motor de búsqueda predeterminado tras iniciar una búsqueda">
 <!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "El motor de búsqueda que ocupe el primer lugar será el predeterminado. Para administrar sus motores pulse en el icono de motores y seleccione &apos;Administrar motores de búsqueda...&apos;">
+<!ENTITY other.revertOnSubmit.desc "El motor de búsqueda que ocupe el primer lugar será el predeterminado. Para administrar sus motores pulse en el icono de motores y seleccione 'Administrar motores de búsqueda...'">
 <!ENTITY other.shrinkToButton "Contraer la barra de búsquedas al botón si está vacía">
 <!ENTITY other.shrinkToButton.accesskey "C">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY intro.desc.after ".">
-<!ENTITY intro.desc.link "this wiki page">
-<!ENTITY intro.desc.before "For more information about what each prefrence means see">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY other.addBtn "Añadir botón a la barra de herramientas">
+<!ENTITY other.addBtn.accesskey "ñ">
 <!ENTITY wizard.button "Assistant">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
+<!ENTITY wizard.accesskey "t">

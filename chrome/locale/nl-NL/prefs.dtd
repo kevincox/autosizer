@@ -1,9 +1,19 @@
 <!ENTITY title "Autosizer opties">
-<!ENTITY wizard.accesskey "t">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY intro.desc.after ".">
 <!ENTITY width.title "Zoekbalkbreedte">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Minimum:">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maximum:">
+<!ENTITY width.max.special.none "regular">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "Tekstweergave">
 <!ENTITY padding.desc "Alle waarden zijn in pixels; negatieve waarden zijn toegestaan.">
@@ -21,20 +31,7 @@
 <!ENTITY other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies &apos;Zoekmachines beheren...&apos;">
 <!ENTITY other.shrinkToButton "Verklein de zoekbalk tot een knop als deze leeg is">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY intro.desc.after ".">
-<!ENTITY intro.desc.link "this wiki page">
-<!ENTITY intro.desc.before "For more information about what each prefrence means see">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY other.addBtn "Knop aan werkbalk toevoegen">
+<!ENTITY other.addBtn.accesskey "n">
 <!ENTITY wizard.button "Assistant">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
+<!ENTITY wizard.accesskey "t">

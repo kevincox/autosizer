@@ -1,9 +1,19 @@
 <!ENTITY title "Autosizer 選項">
-<!ENTITY wizard.accesskey "t">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY intro.desc.after ".">
 <!ENTITY width.title "搜尋列寬度">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "最小值:">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "最大值:">
+<!ENTITY width.max.special.none "regular">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "文字與右方距離">
 <!ENTITY padding.desc "允許負值 (單位：像素) 。">
@@ -21,20 +31,7 @@
 <!ENTITY other.revertOnSubmit.desc "「預設的搜尋引擎」是指排在最上面的那個。如果要改變順序，請按下搜尋引擎圖示，並選擇「管理搜尋引擎...」">
 <!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY intro.desc.after ".">
-<!ENTITY intro.desc.link "this wiki page">
-<!ENTITY intro.desc.before "For more information about what each prefrence means see">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY other.addBtn "Add Button to Toolbar">
+<!ENTITY other.addBtn.accesskey "u">
 <!ENTITY wizard.button "Assistant">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
+<!ENTITY wizard.accesskey "t">

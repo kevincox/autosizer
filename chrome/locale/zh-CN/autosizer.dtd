@@ -1,4 +1,3 @@
-
 <!ENTITY pref.other.autocomplete "搜索建议宽度:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "关键字提交搜索后, 清除搜索栏中的文字">

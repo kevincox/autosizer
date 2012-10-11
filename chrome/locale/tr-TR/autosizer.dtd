@@ -1,4 +1,3 @@
-
 <!ENTITY pref.other.autocomplete "Suggestions Width:">
 <!ENTITY pref.other.autocomplete.accesskey "S">
 <!ENTITY pref.other.cleanOnSubmit "Empty searchbar when a query is submitted">
