@@ -102,7 +102,7 @@ var fpref = {};
 		fpref[r.syncname] = syncPref;
 		
 		///// Set up defaults.
-		setPref(r.syncname, false, true);
+		setPref(r.syncname, true, true);
 		setPref(r.absname, dflt, true);
 		
 		///// The API.
