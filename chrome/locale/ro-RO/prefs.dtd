@@ -31,7 +31,10 @@
 <!ENTITY other.revertOnSubmit.desc "Motorul de căutare implicit este cel din capul listei derulante, oricare ar fi el.  Pentru a gestiona lista, faceți clic pe pictogramă și selectați „Gestionează motoarele de căutare…”">
 <!ENTITY other.shrinkToButton "Se înlocuiește caseta de căutare cu un buton atunci când este goală">
 <!ENTITY other.shrinkToButton.accesskey "b">
-<!ENTITY other.addBtn "Se adaugă butonul pe bara de unelte">
-<!ENTITY other.addBtn.accesskey "d">
 <!ENTITY wizard.button "Asistent de configurare">
 <!ENTITY wizard.accesskey "A">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
