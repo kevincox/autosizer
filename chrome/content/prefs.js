@@ -36,7 +36,7 @@ var asp = {
 		{
 			var item = prefs[i];
 			var type = item.tagName;
-			
+
 			if ( type == "textbox"  )        item.value = pref[item.id];
 			else if ( type == "checkbox" )   item.checked = pref[item.id];
 			else if ( type == "radiogroup" ) item.value = pref[item.id];
@@ -52,7 +52,7 @@ var asp = {
 		{
 			var item = prefElements[i];
 			var type = item.tagName;
-			
+
 			if      ( type == "textbox" )    prefo[item.id].set(item.value);
 			else if ( type == "checkbox" )   prefo[item.id].set(item.checked);
 			else if ( type == "radiogroup" ) prefo[item.id].set(item.value);
@@ -95,25 +95,7 @@ var asp = {
 	},
 
 	launchWizard: function () {
-		var wi = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-		                   .getService(Components.interfaces.nsIWindowMediator)
-		                   .getEnumerator("navigator:browser");
-
-		while (wi.hasMoreElements())
-		{
-			var w = wi.getNext()
-			var sb = w.document.getElementById("searchbar");
-			if (sb)
-			{
-				w.gBrowser.selectedTab = w.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
-				w.focus();
-				window.close();
-				return;
-			}
-		}
-
-		var win = window.open("chrome://autosizer/content/wizard.xul",
-                              "Searchbar Autosizer Setup Wizard", "resizable=yes,scrollbars=yes,status=yes,chrome=no");
+		autosizer.launchWizard();
 		window.close();
 	},
 }

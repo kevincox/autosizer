@@ -64,7 +64,7 @@ function windowWatcher(subject, topic)
 function startup(data, reason)
 {
 	install(data, ADDON_UPGRADE);
-	
+
 	Components.manager.addBootstrappedManifestLocation(data.installPath);
 	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
@@ -112,20 +112,15 @@ function install (data, reason)
 		if ( Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug") == Services.prefs.PREF_INVALID )
 		{ // They don't have the sync options.
 			Components.utils.import("chrome://autosizer/content/autosizer.jsm"); // Create the prefrences.
-			
+
 			var so = Services.prefs.getChildList("services.sync.prefs.sync.extensions.autosizer.");
 			for ( i in so )
 			{
 				Services.prefs.setBoolPref(so[i], false);
 			}
-			
+
 			Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 		}
-	
+
 	}
-	//if ( reason == ADDON_INSTALL )
-	{
-		
-	}
-	
-} 
+}

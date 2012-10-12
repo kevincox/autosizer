@@ -51,13 +51,13 @@ var fpref = {};
 	var rbranch = Services.prefs.getBranch("");
 	rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
 	var dbranch = Services.prefs.getDefaultBranch("");
-	
+
 	var syncPref = { type: "boolean" }; // Will only ever get written.
-	
+
 	function setPref ( key, val, def )
 	{
 		var b = def?dbranch:rbranch;
-		
+
 		switch (fpref[key].type)
 		{
 			case "boolean":
@@ -83,26 +83,26 @@ var fpref = {};
 				return rbranch.getCharPref(key);
 		}
 	}
-	
+
 	function addPref ( name, dflt )
 	{
 		var r = {
 			name: name,
 			absname: constants.prefBranch+name,
-			
+
 			type: typeof dflt,
 		};
-		
+
 		r.syncname = constants.syncPrefBranch+r.absname;
-		
+
 		prefo[r.name] = r;
 		fpref[r.absname] = r;
 		fpref[r.syncname] = syncPref;
-		
+
 		///// Set up defaults.
 		setPref(r.syncname, true, true);
 		setPref(r.absname, dflt, true);
-		
+
 		///// The API.
 		r.set = function ( v ) {
 			setPref(r.absname, v);
@@ -111,15 +111,15 @@ var fpref = {};
 		r.get = function ( ) {
 			return pref[name];
 		};
-		
+
 		r.sync = function ( sync ) {
-			setPref(r.syncname, sync);	
+			setPref(r.syncname, sync);
 		};
 		r.isSynced = function () {
 			return getPref(r.syncname);
 		};
 	}
-	
+
 	addPref("minwidth", 0);
 	addPref("maxwidth", 0);
 
@@ -134,6 +134,7 @@ var fpref = {};
 	addPref("revertOnSubmit", false);
 	addPref("shrinkToButton", false);
 
+	addPref("firstrun", true);
 	addPref("debug", false);
 }
 
@@ -236,6 +237,26 @@ function modifyFunction ( parent, index, func, where )
 	};
 }
 
+function launchWizard ( )
+{
+	var wi = Services.wm.getEnumerator("navigator:browser");
+
+	while (wi.hasMoreElements())
+	{
+		var w = wi.getNext()
+		var sb = w.document.getElementById("searchbar");
+		if (sb)
+		{
+			w.gBrowser.selectedTab = w.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
+			w.focus();
+			return;
+		}
+	}
+
+	var win = window.open("chrome://autosizer/content/wizard.xul",
+                          "Searchbar Autosizer Setup Wizard", "resizable=yes,scrollbars=yes,status=yes,chrome=no");
+}
+
 /*** Our "Class" ***/
 function Autosizer ( window )
 {
@@ -249,7 +270,15 @@ function Autosizer ( window )
 
 	this.strings = strings;
 
+	this.launchWizard = launchWizard;
+
 	if (!window) return this;
+
+	if (pref.firstrun)
+	{
+		launchWizard();
+		prefo.firstrun.set(false);
+	}
 
 	var self = this;
 
