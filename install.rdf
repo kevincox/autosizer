@@ -58,7 +58,7 @@
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>de-DE</em:locale>
+				<em:locale>de</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Die Suchleiste beim Tippen automatisch anpassen.</em:description>
 			</Description>
@@ -79,21 +79,21 @@
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>fr-FR</em:locale>
+				<em:locale>fr</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Étendez automatiquement la barre de recherche en écrivant.</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>hu-HU</em:locale>
+				<em:locale>hu</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Keresőmező szélességének változtatása a beírt szövegtől függően.</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>it-IT</em:locale>
+				<em:locale>it</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Permette di adattare la dimensione della barra di ricerca in base alla lunghezza delle parole inserite.</em:description>
 			</Description>
@@ -114,14 +114,14 @@
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>nl-NL</em:locale>
+				<em:locale>nl</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Vergroot de zoekbalk terwijl u typt</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>pl-PL</em:locale>
+				<em:locale>pl</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Rozszerz pole wyszukiwania w trakcie pisania.</em:description>
 			</Description>
@@ -142,28 +142,28 @@
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>ro-RO</em:locale>
+				<em:locale>ro</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Redimensionează caseta de căutare în timpul tastării.</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>ru-RU</em:locale>
+				<em:locale>ru</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Увеличивает размер панели поиска по мере набора текста</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>sk-SK</em:locale>
+				<em:locale>sk</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Rozšíri panel Vyhľadávanie podľa dĺžky zadávaného reťazca.</em:description>
 			</Description>
 		</em:localized>
 		<em:localized>
 			<Description>
-				<em:locale>tr-TR</em:locale>
+				<em:locale>tr</em:locale>
 				<em:name>Searchbar Autosizer</em:name>
 				<em:description>Arama kutucuğu yazdığınız kadar uzatır.</em:description>
 			</Description>
