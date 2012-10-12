@@ -58,6 +58,7 @@ var asw = {
 	},
 
 	end: function ( ) {
+		autosizer.stopManualResize();
 		autosizer.autosize();
 	},
 
