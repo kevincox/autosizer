@@ -4,7 +4,7 @@ Cu.import("chrome://autosizer/content/autosizer.jsm");
 
 function d ( msg, seroius )
 {
-	seroius = true // For debugging.
+	//seroius = true // For debugging.
 	if (!seroius) return;
 
 	dump('autosizer: '+msg+'\n');

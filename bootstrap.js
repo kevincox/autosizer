@@ -27,7 +27,7 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 function d ( msg, important )
 {
-	important = true; // Uncomment for debuging.
+	//important = true; // Uncomment for debuging.
 
 	if (!important) return;
 
@@ -105,9 +105,7 @@ function shutdown(data, reason)
 function install (data, reason)
 {
 	if ( reason == ADDON_UPGRADE )
-	{	
-		d(Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug"))
-		d(Services.prefs.PREF_INVALID);
+	{
 		///// Don't start syncing peoples prefrences for them.
 		if ( Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug") == Services.prefs.PREF_INVALID )
 		{ // They don't have the sync options.

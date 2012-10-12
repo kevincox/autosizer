@@ -57,6 +57,8 @@ var fpref = {};
 	function setPref ( key, val, def )
 	{
 		var b = def?dbranch:rbranch;
+		
+		//d(key+"("+fpref[key].type+"): "+val);
 
 		switch (fpref[key].type)
 		{
@@ -120,7 +122,7 @@ var fpref = {};
 		};
 	}
 
-	addPref("minwidth", 0);
+	addPref("minwidth", -1);
 	addPref("maxwidth", 0);
 
 	addPref("padding",     0); // Padding from search text.
