@@ -36,7 +36,7 @@ function d ( msg, important )
 	if (!important) return;
 
 	dump("autosizer: "+msg+'\n');
-	Services.console.logStringMessage("autosizer"+msg);
+	Services.console.logStringMessage("autosizer: "+msg);
 }
 
 constants = {
@@ -239,8 +239,42 @@ function modifyFunction ( parent, index, func, where )
 	};
 }
 
+var wizard = {open:false, win:null, tabs:null, tab:null};
+function addWizardTab (dontRemove)
+{
+	if (!dontRemove) win.removeEventListener("load", addWizardTab, false);
+	
+	wizard.tabs = wizard.win.gBrowser
+	wizard.tab = wizard.tabs.addTab("chrome://autosizer/content/wizard.xul");
+	wizard.tabs.selectedTab = wizard.tab;
+	wizard.win.focus();
+	
+	wizard.tabs.tabContainer.addEventListener("TabClose", wizardUnload, false);
+}
+function wizardUnload(event)
+{
+	if ( event.target != wizard.tab ) return
+
+	wizard.tabs.tabContainer.removeEventListener("TabClose", wizardUnload, false);
+	
+	wizard.win = null;
+	wizard.doc = null;
+	wizard.tab = null;
+	
+	wizard.open = false;
+}
+
 function launchWizard ( )
 {
+	if (wizard.open)
+	{
+		wizard.win.gBrowser.selectedTab = wizard.tab;
+		wizard.win.focus();
+		return;	
+	}
+	
+	wizard.open = true;
+	
 	var wi = Services.wm.getEnumerator("navigator:browser");
 
 	while (wi.hasMoreElements())
@@ -249,8 +283,8 @@ function launchWizard ( )
 		var sb = w.document.getElementById("searchbar");
 		if (sb)
 		{
-			w.gBrowser.selectedTab = w.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
-			w.focus();
+			wizard.win = w;
+			addWizardTab(true);
 			return;
 		}
 	}
@@ -260,11 +294,7 @@ function launchWizard ( )
 	                                 null,
 	                                 null
 	                                );
-	win.addEventListener("load", function(){
-		win.removeEventListener("load", arguments.callee, false);
-		
-		win.gBrowser.selectedTab = win.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
-	}, false);
+	win.addEventListener("load", addWizardTab, false);
 }
 
 /*** Our "Class" ***/
