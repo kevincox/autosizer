@@ -252,9 +252,17 @@ function launchWizard ( )
 			return;
 		}
 	}
-
-	var win = window.open("chrome://autosizer/content/wizard.xul",
-                          "Searchbar Autosizer Setup Wizard", "resizable=yes,scrollbars=yes,status=yes,chrome=no");
+	
+	var win = Services.ww.openWindow(null, "chrome://browser/content/browser.xul",
+                                     "Searchbar Autosizer Setup Wizard", 
+	                                 null,
+	                                 null
+	                                );
+	win.addEventListener("load", function(){
+		win.removeEventListener("load", arguments.callee, false);
+		
+		win.gBrowser.selectedTab = win.gBrowser.addTab("chrome://autosizer/content/wizard.xul");
+	}, false);
 }
 
 /*** Our "Class" ***/

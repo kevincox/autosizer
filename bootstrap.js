@@ -105,7 +105,7 @@ function shutdown(data, reason)
 function install (data, reason)
 {
 	if ( reason == ADDON_UPGRADE )
-	{
+	{	
 		d(Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug"))
 		d(Services.prefs.PREF_INVALID);
 		///// Don't start syncing peoples prefrences for them.
@@ -122,5 +122,10 @@ function install (data, reason)
 			Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 		}
 
+		///// Not a first run.
+		Components.utils.import("chrome://autosizer/content/autosizer.jsm");
+		var as = new Autosizer();
+		as.prefo.firstrun.set(false);
+		Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 	}
 }
