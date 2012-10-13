@@ -1,14 +1,14 @@
-<!ENTITY title "Autosizer seçenekleri">
+<!ENTITY title "Opções do Autosizer">
 <!ENTITY intro.title "About Prefrences">
 <!ENTITY intro.desc.before "For more information about what each prefrence means see">
 <!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.after ".">
-<!ENTITY width.title "Arama kutucuğu genişliği">
+<!ENTITY width.title "Largura da barra de pesquisa">
 <!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "En az">
+<!ENTITY width.min "Mínimo:">
 <!ENTITY width.min.special.showTitle "Show search engine title.">
 <!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "En çok">
+<!ENTITY width.max "Máximo:">
 <!ENTITY width.max.special.none "regular">
 <!ENTITY width.max.special.full "Full Size">
 <!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
@@ -17,11 +17,11 @@
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "Text Padding">
 <!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY padding.query "Arama Kuyruğu">
+<!ENTITY padding.query "Search Query:">
 <!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "Arama Motoru Başlığı">
+<!ENTITY padding.engine "Engine Title:">
 <!ENTITY padding.engine.accesskey "E">
-<!ENTITY other.title "Diğer">
+<!ENTITY other.title "Outro">
 <!ENTITY other.autocomplete "Suggestions Width:">
 <!ENTITY other.autocomplete.accesskey "S">
 <!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">

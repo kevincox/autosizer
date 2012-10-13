@@ -24,7 +24,7 @@
 <!ENTITY wiz.aftersearch.title "Co zrobić po wysłaniu zapytania?">
 <!ENTITY wiz.resize "Zmień szerokość pola wyszukiwania zgodnie z upodobaniami tak jak na rysunku.">
 <!ENTITY wiz.autodetect "Autosizer zgadnie odpowiednią wartość, ustaw więc myszą odpowiednią szerokość.">
-<!ENTITY pref.other.shrinkToButton.accesskey "k">
-<!ENTITY pref.other.addBtn.accesskey "u">
-<!ENTITY pref.other.addBtn "Add Button to Toolbar">
 <!ENTITY pref.other.shrinkToButton "Shrink searchbar to Button if empty">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "Add Button to Toolbar">
+<!ENTITY pref.other.addBtn.accesskey "u">

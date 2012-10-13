@@ -1,39 +1,40 @@
-<!ENTITY width.max "Maximum:">
-<!ENTITY other.autocomplete "Suggestions Width:">
-<!ENTITY width.min.accesskey "T">
+<!ENTITY title "Autosizer opties">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY intro.desc.before "For more information about what each prefrence means see">
 <!ENTITY intro.desc.link "this wiki page">
-<!ENTITY other.shrinkToButton.accesskey "T">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY other.revertOnSubmit.accesskey "R"><!ENTITY title "Autosizer Options">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
-<!ENTITY padding.engine.accesskey "E">
-<!ENTITY intro.title "About Preferences">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
-<!ENTITY wizard.accesskey "T">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.accesskey "a">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
-<!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
-<!ENTITY width.title "Searchbar Width">
-<!ENTITY other.title "Other">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY padding.title "Text Padding">
 <!ENTITY intro.desc.after ".">
-<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
-<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
-<!ENTITY intro.desc.before "For more information about what each preference means see">
-<!ENTITY padding.query "Search Query:">
-<!ENTITY padding.query.accesskey "Q">
+<!ENTITY width.title "Zoekbalkbreedte">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Minimum:">
-<!ENTITY padding.engine "Engine Title:">
-<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY width.min.accesskey "i">
+<!ENTITY width.max "Maximum:">
+<!ENTITY width.max.special.none "regular">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
+<!ENTITY width.max.accesskey "a">
+<!ENTITY padding.title "Tekstweergave">
+<!ENTITY padding.desc "Alle waarden zijn in pixels; negatieve waarden zijn toegestaan.">
+<!ENTITY padding.query "Zoekopdracht:">
+<!ENTITY padding.query.accesskey "Z">
+<!ENTITY padding.engine "Zoekmachinetitel:">
+<!ENTITY padding.engine.accesskey "e">
+<!ENTITY other.title "Overig">
+<!ENTITY other.autocomplete "Suggestiesbreedte:">
+<!ENTITY other.autocomplete.accesskey "S">
+<!ENTITY other.cleanOnSubmit "Zoekbalk leegmaken wanneer een opdracht wordt ingegeven">
+<!ENTITY other.cleanOnSubmit.accesskey "l">
+<!ENTITY other.revertOnSubmit "Standaardzoekmachine terugzetten wanneer een zoekopdracht is ingegeven">
+<!ENTITY other.revertOnSubmit.accesskey "T">
+<!ENTITY other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies &apos;Zoekmachines beheren...&apos;">
+<!ENTITY other.shrinkToButton "Verklein de zoekbalk tot een knop als deze leeg is">
+<!ENTITY other.shrinkToButton.accesskey "k">
+<!ENTITY wizard.button "Assistant">
+<!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

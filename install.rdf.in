@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>{655397ca-4766-496b-b7a8-3a5b176ee4c2}</em:id>
+		<em:version>2.0.14</em:version>
+		<em:unpack>false</em:unpack>
+		<em:type>2</em:type>
+		<em:bootstrap>true</em:bootstrap>
+
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>8.0</em:minVersion>
+				<em:maxVersion>15.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<em:translator>cs-CZ: kukulich, funTomas</em:translator>
+		<em:translator>el-GR: Sonickydon</em:translator>
+		<em:translator>es Antonio a.k.a. urko</em:translator>
+		<em:translator>fr-FR: menet</em:translator>
+		<em:translator>hu-HU: Cashman</em:translator>
+		<em:translator>it: MatrixIsAllOver</em:translator>
+		<em:translator>ja-JP: Norah</em:translator>
+		<em:translator>ko-KR: wtspout</em:translator>
+		<em:translator>nl: markh</em:translator>
+		<em:translator>pl (partly): KosciaK</em:translator>
+		<em:translator>pt-BR (partly): pedsann</em:translator>
+		<em:translator>pt-PT (partly): gein</em:translator>
+		<em:translator>ro: x10firefox</em:translator>
+		<em:translator>ru: Sergeys</em:translator>
+		<em:translator>sk: wladow</em:translator>
+		<em:translator>tr (partly): batuhancetin</em:translator>
+		<em:translator>zh-CN: WangKing</em:translator>
+		<em:translator>zh-TW (partly): hit1205</em:translator>
+		<em:translator>www.BabelZilla.org</em:translator>
+
+		<em:contributor>DarkAthena (Past Maintainer)</em:contributor>
+		<em:contributor>David (Code fixes)</em:contributor>
+		<em:contributor>LMLB (Code fixes)</em:contributor>
+		<em:contributor>Aronnax (Mac testing)</em:contributor>
+		<em:contributor>Awan Afuqya (Manual Sizing Code)</em:contributor>
+		<em:contributor>Change (Mac testing)</em:contributor>
+		<em:contributor>Fatal (logo)</em:contributor>
+		<em:contributor>menet (1.3 testing)</em:contributor>
+		<em:contributor>Pike (XBL help)</em:contributor>
+		<em:contributor>zeniko (always on top code)</em:contributor>
+
+		<em:homepageURL>https://sourceforge.net/p/autosizer/wiki/Home/</em:homepageURL>
+		<!--<em:code>autosizer</em:code> Still will be picked up by our script,
+		                                 but won't bother the Mozilla guys.-->
+
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>Expands the searchbox as you type.</em:description>
+		
+		<!--INSERT_FILES_HERE-->
+
+		<em:creator>Kevin Cox</em:creator>
+		<em:optionsURL>chrome://autosizer/content/prefs.xul</em:optionsURL>
+		<em:iconURL>chrome://autosizer/content/logo.png</em:iconURL>
+	</Description>
+</RDF>

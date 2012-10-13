@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Larghezza dei suggerimenti:">
+<!ENTITY pref.other.autocomplete.accesskey "s">
+<!ENTITY pref.other.cleanOnSubmit "Svuota la barra di ricerca quando viene effettuata una ricerca">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "u">
+<!ENTITY pref.other.revertOnSubmit "Ripristina il motore di ricerca predefinito quando viene effettuata una ricerca">
+<!ENTITY pref.other.revertOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit.desc "Qualsiasi motore di ricerca in cima diverrà quello predefinito. Per gestire i motori di ricerca, fare clic sull&apos;icona del motore di ricerca e selezionare &apos;Gestione motori di ricerca...&apos;">
+<!ENTITY wiz.title "Configurazione guidata di Searchbar Autosizer">
+<!ENTITY wiz.start.desc "Specificare quale azione effettuare quando si digita qualcosa nella barra di ricerca">
+<!ENTITY wiz.start.inc "Ridimensiona progressivamente, ad ogni lettera">
+<!ENTITY wiz.start.inc.accesskey "R">
+<!ENTITY wiz.start.alt "Ridimensiona la barra di ricerca solo all&apos;inizio">
+<!ENTITY wiz.start.alt.accesskey "D">
+<!ENTITY wiz.start.fix "Mantieni sempre la stessa larghezza">
+<!ENTITY wiz.start.fix.accesskey "M">
+<!ENTITY wiz.norMinWidth.title "Larghezza minima della barra di ricerca">
+<!ENTITY wiz.norMinWidth.desc "Specificare la larghezza minima">
+<!ENTITY wiz.norMaxWidth.title "Larghezza massima della barra di ricerca">
+<!ENTITY wiz.norMaxWidth.desc "Specificare la larghezza massima">
+<!ENTITY wiz.altWidth.title "Larghezza della barra di ricerca quando in uso">
+<!ENTITY wiz.altWidth.desc "Specificare la larghezza in uso">
+<!ENTITY wiz.fixWidth.title "Larghezza della barra di ricerca">
+<!ENTITY wiz.fixWidth.desc "Specificare la larghezza">
+<!ENTITY wiz.aftersearch.title "Azione da effettuare dopo aver effettuato una ricerca">
+<!ENTITY wiz.resize "Ridimensionare la barra di ricerca in base ai propri gusti come mostrato in immagine">
+<!ENTITY wiz.autodetect "Searchbar Autosizer ridimensionerà la barra in base alle proprie esigenze, spostare leggermente il mouse fino ad ottenere la dimensione desiderata">
+<!ENTITY pref.other.shrinkToButton "Mostra un pulsante invece della barra di ricerca se quest&apos;ultima è vuota">
+<!ENTITY pref.other.shrinkToButton.accesskey "v">
+<!ENTITY pref.other.addBtn "Aggiungi pulsante">
+<!ENTITY pref.other.addBtn.accesskey "p">

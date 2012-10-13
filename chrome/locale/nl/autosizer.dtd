@@ -4,7 +4,7 @@
 <!ENTITY pref.other.cleanOnSubmit.accesskey "l">
 <!ENTITY pref.other.revertOnSubmit "Standaardzoekmachine terugzetten wanneer een zoekopdracht is ingegeven">
 <!ENTITY pref.other.revertOnSubmit.accesskey "T">
-<!ENTITY pref.other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies ‘Zoekmachines beheren…’">
+<!ENTITY pref.other.revertOnSubmit.desc "De bovenste zoekmachine wordt als standaard beschouwd. Klik om uw zoekmachines te beheren op het zoekmachinepictogram en kies &apos;Zoekmachines beheren...&apos;">
 <!ENTITY wiz.title "Autosizer configuratie-assistent">
 <!ENTITY wiz.start.desc "Wat moet Autosizer doen wanneer u iets in het zoekveld intypt?">
 <!ENTITY wiz.start.inc "Incrementeel vergroten, per letter">
@@ -24,7 +24,7 @@
 <!ENTITY wiz.aftersearch.title "Wat moet er gebeuren nadat een zoekopdracht is ingegeven?">
 <!ENTITY wiz.resize "Vergroot/verklein de zoekbalk naar believen zoals weergegeven in de afbeelding.">
 <!ENTITY wiz.autodetect "Autosizer zal raden wat u wilt, dus beweeg uw muis een beetje totdat het goed wordt geraden.">
-<!ENTITY pref.other.shrinkToButton "De zoekbalk tot een knop verkleinen als deze leeg is">
+<!ENTITY pref.other.shrinkToButton "Verklein de zoekbalk tot een knop als deze leeg is">
 <!ENTITY pref.other.shrinkToButton.accesskey "k">
 <!ENTITY pref.other.addBtn "Knop aan werkbalk toevoegen">
 <!ENTITY pref.other.addBtn.accesskey "n">

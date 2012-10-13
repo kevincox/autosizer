@@ -16,6 +16,10 @@ generateManifest = True # Wether or not to generate a chrome.manifest from
                         # chrome.mainfesft.head and the locales in {locales}.
 chromePrefix = "autosizer"
 
+generateInstallRDF = True
+insertFiles = ["chrome/locale/BZ_localized.txt"]
+insertLocation = "<!--INSERT_FILES_HERE-->"
+
 
 
 
@@ -101,20 +105,39 @@ def findParser ( name ):
 alocals = os.path.join(sys.path[0], locales)
 availLocales = os.listdir(locales)
 
+for i in range(len(availLocales)-1, -1, -1): # Backwords so we don't mess up the indices.
+	if not os.path.isdir(os.path.join(alocals, availLocales[i])):
+		del availLocales[i]
+
 del availLocales[availLocales.index(baseLocale)] # Put the base locale in front.
 availLocales.insert(0, baseLocale)
 
 ##### Generate chrome.manifest.
-manifest = open("chrome.manifest", "w")
+if generateManifest:
+	manifest = open("chrome.manifest", "w")
 
-if os.path.exists("chrome.manifest.head"):
-	manifest.write(open("chrome.manifest.head").read());
+	if os.path.exists("chrome.manifest.head"):
+		manifest.write(open("chrome.manifest.head").read());
 
-for l in availLocales:
-	manifest.write("locale  {pre} {lan:<4} {path}/\n".format(pre=chromePrefix, lan=l, path=os.path.join(locales, l)))
+	for l in availLocales:
+		manifest.write("locale  {pre} {lan:<4} {path}/\n".format(pre=chromePrefix, lan=l, path=os.path.join(locales, l)))
 
-manifest.close()
+	manifest.close()
 
+##### Generate install.rdf
+if generateInstallRDF:
+	rdf = open("install.rdf", "w")
+	
+	content = open("install.rdf.in").read();
+	
+	newContent = ""
+	for f in insertFiles:
+		newContent += open(f).read()
+	
+	content = content.replace(insertLocation, newContent, 1)
+	
+	rdf.write(content)
+	rdf.close()
 
 
 ##### Get base locale values.

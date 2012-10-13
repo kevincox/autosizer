@@ -1,40 +1,40 @@
-<!ENTITY title "Options d'Autosizer">
-<!ENTITY intro.title "À Propos des Options">
-<!ENTITY intro.desc.before "Pour de plus amples informations sur la fonction de chaque option voyez">
-<!ENTITY intro.desc.link "cette page wiki.">
-<!ENTITY intro.desc.after "">
-<!ENTITY width.title "Taille de la Barre de Recherche">
-<!ENTITY width.desc "Toutes les valeurs sont en pixels, vous pouvez aussi choisir des options spéciales depuis le menu déroulant.">
-<!ENTITY width.min "Minimum :">
-<!ENTITY width.min.special.showTitle "Afficher le titre du moteur de recherche">
+<!ENTITY title "Autosizer Options">
+<!ENTITY intro.title "About Prefrences">
+<!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY intro.desc.after ".">
+<!ENTITY width.title "Searchbar Width">
+<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
+<!ENTITY width.min "Minimum:">
+<!ENTITY width.min.special.showTitle "Show search engine title.">
 <!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "Maximum :">
-<!ENTITY width.max.special.none "Normale">
-<!ENTITY width.max.special.full "Taille Entière">
-<!ENTITY width.max.special.full.tooltip "La barre de recherche s'agrandira jusqu'à la plus grande taille possible sans rien pousser en dehors de l'écran">
-<!ENTITY width.max.special.max "Taille Visible Maximum">
-<!ENTITY width.max.special.max.tooltip "La barre de recherche s'agrandira, poussant les choses en dehors de l'écran jusqu'au point où elle s'y pousserait elle-même">
+<!ENTITY width.max "Maximum:">
+<!ENTITY width.max.special.none "regular">
+<!ENTITY width.max.special.full "Full Size">
+<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
+<!ENTITY width.max.special.max "Maximum Visible Size">
+<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
 <!ENTITY width.max.accesskey "a">
-<!ENTITY width.sizeOn "Comment redimensionner la barre de recherche :">
-<!ENTITY width.sizeOn.key "À chaque pression de touche.">
-<!ENTITY width.sizeOn.atonce "D'un coup.">
-<!ENTITY width.sizeOn.none "Ne pas changer la taille de la barre de recherche.">
-<!ENTITY padding.title "Alignement du Texte">
-<!ENTITY padding.desc "Toutes les valeurs sont en pixels, les valeurs négatives sont autorisées.">
-<!ENTITY padding.query "Requête de Recherche :">
-<!ENTITY padding.query.accesskey "R">
-<!ENTITY padding.engine "Titre du Moteur :">
-<!ENTITY padding.engine.accesskey "M">
-<!ENTITY other.title "Autre">
-<!ENTITY other.autocomplete "Taille des Suggestions :">
+<!ENTITY padding.title "Text Padding">
+<!ENTITY padding.desc "All values are in pixels, negative values are allowed.">
+<!ENTITY padding.query "Search Query:">
+<!ENTITY padding.query.accesskey "Q">
+<!ENTITY padding.engine "Engine Title:">
+<!ENTITY padding.engine.accesskey "E">
+<!ENTITY other.title "Other">
+<!ENTITY other.autocomplete "Suggestions Width:">
 <!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "Vider la barre de recherche lorsqu'une requête est soumise">
-<!ENTITY other.cleanOnSubmit.accesskey "V">
-<!ENTITY other.revertOnSubmit "Revenir au moteur de recherche par défaut lorsqu'une requête est soumise">
+<!ENTITY other.cleanOnSubmit "Empty searchbar when a query is submitted">
+<!ENTITY other.cleanOnSubmit.accesskey "p">
+<!ENTITY other.revertOnSubmit "Revert to default search engine when a query is submitted">
 <!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "Tout moteur de recherche en haut de la liste sera celui par défaut. Pour gérer vos moteurs, cliquez sur l'icone du moteur et choisissez &apos;Gérer les moteurs de recherche...&apos;">
-<!ENTITY other.shrinkToButton "Réduire la barre de recherche à un Bouton si celle-ci est vide">
-<!ENTITY other.shrinkToButton.accesskey "B">
-<!ENTITY sync.link "Cliquez ici pour configurer les options Sync.">
+<!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
+<!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
+<!ENTITY other.shrinkToButton.accesskey "k">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY width.sizeOn.key    "On every keypress.">
+<!ENTITY width.sizeOn "How to size the searchbar:">
+<!ENTITY width.sizeOn.atonce "All at once.">
+<!ENTITY width.sizeOn.none   "Don't size the searchbar.">

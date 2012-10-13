@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Ajánlatok szélessége:">
+<!ENTITY pref.other.autocomplete.accesskey "J">
+<!ENTITY pref.other.cleanOnSubmit "Keresőmező törlése keresés után">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "R">
+<!ENTITY pref.other.revertOnSubmit "Alapértelmezett keresőszolgáltatás visszaállítása keresés után">
+<!ENTITY pref.other.revertOnSubmit.accesskey "U">
+<!ENTITY pref.other.revertOnSubmit.desc "A legfelső keresőszolgáltatás lesz az alapértelmezett. A keresőszolgáltatások kezeléséhez kattintson a keresőszolgáltatás ikonjára, és a menüből válassza ki a &apos;Keresőszolgáltatások kezelése&apos; menüpontot.">
+<!ENTITY wiz.title "Beállítás Segítő">
+<!ENTITY wiz.start.desc "Mit tegyen az Autosizer, ha beír valamit a Keresőmezőbe?">
+<!ENTITY wiz.start.inc "Méretváltoztatás minden beírt karakter után">
+<!ENTITY wiz.start.inc.accesskey "K">
+<!ENTITY wiz.start.alt "Méretváltoztatás az első beírt karakter után">
+<!ENTITY wiz.start.alt.accesskey "E">
+<!ENTITY wiz.start.fix "Szélesség mindenkori megtartása">
+<!ENTITY wiz.start.fix.accesskey "G">
+<!ENTITY wiz.norMinWidth.title "Milyen legyen a Keresőmező maximális szélessége?">
+<!ENTITY wiz.norMinWidth.desc "Minimális szélesség megadása">
+<!ENTITY wiz.norMaxWidth.title "Milyen széles legyen a Keresőmező?">
+<!ENTITY wiz.norMaxWidth.desc "Maximális szélesség megadása">
+<!ENTITY wiz.altWidth.title "Milyen széles legyen a használat során a Keresőmező?">
+<!ENTITY wiz.altWidth.desc "Szélesség a használat során">
+<!ENTITY wiz.fixWidth.title "Milyen széles legyen a Keresőmező?">
+<!ENTITY wiz.fixWidth.desc "Szélesség megadása">
+<!ENTITY wiz.aftersearch.title "Mi történjen a keresés lekérdezése közben?">
+<!ENTITY wiz.resize "Változtassa meg a Keresőmező méretét úgy, mint ahogy az a képen látható.">
+<!ENTITY wiz.autodetect "Az Autosizer megpróbálja megtippelni, hogy mit kíván tenni. Lassan mozgassa az egeret addig, amíg a beállítás nem lesz helyes.">
+<!ENTITY pref.other.shrinkToButton "Keresőmező kicsinyítése gombméretre ha üres">
+<!ENTITY pref.other.shrinkToButton.accesskey "g">
+<!ENTITY pref.other.addBtn "Gomb hozzáadása az eszköztárhoz">
+<!ENTITY pref.other.addBtn.accesskey "h">
