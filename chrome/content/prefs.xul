@@ -123,6 +123,6 @@
 			<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
 			          class="pref"/>
 		</vbox>
-		<box class="text-link" onclick="window.openDialog('chrome://autosizer/content/sync.xul')">&sync.link;</box>
+		<box class="text-link" onclick="window.openDialog('chrome://autosizer/content/sync.xul', 'chrome=yes,centerscreen')">&sync.link;</box>
 	</groupbox>
 </dialog>
