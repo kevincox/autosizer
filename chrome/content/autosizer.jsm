@@ -516,21 +516,51 @@ function Autosizer ( window )
 
 	/*** Information Functions ***/
 
+	function getSearchWPRequiredWidth ( )
+	{
+		d("getSearchWPRequiredWidth() called.");
+		
+		let pf = e.searchbox._textbox._tokensContainer.getAttribute('flex');
+		e.searchbox._textbox._tokensContainer.setAttribute('flex', 0);
+		
+		let pw = e.searcharea.width;
+		e.searcharea.width = 9999999;
+		
+		var w = e.searchbox._textbox._tokensContainer.boxObject.width;
+		
+		e.searcharea.width = pw;
+		e.searchbox._textbox._tokensContainer.setAttribute('flex', pf);
+
+		d("getSearchWPRequiredWidth() returned '"+w+"'.");
+		return w;
+	}
+
 	function getRequiredWidth ( ) // Returns the length of the searchbox's
 	{                             // content in pixels
 		d("getRequiredWidth() called.");
-
-		var tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
-		var pad = pref.padding;
-		if ( e.searchbox.value == "" && pref.minwidth == -1 )
+		
+		var w = 0;
+		
+		if ( e.searchbox._textbox._tokensContainer &&       // SearchWP installed.
+		     !e.searchbox._textbox._tokensStack.collapsed ) // and has it's buttons up.
 		{
-			tc = e.searchbox.currentEngine.name;
-			pad = pref.namePadding;
+			 w += getSearchWPRequiredWidth();
+		}
+		else
+		{
+			var tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
+			var pad = pref.padding;
+			if ( e.searchbox.value == "" && pref.minwidth == -1 )
+			{
+				tc = e.searchbox.currentEngine.name;
+				pad = pref.namePadding;
+			}
+			
+			w += measureText(tc);
+			w += pad;
 		}
 
-		var w = getOverheadWidth();
-		w += measureText(tc);
-		w += pad;
+		w += getOverheadWidth();
 
 		var minwidth = pref.minwidth;
 		var maxwidth = pref.maxwidth;
