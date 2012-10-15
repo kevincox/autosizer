@@ -28,6 +28,12 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 function d ( msg, important )
 {
 	//important = true; // Uncomment for debuging.
+	
+	if (Autosizer)
+	{
+		if (Autosizer(null).pref.debug)
+			important = true;
+	}
 
 	if (!important) return;
 

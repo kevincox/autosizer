@@ -364,9 +364,12 @@ function Autosizer ( window )
 		e.searchbox.addEventListener("focus", inputReciever, true);
 		e.searchbox.addEventListener("blur", inputReciever, true);
 		e.searchbox.addEventListener("input", inputReciever, true);
+		
+		///// For SearchWP.
+		e.searchbox._textbox.addEventListener("tokenized", inputReciever, true);
+		e.searchbox._textbox.addEventListener("untokenized", inputReciever, true);
 
-		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
-		                       // to be.
+		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you to be.
 
 		e.input = e.searchbox._textbox.inputField;
 
@@ -391,6 +394,10 @@ function Autosizer ( window )
 		e.searchbox.removeEventListener("focus", inputReciever, true);
 		e.searchbox.removeEventListener("blur", inputReciever, true);
 		window.removeEventListener("unload", shutdown, false);
+		
+		///// For SearchWP.
+		e.searchbox._textbox.removeEventListener("tokenized", inputReciever, true);
+		e.searchbox._textbox.removeEventListener("untokenized", inputReciever, true);
 
 		removeFocusWatch(e.searchbox);
 
@@ -523,12 +530,8 @@ function Autosizer ( window )
 		let pf = e.searchbox._textbox._tokensContainer.getAttribute('flex');
 		e.searchbox._textbox._tokensContainer.setAttribute('flex', 0);
 		
-		let pw = e.searcharea.width;
-		e.searcharea.width = 9999999;
-		
 		var w = e.searchbox._textbox._tokensContainer.boxObject.width;
 		
-		e.searcharea.width = pw;
 		e.searchbox._textbox._tokensContainer.setAttribute('flex', pf);
 
 		d("getSearchWPRequiredWidth() returned '"+w+"'.");
@@ -541,9 +544,9 @@ function Autosizer ( window )
 		
 		var w = 0;
 		
-		if ( e.searchbox._textbox._tokensContainer &&       // SearchWP installed.
-		     !e.searchbox._textbox._tokensStack.collapsed ) // and has it's buttons up.
-		{
+		d("Tokenized ("+typeof e.searchbox._textbox.getAttribute("tokenized")+"): "+e.searchbox._textbox.getAttribute("tokenized"));
+		if (e.searchbox._textbox.getAttribute("tokenized")) // SearchWP has it's
+		{                                                   // buttons up.
 			 w += getSearchWPRequiredWidth();
 		}
 		else
