@@ -46,9 +46,8 @@ if ((!e.searchbox) || (!e.searcharea))
 
 var autosizer = e.searchbox.autosizer;
 var strings   = autosizer.strings;
-var pref      = autosizer.pref;
-var prefo     = autosizer.prefo;
 var prefs     = autosizer.prefs;
+var pref      = prefs.pref;
 
 var asw = {
 	init: function ( ) {
@@ -69,7 +68,7 @@ var asw = {
 
 		var rbuttons = document.getElementById("sizemode");
 
-		var mode = pref.sizeOn;
+		var mode = pref.sizeOn.get();
 
 		if      ( mode == "none"   ) rbuttons.selectedIndex = 2;
 		else if ( mode == "atonce" ) rbuttons.selectedIndex = 1;
@@ -81,7 +80,7 @@ var asw = {
 	{
 		d("asw.endSize() called.");
 
-		prefo.sizeOn.set(document.getElementById("sizemode").value);
+		pref.sizeOn.set(document.getElementById("sizemode").value);
 
 		d("asw.endSize() returned.");
 	},
@@ -103,7 +102,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.minwidthSizeChange, true);
 
-		prefo.minwidth.set(asw.minWidthSolve());
+		pref.minwidth.set(asw.minWidthSolve());
 
 		d("asw.initMinWidth() returned.");
 	},
@@ -163,7 +162,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.maxwidthSizeChange, true);
 
-		prefo.maxwidth.set(asw.maxWidthSolve());
+		pref.maxwidth.set(asw.maxWidthSolve());
 
 		d("asw.endMaxWidth() returned.");
 	},
@@ -208,9 +207,9 @@ var asw = {
 	{
 		d("asw.initAfterSearch() called.");
 
-		document.getElementById("cleanOnSubmit").checked = pref.cleanOnSubmit;
-		document.getElementById("revertOnSubmit").checked = pref.revertOnSubmit;
-		document.getElementById("shrinkToButton").checked = pref.shrinkToButton;
+		document.getElementById("cleanOnSubmit").checked = pref.cleanOnSubmit.get();
+		document.getElementById("revertOnSubmit").checked = pref.revertOnSubmit.get();
+		document.getElementById("shrinkToButton").checked = pref.shrinkToButton.get();
 
 		d("asw.initAfterSearch() returned.");
 	},
@@ -219,7 +218,7 @@ var asw = {
 	{
 		d("asw.cleanOnSubmitChange() called.");
 
-		prefo.cleanOnSubmit.set(document.getElementById("cleanOnSubmit").checked);
+		pref.cleanOnSubmit.set(document.getElementById("cleanOnSubmit").checked);
 
 		d("asw.cleanOnSubmitChange() returned.");
 	},
@@ -227,7 +226,7 @@ var asw = {
 	{
 		d("asw.revertOnSubmitChange() called.");
 
-		prefo.revertOnSubmit.set(document.getElementById("revertOnSubmit").checked);
+		pref.revertOnSubmit.set(document.getElementById("revertOnSubmit").checked);
 
 		d("asw.revertOnSubmitChange() returned.");
 	},
@@ -235,7 +234,7 @@ var asw = {
 	{
 		d("asw.shrinkToButtonChange() called.");
 
-		prefo.shrinkToButton.set(document.getElementById("shrinkToButton").checked);
+		pref.shrinkToButton.set(document.getElementById("shrinkToButton").checked);
 
 		d("asw.shrinkToButtonChange() returned.");
 	},

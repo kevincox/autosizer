@@ -17,9 +17,8 @@ function d ( msg, seroius )
 
 var autosizer = new Autosizer();
 var strings   = autosizer.strings;
-var pref      = autosizer.pref;
-var prefo     = autosizer.prefo;
 var prefs     = autosizer.prefs;
+var pref      = prefs.pref;
 
 var asp = {
 	init: function () {
@@ -37,9 +36,9 @@ var asp = {
 			var item = prefs[i];
 			var type = item.tagName;
 
-			if ( type == "textbox"  )        item.value = pref[item.id];
-			else if ( type == "checkbox" )   item.checked = pref[item.id];
-			else if ( type == "radiogroup" ) item.value = pref[item.id];
+			if ( type == "textbox"  )        item.value = pref[item.id].get();
+			else if ( type == "checkbox" )   item.checked = pref[item.id].get();
+			else if ( type == "radiogroup" ) item.value = pref[item.id].get();
 			else d("Don't know how to load '"+type+"' for pref '"+item+"'.");
 		}
 
@@ -53,9 +52,9 @@ var asp = {
 			var item = prefElements[i];
 			var type = item.tagName;
 
-			if      ( type == "textbox" )    prefo[item.id].set(item.value);
-			else if ( type == "checkbox" )   prefo[item.id].set(item.checked);
-			else if ( type == "radiogroup" ) prefo[item.id].set(item.value);
+			if      ( type == "textbox" )     pref[item.id].set(item.value);
+			else if ( type == "checkbox" )   pref[item.id].set(item.checked);
+			else if ( type == "radiogroup" ) pref[item.id].set(item.value);
 			else d("Don't know how to store '"+type+"' for pref '"+item+"'.");
 		}
 	},
