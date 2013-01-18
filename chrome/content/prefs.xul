@@ -17,125 +17,133 @@
 
 	<script type="text/javascript" src="prefs.js"/>
 
-	<hbox>
-		<vbox style="width:200px">
-			<groupbox>
-				<caption label="&intro.title;" />
-				<description>
-					&intro.desc.before;
-					<box class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</box>
-					&intro.desc.after;
-				</description>
-			</groupbox>
-			<groupbox>
-				<caption label="&sync.title;" />
-				<description >
-					&sync.desc.before;
-					<box class="text-link" onclick="window.openDialog('chrome://autosizer/content/sync.xul', 'chrome=yes,centerscreen')">&sync.link;</box>
-					&sync.desc.after;
-				</description>
-			</groupbox>
-		</vbox>
-		<vbox>
-			<groupbox>
-				<caption label="&width.title;" />
-				<description>&width.desc;</description>
-				<grid flex="1">
-					<columns>
-						<column/>
-						<column/>
-						<column/>
-						<column flex="999"/>
-						<column/>
-					</columns>
-					<rows>
-						<row align="center">
-							<label control="minwidth" value="&width.min;" accesskey="&width.min.accesskey;"/>
-							<textbox id="minwidth" type="number" increment="5" min="-Infinity" size="4"
-									 class="pref"
-									 oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
-							<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
-							<vbox flex="999"></vbox>
-							<image src="width_min.png"/>
-						</row>
-						<row align="center">
-							<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
-							<textbox id="maxwidth" type="number" increment="5" min="-Infinity" size="4"
-									 class="pref"
-									 oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
-							<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
-								<menuitem value="none" label="&width.max.special.none;" disabled="true" />
-								<menuitem value="full" label="&width.max.special.full;" tooltiptext="&width.max.special.full.tooltip;"/>
-								<menuitem value="max"  label="&width.max.special.max;"  tooltiptext="&width.max.special.max.tooltip;" />
-							</menupopup></menulist>
-							<vbox flex="999"></vbox>
-							<image src="width_max.png"/>
-						</row>
-					</rows>
-				</grid>
-			</groupbox>
-
-			<groupbox>
-				<caption label="&width.sizeOn;" />
-				<radiogroup id="sizeOn" class="pref" orient="horizontal">
-					<radio value="key"    label="&width.sizeOn.key;"/>
-					<radio value="atonce" label="&width.sizeOn.atonce;"/>
-					<radio value="none"   label="&width.sizeOn.none;"/>
-				</radiogroup>
-			</groupbox>
-
-			<groupbox>
-				<caption label="&padding.title;"/>
-				<description>&padding.desc;</description>
-				<grid flex="1">
-					<columns>
-						<column align="right"/>
-						<column align="left"/>
-						<column flex="999"/>
-						<column/>
-					</columns>
-					<rows>
-						<row align="center">
-							<label control="padding" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
-							<textbox type="number" min="-Infinity" size="4" id="padding"
-									 class="pref" />
-							<vbox flex="999"></vbox>
-							<image src="offset_label.png"/>
-						</row>
-						<row align="center">
-						  <label control="namePadding" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
-							<textbox type="number" min="-Infinity" size="4" id="namePadding"
-									 class="pref" />
-							<vbox flex="999"></vbox>
-							<image src="offset_text.png"/>
-						</row>
-					</rows>
-				</grid>
-			</groupbox>
-
-			<groupbox>
-				<caption label="&other.title;"/>
-				<vbox>
-					<hbox>
-						<vbox>
-							<hbox align="center">
-								<label value="&other.autocomplete;" control="popupwidth" accesskey="&other.autocomplete.accesskey;"/>
-								<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth"
-										 class="pref" />
-							</hbox>
-							<checkbox id="cleanOnSubmit" accesskey="&other.cleanOnSubmit.accesskey;" label="&other.cleanOnSubmit;"
-									  class="pref" />
-						</vbox>
-						<vbox flex="999" align="right" style="min-width:138px;">
-							<image src="autocomplete.png"/>
-						</vbox>
-					</hbox>
-					<checkbox id="revertOnSubmit" accesskey="&other.revertOnSubmit.accesskey;" label="&other.revertOnSubmit;"
-							  class="pref"/>
-					<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
-							  class="pref"/>
+	<tabbox>
+		<tabs>
+			<tab label="&basic.tab;"/>
+			<tab label="&adv.tab;"/>
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<vbox style="width:200px">
+					<groupbox>
+						<caption label="&intro.title;" />
+						<description>
+							&intro.desc.before;
+							<box class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</box>
+							&intro.desc.after;
+						</description>
+					</groupbox>
+					<groupbox>
+						<caption label="&sync.title;" />
+						<description >
+							&sync.desc.before;
+							<box class="text-link" onclick="window.openDialog('chrome://autosizer/content/sync.xul', 'chrome=yes,centerscreen')">&sync.link;</box>
+							&sync.desc.after;
+						</description>
+					</groupbox>
 				</vbox>
-			</groupbox>
-		</vbox>
-	</hbox>
+				<vbox>
+					<groupbox>
+						<caption label="&width.title;" />
+						<description>&width.desc;</description>
+						<grid flex="1">
+							<columns>
+								<column/>
+								<column/>
+								<column/>
+								<column flex="999"/>
+								<column/>
+							</columns>
+							<rows>
+								<row align="center">
+									<label control="minwidth" value="&width.min;" accesskey="&width.min.accesskey;"/>
+									<textbox id="minwidth" type="number" increment="5" min="-Infinity" size="4"
+											class="pref"
+											oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
+									<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
+									<vbox flex="999"></vbox>
+									<image src="width_min.png"/>
+								</row>
+								<row align="center">
+									<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
+									<textbox id="maxwidth" type="number" increment="5" min="-Infinity" size="4"
+											class="pref"
+											oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
+									<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
+										<menuitem value="none" label="&width.max.special.none;" disabled="true" />
+										<menuitem value="full" label="&width.max.special.full;" tooltiptext="&width.max.special.full.tooltip;"/>
+										<menuitem value="max"  label="&width.max.special.max;"  tooltiptext="&width.max.special.max.tooltip;" />
+									</menupopup></menulist>
+									<vbox flex="999"></vbox>
+									<image src="width_max.png"/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&width.sizeOn;" />
+						<radiogroup id="sizeOn" class="pref" orient="horizontal">
+							<radio value="key"    label="&width.sizeOn.key;"/>
+							<radio value="atonce" label="&width.sizeOn.atonce;"/>
+							<radio value="none"   label="&width.sizeOn.none;"/>
+						</radiogroup>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&other.title;"/>
+						<vbox>
+							<checkbox id="cleanOnSubmit" accesskey="&other.cleanOnSubmit.accesskey;" label="&other.cleanOnSubmit;"
+											class="pref" />
+							<checkbox id="revertOnSubmit" accesskey="&other.revertOnSubmit.accesskey;" label="&other.revertOnSubmit;"
+									class="pref"/>
+							<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
+									class="pref"/>
+						</vbox>
+					</groupbox>
+				</vbox>
+			</tabpanel>
+			<tabpanel>
+				<vbox>
+					<groupbox>
+						<caption label="&padding.title;"/>
+						<description>&padding.desc;</description>
+						<grid flex="1">
+							<columns>
+								<column align="right"/>
+								<column align="left"/>
+								<column flex="999"/>
+								<column/>
+							</columns>
+							<rows>
+								<row align="center">
+									<label control="padding" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
+									<textbox type="number" min="-Infinity" size="4" id="padding"
+											class="pref" />
+									<vbox flex="999"></vbox>
+									<image src="offset_label.png"/>
+								</row>
+								<row align="center">
+								<label control="namePadding" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
+									<textbox type="number" min="-Infinity" size="4" id="namePadding"
+											class="pref" />
+									<vbox flex="999"></vbox>
+									<image src="offset_text.png"/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&suggestions.title;"/>
+						<hbox align="center">
+							<label value="&other.autocomplete;" control="popupwidth" accesskey="&other.autocomplete.accesskey;"/>
+							<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth" class="pref" />
+							<image src="autocomplete.png"/>
+						</hbox>
+					</groupbox>
+				</vbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
 </dialog>

@@ -37,9 +37,7 @@ function d ( msg, important )
 	if (!important) return;
 
 	dump("autosizer: "+msg+'\n');
-	dump("autosizer: "+msg+'\n');
 	Services.console.logStringMessage("autosizer: "+msg);
-	dump("autosissrvsrvzer: "+msg+'\n');
 }
 
 constants = {
@@ -66,7 +64,7 @@ prefs.addPref("shrinkToButton", false);
 prefs.addPref("firstrun", true);
 prefs.addPref("debug", false);
 
-prefs.addPref("preflinkincontextmenu", true);
+prefs.addPref("preflinkincontextmenu", "text");
 
 var strings = {
 	stringbundle: Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties"),
@@ -260,6 +258,9 @@ function Autosizer ( window )
 		addButton();
 		addStyleSheet();
 
+		addPrefLink();
+		prefs.pref.preflinkincontextmenu.addOnChange(addPrefLink);
+
 		addFocusWatch(e.searchbox);
 
 		window.addEventListener("unload", shutdown, false);
@@ -284,20 +285,6 @@ function Autosizer ( window )
 		else                                 window.setTimeout(autosize, 0);
 
 		instances.push(Components.utils.getWeakReference(self));
-
-		if ( false && prefs.pref.preflinkincontextmenu.get())
-		{
-			var menuitem = document.createElement("menuitem");
-			d("hre");
-			menuitem.setAttribute("label", strings.GetStringFromName("menuitem"));
-			d("hre");
-			menuitem.addEventListener("command", launchApp, false);
-			d("hre");
-
-			document.getElementById("menu_ToolsPopup").appendChild(menuitem);
-			d("hre");
-			menuitems.push(menuitem);
-		}
 
 		d("init() returning.");
 	}
@@ -325,6 +312,9 @@ function Autosizer ( window )
 		removeMeasuringLabel();
 		removeButton();
 		removeStyleSheet();
+
+		removePrefLink();
+		prefs.pref.preflinkincontextmenu.removeOnChange(addPrefLink);
 
 		/*** Clean up our instances ***/
 		for ( var i = instances.length-1; i >= 0; i-- ) // Go backwards so removing
@@ -435,6 +425,41 @@ function Autosizer ( window )
 			sss.unregisterSheet(uri, sss.USER_SHEET);
 
 		d("removeStyleSheet() returning.")
+	}
+
+	function addPrefLink ()
+	{
+		d("addPrefLink() called.")
+
+		removePrefLink();
+
+		if ( prefs.pref.preflinkincontextmenu.get() == "none" ) return;
+
+		e.preflinkitem = document.createElement("menuitem");
+		e.preflinkitem.setAttribute("label", "Autosizer Prefrences");
+		e.preflinkitem.addEventListener("command", log, false);
+
+		//if ( prefs.pref.preflinkincontextmenu.get() == "search" )
+		//{
+			e.searchbox._popup.appendChild(e.preflinkitem);
+		//}
+		//else //if ( prefs.pref.preflinkincontextmenu.get() == "text" )
+		//{
+			//@TODO: Find a way to add it to the searchbar context menu.
+		//}
+
+		d("addPrefLink() returning.")
+	}
+	function removePrefLink ()
+	{
+		d("removePrefLink() called.")
+
+		if (!e.preflinkitem) return;
+
+		e.preflinkitem.parentNode.removeChild(e.preflinkitem);
+		e.preflinkitem = null;
+
+		d("removePrefLink() returning.")
 	}
 
 	/*** Information Functions ***/
@@ -681,7 +706,7 @@ function Autosizer ( window )
 	{
 		if ( e.searchbox.hasFocus                  || // The searchbar is avtive.
 		     e.searchbox._popup.state == "showing" || // Selecting search engine.
-		     !pref.shrinkToButton                  || // Shrinking is disabled.
+		     !prefs.pref.shrinkToButton.get()      || // Shrinking is disabled.
 		     e.searchbox.value != ""                  // Searchbar is not empty.
 		   )
 		{
