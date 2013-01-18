@@ -15,18 +15,17 @@ function d ( msg, seroius )
 
 var autosizer = new Autosizer();
 var strings   = autosizer.strings;
-var pref      = autosizer.pref;
-var prefo     = autosizer.prefo;
 var prefs     = autosizer.prefs;
+var pref      = prefs.pref;
 
 var sync = {
 	init: function () {
 		var list = document.getElementById("prefs");
-		
-		var names = Object.keys(prefo).sort();
+
+		var names = Object.keys(pref).sort();
 		for ( i in names )
 		{
-			let p = prefo[names[i]];
+			let p = pref[names[i]];
 
 			d(p.name);
 			var item = list.appendItem(p.name, p.name);
@@ -45,19 +44,19 @@ var sync = {
 		{
 			let e = list.getItemAtIndex(i);
 			d(e.value);
-			prefo[e.value].sync(e.firstChild.checked);
+			pref[e.value].sync(e.firstChild.checked);
 		}
 	},
-	
+
 	setAll: function () {
 		var state = document.getElementById("checkall").checked;
-	
+
 		var list = document.getElementById("prefs");
 		var i = list.itemCount;
 		while ( i-- > 0 )
 		{
 			let e = list.getItemAtIndex(i);
 			e.firstChild.checked = state;
-		}	
+		}
 	},
 }

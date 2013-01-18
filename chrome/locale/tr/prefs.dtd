@@ -38,6 +38,6 @@
 <!ENTITY width.sizeOn "How to size the searchbar:">
 <!ENTITY width.sizeOn.atonce "All at once.">
 <!ENTITY width.sizeOn.none   "Don't size the searchbar.">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
 <!ENTITY sync.title "Prefrence Sync">
 <!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your prefrences through firefox sync.">
+<!ENTITY sync.desc.after "to configure prefrence sync.">

@@ -27,7 +27,13 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
+	important = true; // Uncomment for debuging.
+
+	if ( !important && Autosizer )
+	{
+		if (Autosizer(null).prefs.debug.get())
+			important = true;
+	}
 
 	if (!important) return;
 
@@ -63,8 +69,6 @@ function windowWatcher(subject, topic)
 /*** Bootstrap Functions ***/
 function startup(data, reason)
 {
-	install(data, ADDON_UPGRADE);
-
 	Components.manager.addBootstrappedManifestLocation(data.installPath);
 	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
@@ -87,7 +91,7 @@ function shutdown(data, reason)
 	Services.ww.unregisterNotification(windowWatcher);
 	var as = new Autosizer(null);
 
-	as.prefs.removeObserver("", as.prefObserver, false);
+	as.prefs.destroy();
 
 	while ( as.instances.length )
 	{

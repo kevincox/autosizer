@@ -25,18 +25,21 @@
 var EXPORTED_SYMBOLS = ["Autosizer"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://autosizer/content/cpref.jsm");
 
 function d ( msg, important )
 {
 	//important = true; // Uncomment for debuging.
 
-	if (pref && pref.debug)
+	if (prefs && prefs.pref.debug.get())
 		important = true;
 
 	if (!important) return;
 
 	dump("autosizer: "+msg+'\n');
+	dump("autosizer: "+msg+'\n');
 	Services.console.logStringMessage("autosizer: "+msg);
+	dump("autosissrvsrvzer: "+msg+'\n');
 }
 
 constants = {
@@ -44,125 +47,26 @@ constants = {
 	syncPrefBranch: "services.sync.prefs.sync.",
 }
 
-var pref = {};
-var prefo = {};
-var fpref = {};
-{
-	var rbranch = Services.prefs.getBranch("");
-	rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
-	var dbranch = Services.prefs.getDefaultBranch("");
+var prefs = CPref.Prefs(constants.prefBranch, {syncByDefault:true});
 
-	var syncPref = { type: "boolean" }; // Will only ever get written.
+prefs.addPref("minwidth", -1);
+prefs.addPref("maxwidth", 0);
 
-	function setPref ( key, val, def )
-	{
-		var b = def?dbranch:rbranch;
-		
-		//d(key+"("+fpref[key].type+"): "+val);
+prefs.addPref("padding",     0); // Padding from search text.
+prefs.addPref("namePadding", 5); // Padding from search engine title.
 
-		switch (fpref[key].type)
-		{
-			case "boolean":
-				b.setBoolPref(key, val);
-				break;
-			case "number":
-				b.setIntPref(key, val);
-				break;
-			case "string":
-				b.setCharPref(key, val);
-				break;
-		}
-	}
-	function getPref ( key )
-	{
-		switch (fpref[key].type)
-		{
-			case "boolean":
-				return rbranch.getBoolPref(key);
-			case "number":
-				return rbranch.getIntPref(key);
-			case "string":
-				return rbranch.getCharPref(key);
-		}
-	}
+prefs.addPref("popupwidth", 0);
 
-	function addPref ( name, dflt )
-	{
-		var r = {
-			name: name,
-			absname: constants.prefBranch+name,
+prefs.addPref("sizeOn", "key");
 
-			type: typeof dflt,
-		};
+prefs.addPref("cleanOnSubmit",  false);
+prefs.addPref("revertOnSubmit", false);
+prefs.addPref("shrinkToButton", false);
 
-		r.syncname = constants.syncPrefBranch+r.absname;
+prefs.addPref("firstrun", true);
+prefs.addPref("debug", false);
 
-		prefo[r.name] = r;
-		fpref[r.absname] = r;
-		fpref[r.syncname] = syncPref;
-
-		///// Set up defaults.
-		setPref(r.syncname, true, true);
-		setPref(r.absname, dflt, true);
-
-		///// The API.
-		r.set = function ( v ) {
-			setPref(r.absname, v);
-		};
-		pref[name] = getPref(r.absname);
-		r.get = function ( ) {
-			return pref[name];
-		};
-
-		r.sync = function ( sync ) {
-			setPref(r.syncname, sync);
-		};
-		r.isSynced = function () {
-			return getPref(r.syncname);
-		};
-	}
-
-	addPref("minwidth", -1);
-	addPref("maxwidth", 0);
-
-	addPref("padding",     0); // Padding from search text.
-	addPref("namePadding", 5); // Padding from search engine title.
-
-	addPref("popupwidth", 0);
-
-	addPref("sizeOn", "key");
-
-	addPref("cleanOnSubmit",  false);
-	addPref("revertOnSubmit", false);
-	addPref("shrinkToButton", false);
-
-	addPref("firstrun", true);
-	addPref("debug", false);
-}
-
-/*** Add Prefrence Listener ***/
-var prefs = Services.prefs.getBranch(constants.prefBranch);
-prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
-var prefObserver = {
-	observe: function (aSubject, aTopic, aData)
-	{
-		if( aTopic != "nsPref:changed" ) return;
-
-		switch (typeof pref[aData])
-		{
-			case "boolean":
-				pref[aData] = prefs.getBoolPref(aData);
-				break;
-			case "number":
-				pref[aData] = prefs.getIntPref(aData);
-				break;
-			case "string":
-				pref[aData] = prefs.getCharPref(aData);
-				break;
-		}
-	}
-};
-prefs.addObserver("", prefObserver, false);
+prefs.addPref("preflinkincontextmenu", true);
 
 var strings = {
 	stringbundle: Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties"),
@@ -233,8 +137,6 @@ function modifyFunction ( parent, index, func, where )
 			newf = function ( ) { // Change our function to remove our check.
 				orig.apply(this, arguments);
 			};
-
-
 		}
 	};
 }
@@ -243,12 +145,12 @@ var wizard = {open:false, win:null, tabs:null, tab:null};
 function addWizardTab (dontRemove)
 {
 	if (!dontRemove) win.removeEventListener("load", addWizardTab, false);
-	
+
 	wizard.tabs = wizard.win.gBrowser
 	wizard.tab = wizard.tabs.addTab("chrome://autosizer/content/wizard.xul");
 	wizard.tabs.selectedTab = wizard.tab;
 	wizard.win.focus();
-	
+
 	wizard.tabs.tabContainer.addEventListener("TabClose", wizardUnload, false);
 }
 function wizardUnload(event)
@@ -256,11 +158,11 @@ function wizardUnload(event)
 	if ( event.target != wizard.tab ) return
 
 	wizard.tabs.tabContainer.removeEventListener("TabClose", wizardUnload, false);
-	
+
 	wizard.win = null;
 	wizard.doc = null;
 	wizard.tab = null;
-	
+
 	wizard.open = false;
 }
 
@@ -270,11 +172,11 @@ function launchWizard ( )
 	{
 		wizard.win.gBrowser.selectedTab = wizard.tab;
 		wizard.win.focus();
-		return;	
+		return;
 	}
-	
+
 	wizard.open = true;
-	
+
 	var wi = Services.wm.getEnumerator("navigator:browser");
 
 	while (wi.hasMoreElements())
@@ -288,9 +190,9 @@ function launchWizard ( )
 			return;
 		}
 	}
-	
+
 	var win = Services.ww.openWindow(null, "chrome://browser/content/browser.xul",
-                                     "Searchbar Autosizer Setup Wizard", 
+                                     "Searchbar Autosizer Setup Wizard",
 	                                 null,
 	                                 null
 	                                );
@@ -300,13 +202,10 @@ function launchWizard ( )
 /*** Our "Class" ***/
 function Autosizer ( window )
 {
-	d("new Autosizer() called.");
+	d("new Autowizer() called.");
 
-	this.pref = pref;
-	this.prefo = prefo;
 	this.prefs = prefs;
 	this.instances = instances;
-	this.prefObserver = prefObserver;
 
 	this.strings = strings;
 
@@ -314,10 +213,11 @@ function Autosizer ( window )
 
 	if (!window) return this;
 
-	if (pref.firstrun)
+
+	if (prefs.pref.firstrun.get())
 	{
 		launchWizard();
-		prefo.firstrun.set(false);
+		prefs.pref.firstrun.set(false);
 	}
 
 	var self = this;
@@ -340,6 +240,8 @@ function Autosizer ( window )
 		button: null,
 
 		stylesheet: null,
+
+		preflinkitem: null,
 	};
 
 	function log ( obj )
@@ -365,8 +267,11 @@ function Autosizer ( window )
 		e.searchbox.addEventListener("blur", inputReciever, true);
 		e.searchbox.addEventListener("input", inputReciever, true);
 
-		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you
-		                       // to be.
+		///// For SearchWP.
+		e.searchbox._textbox.addEventListener("tokenized", inputReciever, true);
+		e.searchbox._textbox.addEventListener("untokenized", inputReciever, true);
+
+		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you to be.
 
 		e.input = e.searchbox._textbox.inputField;
 
@@ -375,10 +280,24 @@ function Autosizer ( window )
 
 		e.popup = document.getElementById("PopupAutoComplete");
 
-		if (pref.shrinkToButton) toButton();
-		else                     window.setTimeout(autosize, 0);
+		if (prefs.pref.shrinkToButton.get()) toButton();
+		else                                 window.setTimeout(autosize, 0);
 
 		instances.push(Components.utils.getWeakReference(self));
+
+		if ( false && prefs.pref.preflinkincontextmenu.get())
+		{
+			var menuitem = document.createElement("menuitem");
+			d("hre");
+			menuitem.setAttribute("label", strings.GetStringFromName("menuitem"));
+			d("hre");
+			menuitem.addEventListener("command", launchApp, false);
+			d("hre");
+
+			document.getElementById("menu_ToolsPopup").appendChild(menuitem);
+			d("hre");
+			menuitems.push(menuitem);
+		}
 
 		d("init() returning.");
 	}
@@ -391,6 +310,10 @@ function Autosizer ( window )
 		e.searchbox.removeEventListener("focus", inputReciever, true);
 		e.searchbox.removeEventListener("blur", inputReciever, true);
 		window.removeEventListener("unload", shutdown, false);
+
+		///// For SearchWP.
+		e.searchbox._textbox.removeEventListener("tokenized", inputReciever, true);
+		e.searchbox._textbox.removeEventListener("untokenized", inputReciever, true);
 
 		removeFocusWatch(e.searchbox);
 
@@ -516,24 +439,50 @@ function Autosizer ( window )
 
 	/*** Information Functions ***/
 
+	function getSearchWPRequiredWidth ( )
+	{
+		d("getSearchWPRequiredWidth() called.");
+
+		let pf = e.searchbox._textbox._tokensContainer.getAttribute('flex');
+		e.searchbox._textbox._tokensContainer.setAttribute('flex', 0);
+
+		var w = e.searchbox._textbox._tokensContainer.boxObject.width;
+
+		e.searchbox._textbox._tokensContainer.setAttribute('flex', pf);
+
+		d("getSearchWPRequiredWidth() returned '"+w+"'.");
+		return w;
+	}
+
 	function getRequiredWidth ( ) // Returns the length of the searchbox's
 	{                             // content in pixels
 		d("getRequiredWidth() called.");
 
-		var tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
-		var pad = pref.padding;
-		if ( e.searchbox.value == "" && pref.minwidth == -1 )
+		var w = 0;
+
+		d("Tokenized ("+typeof e.searchbox._textbox.getAttribute("tokenized")+"): "+e.searchbox._textbox.getAttribute("tokenized"));
+		if (e.searchbox._textbox.getAttribute("tokenized")) // SearchWP has it's
+		{                                                   // buttons up.
+			 w += getSearchWPRequiredWidth();
+		}
+		else
 		{
-			tc = e.searchbox.currentEngine.name;
-			pad = pref.namePadding;
+			var tc = e.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
+			var pad = prefs.pref.padding.get();
+			if ( e.searchbox.value == "" && prefs.pref.minwidth.get() == -1 )
+			{
+				tc = e.searchbox.currentEngine.name;
+				pad = prefs.pref.namePadding.get();
+			}
+
+			w += measureText(tc);
+			w += pad;
 		}
 
-		var w = getOverheadWidth();
-		w += measureText(tc);
-		w += pad;
+		w += getOverheadWidth();
 
-		var minwidth = pref.minwidth;
-		var maxwidth = pref.maxwidth;
+		var minwidth = prefs.pref.minwidth.get();
+		var maxwidth = prefs.pref.maxwidth.get();
 
 		if      ( maxwidth == 0 ) maxwidth = getAvailableWidth();
 		else if ( maxwidth <  0 ) maxwidth = getAllAvailableWidth();
@@ -753,18 +702,18 @@ function Autosizer ( window )
 	{
 		d("afterSubmit() called.");
 
-		if (pref.cleanOnSubmit)
+		if (prefs.pref.cleanOnSubmit.get())
 		{
 			e.searchbox.value='';
 		}
-		if (pref.revertOnSubmit)
+		if (prefs.pref.revertOnSubmit.get())
 		{
 			e.searchbox.currentEngine = e.searchbox.engines[0];
 		}
 
 		autosize();
 
-		if (pref.shrinkToButton)
+		if (prefs.pref.shrinkToButton.get())
 		{
 			d("Shrinking");
 			toButton();
@@ -781,13 +730,13 @@ function Autosizer ( window )
 		if (doShrinkToButton()) return; // If we are a button we don't have to size.
 
 		var width = 0;
-		if ( pref.sizeOn == "none" ) return; // They don't want us to size it.
-		else if ( pref.sizeOn == "atonce" )
+		if ( prefs.pref.sizeOn.get() == "none" ) return; // They don't want us to size it.
+		else if ( prefs.pref.sizeOn.get() == "atonce" )
 		{
 			var width;
 			if (e.searchbox.value)
 			{
-				width = pref.maxwidth;
+				width = prefs.pref.maxwidth.get();
 				if     ( width == 0 ) width = getAvailableWidth();
 				else if ( width < 0 ) width = getAllAvailableWidth();
 
@@ -797,13 +746,13 @@ function Autosizer ( window )
 		}
 		else width = getRequiredWidth();
 
-		e.searcharea.width = width + pref.padding;
+		e.searcharea.width = width + prefs.pref.padding.get();
 
-		if      ( pref.popupwidth <= -100 ) width += -(100 + pref.popupwidth);
-		else if ( pref.popupwidth == -1   ) width = window.outerWidth;
-		else                                width = pref.popupwidth
+		if      ( prefs.pref.popupwidth.get() <= -100 ) width += -(100 + prefs.pref.popupwidth.get());
+		else if ( prefs.pref.popupwidth.get() == -1   ) width = window.outerWidth;
+		else                                width = prefs.pref.popupwidth.get();
 
-		if ( pref.popupwidth != 0 ) e.popup.width = width;
+		if ( prefs.pref.popupwidth.get() != 0 ) e.popup.width = width;
 
 		d("autosize() returned.");
 	}
