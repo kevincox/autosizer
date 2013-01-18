@@ -139,8 +139,16 @@
 						<hbox align="center">
 							<label value="&other.autocomplete;" control="popupwidth" accesskey="&other.autocomplete.accesskey;"/>
 							<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth" class="pref" />
-							<image src="autocomplete.png"/>
+							<image src="autocomplete.png" style="margin-left:10px" />
 						</hbox>
+					</groupbox>
+
+					<groupbox>
+						<caption label="&preflink.title;"/>
+						<radiogroup id="preflink" class="pref" orient="horizontal">
+							<radio value="search" label="&preflink.search;"/>
+							<radio value="none"   label="&preflink.none;"/>
+						</radiogroup>
 					</groupbox>
 				</vbox>
 			</tabpanel>

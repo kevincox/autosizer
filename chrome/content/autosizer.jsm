@@ -64,7 +64,7 @@ prefs.addPref("shrinkToButton", false);
 prefs.addPref("firstrun", true);
 prefs.addPref("debug", false);
 
-prefs.addPref("preflinkincontextmenu", "text");
+prefs.addPref("preflink", "search");
 
 var strings = {
 	stringbundle: Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties"),
@@ -259,7 +259,7 @@ function Autosizer ( window )
 		addStyleSheet();
 
 		addPrefLink();
-		prefs.pref.preflinkincontextmenu.addOnChange(addPrefLink);
+		prefs.pref.preflink.addOnChange(addPrefLink);
 
 		addFocusWatch(e.searchbox);
 
@@ -314,7 +314,7 @@ function Autosizer ( window )
 		removeStyleSheet();
 
 		removePrefLink();
-		prefs.pref.preflinkincontextmenu.removeOnChange(addPrefLink);
+		prefs.pref.preflink.removeOnChange(addPrefLink);
 
 		/*** Clean up our instances ***/
 		for ( var i = instances.length-1; i >= 0; i-- ) // Go backwards so removing
@@ -433,17 +433,17 @@ function Autosizer ( window )
 
 		removePrefLink();
 
-		if ( prefs.pref.preflinkincontextmenu.get() == "none" ) return;
+		if ( prefs.pref.preflink.get() == "none" ) return;
 
 		e.preflinkitem = document.createElement("menuitem");
 		e.preflinkitem.setAttribute("label", "Autosizer Prefrences");
 		e.preflinkitem.addEventListener("command", log, false);
 
-		//if ( prefs.pref.preflinkincontextmenu.get() == "search" )
+		//if ( prefs.pref.preflink.get() == "search" )
 		//{
 			e.searchbox._popup.appendChild(e.preflinkitem);
 		//}
-		//else //if ( prefs.pref.preflinkincontextmenu.get() == "text" )
+		//else //if ( prefs.pref.preflink.get() == "text" )
 		//{
 			//@TODO: Find a way to add it to the searchbar context menu.
 		//}
