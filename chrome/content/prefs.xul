@@ -29,7 +29,7 @@
 						<caption label="&intro.title;" />
 						<description>
 							&intro.desc.before;
-							<box class="text-link" href="https://sourceforge.net/p/autosizer/wiki/Prefrences/">&intro.desc.link;</box>
+							<box class="text-link" onclick="window.open('https://sourceforge.net/p/autosizer/wiki/Preferences/')">&intro.desc.link;</box>
 							&intro.desc.after;
 						</description>
 					</groupbox>
