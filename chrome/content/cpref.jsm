@@ -28,7 +28,7 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 
 function d ( msg, important )
 {
-	important = true; // Uncomment for debuging.
+	//important = true; // Uncomment for debuging.
 
 	if (!important) return;
 
