@@ -193,7 +193,7 @@ function launchWizard ( )
                                      "Searchbar Autosizer Setup Wizard",
 	                                 null,
 	                                 null
-	                                );
+	                                 );
 	win.addEventListener("load", addWizardTab, false);
 }
 function launchPrefs ( )
@@ -442,7 +442,7 @@ function Autosizer ( window )
 		if ( prefs.pref.preflink.get() == "none" ) return;
 
 		e.preflinkitem = document.createElement("menuitem");
-		e.preflinkitem.setAttribute("label", "Autosizer Prefrences");
+		e.preflinkitem.setAttribute("label", strings.get("prefLinkText"));
 		e.preflinkitem.addEventListener("command", launchPrefs, false);
 
 		//if ( prefs.pref.preflink.get() == "search" )
