@@ -196,6 +196,12 @@ function launchWizard ( )
 	                                );
 	win.addEventListener("load", addWizardTab, false);
 }
+function launchPrefs ( )
+{
+	Services.ww.openWindow(null, "chrome://autosizer/content/prefs.xul",
+	                       "Autosizer Prefrences",
+	                       "chrome,centerscreen", null);
+}
 
 /*** Our "Class" ***/
 function Autosizer ( window )
@@ -437,7 +443,7 @@ function Autosizer ( window )
 
 		e.preflinkitem = document.createElement("menuitem");
 		e.preflinkitem.setAttribute("label", "Autosizer Prefrences");
-		e.preflinkitem.addEventListener("command", log, false);
+		e.preflinkitem.addEventListener("command", launchPrefs, false);
 
 		//if ( prefs.pref.preflink.get() == "search" )
 		//{
@@ -457,6 +463,7 @@ function Autosizer ( window )
 		if (!e.preflinkitem) return;
 
 		e.preflinkitem.parentNode.removeChild(e.preflinkitem);
+		e.preflinkitem.removeEventListener("command", launchPrefs, false);
 		e.preflinkitem = null;
 
 		d("removePrefLink() returning.")
