@@ -43,8 +43,8 @@
 <!ENTITY preflink.none   "Nowhere.">
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your preferences through firefox sync.">
+<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
 <!ENTITY sync.link "Click here">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
+<!ENTITY sync.desc.after "to configure preference sync.">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "T">

@@ -110,10 +110,10 @@ function install (data, reason)
 {
 	if ( reason == ADDON_UPGRADE )
 	{
-		///// Don't start syncing peoples prefrences for them.
+		///// Don't start syncing peoples preferences for them.
 		if ( Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug") == Services.prefs.PREF_INVALID )
 		{ // They don't have the sync options.
-			Components.utils.import("chrome://autosizer/content/autosizer.jsm"); // Create the prefrences.
+			Components.utils.import("chrome://autosizer/content/autosizer.jsm"); // Create the preferences.
 
 			var so = Services.prefs.getChildList("services.sync.prefs.sync.extensions.autosizer.");
 			for ( i in so )

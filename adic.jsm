@@ -2,7 +2,7 @@ var EXPORTED_SYMBOLS = ["ADIC_info"]; // Don't change this or ADIC won't be able
                                       // to read this file.
 
 var ADIC_info = {
-	/// Include prefrences from here down.
+	/// Include preferences from here down.
 	prefs: ["extensions.autosizer."],
 
 	/// true for system info.

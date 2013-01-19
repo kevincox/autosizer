@@ -36,9 +36,9 @@
 <!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
 <!ENTITY other.shrinkToButton.accesskey "T">
 <!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your preferences through firefox sync.">
+<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
 <!ENTITY sync.link "Click here">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
+<!ENTITY sync.desc.after "to configure preference sync.">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "T">
 <!ENTITY suggestions.title "Suggestions Window">

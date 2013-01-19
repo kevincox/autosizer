@@ -33,14 +33,14 @@
 <!ENTITY other.shrinkToButton.accesskey "κ">
 <!ENTITY wizard.button "Βοηθός">
 <!ENTITY wizard.accesskey "ο">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY sync.link "Click here to configure preference sync.">
 <!ENTITY width.sizeOn.key    "On every keypress.">
 <!ENTITY width.sizeOn "How to size the searchbar:">
 <!ENTITY width.sizeOn.atonce "All at once.">
 <!ENTITY width.sizeOn.none   "Don't size the searchbar.">
 <!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your preferences through firefox sync.">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
+<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
+<!ENTITY sync.desc.after "to configure preference sync.">
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY basic.tab "Basic">
 <!ENTITY adv.caption "Advanced Preferences">
