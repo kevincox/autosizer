@@ -744,12 +744,7 @@ function Autosizer ( window )
 		}
 
 		autosize();
-
-		if (prefs.pref.shrinkToButton.get())
-		{
-			d("Shrinking");
-			toButton();
-		}
+		doShrinkToButton();
 
 		d("afterSubmit() returned.");
 	}
