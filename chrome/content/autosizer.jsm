@@ -193,8 +193,14 @@ function launchWizard ( )
                                      "Searchbar Autosizer Setup Wizard",
 	                                 null,
 	                                 null
-	                                );
+	                                 );
 	win.addEventListener("load", addWizardTab, false);
+}
+function launchPrefs ( )
+{
+	Services.ww.openWindow(null, "chrome://autosizer/content/prefs.xul",
+	                       "Autosizer Prefrences",
+	                       "chrome,centerscreen", null);
 }
 
 /*** Our "Class" ***/
@@ -436,8 +442,8 @@ function Autosizer ( window )
 		if ( prefs.pref.preflink.get() == "none" ) return;
 
 		e.preflinkitem = document.createElement("menuitem");
-		e.preflinkitem.setAttribute("label", "Autosizer Prefrences");
-		e.preflinkitem.addEventListener("command", log, false);
+		e.preflinkitem.setAttribute("label", strings.get("prefLinkText"));
+		e.preflinkitem.addEventListener("command", launchPrefs, false);
 
 		//if ( prefs.pref.preflink.get() == "search" )
 		//{
@@ -457,6 +463,7 @@ function Autosizer ( window )
 		if (!e.preflinkitem) return;
 
 		e.preflinkitem.parentNode.removeChild(e.preflinkitem);
+		e.preflinkitem.removeEventListener("command", launchPrefs, false);
 		e.preflinkitem = null;
 
 		d("removePrefLink() returning.")
@@ -737,12 +744,7 @@ function Autosizer ( window )
 		}
 
 		autosize();
-
-		if (prefs.pref.shrinkToButton.get())
-		{
-			d("Shrinking");
-			toButton();
-		}
+		doShrinkToButton();
 
 		d("afterSubmit() returned.");
 	}

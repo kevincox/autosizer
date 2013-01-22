@@ -1,7 +1,7 @@
 <!ENTITY title "Autosizer Options">
 <!ENTITY basic.tab "Basic">
 <!ENTITY adv.tab "Advanced">
-<!ENTITY adv.caption "Advanced Prefrences">
+<!ENTITY adv.caption "Advanced Preferences">
 <!ENTITY intro.title "About Preferences">
 <!ENTITY intro.desc.before "For more information about what each preference means see">
 <!ENTITY intro.desc.link "this wiki page">
@@ -38,13 +38,13 @@
 <!ENTITY other.revertOnSubmit.desc "Whatever search engine is on top will be default. To manage your engines, click on the engine icon and choose &apos;Manage Search Engines...&apos;">
 <!ENTITY other.shrinkToButton "Shrink searchbar to Button if empty">
 <!ENTITY other.shrinkToButton.accesskey "T">
-<!ENTITY preflink.title "Where to place a link to the prefrences dialog.">
+<!ENTITY preflink.title "Where to place a link to the preferences dialog.">
 <!ENTITY preflink.search "In the search engine menu.">
 <!ENTITY preflink.none   "Nowhere.">
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your prefrences through firefox sync.">
+<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
 <!ENTITY sync.link "Click here">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
+<!ENTITY sync.desc.after "to configure preference sync.">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "T">

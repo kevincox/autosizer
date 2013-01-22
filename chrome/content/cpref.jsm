@@ -28,7 +28,7 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 
 function d ( msg, important )
 {
-	important = true; // Uncomment for debuging.
+	//important = true; // Uncomment for debuging.
 
 	if (!important) return;
 
@@ -106,7 +106,8 @@ function Prefs (path, options)
 			if( aTopic != "nsPref:changed" ) return;
 
 			getPref(aData);
-			self.pref[aData.substr(path.length)]._triggerChange();
+			var prefo = self.pref[aData.substr(path.length)];
+			if (prefo) prefo._triggerChange();
 		}
 	};
 	rbranch.addObserver(path, prefObserver, false);
@@ -165,6 +166,7 @@ function Prefs (path, options)
 		values[r.absname] = dflt; // Prime the cache.
 		getPref(r.absname);       //
 
+		d("Adding pref: "+name);
 		self.pref[name] = r;
 		return r;
 	};

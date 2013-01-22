@@ -1,6 +1,6 @@
 <!ENTITY title "Autosizer Opções">
-<!ENTITY intro.title "About Prefrences">
-<!ENTITY intro.desc.before "For more information about what each prefrence means see">
+<!ENTITY intro.title "About Preferences">
+<!ENTITY intro.desc.before "For more information about what each preference means see">
 <!ENTITY intro.desc.link "this wiki page">
 <!ENTITY intro.desc.after ".">
 <!ENTITY width.title "Largura da Caixa de Pesquisa">
@@ -33,18 +33,18 @@
 <!ENTITY other.shrinkToButton.accesskey "k">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
-<!ENTITY sync.link "Click here to configure prefrence sync.">
+<!ENTITY sync.link "Click here to configure preference sync.">
 <!ENTITY width.sizeOn.key    "On every keypress.">
 <!ENTITY width.sizeOn "How to size the searchbar:">
 <!ENTITY width.sizeOn.atonce "All at once.">
 <!ENTITY width.sizeOn.none   "Don't size the searchbar.">
 <!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automaticly syncronises your prefrences through firefox sync.">
-<!ENTITY sync.desc.after "to configure prefrence sync.">
+<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
+<!ENTITY sync.desc.after "to configure preference sync.">
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY basic.tab "Basic">
-<!ENTITY adv.caption "Advanced Prefrences">
-<!ENTITY preflink.title "Where to place a link to the prefrences dialog.">
+<!ENTITY adv.caption "Advanced Preferences">
+<!ENTITY preflink.title "Where to place a link to the preferences dialog.">
 <!ENTITY adv.tab "Advanced">
 <!ENTITY preflink.none   "Nowhere.">
 <!ENTITY preflink.search "In the search engine menu.">
