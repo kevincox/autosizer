@@ -9,7 +9,7 @@
 <!ENTITY width.title "Searchbar Width">
 <!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
 <!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY width.min.special.showTitle "Fit search engine title.">
 <!ENTITY width.min.accesskey "T">
 <!ENTITY width.max "Maximum:">
 <!ENTITY width.max.special.none "regular">
