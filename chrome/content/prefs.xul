@@ -58,8 +58,8 @@
 								<row align="center">
 									<label control="minwidth" value="&width.min;" accesskey="&width.min.accesskey;"/>
 									<textbox id="minwidth" type="number" increment="5" min="-Infinity" size="4"
-											class="pref"
-											oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
+									         class="pref"
+									         oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
 									<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
 									<vbox flex="999"></vbox>
 									<image src="width_min.png"/>
@@ -67,8 +67,8 @@
 								<row align="center">
 									<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
 									<textbox id="maxwidth" type="number" increment="5" min="-Infinity" size="4"
-											class="pref"
-											oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
+									         class="pref"
+									         oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
 									<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
 										<menuitem value="none" label="&width.max.special.none;" disabled="true" />
 										<menuitem value="full" label="&width.max.special.full;" tooltiptext="&width.max.special.full.tooltip;"/>
@@ -94,11 +94,11 @@
 						<caption label="&other.title;"/>
 						<vbox>
 							<checkbox id="cleanOnSubmit" accesskey="&other.cleanOnSubmit.accesskey;" label="&other.cleanOnSubmit;"
-											class="pref" />
+							          class="pref" />
 							<checkbox id="revertOnSubmit" accesskey="&other.revertOnSubmit.accesskey;" label="&other.revertOnSubmit;"
-									class="pref"/>
+							          class="pref"/>
 							<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
-									class="pref"/>
+							          class="pref"/>
 						</vbox>
 					</groupbox>
 				</vbox>

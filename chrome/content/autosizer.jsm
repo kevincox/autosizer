@@ -773,7 +773,7 @@ function Autosizer ( window )
 		}
 		else width = getRequiredWidth();
 
-		e.searcharea.width = width + prefs.pref.padding.get();
+		e.searcharea.width = width;
 
 		if      ( prefs.pref.popupwidth.get() <= -100 ) width += -(100 + prefs.pref.popupwidth.get());
 		else if ( prefs.pref.popupwidth.get() == -1   ) width = window.outerWidth;
