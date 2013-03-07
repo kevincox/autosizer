@@ -1,0 +1,7 @@
+<em:localized>
+	<Description>
+		<em:locale>hu</em:locale>
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>Keresőmező szélességének változtatása a beírt szövegtől függően.</em:description>
+	</Description>
+</em:localized>

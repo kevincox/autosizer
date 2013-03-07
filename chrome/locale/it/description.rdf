@@ -1,0 +1,7 @@
+<em:localized>
+	<Description>
+		<em:locale>it</em:locale>
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>Permette di adattare la dimensione della barra di ricerca in base alla lunghezza delle parole inserite.</em:description>
+	</Description>
+</em:localized>

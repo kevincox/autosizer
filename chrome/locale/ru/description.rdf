@@ -1,0 +1,7 @@
+<em:localized>
+	<Description>
+		<em:locale>ru</em:locale>
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>Увеличивает размер панели поиска по мере набора текста</em:description>
+	</Description>
+</em:localized>

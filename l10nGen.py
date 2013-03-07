@@ -17,9 +17,9 @@ generateManifest = True # Wether or not to generate a chrome.manifest from
 chromePrefix = "autosizer"
 
 generateInstallRDF = True
-insertFiles = ["chrome/locale/BZ_localized.txt"]
-insertLocation = "<!--INSERT_FILES_HERE-->"
-
+insertFiles = []
+insertLocation = "<!--INSERT_CONTENT_HERE-->"
+insertDescription = True
 
 
 
@@ -130,9 +130,19 @@ if generateInstallRDF:
 	
 	content = open("install.rdf.in").read();
 	
-	newContent = ""
+	newContent = insertLocation+"\n"
+	
 	for f in insertFiles:
 		newContent += open(f).read()
+		
+	if insertDescription:
+		for l in availLocales[1:]:
+			try:
+				newContent += open(os.path.join(alocals, l, "description.rdf")).read()
+			except:
+				print("Locale "+l+" does not have a description.")
+				
+	newContent += insertLocation
 	
 	content = content.replace(insertLocation, newContent, 1)
 	
@@ -175,6 +185,9 @@ for locale in availLocales[1:]: # Skip base locale
 	for f in files:
 		try: bc = baseContent[f]
 		except:
+			if f.endswith(".rdf"):
+				continue
+			
 			if removeFiles:
 				print("{locale} has unessary file '{file}', removing.".format(locale=locale, file=f))
 				os.remove(f)
