@@ -2,7 +2,7 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>{655397ca-4766-496b-b7a8-3a5b176ee4c2}</em:id>
-		<em:version>2.0.17</em:version>
+		<em:version>2.0.18</em:version>
 		<em:unpack>false</em:unpack>
 		<em:type>2</em:type>
 		<em:bootstrap>true</em:bootstrap>
@@ -11,7 +11,7 @@
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 				<em:minVersion>8.0</em:minVersion>
-				<em:maxVersion>18.*</em:maxVersion>
+				<em:maxVersion>19.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 
@@ -32,6 +32,7 @@
 		<em:translator>sk: wladow</em:translator>
 		<em:translator>tr (partly): batuhancetin</em:translator>
 		<em:translator>zh-CN: WangKing</em:translator>
+		<em:translator>zh-CN: 熊浩成</em:translator>
 		<em:translator>zh-TW (partly): hit1205</em:translator>
 		<em:translator>www.BabelZilla.org</em:translator>
 
@@ -54,7 +55,7 @@
 		<em:description>Expands the searchbox as you type.</em:description>
 
 		<!--INSERT_CONTENT_HERE-->
-		
+
 		<em:creator>Kevin Cox</em:creator>
 		<em:optionsURL>chrome://autosizer/content/prefs.xul</em:optionsURL>
 		<em:iconURL>chrome://autosizer/content/logo.png</em:iconURL>
