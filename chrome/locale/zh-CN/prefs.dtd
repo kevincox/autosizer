@@ -1,50 +1,50 @@
 <!ENTITY title "Autosizer 选项">
-<!ENTITY intro.title "About Preferences">
-<!ENTITY intro.desc.before "For more information about what each preference means see">
-<!ENTITY intro.desc.link "this wiki page">
-<!ENTITY intro.desc.after ".">
+<!ENTITY intro.title "关于选项">
+<!ENTITY intro.desc.before "要想了解每个选项所代表的详细信息，请参见">
+<!ENTITY intro.desc.link "这个 wiki 页面">
+<!ENTITY intro.desc.after "。">
 <!ENTITY width.title "搜索栏宽度">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
-<!ENTITY width.min "最小值:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY width.desc "所有的值都以像素为单位，您也可以从下拉菜单中选择特殊的选项。">
+<!ENTITY width.min "最小值：">
+<!ENTITY width.min.special.showTitle "恰好显示搜索引擎标题。">
 <!ENTITY width.min.accesskey "i">
-<!ENTITY width.max "最大值:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
+<!ENTITY width.max "最大值：">
+<!ENTITY width.max.special.none "固定值">
+<!ENTITY width.max.special.full "最大值">
+<!ENTITY width.max.special.full.tooltip "搜索栏将能尽可能拓宽，但不会推开其他东西">
+<!ENTITY width.max.special.max "最大可视尺寸">
+<!ENTITY width.max.special.max.tooltip "搜索栏将能尽可能拓宽，并将推开其他东西，但会保持搜索栏仍完整显示在屏幕上">
 <!ENTITY width.max.accesskey "a">
-<!ENTITY padding.title "文字与右边距离">
-<!ENTITY padding.desc "单位为像素, 允许为负.">
-<!ENTITY padding.query "搜索关键字:">
+<!ENTITY padding.title "文字右侧空白大小">
+<!ENTITY padding.desc "单位为像素，允许值为负数。">
+<!ENTITY padding.query "搜索关键字：">
 <!ENTITY padding.query.accesskey "Q">
-<!ENTITY padding.engine "搜索引擎标题:">
+<!ENTITY padding.engine "搜索引擎标题：">
 <!ENTITY padding.engine.accesskey "E">
 <!ENTITY other.title "其它">
-<!ENTITY other.autocomplete "搜索建议宽度:">
+<!ENTITY other.autocomplete "搜索建议宽度：">
 <!ENTITY other.autocomplete.accesskey "S">
-<!ENTITY other.cleanOnSubmit "关键字提交搜索后, 清除搜索栏中的文字">
+<!ENTITY other.cleanOnSubmit "每次搜索后清空搜索栏中的文字">
 <!ENTITY other.cleanOnSubmit.accesskey "p">
-<!ENTITY other.revertOnSubmit "搜索提交后恢复默认的搜索引擎">
+<!ENTITY other.revertOnSubmit "每次搜索后恢复默认搜索引擎">
 <!ENTITY other.revertOnSubmit.accesskey "R">
-<!ENTITY other.revertOnSubmit.desc "位于顶端的搜索引擎将为默认搜索引擎. 你可以点击搜索引擎图标选择[管理搜索引擎...]来进行修改.">
+<!ENTITY other.revertOnSubmit.desc "置于顶部的搜索引擎将为默认搜索引擎。您可以点击搜索栏的搜索引擎图标，选择“管理搜索引擎...”来进行修改。">
 <!ENTITY other.shrinkToButton "无内容时收缩搜索栏为按钮">
 <!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY wizard.button "Assistant">
+<!ENTITY wizard.button "设置向导">
 <!ENTITY wizard.accesskey "t">
-<!ENTITY sync.link "Click here to configure preference sync.">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
-<!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
-<!ENTITY sync.desc.after "to configure preference sync.">
-<!ENTITY suggestions.title "Suggestions Window">
-<!ENTITY basic.tab "Basic">
-<!ENTITY adv.caption "Advanced Preferences">
-<!ENTITY preflink.title "Where to place a link to the preferences dialog.">
-<!ENTITY adv.tab "Advanced">
-<!ENTITY preflink.none   "Nowhere.">
-<!ENTITY preflink.search "In the search engine menu.">
+<!ENTITY sync.link "点击这里配置首选项同步。">
+<!ENTITY width.sizeOn.key    "每输入一个文字">
+<!ENTITY width.sizeOn "什么时候改变搜索栏大小：">
+<!ENTITY width.sizeOn.atonce "仅一次">
+<!ENTITY width.sizeOn.none   "不要改变搜索栏大小">
+<!ENTITY sync.title "首选项同步">
+<!ENTITY sync.desc.before "Searchbar Autosizer 可以通过Firefox 同步自动同步您的首选项。">
+<!ENTITY sync.desc.after "以配置首选项同步。">
+<!ENTITY suggestions.title "搜索建议">
+<!ENTITY basic.tab "基本">
+<!ENTITY adv.caption "高级选项">
+<!ENTITY preflink.title "将首选项按钮放置在哪里">
+<!ENTITY adv.tab "高级">
+<!ENTITY preflink.none   "不放置">
+<!ENTITY preflink.search "放置在搜索栏的菜单中">

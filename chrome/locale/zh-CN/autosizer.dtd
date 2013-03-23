@@ -1,29 +1,29 @@
-<!ENTITY pref.other.autocomplete "搜索建议宽度:">
+<!ENTITY pref.other.autocomplete "搜索建议宽度：">
 <!ENTITY pref.other.autocomplete.accesskey "S">
-<!ENTITY pref.other.cleanOnSubmit "关键字提交搜索后, 清除搜索栏中的文字">
+<!ENTITY pref.other.cleanOnSubmit "每次搜索后清空搜索栏中的文字">
 <!ENTITY pref.other.cleanOnSubmit.accesskey "p">
-<!ENTITY pref.other.revertOnSubmit "搜索提交后恢复默认的搜索引擎">
+<!ENTITY pref.other.revertOnSubmit "每次搜索后恢复默认搜索引擎">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
-<!ENTITY pref.other.revertOnSubmit.desc "位于顶端的搜索引擎将为默认搜索引擎. 你可以点击搜索引擎图标选择[管理搜索引擎...]来进行修改.">
+<!ENTITY pref.other.revertOnSubmit.desc "置于顶部的搜索引擎将为默认搜索引擎。您可以点击搜索栏的搜索引擎图标，选择“管理搜索引擎...”来进行修改。">
 <!ENTITY wiz.title "Autosizer 设置向导">
-<!ENTITY wiz.start.desc "当你在搜索栏输入文字时, Autosizer 应该进行什么操作?">
+<!ENTITY wiz.start.desc "当您在搜索栏输入文字时, Autosizer 应该进行什么操作?">
 <!ENTITY wiz.start.inc "宽度随着输入变化">
 <!ENTITY wiz.start.inc.accesskey "S">
-<!ENTITY wiz.start.alt "输入时搜索栏变宽">
+<!ENTITY wiz.start.alt "点击搜索栏时拓宽">
 <!ENTITY wiz.start.alt.accesskey "E">
 <!ENTITY wiz.start.fix "保持固定宽度">
 <!ENTITY wiz.start.fix.accesskey "K">
-<!ENTITY wiz.norMinWidth.title "搜索栏最窄为?">
+<!ENTITY wiz.norMinWidth.title "搜索栏最小宽度">
 <!ENTITY wiz.norMinWidth.desc "设定最小宽度">
-<!ENTITY wiz.norMaxWidth.title "搜索栏最宽为?">
+<!ENTITY wiz.norMaxWidth.title "搜索栏最大宽度">
 <!ENTITY wiz.norMaxWidth.desc "设定最大宽度">
-<!ENTITY wiz.altWidth.title "搜索栏在使用时的宽度为?">
+<!ENTITY wiz.altWidth.title "搜索栏使用时的宽度">
 <!ENTITY wiz.altWidth.desc "设定使用时的宽度">
-<!ENTITY wiz.fixWidth.title "搜索栏宽度为?">
+<!ENTITY wiz.fixWidth.title "搜索栏宽度">
 <!ENTITY wiz.fixWidth.desc "设定宽度">
-<!ENTITY wiz.aftersearch.title "搜索提交后应该?">
-<!ENTITY wiz.resize "请按照右图所示直接拖动搜索栏来改变宽度.">
-<!ENTITY wiz.autodetect "Autosizer 会检测你所需要的宽度, 轻微移动鼠标至下方显示的设置如你所需即可.">
+<!ENTITY wiz.aftersearch.title "每次搜索后">
+<!ENTITY wiz.resize "请按照右图所示用右键直接拖动搜索栏来改变宽度。">
+<!ENTITY wiz.autodetect "Autosizer 会检测您所设置的宽度。右键轻轻拖动搜索栏到您所喜欢的大小即可。">
 <!ENTITY pref.other.shrinkToButton "无内容时收缩搜索栏为按钮">
 <!ENTITY pref.other.shrinkToButton.accesskey "k">
 <!ENTITY pref.other.addBtn "添加按钮到工具栏">

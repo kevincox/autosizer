@@ -1,0 +1,7 @@
+<em:localized>
+	<Description>
+		<em:locale>zh-CN</em:locale>
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>让搜索栏随输入自动拓宽</em:description>
+	</Description>
+</em:localized>
