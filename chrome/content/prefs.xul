@@ -118,14 +118,14 @@
 							<rows>
 								<row align="center">
 									<label control="padding" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
-									<textbox type="number" min="-Infinity" size="4" id="padding"
+									<textbox type="number" min="-Infinity" size="4" id="namePadding"
 											class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_label.png"/>
 								</row>
 								<row align="center">
 								<label control="namePadding" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
-									<textbox type="number" min="-Infinity" size="4" id="namePadding"
+									<textbox type="number" min="-Infinity" size="4" id="padding"
 											class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_text.png"/>

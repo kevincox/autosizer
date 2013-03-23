@@ -1,13 +1,13 @@
 <!ENTITY pref.other.autocomplete "Taille de la bulle de suggestions :">
 <!ENTITY pref.other.autocomplete.accesskey "S">
-<!ENTITY pref.other.cleanOnSubmit "Vide la barre de recherche après soumission d&apos;une demande">
+<!ENTITY pref.other.cleanOnSubmit "Vider la barre de recherche après soumission d&apos;une demande">
 <!ENTITY pref.other.cleanOnSubmit.accesskey "V">
 <!ENTITY pref.other.revertOnSubmit "Revenir au moteur de recherche par défaut lorsqu&apos;une question est soumise">
 <!ENTITY pref.other.revertOnSubmit.accesskey "R">
 <!ENTITY pref.other.revertOnSubmit.desc "Le moteur de recherche présent tout en haut est le moteur par défaut. Pour changer de moteur, cliquer sur l&apos;icône et choisissez &quot;Gérer les moteurs de recherches...&quot;">
-<!ENTITY wiz.title "Configuration interactive avec Autosizer">
+<!ENTITY wiz.title "Configuration interactive d'Autosizer">
 <!ENTITY wiz.start.desc "Que doit faire Autosizer, lorsque l&apos;on saisit quelque chose dans la barre de recherche ?">
-<!ENTITY wiz.start.inc "A chaque caractère saisi, augmenter la taille">
+<!ENTITY wiz.start.inc "À chaque caractère saisi, augmenter la taille">
 <!ENTITY wiz.start.inc.accesskey "C">
 <!ENTITY wiz.start.alt "Au premier caractère saisi, passer à sa taille agrandie">
 <!ENTITY wiz.start.alt.accesskey "P">
@@ -22,7 +22,7 @@
 <!ENTITY wiz.fixWidth.title "Quelle taille devra avoir la barre de recherche ?">
 <!ENTITY wiz.fixWidth.desc "Spécifier la taille">
 <!ENTITY wiz.aftersearch.title "Que doit-on faire après avoir soumis une question ?">
-<!ENTITY wiz.resize "Redimensionnez la barre de recherche comme le montre l&apos;image selon votre désir.">
+<!ENTITY wiz.resize "Redimensionnez la barre de recherche selon votre désir, comme le montre l&apos;image.">
 <!ENTITY wiz.autodetect "Autosizer fera ce que vous voulez, utilisez la souris doucement jusqu&apos;à obtention du bon résultat.">
 <!ENTITY pref.other.shrinkToButton "Réduire la barre de recherche à un bouton si vide">
 <!ENTITY pref.other.shrinkToButton.accesskey "d">

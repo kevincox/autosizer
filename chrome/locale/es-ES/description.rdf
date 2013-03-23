@@ -1,0 +1,7 @@
+<em:localized>
+	<Description>
+		<em:locale>es-ES</em:locale>
+		<em:name>Searchbar Autosizer</em:name>
+		<em:description>Amplía la barra de búsquedas según se va introduciendo texto</em:description>
+	</Description>
+</em:localized>
