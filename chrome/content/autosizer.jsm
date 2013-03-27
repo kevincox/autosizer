@@ -254,6 +254,8 @@ function Autosizer ( window )
 		               .contentWindow.wrappedJSObject.console.log(obj);
 	}
 
+	var originalflex;
+
 	/*** Initialization and Shutdown ***/
 	function init ( ) {
 		d("init() called.");
@@ -278,9 +280,7 @@ function Autosizer ( window )
 		e.searchbox._textbox.addEventListener("tokenized", inputReciever, true);
 		e.searchbox._textbox.addEventListener("untokenized", inputReciever, true);
 
-		d(e.searcharea.flex);
-		d(e.searcharea.getAttribute("flex"));
-
+		originalflex = e.searcharea.flex;
 		e.searcharea.flex = 0; // Go to _exactly_ the size I tell you to be.
 
 		e.input = e.searchbox._textbox.inputField;
@@ -314,7 +314,7 @@ function Autosizer ( window )
 		removeFocusWatch(e.searchbox);
 
 		fromButton();
-		e.searcharea.flex = 100; // This appears to be the default.
+		e.searcharea.flex = originalflex;
 
 		removeAfterSubmitCheck();
 		removeSearchbarJumpHelper();

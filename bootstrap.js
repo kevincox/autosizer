@@ -24,21 +24,22 @@
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
+Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
 function d ( msg, important )
 {
 	//important = true; // Uncomment for debuging.
 
-	if ( !important && Autosizer )
+	if ( !important )
 	{
-		if (Autosizer(null).prefs.debug.get())
+		if (Autosizer(null).prefs.pref.debug.get())
 			important = true;
 	}
 
 	if (!important) return;
 
-	dump('autosizer: '+msg+'\n');
-	Services.console.logStringMessage('autosizer: '+msg);
+	dump("autosizer-bs: "+msg+"\n");
+	Services.console.logStringMessage("autosizer-bs: "+msg);
 }
 
 d("bootstrap.js loaded.");
@@ -69,8 +70,8 @@ function windowWatcher(subject, topic)
 /*** Bootstrap Functions ***/
 function startup(data, reason)
 {
-	Components.manager.addBootstrappedManifestLocation(data.installPath);
-	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
+	//Components.manager.addBootstrappedManifestLocation(data.installPath);
+	//Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
 	/*** Add to new windows when they are opened ***/
 	Services.ww.registerNotification(windowWatcher);
@@ -91,8 +92,6 @@ function shutdown(data, reason)
 	Services.ww.unregisterNotification(windowWatcher);
 	var as = new Autosizer(null);
 
-	as.prefs.destroy();
-
 	while ( as.instances.length )
 	{
 		var ref = as.instances.pop().get();
@@ -102,32 +101,14 @@ function shutdown(data, reason)
 		}
 	}
 
+	as.prefs.destroy();
+
 	Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
-	Components.manager.removeBootstrappedManifestLocation(data.installPath);
 }
 
 function install (data, reason)
 {
 	if ( reason == ADDON_UPGRADE )
 	{
-		///// Don't start syncing peoples preferences for them.
-		if ( Services.prefs.getPrefType("services.sync.prefs.sync.extensions.autosizer.debug") == Services.prefs.PREF_INVALID )
-		{ // They don't have the sync options.
-			Components.utils.import("chrome://autosizer/content/autosizer.jsm"); // Create the preferences.
-
-			var so = Services.prefs.getChildList("services.sync.prefs.sync.extensions.autosizer.");
-			for ( i in so )
-			{
-				Services.prefs.setBoolPref(so[i], false);
-			}
-
-			Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
-		}
-
-		///// Not a first run.
-		Components.utils.import("chrome://autosizer/content/autosizer.jsm");
-		var as = new Autosizer();
-		as.prefo.firstrun.set(false);
-		Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 	}
 }

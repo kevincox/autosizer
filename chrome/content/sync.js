@@ -2,15 +2,20 @@ var {classes: Cc, interfaces: Ci, utils: Cu} = Components
 
 Cu.import("chrome://autosizer/content/autosizer.jsm");
 
-function d ( msg, seroius )
+function d ( msg, important )
 {
-	//seroius = true // For debugging.
-	if (!seroius) return;
+	//important = true; // Uncomment for debuging.
 
-	dump('autosizer: '+msg+'\n');
-	Components.classes["@mozilla.org/consoleservice;1"]
-		.getService(Components.interfaces.nsIConsoleService)
-		.logStringMessage('autosizer: '+msg);
+	if ( !important && Autosizer )
+	{
+		if (Autosizer(null).prefs.pref.debug.get())
+			important = true;
+	}
+
+	if (!important) return;
+
+	dump("autosizer-sync: "+msg+"\n");
+	Services.console.logStringMessage("autosizer-sync: "+msg);
 }
 
 var autosizer = new Autosizer();

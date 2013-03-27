@@ -22,6 +22,8 @@
 *                                                                              *
 *******************************************************************************/
 
+"use strict";
+
 var EXPORTED_SYMBOLS = ["CPref"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -39,10 +41,10 @@ function d ( msg, important )
 var SYNC_PREFIX = "services.sync.prefs.sync.";
 
 var rbranch = Services.prefs.getBranch("");
-rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
+//rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
 var dbranch = Services.prefs.getDefaultBranch("");
 
-values = {};
+var values = {};
 
 function setPref ( key, val, def )
 {
@@ -68,7 +70,7 @@ function setPref ( key, val, def )
 	}
 }
 
-TYPE_MAP = {};
+var TYPE_MAP = {};
 TYPE_MAP[Services.prefs.PREF_BOOL]   = "boolean";
 TYPE_MAP[Services.prefs.PREF_INT]    = "number";
 TYPE_MAP[Services.prefs.PREF_STRING] = "string";
@@ -149,18 +151,21 @@ function Prefs (path, options)
 			onchange.push(callback);
 		};
 		r.removeOnChange = function (callback) {
-			onchange.splice(onchange.indexOf(callback), 1);
+			var i = onchange.indexOf(callback);
+			if ( i >= 0 )
+				onchange.splice(i, 1);
 		};
 
 		r._triggerChange = function () {
-			for ( i in onchange )
+			for ( var i in onchange )
 			{
 				onchange[i](r);
 			}
 		};
 
 		r.destroy = function () {
-			rbranch.removeObserver(path, prefObserver, false);
+			onchange = [];
+			delete self.pref[name];
 		};
 
 		values[r.absname] = dflt; // Prime the cache.
@@ -169,6 +174,15 @@ function Prefs (path, options)
 		d("Adding pref: "+name);
 		self.pref[name] = r;
 		return r;
+	};
+
+	self.destroy = function()
+	{
+		rbranch.removeObserver(path, prefObserver, false);
+		for ( var p in self.pref )
+		{
+			self.pref[p].destroy();
+		}
 	};
 
 	return self;
