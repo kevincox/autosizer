@@ -24,7 +24,6 @@
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
-Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
 function d ( msg, important )
 {
@@ -71,7 +70,7 @@ function windowWatcher(subject, topic)
 function startup(data, reason)
 {
 	//Components.manager.addBootstrappedManifestLocation(data.installPath);
-	//Components.utils.import("chrome://autosizer/content/autosizer.jsm");
+	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
 
 	/*** Add to new windows when they are opened ***/
 	Services.ww.registerNotification(windowWatcher);
