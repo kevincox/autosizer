@@ -1,5 +1,11 @@
-var Ci = Components.interfaces;
-var Cc = Components.classes;
+var {
+	interfaces: Ci,
+	classes: Cc,
+	utils: Cu,
+} = Components;
+
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("chrome://autosizer/content/autosizer.jsm");
 
 function d ( msg, important )
 {
