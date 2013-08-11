@@ -1,0 +1,30 @@
+<!ENTITY pref.other.autocomplete "Pasiūlymų plotis:">
+<!ENTITY pref.other.autocomplete.accesskey "P">
+<!ENTITY pref.other.cleanOnSubmit "Nusiuntus užklausą išvalyti paieškos lauką">
+<!ENTITY pref.other.cleanOnSubmit.accesskey "i">
+<!ENTITY pref.other.revertOnSubmit "Nusiuntus užklausą atstatyti numatytąjį paieškos variklį">
+<!ENTITY pref.other.revertOnSubmit.accesskey "A">
+<!ENTITY pref.other.revertOnSubmit.desc "Numatytuoju bus laikomas viršutinis. Norėdami tvarkyti paieškos variklius, paspauskite ant variklio piktogramos ir pasirinkite „Tvarkyti...“">
+<!ENTITY wiz.title "„Autosizer“ konfigūravimo padėjėjas">
+<!ENTITY wiz.start.desc "Ką „Autosizer“ turėtų daryti kažką parašius paieškos langelyje?">
+<!ENTITY wiz.start.inc "Padidinti su kiekviena raide">
+<!ENTITY wiz.start.inc.accesskey "K">
+<!ENTITY wiz.start.alt "Padidinti su pirmu paspaudimu">
+<!ENTITY wiz.start.alt.accesskey "P">
+<!ENTITY wiz.start.fix "Visą laiką vienodo dydžio">
+<!ENTITY wiz.start.fix.accesskey "V">
+<!ENTITY wiz.norMinWidth.title "Koks minimalus paieškos lauko plotis?">
+<!ENTITY wiz.norMinWidth.desc "Nurodykite minimalų plotį">
+<!ENTITY wiz.norMaxWidth.title "Koks didžiausias paieškos lango plotis?">
+<!ENTITY wiz.norMaxWidth.desc "Nurodykite didžiausią plotį">
+<!ENTITY wiz.altWidth.title "Kokio dydžio paieškos laukas turėtų būti jį naudojant?">
+<!ENTITY wiz.altWidth.desc "Nurodykite naudojimo meto plotį">
+<!ENTITY wiz.fixWidth.title "Kokio pločio turėtų būti paieškos laukas?">
+<!ENTITY wiz.fixWidth.desc "Nurodykite plotį">
+<!ENTITY wiz.aftersearch.title "Kas turėtų būti atliekama nusiuntus užklausą?">
+<!ENTITY wiz.resize "Pakeisti paieškos lauko dydį kaip rodoma paveiksliuke.">
+<!ENTITY wiz.autodetect "„Autosizer“ spės ko jūs norite, taigi stumdykite pelę kol bus taip kaip norite.">
+<!ENTITY pref.other.shrinkToButton "Tuščią paeiškos lauką sumažinti iki mygtuko.">
+<!ENTITY pref.other.shrinkToButton.accesskey "k">
+<!ENTITY pref.other.addBtn "Pridėti į įrankių juostą">
+<!ENTITY pref.other.addBtn.accesskey "u">

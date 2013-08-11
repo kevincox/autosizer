@@ -1,0 +1,50 @@
+<!ENTITY title "„Autosizer“ parinktys">
+<!ENTITY basic.tab "Bendra">
+<!ENTITY adv.tab "Išplėstinės">
+<!ENTITY adv.caption "Išplėstiniai nustatymai">
+<!ENTITY intro.title "Apie nustatymus">
+<!ENTITY intro.desc.before "Norėdami sužinoti ką daro kiekvienas nustatymas paskaitykite šį">
+<!ENTITY intro.desc.link "wiki puslapį">
+<!ENTITY intro.desc.after ".">
+<!ENTITY width.title "Paieškos lauko plotis">
+<!ENTITY width.desc "Visos reikšmės pikseliais, iš iššokančio meniu galite pasirinkti specialias parinktis.">
+<!ENTITY width.min "Mažiausia:">
+<!ENTITY width.min.special.showTitle "Pritaikyti prie paieškos variklio pavadinimo.">
+<!ENTITY width.min.accesskey "T">
+<!ENTITY width.max "Didžiausia:">
+<!ENTITY width.max.special.none "įprasta">
+<!ENTITY width.max.special.full "Viso dydžio">
+<!ENTITY width.max.special.full.tooltip "Paieškos variklis bus išplėstas iki didžiausios reikšmės, nestumiant kitų elementų">
+<!ENTITY width.max.special.max "Didžiausias matomas dydis">
+<!ENTITY width.max.special.max.tooltip "Paieškos laukas plėsis, stums kitus elementus tol kol ir pats išeis už ekrano.">
+<!ENTITY width.max.accesskey "a">
+<!ENTITY width.sizeOn "Kaip keisti paieškos lauko dydį:">
+<!ENTITY width.sizeOn.key    "Paspaudus klavišą.">
+<!ENTITY width.sizeOn.atonce "Viską iškart.">
+<!ENTITY width.sizeOn.none   "Nekeisti dydžio.">
+<!ENTITY padding.title "Teksto talpinimas">
+<!ENTITY padding.desc "Visi dydžiai yra pikseliais, galima naudoti ir neigiamas reikšmes.">
+<!ENTITY padding.query "Paieškos užklausa:">
+<!ENTITY padding.query.accesskey "P">
+<!ENTITY padding.engine "Variklio pavadinimas:">
+<!ENTITY padding.engine.accesskey "V">
+<!ENTITY other.title "Kita">
+<!ENTITY other.autocomplete "Pasiūlymų plotis:">
+<!ENTITY other.autocomplete.accesskey "S">
+<!ENTITY other.cleanOnSubmit "Nusiuntus užklausą išvalyti lauką">
+<!ENTITY other.cleanOnSubmit.accesskey "n">
+<!ENTITY other.revertOnSubmit "Nusiuntus užklausą atstatyti numatytąjį paieškos variklį">
+<!ENTITY other.revertOnSubmit.accesskey "A">
+<!ENTITY other.revertOnSubmit.desc "Numatytuoju bus laikomas viršutinis. Norėdami tvarkyti paieškos variklius, paspauskite ant variklio piktogramos ir pasirinkite „Tvarkyti...“">
+<!ENTITY other.shrinkToButton "Jei laukas tuščias sumažinti iki mygtuko">
+<!ENTITY other.shrinkToButton.accesskey "T">
+<!ENTITY preflink.title "Kur rodyti nuorodą į nustatymų dialogą.">
+<!ENTITY preflink.search "Paieškos variklių meniu.">
+<!ENTITY preflink.none   "Niekur.">
+<!ENTITY suggestions.title "Pasiūlymų lange">
+<!ENTITY sync.title "Nustatymų sinchronizavimas ">
+<!ENTITY sync.desc.before "„Searchbar Autosizer“ automatiškai sinchronizuoja nustatymus per „firefox sync“.">
+<!ENTITY sync.link "Norėdami keisti konfigūravimo parinktis paspauskite čia">
+<!ENTITY sync.desc.after ".">
+<!ENTITY wizard.button "Padėjėjas">
+<!ENTITY wizard.accesskey "T">
