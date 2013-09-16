@@ -6,13 +6,13 @@ locales = "chrome/locale/" # The location of the locales.
 
 baseLocale = "en-US" # The locale to match other locales to.
 
-addFiles = True # Wether to add new files.
-addKeys = True # Wether to add new keys or not.
+addFiles = True # Whether to add new files.
+addKeys = True # Whether to add new keys or not.
 
-removeFiles = True # Wether to remove extra files or not.
-removeKeys = True # Wether to remove extra keys or not.
+removeFiles = True # Whether to remove extra files or not.
+removeKeys = True # Whether to remove extra keys or not.
 
-generateManifest = True # Wether or not to generate a chrome.manifest from
+generateManifest = True # Whether or not to generate a chrome.manifest from
                         # chrome.mainfesft.head and the locales in {locales}.
 chromePrefix = "autosizer"
 
