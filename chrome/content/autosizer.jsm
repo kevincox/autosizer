@@ -29,7 +29,7 @@ Components.utils.import("chrome://autosizer/content/cpref.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
+	//important = true; // Uncomment for debugging.
 
 	if (prefs && prefs.pref.debug.get())
 		important = true;
@@ -131,7 +131,7 @@ function modifyFunction ( parent, index, func, where )
 		{
 			parent[index] = orig;
 		}
-		else // We have to descretly remove our functionality
+		else // We have to discreetly remove our functionality
 		{
 			newf = function ( ) { // Change our function to remove our check.
 				orig.apply(this, arguments);
@@ -207,7 +207,7 @@ function launchPrefs ( )
 /*** Our "Class" ***/
 function Autosizer ( window )
 {
-	d("new Autowizer() called.");
+	d("new Autosizer() called.");
 
 	this.prefs = prefs;
 	this.instances = instances;
@@ -286,7 +286,7 @@ function Autosizer ( window )
 
 		e.input = e.searchbox._textbox.inputField;
 
-		e.searchbox.autosizer = self; // Just incase other addons want
+		e.searchbox.autosizer = self; // Just in case other addons want
 		                              // to get a hold of us.
 
 		e.popup = document.getElementById("PopupAutoComplete");
@@ -720,7 +720,7 @@ function Autosizer ( window )
 
 	function doShrinkToButton ( )
 	{
-		if ( e.searchbox.hasFocus                  || // The searchbar is avtive.
+		if ( e.searchbox.hasFocus                  || // The searchbar is active.
 		     e.searchbox._popup.state == "showing" || // Selecting search engine.
 		     !prefs.pref.shrinkToButton.get()      || // Shrinking is disabled.
 		     (
@@ -765,7 +765,7 @@ function Autosizer ( window )
 	{
 		d("autosize() called.");
 
-		if (manualResize) return; // Don't mess arround when we are doing manual resize.
+		if (manualResize) return; // Don't mess around when we are doing manual resize.
 		if (doShrinkToButton()) return; // If we are a button we don't have to size.
 
 		var width = 0;
