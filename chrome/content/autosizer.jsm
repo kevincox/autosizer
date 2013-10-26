@@ -60,6 +60,7 @@ prefs.addPref("sizeOn", "key");
 prefs.addPref("cleanOnSubmit",  false);
 prefs.addPref("revertOnSubmit", false);
 prefs.addPref("shrinkToButton", false);
+prefs.addPref("shrinkwhenfull", false);
 
 prefs.addPref("firstrun", true);
 prefs.addPref("debug", false);
@@ -692,11 +693,16 @@ function Autosizer ( window )
 	function fromButton ( )
 	{
 		d("fromButton() called.");
-
+		
+		var changing = e.button.style.display != "none";
+		
 		e.button.style.display = "none";
 		e.searcharea.style.display = ""; // For some reason "block" prevents the
 		                                 // search box from filling the search
 		                                 // area.
+		
+		if (changing) e.searchbox.select();
+		
 		d("fromButton() returned.");
 	}
 	this.fromButton = fromButton;
@@ -717,7 +723,10 @@ function Autosizer ( window )
 		if ( e.searchbox.hasFocus                  || // The searchbar is avtive.
 		     e.searchbox._popup.state == "showing" || // Selecting search engine.
 		     !prefs.pref.shrinkToButton.get()      || // Shrinking is disabled.
-		     e.searchbox.value != ""                  // Searchbar is not empty.
+		     (
+		       !prefs.pref.shrinkwhenfull.get() &&    // If set ignore searchbar content.
+		       e.searchbox.value != ""                // Searchbar is not empty.
+		     )
 		   )
 		{
 			fromButton();
