@@ -48,3 +48,5 @@
 <!ENTITY adv.tab "Advanced">
 <!ENTITY preflink.none   "Nowhere.">
 <!ENTITY preflink.search "In the search engine menu.">
+<!ENTITY other.shrinkwhenfull.accesskey "">
+<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">

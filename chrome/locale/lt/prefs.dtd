@@ -48,3 +48,5 @@
 <!ENTITY sync.desc.after ".">
 <!ENTITY wizard.button "Padėjėjas">
 <!ENTITY wizard.accesskey "T">
+<!ENTITY other.shrinkwhenfull.accesskey "">
+<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">

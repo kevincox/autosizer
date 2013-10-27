@@ -48,3 +48,5 @@
 <!ENTITY sync.desc.after "pour configurer les options Sync.">
 <!ENTITY wizard.button "Assistant">
 <!ENTITY wizard.accesskey "t">
+<!ENTITY other.shrinkwhenfull.accesskey "">
+<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">

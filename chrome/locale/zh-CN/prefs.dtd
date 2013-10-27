@@ -48,3 +48,5 @@
 <!ENTITY adv.tab "高级">
 <!ENTITY preflink.none   "不放置">
 <!ENTITY preflink.search "放置在搜索栏的菜单中">
+<!ENTITY other.shrinkwhenfull.accesskey "">
+<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">

@@ -571,13 +571,13 @@ function Autosizer ( window )
 			if ( ele.id      == 'search-container' ) break; // Our area.
 			if ( ele.tagName == 'toolbarspring' )    continue; // Changes size.
 			
-			ele.style.border = '2px solid red';
+			//ele.style.border = '2px solid red';
 			
 			if( ele.id == "urlbar-container" ) ele.removeAttribute("width"); // inserted by splitter
 			let f = ele.getAttribute('flex');
 			ele.setAttribute('flex', 0);
 			w -= ele.boxObject.width+1; // minus the used width.
-			//ele.setAttribute('flex', f);
+			ele.setAttribute('flex', f);
 		}
 		
 		d("getAllAvailableWidth() returned '"+w+"'.");
