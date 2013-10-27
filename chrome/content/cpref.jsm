@@ -31,9 +31,9 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 function d ( msg, important )
 {
 	//important = true; // Uncomment for debuging.
-
+	
 	if (!important) return;
-
+	
 	dump("CPref: "+msg+'\n');
 	Services.console.logStringMessage("CPref: "+msg);
 }
@@ -49,13 +49,13 @@ var values = {};
 function setPref ( key, val, def )
 {
 	var b = def?dbranch:rbranch;
-
+	
 	//d(key+"("+fpref[key].type+"): "+val);
-
+	
 	var type = null;
 	if ( values[key] == undefined ) type = typeof val;
 	else                            type = typeof values[key];
-
+	
 	switch (type)
 	{
 		case "boolean":
@@ -80,7 +80,7 @@ function getPref ( key )
 	var type = null;
 	if ( values[key] == undefined ) type = TYPE_MAP[rbranch.getPrefType(key)];
 	else                            type = typeof values[key];
-
+	
 	switch (type)
 	{
 		case "boolean":
@@ -97,41 +97,41 @@ function Prefs (path, options)
 {
 	options = options || {};
 	options.syncByDefault = !!options.syncByDefault;
-
+	
 	var self = {
 		pref: {},
 	};
-
+	
 	var prefObserver = {
 		observe: function (aSubject, aTopic, aData)
 		{
 			if( aTopic != "nsPref:changed" ) return;
-
+			
 			getPref(aData);
 			var prefo = self.pref[aData.substr(path.length)];
 			if (prefo) prefo._triggerChange();
 		}
 	};
 	rbranch.addObserver(path, prefObserver, false);
-
+	
 	self.addPref = function ( name, dflt )
 	{
 		var r = {
 			name:         name,
 			absname: path+name,
-
+			
 			type: typeof dflt,
 			value: dflt,
 		};
-
+		
 		r.syncname = SYNC_PREFIX+r.absname;
-
+		
 		var onchange = [];
-
+		
 		///// Set up defaults.
 		setPref(r.syncname, options.syncByDefault, true);
 		setPref(r.absname, dflt, true);
-
+		
 		///// The API.
 		r.set = function ( v ) {
 			setPref(r.absname, v);
@@ -139,14 +139,14 @@ function Prefs (path, options)
 		r.get = function ( ) {
 			return values[r.absname];
 		};
-
+		
 		r.sync = function ( sync ) {
 			setPref(r.syncname, sync);
 		};
 		r.isSynced = function () {
 			return getPref(r.syncname);
 		};
-
+		
 		r.addOnChange = function (callback) {
 			onchange.push(callback);
 		};
@@ -155,27 +155,27 @@ function Prefs (path, options)
 			if ( i >= 0 )
 				onchange.splice(i, 1);
 		};
-
+		
 		r._triggerChange = function () {
 			for ( var i in onchange )
 			{
 				onchange[i](r);
 			}
 		};
-
+		
 		r.destroy = function () {
 			onchange = [];
 			delete self.pref[name];
 		};
-
+		
 		values[r.absname] = dflt; // Prime the cache.
 		getPref(r.absname);       //
-
+		
 		d("Adding pref: "+name);
 		self.pref[name] = r;
 		return r;
 	};
-
+	
 	self.destroy = function()
 	{
 		rbranch.removeObserver(path, prefObserver, false);
@@ -184,13 +184,15 @@ function Prefs (path, options)
 			self.pref[p].destroy();
 		}
 	};
-
+	
 	return self;
 }
 
 var CPref = {
 	setPref: setPref,
 	getPref: getPref,
-
+	
 	Prefs: Prefs,
 }
+
+/* vi:set filetype=javascript: */

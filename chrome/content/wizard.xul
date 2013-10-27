@@ -2,13 +2,12 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="style.css" type="text/css"?>
 <!DOCTYPE wizard SYSTEM "chrome://autosizer/locale/autosizer.dtd">
-
 <wizard onload="asw.init();" onunload="asw.end();" id="autosizer-install-wizard" title="&wiz.title;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="text/javascript" src="wizard.js"/>
 	<stringbundleset>
 		<stringbundle id="locale" src="chrome://autosizer/locale/autosizer.properties"/>
 	</stringbundleset>
-
+	
 	<wizardpage id="size" pageid="size"
 		onpageshow="asw.initSize();" onpagehide="asw.endSize();" next="minwidth">
 		<radiogroup id="sizemode">
@@ -27,7 +26,7 @@
 			/>
 		</radiogroup>
 	</wizardpage>
-
+	
 	<wizardpage label="&wiz.norMinWidth.title;" id="minwidth" pageid="minwidth"
 		onpageshow="asw.initMinWidth()" onpagehide="asw.endMinWidth();"
 		next="maxwidth">
@@ -37,17 +36,15 @@
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize; &wiz.autodetect;</description>
 	</wizardpage>
-
+	
 	<wizardpage id="maxwidth" label="&wiz.norMaxWidth.title;" pageid="maxwidth"
 		onpageshow="asw.initMaxWidth();" onpagehide="asw.endMaxWidth();" next="aftersearch">
-
 		<description class="action" style="background-image:url('width_max.png');">&wiz.norMaxWidth.desc;</description>
 		<spacer/>
 		<description value="" id="maxwidthouput"></description>
 		<spacer flex="1"/>
 		<description class="resize">&wiz.resize; &wiz.autodetect;</description>
 	</wizardpage>
-
 	<wizardpage id="aftersearch" label="&wiz.aftersearch.title;" pageid="aftersearch"
 		onpageshow="asw.initAfterSearch();">
 		<checkbox id="cleanOnSubmit" accesskey="&pref.other.cleanOnSubmit.accesskey;" label="&pref.other.cleanOnSubmit;" oncommand="asw.cleanOnSubmitChange();"/>

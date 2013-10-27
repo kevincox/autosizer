@@ -14,9 +14,7 @@
 		ondialogaccept="asp.exit();"
 		ondialogcancel="window.close();"
 		ondialogextra2="asp.launchWizard();">
-
 	<script type="text/javascript" src="prefs.js"/>
-
 	<tabbox>
 		<tabs>
 			<tab label="&basic.tab;"/>
@@ -80,7 +78,7 @@
 							</rows>
 						</grid>
 					</groupbox>
-
+					
 					<groupbox>
 						<caption label="&width.sizeOn;" />
 						<radiogroup id="sizeOn" class="pref" orient="horizontal">
@@ -89,7 +87,7 @@
 							<radio value="none"   label="&width.sizeOn.none;"/>
 						</radiogroup>
 					</groupbox>
-
+					
 					<groupbox>
 						<caption label="&other.title;"/>
 						<vbox>
@@ -133,7 +131,7 @@
 							</rows>
 						</grid>
 					</groupbox>
-
+					
 					<groupbox>
 						<caption label="&suggestions.title;"/>
 						<hbox align="center">
@@ -142,7 +140,7 @@
 							<image src="autocomplete.png" style="margin-left:10px" />
 						</hbox>
 					</groupbox>
-
+					
 					<groupbox>
 						<caption label="&preflink.title;"/>
 						<radiogroup id="preflink" class="pref" orient="horizontal">

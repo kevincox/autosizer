@@ -28,15 +28,15 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 function d ( msg, important )
 {
 	//important = true; // Uncomment for debuging.
-
+	
 	if ( !important )
 	{
 		if (Autosizer(null).prefs.pref.debug.get())
 			important = true;
 	}
-
+	
 	if (!important) return;
-
+	
 	dump("autosizer-bs: "+msg+"\n");
 	Services.console.logStringMessage("autosizer-bs: "+msg);
 }
@@ -54,7 +54,7 @@ function runOnLoad(window) {
 	{
 		window.addEventListener("load", function() {
 			window.removeEventListener("load", arguments.callee, false);
-
+			
 			runOnLoad(window);
 		}, false);
 	}
@@ -71,15 +71,15 @@ function startup(data, reason)
 {
 	//Components.manager.addBootstrappedManifestLocation(data.installPath);
 	Components.utils.import("chrome://autosizer/content/autosizer.jsm");
-
+	
 	/*** Add to new windows when they are opened ***/
 	Services.ww.registerNotification(windowWatcher);
-
+	
 	/*** Add to currently open windows ***/
 	let browserWindows = Services.wm.getEnumerator("navigator:browser");
 	while (browserWindows.hasMoreElements()) {
 		let browserWindow = browserWindows.getNext();
-
+		
 		windowWatcher(browserWindow, "domwindowopened");
 	}
 }
@@ -87,10 +87,10 @@ function startup(data, reason)
 function shutdown(data, reason)
 {
 	if ( reason == APP_SHUTDOWN ) return;
-
+	
 	Services.ww.unregisterNotification(windowWatcher);
 	var as = new Autosizer(null);
-
+	
 	while ( as.instances.length )
 	{
 		var ref = as.instances.pop().get();
@@ -99,9 +99,9 @@ function shutdown(data, reason)
 			ref.shutdown();
 		}
 	}
-
+	
 	as.prefs.destroy();
-
+	
 	Components.utils.unload("chrome://autosizer/content/autosizer.jsm");
 }
 

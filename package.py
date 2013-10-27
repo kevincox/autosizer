@@ -11,7 +11,7 @@
 # relative path is matched (begining with a /).  Directories are not listed
 # and are created as needed.  This means you can not have empty directories.
 include = [r"\.(jsm?|css|xul|properties|dtd|rdf)$", r"\.png$",
-		   r"^/chrome.manifest$"]
+           r"^/chrome.manifest$"]
 exclude = [r"/\."]
 
 # The way to name the package.  This will be parsed using Python's Format
@@ -20,14 +20,14 @@ exclude = [r"/\."]
 # the same name.
 #
 # Defined variables are:
-# 	• {name} - the long name of the package.  This is taken from the
-#		<em:name> element in install.rdf
-# 	• {code} - the code or short name of the package.  This is the name used
-#		in chrome urls.  This is taken from the <em:code> element in
-#		install.rdf.  NOTE: this is not a standard element and will need to
-#		added to install.rdf to be used.
-# 	• {ver} - the version of the package.  This is taken from the <em:name>
-#		element in install.rdf
+# - {name} - the long name of the package.  This is taken from the
+#   <em:name> element in install.rdf
+# - {code} - the code or short name of the package.  This is the name used
+#   in chrome urls.  This is taken from the <em:code> element in
+#   install.rdf.  NOTE: this is not a standard element and will need to
+#   added to install.rdf to be used.
+# - {ver} - the version of the package.  This is taken from the <em:name>
+#   element in install.rdf
 xpiname = '{code}-{ver}' # The name of the .xpi package (".xpi" is appended)
 
 # The root directory of the extention.  This is where the program will look for
