@@ -91,12 +91,14 @@
 					<groupbox>
 						<caption label="&other.title;"/>
 						<vbox>
-							<checkbox id="cleanOnSubmit" accesskey="&other.cleanOnSubmit.accesskey;" label="&other.cleanOnSubmit;"
-							          class="pref" />
-							<checkbox id="revertOnSubmit" accesskey="&other.revertOnSubmit.accesskey;" label="&other.revertOnSubmit;"
-							          class="pref"/>
-							<checkbox id="shrinkToButton" accesskey="&other.shrinkToButton.accesskey;" label="&other.shrinkToButton;"
-							          class="pref"/>
+							<checkbox id="cleanOnSubmit" label="&other.cleanOnSubmit;" 
+							          accesskey="&other.cleanOnSubmit.accesskey;" class="pref" />
+							<checkbox id="revertOnSubmit" label="&other.revertOnSubmit;"
+							          accesskey="&other.revertOnSubmit.accesskey;" class="pref"/>
+							<checkbox id="shrinkToButton" label="&other.shrinkToButton;"
+							          accesskey="&other.shrinkToButton.accesskey;" class="pref"/>
+							<checkbox id="shrinkwhenfull" label="&other.shrinkwhenfull;"
+							          accesskey="&other.shrinkwhenfull.accesskey;" class="pref"/>
 						</vbox>
 					</groupbox>
 				</vbox>
