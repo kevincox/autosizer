@@ -96,17 +96,17 @@
 							<checkbox id="revertOnSubmit" label="&other.revertOnSubmit;"
 							          accesskey="&other.revertOnSubmit.accesskey;" class="pref"/>
 							<checkbox id="shrinkToButton" label="&other.shrinkToButton;"
-							          accesskey="&other.shrinkToButton.accesskey;" class="pref"
-							          oncommand="document.getElementById('shrinkwhenfull').disabled = this.checked;" />
-							<checkbox id="shrinkwhenfull" label="&other.shrinkwhenfull;"/>
+							          accesskey="&other.shrinkToButton.accesskey;" class="pref"/>
+							<checkbox id="shrinkwhenfull" label="&other.shrinkwhenfull;" class="pref" />
 							<script type="application/javascript">
 								// Disable shrinkwhenfull when shrinkToButton is disabled.
 								var s = document.getElementById('shrinkToButton');
 								var t = document.getElementById('shrinkwhenfull');
 								s.addEventListener('CheckboxStateChange', function(e)
 								{
-									t.disabled = s.checked;
+									t.disabled = !s.checked;
 								});
+								s.checked = true; // Change it.
 							</script>
 						</vbox>
 					</groupbox>
