@@ -869,4 +869,4 @@ function Autosizer ( window )
 	/**/ // So that the last section can be commented.
 }
 
-/* vi:set filetype=javascript: */
+// vi:ft=javascript

@@ -195,4 +195,4 @@ var CPref = {
 	Prefs: Prefs,
 }
 
-/* vi:set filetype=javascript: */
+// vi:ft=javascript

@@ -24,4 +24,4 @@ var ADIC_info = {
 	},
 };
 
-/* vi:set filetype=javascript: */
+// vi:ft=javascript
