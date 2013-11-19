@@ -247,15 +247,15 @@ function Autosizer ( window )
 		
 		preflinkitem: null,
 	};
-
+	
 	function log ( obj )
 	{
 		window.gBrowser.getBrowserForTab(window.gBrowser.selectedTab)
 		               .contentWindow.wrappedJSObject.console.log(obj);
 	}
-
+	
 	var originalflex;
-
+	
 	/*** Initialization and Shutdown ***/
 	function init ( ) {
 		d("init() called.");
