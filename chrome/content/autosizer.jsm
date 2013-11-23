@@ -61,6 +61,7 @@ prefs.addPref("cleanOnSubmit",  false);
 prefs.addPref("revertOnSubmit", false);
 prefs.addPref("shrinkToButton", false);
 prefs.addPref("shrinkwhenfull", false);
+prefs.addPref("expandonfocus",  false);
 
 prefs.addPref("firstrun", true);
 prefs.addPref("debug", false);
@@ -774,7 +775,9 @@ function Autosizer ( window )
 		else if ( prefs.pref.sizeOn.get() == "atonce" )
 		{
 			var width;
-			if (e.searchbox.value)
+			if ( e.searchbox.value || 
+			     prefs.pref.expandonfocus.get() && e.searchbox.hasFocus
+			   )
 			{
 				width = prefs.pref.maxwidth.get();
 				if     ( width == 0 ) width = getAvailableWidth();
