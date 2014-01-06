@@ -43,10 +43,8 @@
 					<groupbox>
 						<caption label="&sizeon.title;" />
 						<description>&sizeon.desc;</description>
-						<vbox id="sizeon" class="pref pref-list">
-							<checkbox id="focus"   label="&sizeon.focus;" />
-							<checkbox id="content" label="&sizeon.content;" />
-						</vbox>
+						<checkbox class="pref" id="sizeon.focus"   label="&sizeon.focus;" />
+						<checkbox class="pref" id="sizeon.content" label="&sizeon.content;" />
 					</groupbox>
 					
 					<groupbox>
@@ -64,7 +62,7 @@
 								<row align="center">
 									<label control="minwidth" value="&width.min;" accesskey="&width.min.accesskey;"/>
 									<textbox id="minwidth" type="number" increment="5" min="-Infinity" size="4"
-									         class="pref pref-ele"
+									         class="pref"
 									         oninput="asp.updateMinWidthCheck();" onchange="asp.updateMinWidthCheck();" />
 									<checkbox id="minwidthcheck" label="&width.min.special.showTitle;" oncommand="asp.updateMinWidthBox()"/>
 									<vbox flex="999"></vbox>
@@ -73,7 +71,7 @@
 								<row align="center">
 									<label control="maxwidth" value="&width.max;" accesskey="&width.max.accesskey;"/>
 									<textbox id="maxwidth" type="number" increment="5" min="-Infinity" size="4"
-									         class="pref pref-ele"
+									         class="pref"
 									         oninput="asp.updateMaxWidthList();" onchange="asp.updateMaxWidthList();" />
 									<menulist id="maxwidthlist" oncommand="asp.updateMaxWidthBox();"><menupopup>
 										<menuitem value="none" label="&width.max.special.none;" disabled="true" />
@@ -89,7 +87,7 @@
 					
 					<groupbox>
 						<caption label="&width.sizeOn;" />
-						<radiogroup id="sizestyle" class="pref pref-ele" orient="horizontal">
+						<radiogroup id="sizestyle" class="pref" orient="horizontal">
 							<radio value="inc"  label="&width.sizeOn.key;"/>
 							<radio value="once" label="&width.sizeOn.atonce;"/>
 							<radio value="none" label="&width.sizeOn.none;"/>
@@ -100,11 +98,11 @@
 						<caption label="&other.title;"/>
 						<vbox>
 							<checkbox id="clean" label="&other.cleanOnSubmit;" 
-							          accesskey="&other.cleanOnSubmit.accesskey;" class="pref pref-ele" />
+							          accesskey="&other.cleanOnSubmit.accesskey;" class="pref" />
 							<checkbox id="resetengine" label="&other.revertOnSubmit;"
-							          accesskey="&other.revertOnSubmit.accesskey;" class="pref pref-ele"/>
+							          accesskey="&other.revertOnSubmit.accesskey;" class="pref"/>
 							<checkbox id="buttonify" label="&other.shrinkToButton;"
-							          accesskey="&other.shrinkToButton.accesskey;" class="pref pref-ele"/>
+							          accesskey="&other.shrinkToButton.accesskey;" class="pref"/>
 						</vbox>
 					</groupbox>
 				</vbox>
@@ -125,14 +123,14 @@
 								<row align="center">
 								<label control="querypad" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
 									<textbox type="number" min="-Infinity" size="4"
-									         id="querypad" class="pref pref-ele" />
+									         id="querypad" class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_text.png"/>
 								</row>
 								<row align="center">
 									<label control="enginepad" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
 									<textbox type="number" min="-Infinity" size="4"
-									         id="enginepad" class="pref pref-ele" />
+									         id="enginepad" class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_label.png"/>
 								</row>
@@ -144,14 +142,14 @@
 						<caption label="&suggestions.title;"/>
 						<hbox align="center">
 							<label value="&other.autocomplete;" control="popupwidth" accesskey="&other.autocomplete.accesskey;"/>
-							<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth" class="pref pref-ele" />
+							<textbox type="number" increment="5" min="-Infinity" size="4" id="popupwidth" class="pref" />
 							<image src="autocomplete.png" style="margin-left:10px" />
 						</hbox>
 					</groupbox>
 					
 					<groupbox>
 						<caption label="&preflink.title;"/>
-						<radiogroup id="preflink" class="pref pref-ele" orient="horizontal">
+						<radiogroup id="preflink" class="pref" orient="horizontal">
 							<radio value="search" label="&preflink.search;"/>
 							<radio value="none"   label="&preflink.none;"/>
 						</radiogroup>

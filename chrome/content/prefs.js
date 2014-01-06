@@ -49,23 +49,10 @@ function updatePrefElement(item, value)
 {
 	let type = item.tagName;
 	
-	if (item.mozMatchesSelector(".pref-ele"))
-	{
-		if      ( type == "textbox"   ||
-		          type == "radiogroup" ) item.value   = value;
-		else if ( type == "checkbox"   ) item.checked = value;
-		else d("WRN: Don't know how to load '"+type+"' for pref '"+ele+"'.", true);
-	}
-	else if (item.mozMatchesSelector(".pref-list"))
-	{
-		let options = value.split(",");
-		let items = item.getElementsByTagName("checkbox");
-		for (let i = 0; i < items.length; i++)
-		{
-			let e = items[i];
-			e.checked = options.indexOf(e.id) >= 0;
-		}
-	}
+	if      ( type == "textbox"   ||
+	          type == "radiogroup" ) item.value   = value;
+	else if ( type == "checkbox"   ) item.checked = value;
+	else d("WRN: Don't know how to load '"+type+"' for pref '"+ele+"'.", true);
 }
 
 function updatePrefValue(e)
@@ -84,24 +71,10 @@ function updatePrefValue(e)
 	
 	if (!pref) return;
 	
-	if (item.mozMatchesSelector(".pref-ele"))
-	{
-		if      ( type == "textbox"   ||
-		          type == "radiogroup" ) val = item.value;
-		else if ( type == "checkbox"   ) val = item.checked;
-		else d("WRN: Don't know how to store '"+type+"' for pref '"+item.id+"'.");
-	}
-	else if (item.mozMatchesSelector(".pref-list"))
-	{
-		let items = item.getElementsByTagName("checkbox");
-		let options = [];
-		for (let i = 0; i < items.length; i++)
-		{
-			let e = items[i];
-			if (e.checked) options.push(e.id);
-		}
-		val = options.join(",");
-	}
+	if      ( type == "textbox"   ||
+	          type == "radiogroup" ) val = item.value;
+	else if ( type == "checkbox"   ) val = item.checked;
+	else d("WRN: Don't know how to store '"+type+"' for pref '"+item.id+"'.");
 	
 	pref.set(val);
 	d("Changed '"+item.id+"' to '"+val+"'.");

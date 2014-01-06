@@ -61,7 +61,8 @@ prefs.addPref("enginepad", 5); // Padding from search engine title.
 
 prefs.addPref("popupwidth", 0);
 
-prefs.addPref("sizeon", "focus");
+prefs.addPref("sizeon.focus",   true);
+prefs.addPref("sizeon.content", false);
 
 /// How to size the searchbar.
 /**
@@ -74,8 +75,9 @@ prefs.addPref("sizeon", "focus");
  */
 prefs.addPref("sizestyle", "inc");
 
-prefs.addPref("clean", false);
-prefs.addPref("resetengine", false);
+prefs.addPref("aftersearch.clean", false);
+prefs.addPref("aftersearch.resetengine", false);
+
 prefs.addPref("buttonify", false);
 
 prefs.addPref("firstrun", true);
@@ -815,25 +817,12 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	doShrinkToButton: {
 		value: function doShrinkToButton() {
-			d("doShrinkToButton() called.");
-			let priv = getPriv(this);
+			d("#doShrinkToButton() called.");
 			
-			let preds = {
-				focus: this.searchbox.hasFocus || this.searchbox._popup.state == "showing",
-				content: this.searchbox.value != "",
-			}
+			if (this.shouldSize()) this.fromButton();
+			else                   this.toButton();
 			
-			dj(preds);
-			
-			let grow = prefs.pref.sizeon.get().split(",").some(function(criterion){
-				return preds[criterion];
-			});
-			
-			if (grow) this.fromButton();
-			else      this.toButton();
-			
-			let shrunk = !grow;
-			d("doShrinkToButton() returned "+shrunk+".");
+			d("#doShrinkToButton() returned.");
 			return shrunk;
 		},
 	},
@@ -843,21 +832,20 @@ Object.defineProperties(Autosizer.prototype, {
 			d("shouldSize() called.");
 			let priv = getPriv(this);
 			
-			if ( prefs.pref.sizestyle.get() == "inc" &&
-			    !prefs.pref.buttonify.get()
-			   )
-				return true;
-			
-			let preds = {
-				focus: this.searchbox.hasFocus || this.searchbox._popup.state == "showing",
-				content: this.searchbox.value != "",
-			}
-			
-			dj(preds);
-			
-			let grow = prefs.pref.sizeon.get().split(",").some(function(criterion){
-				return preds[criterion];
-			});
+			let grow = (
+				(
+					prefs.pref["sizeon.focus"].get() &&
+					this.searchbox.hasFocus || this.searchbox._popup.state == "showing"
+				) || (
+					prefs.pref["sizeon.content"].get() &&
+					this.searchbox.value != ""
+				) || (
+					// When incrementally sizing always expand.
+					prefs.pref.sizestyle.get() == "inc" &&
+					// Unless we are going to a button.
+					!prefs.pref.buttonify.get()
+				)
+			);
 			
 			d("shouldSize() returned "+grow+".");
 			return grow;

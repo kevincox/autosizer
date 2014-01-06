@@ -151,11 +151,11 @@ function install (data, reason)
 			prefs.clearUserPref("shrinkToButton");
 			
 			if (prefs.prefHasUserValue("expandonfocus"))
-				as.prefs.pref.sizeon.set("content,focus");
+				prefs.setBoolPref("sizeon.focus", true);
 			prefs.clearUserPref("expandonfocus");
 			
 			if (prefs.prefHasUserValue("shrinkwhenfull"))
-				as.prefs.pref.sizeon.set("focus");
+				as.prefs.setBoolPref("sizeon.content", false);
 			prefs.clearUserPref("shrinkwhenfull");
 		}
 	}
