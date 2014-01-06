@@ -14,11 +14,11 @@
 			<description>&wiz.start.desc;</description>
 			<radio
 				accesskey="&wiz.start.inc.accesskey;"
-				label="&wiz.start.inc;" value="key"
+				label="&wiz.start.inc;" value="inc"
 			/>
 			<radio
 				accesskey="&wiz.start.alt.accesskey;"
-				label="&wiz.start.alt;" value="atonce"
+				label="&wiz.start.alt;" value="once"
 			/>
 			<radio
 				 accesskey="&wiz.start.fix.accesskey;"

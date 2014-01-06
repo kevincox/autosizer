@@ -1,26 +1,50 @@
+// Copyright 2012-2014 Kevin Cox
+
+/*******************************************************************************
+*                                                                              *
+*  Permission is hereby granted, free of charge, to any person obtaining a     *
+*  copy of this software and associated documentation files (the "Software"),  *
+*  to deal in the Software without restriction, including without limitation   *
+*  the rights to use, copy, modify, merge, publish, distribute, sublicense,    *
+*  and/or sell copies of the Software, and to permit persons to whom the       *
+*  Software is furnished to do so, subject to the following conditions:        *
+*                                                                              *
+*  The above copyright notice and this permission notice shall be included in  *
+*  all copies or substantial portions of the Software.                         *
+*                                                                              *
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  *
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,    *
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL     *
+*  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  *
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING     *
+*  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER         *
+*  DEALINGS IN THE SOFTWARE.                                                   *
+*                                                                              *
+*******************************************************************************/
+
+"use strict";
+
 var {classes: Cc, interfaces: Ci, utils: Cu} = Components
 
-Cu.import("chrome://autosizer/content/autosizer.jsm");
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("chrome://autosizer/content/Autosizer.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
-	
-	if ( !important && Autosizer )
+	if ( !important && typeof Autosizer != "undefined" )
 	{
-		if (Autosizer(null).prefs.pref.debug.get())
+		if (Autosizer.prefs.pref.debug.get())
 			important = true;
 	}
 	
-	if (!important) return;
+	if (!important) return; // Comment for debugging.
 	
 	dump("autosizer-sync: "+msg+"\n");
 	Services.console.logStringMessage("autosizer-sync: "+msg);
 }
 
-var autosizer = new Autosizer();
-var strings   = autosizer.strings;
-var prefs     = autosizer.prefs;
+var strings   = Autosizer.strings;
+var prefs     = Autosizer.prefs;
 var pref      = prefs.pref;
 
 var sync = {
@@ -28,7 +52,7 @@ var sync = {
 		var list = document.getElementById("prefs");
 		
 		var names = Object.keys(pref).sort();
-		for ( i in names )
+		for (let i in names)
 		{
 			let p = pref[names[i]];
 			

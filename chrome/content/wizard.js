@@ -1,23 +1,43 @@
-var {
-	interfaces: Ci,
-	classes: Cc,
-	utils: Cu,
-} = Components;
+// Copyright 2011-2014 Kevin Cox
+
+/*******************************************************************************
+*                                                                              *
+*  Permission is hereby granted, free of charge, to any person obtaining a     *
+*  copy of this software and associated documentation files (the "Software"),  *
+*  to deal in the Software without restriction, including without limitation   *
+*  the rights to use, copy, modify, merge, publish, distribute, sublicense,    *
+*  and/or sell copies of the Software, and to permit persons to whom the       *
+*  Software is furnished to do so, subject to the following conditions:        *
+*                                                                              *
+*  The above copyright notice and this permission notice shall be included in  *
+*  all copies or substantial portions of the Software.                         *
+*                                                                              *
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  *
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,    *
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL     *
+*  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  *
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING     *
+*  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER         *
+*  DEALINGS IN THE SOFTWARE.                                                   *
+*                                                                              *
+*******************************************************************************/
+
+"use strict";
+
+const {interfaces:Ci, classes:Cc, utils:Cu} = Components;
 
 Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("chrome://autosizer/content/autosizer.jsm");
+Cu.import("chrome://autosizer/content/Autosizer.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
-	
-	if ( !important && Autosizer )
+	if ( !important && typeof Autosizer != "undefined" )
 	{
-		if (Autosizer(null).prefs.pref.debug.get())
+		if (Autosizer.prefs.pref.debug.get())
 			important = true;
 	}
 	
-	if (!important) return;
+	if (!important) return; // Comment for debugging.
 	
 	dump("autosizer-wiz: "+msg+"\n");
 	Services.console.logStringMessage("autosizer-wiz: "+msg);
@@ -56,8 +76,8 @@ if ((!e.searchbox) || (!e.searcharea))
 }
 
 var autosizer = e.searchbox.autosizer;
-var strings   = autosizer.strings;
-var prefs     = autosizer.prefs;
+var strings   = Autosizer.strings;
+var prefs     = Autosizer.prefs;
 var pref      = prefs.pref;
 
 var asw = {
@@ -79,11 +99,11 @@ var asw = {
 		
 		var rbuttons = document.getElementById("sizemode");
 		
-		var mode = pref.sizeOn.get();
+		var mode = pref.sizestyle.get();
 		
-		if      ( mode == "none"   ) rbuttons.selectedIndex = 2;
-		else if ( mode == "atonce" ) rbuttons.selectedIndex = 1;
-		else                         rbuttons.selectedIndex = 0;
+		if      ( mode == "none" ) rbuttons.selectedIndex = 2;
+		else if ( mode == "once" ) rbuttons.selectedIndex = 1;
+		else                       rbuttons.selectedIndex = 0;
 		
 		d("asw.initSize() returned.");
 	},
@@ -91,7 +111,7 @@ var asw = {
 	{
 		d("asw.endSize() called.");
 		
-		pref.sizeOn.set(document.getElementById("sizemode").value);
+		pref.sizestyle.set(document.getElementById("sizemode").value);
 		
 		d("asw.endSize() returned.");
 	},
@@ -218,9 +238,9 @@ var asw = {
 	{
 		d("asw.initAfterSearch() called.");
 		
-		document.getElementById("cleanOnSubmit").checked = pref.cleanOnSubmit.get();
-		document.getElementById("revertOnSubmit").checked = pref.revertOnSubmit.get();
-		document.getElementById("shrinkToButton").checked = pref.shrinkToButton.get();
+		document.getElementById("cleanOnSubmit").checked = pref.clean.get();
+		document.getElementById("revertOnSubmit").checked = pref.resetengine.get();
+		document.getElementById("shrinkToButton").checked = pref.buttonify.get();
 		
 		d("asw.initAfterSearch() returned.");
 	},
@@ -229,7 +249,7 @@ var asw = {
 	{
 		d("asw.cleanOnSubmitChange() called.");
 		
-		pref.cleanOnSubmit.set(document.getElementById("cleanOnSubmit").checked);
+		pref.clean.set(document.getElementById("cleanOnSubmit").checked);
 		
 		d("asw.cleanOnSubmitChange() returned.");
 	},
@@ -237,7 +257,7 @@ var asw = {
 	{
 		d("asw.revertOnSubmitChange() called.");
 		
-		pref.revertOnSubmit.set(document.getElementById("revertOnSubmit").checked);
+		pref.resetengine.set(document.getElementById("revertOnSubmit").checked);
 		
 		d("asw.revertOnSubmitChange() returned.");
 	},
@@ -245,7 +265,7 @@ var asw = {
 	{
 		d("asw.shrinkToButtonChange() called.");
 		
-		pref.shrinkToButton.set(document.getElementById("shrinkToButton").checked);
+		pref.buttonify.set(document.getElementById("shrinkToButton").checked);
 		
 		d("asw.shrinkToButtonChange() returned.");
 	},

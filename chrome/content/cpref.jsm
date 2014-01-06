@@ -1,4 +1,4 @@
-// Copyright 2013 Kevin Cox
+// Copyright 2013-2014 Kevin Cox
 
 /*******************************************************************************
 *                                                                              *
@@ -24,49 +24,54 @@
 
 "use strict";
 
-var EXPORTED_SYMBOLS = ["CPref"];
+const EXPORTED_SYMBOLS = ["CPref"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
-	
-	if (!important) return;
+	if (!important) return; // Comment for debugging.
 	
 	dump("CPref: "+msg+'\n');
 	Services.console.logStringMessage("CPref: "+msg);
 }
 
-var SYNC_PREFIX = "services.sync.prefs.sync.";
+const SYNC_PREFIX = "services.sync.prefs.sync.";
 
-var rbranch = Services.prefs.getBranch("");
-//rbranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
-var dbranch = Services.prefs.getDefaultBranch("");
+let rbranch = Services.prefs.getBranch("");
+let dbranch = Services.prefs.getDefaultBranch("");
 
-var values = {};
+let values = {};
 
 function setPref ( key, val, def )
 {
-	var b = def?dbranch:rbranch;
+	let b = def?dbranch:rbranch;
 	
 	//d(key+"("+fpref[key].type+"): "+val);
 	
-	var type = null;
-	if ( values[key] == undefined ) type = typeof val;
-	else                            type = typeof values[key];
+	if ( typeof val == "undefined" )
+	{
+		b.clearUserPref(key);
+		return;
+	}
+	
+	let type;
+	if ( values[key] === undefined ) type = typeof val;
+	else                             type = typeof values[key];
 	
 	switch (type)
 	{
-		case "boolean":
-			b.setBoolPref(key, val);
-			break;
-		case "number":
-			b.setIntPref(key, val);
-			break;
-		case "string":
-			b.setCharPref(key, val);
-			break;
+	case "boolean":
+		b.setBoolPref(key, val);
+		break;
+	case "number":
+		b.setIntPref(key, val);
+		break;
+	case "string":
+		b.setCharPref(key, val);
+		break;
+	default:
+		d("Warn: unexpected preference type '"+type+"'.");
 	}
 }
 
@@ -77,7 +82,7 @@ TYPE_MAP[Services.prefs.PREF_STRING] = "string";
 
 function getPref ( key )
 {
-	var type = null;
+	let type;
 	if ( values[key] == undefined ) type = TYPE_MAP[rbranch.getPrefType(key)];
 	else                            type = typeof values[key];
 	
@@ -92,31 +97,56 @@ function getPref ( key )
 	}
 }
 
-var cache = {};
+function userSetPref ( key )
+{
+	return rbranch.prefHasUserValue(key);
+}
+
 function Prefs (path, options)
 {
 	options = options || {};
 	options.syncByDefault = !!options.syncByDefault;
 	
-	var self = {
+	let self = {
 		pref: {},
 	};
 	
-	var prefObserver = {
+	let prefObserver = {
 		observe: function (aSubject, aTopic, aData)
 		{
 			if( aTopic != "nsPref:changed" ) return;
 			
-			getPref(aData);
-			var prefo = self.pref[aData.substr(path.length)];
+			let localname = aData.substr(path.length);
+			let val = getPref(aData);
+			
+			self._triggerChange(localname, val);
+			
+			let prefo = self.pref[localname];
 			if (prefo) prefo._triggerChange();
 		}
 	};
 	rbranch.addObserver(path, prefObserver, false);
 	
+	self._onchange = [];
+	self.addOnChange = function (callback) {
+		self._onchange.push(callback);
+	};
+	self.removeOnChange = function (callback) {
+		let i = self._onchange.indexOf(callback);
+		if ( i >= 0 )
+			self._onchange.splice(i, 1);
+	};
+	
+	self._triggerChange = function (k, v) {
+		for (let i in self._onchange)
+		{
+			self._onchange[i].call(self, k, v);
+		}
+	};
+	
 	self.addPref = function ( name, dflt )
 	{
-		var r = {
+		let r = {
 			name:         name,
 			absname: path+name,
 			
@@ -126,18 +156,34 @@ function Prefs (path, options)
 		
 		r.syncname = SYNC_PREFIX+r.absname;
 		
-		var onchange = [];
+		r._onchange = [];
 		
 		///// Set up defaults.
 		setPref(r.syncname, options.syncByDefault, true);
 		setPref(r.absname, dflt, true);
+		
+		var ld = dump;
+		var lc = Components;
 		
 		///// The API.
 		r.set = function ( v ) {
 			setPref(r.absname, v);
 		};
 		r.get = function ( ) {
+			if (typeof values == "undefined")
+			{
+				var s = lc.stack;
+				while (s)
+				{
+					ld(s+"\n");
+					s = s.caller;
+				}
+			}
 			return values[r.absname];
+		};
+		
+		r.userSet = function ( ) {
+			return userSetPref(r.absname);
 		};
 		
 		r.sync = function ( sync ) {
@@ -148,23 +194,25 @@ function Prefs (path, options)
 		};
 		
 		r.addOnChange = function (callback) {
-			onchange.push(callback);
+			r._onchange.push(callback);
 		};
 		r.removeOnChange = function (callback) {
-			var i = onchange.indexOf(callback);
+			let i = r._onchange.indexOf(callback);
 			if ( i >= 0 )
-				onchange.splice(i, 1);
+				r._onchange.splice(i, 1);
 		};
 		
 		r._triggerChange = function () {
-			for ( var i in onchange )
+			let v = r.get();
+			
+			for (let i in r._onchange)
 			{
-				onchange[i](r);
+				r._onchange[i].call(r, v);
 			}
 		};
 		
 		r.destroy = function () {
-			onchange = [];
+			r._onchange = [];
 			delete self.pref[name];
 		};
 		
@@ -178,6 +226,7 @@ function Prefs (path, options)
 	
 	self.destroy = function()
 	{
+		self._onchange = [];
 		rbranch.removeObserver(path, prefObserver, false);
 		for ( var p in self.pref )
 		{
@@ -188,7 +237,7 @@ function Prefs (path, options)
 	return self;
 }
 
-var CPref = {
+const CPref = {
 	setPref: setPref,
 	getPref: getPref,
 	

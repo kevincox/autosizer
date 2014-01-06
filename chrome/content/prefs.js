@@ -1,69 +1,154 @@
-var Ci = Components.interfaces;
-var Cc = Components.classes;
-var Cu = Components.utils;
+// Copyright 2011-2014 Kevin Cox
 
-Cu.import("chrome://autosizer/content/autosizer.jsm");
+/*******************************************************************************
+*                                                                              *
+*  Permission is hereby granted, free of charge, to any person obtaining a     *
+*  copy of this software and associated documentation files (the "Software"),  *
+*  to deal in the Software without restriction, including without limitation   *
+*  the rights to use, copy, modify, merge, publish, distribute, sublicense,    *
+*  and/or sell copies of the Software, and to permit persons to whom the       *
+*  Software is furnished to do so, subject to the following conditions:        *
+*                                                                              *
+*  The above copyright notice and this permission notice shall be included in  *
+*  all copies or substantial portions of the Software.                         *
+*                                                                              *
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  *
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,    *
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL     *
+*  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  *
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING     *
+*  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER         *
+*  DEALINGS IN THE SOFTWARE.                                                   *
+*                                                                              *
+*******************************************************************************/
+
+"use strict";
+
+const {classes:Cc, interfaces:Ci, results:Cr, utils:Cu} = Components;
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("chrome://autosizer/content/Autosizer.jsm");
 
 function d ( msg, important )
 {
-	//important = true; // Uncomment for debuging.
-	
-	if ( !important && Autosizer )
+	if (Autosizer.prefs.pref.debug.get())
 	{
-		if (Autosizer(null).prefs.pref.debug.get())
-			important = true;
+		important = true;
 	}
 	
-	if (!important) return;
+	if (!important) return; // Comment for debugging.
 	
 	dump("autosizer-pref: "+msg+"\n");
-	Services.console.logStringMessage("autosizer-pref: "+msg);
+	if (window.console) console.log(msg);
+	else                Services.console.logStringMessage("autosizer-pref: "+msg);
 }
 
-var autosizer = new Autosizer();
-var strings   = autosizer.strings;
-var prefs     = autosizer.prefs;
-var pref      = prefs.pref;
+let strings = Autosizer.strings;
+let prefs   = Autosizer.prefs;
+
+function updatePrefElement(item, value)
+{
+	let type = item.tagName;
+	
+	if (item.mozMatchesSelector(".pref-ele"))
+	{
+		if      ( type == "textbox"   ||
+		          type == "radiogroup" ) item.value   = value;
+		else if ( type == "checkbox"   ) item.checked = value;
+		else d("WRN: Don't know how to load '"+type+"' for pref '"+ele+"'.", true);
+	}
+	else if (item.mozMatchesSelector(".pref-list"))
+	{
+		let options = value.split(",");
+		let items = item.getElementsByTagName("checkbox");
+		for (let i = 0; i < items.length; i++)
+		{
+			let e = items[i];
+			e.checked = options.indexOf(e.id) >= 0;
+		}
+	}
+}
+
+function updatePrefValue(e)
+{
+	let item = e.target;
+	
+	while (item.mozMatchesSelector(".pref *"))
+	{
+		item = item.parentElement;
+	}
+	
+	let type = item.tagName;
+	
+	let pref = prefs.pref[item.id];
+	let val;
+	
+	if (!pref) return;
+	
+	if (item.mozMatchesSelector(".pref-ele"))
+	{
+		if      ( type == "textbox"   ||
+		          type == "radiogroup" ) val = item.value;
+		else if ( type == "checkbox"   ) val = item.checked;
+		else d("WRN: Don't know how to store '"+type+"' for pref '"+item.id+"'.");
+	}
+	else if (item.mozMatchesSelector(".pref-list"))
+	{
+		let items = item.getElementsByTagName("checkbox");
+		let options = [];
+		for (let i = 0; i < items.length; i++)
+		{
+			let e = items[i];
+			if (e.checked) options.push(e.id);
+		}
+		val = options.join(",");
+	}
+	
+	pref.set(val);
+	d("Changed '"+item.id+"' to '"+val+"'.");
+}
 
 var asp = {
-	init: function () {
-		asp.load();
-	},
-	exit: function () {
-		asp.save();
-		window.close();
-	},
+	toremove: [],
 	
-	load: function () {
-		var prefs = document.querySelectorAll(".pref");
-		for (var i = 0; i < prefs.length; ++i)
+	init: function () {
+		///// Update UI when prefs change.
+		let eles = document.querySelectorAll(".pref");
+		for (let i = 0; i < eles.length; ++i)
 		{
-			var item = prefs[i];
-			var type = item.tagName;
+			let item = eles[i];
+			let pref = prefs.pref[item.id];
 			
-			if ( type == "textbox"  )        item.value = pref[item.id].get();
-			else if ( type == "checkbox" )   item.checked = pref[item.id].get();
-			else if ( type == "radiogroup" ) item.value = pref[item.id].get();
-			else d("Don't know how to load '"+type+"' for pref '"+item+"'.");
+			if (!pref)
+			{
+				d("WRN: Pref '"+item.id+"' does not exist.", true);
+				continue;
+			}
+			
+			let updatefunc = updatePrefElement.bind(null, item);
+			
+			updatefunc(pref.get());
+			pref.addOnChange(updatefunc);
+			
+			asp.toremove.push([pref, updatefunc]);
 		}
+		
+		///// Update pref when UI changes.
+		document.addEventListener("command", updatePrefValue);
 		
 		asp.updateMinWidthCheck();
 		asp.updateMaxWidthList();
 	},
-	save: function () {
-		var prefElements = document.querySelectorAll(".pref");
-		for (var i = 0; i < prefElements.length; ++i)
-		{
-			var item = prefElements[i];
-			var type = item.tagName;
+	exit: function () {
+		asp.toremove.forEach(function(v){
+			[pref, fun] = v;
 			
-			if      ( type == "textbox" )     pref[item.id].set(item.value);
-			else if ( type == "checkbox" )   pref[item.id].set(item.checked);
-			else if ( type == "radiogroup" ) pref[item.id].set(item.value);
-			else d("Don't know how to store '"+type+"' for pref '"+item+"'.");
-		}
+			console.log(pref);
+			console.log(pref._onchange.length);
+			
+			pref.removeOnChange(fun);
+		});
 	},
-
+	
 	updateMinWidthCheck: function () {
 		var b = document.getElementById("minwidth");
 		var l = document.getElementById("minwidthcheck");
@@ -76,7 +161,8 @@ var asp = {
 		var b = document.getElementById("minwidth");
 		var l = document.getElementById("minwidthcheck");
 		
-		if (l.checked) b.value = -1;
+		if (l.checked) prefs.pref.minwidth.set(-1);
+		else           prefs.pref.minwidth.set(100);
 	},
 	
 	updateMaxWidthList: function () {
@@ -84,7 +170,6 @@ var asp = {
 		var l = document.getElementById("maxwidthlist");
 		
 		var v = parseInt(b.value);
-		d(v)
 		
 		if      ( v ==  0 ) l.value = "full";
 		else if ( v == -1 ) l.value = "max";
@@ -94,14 +179,14 @@ var asp = {
 		var b = document.getElementById("maxwidth");
 		var l = document.getElementById("maxwidthlist");
 		
-		if ( l.value == "full" ) b.value = 0;
-		if ( l.value == "max"  ) b.value = -1;
+		if ( l.value == "full" ) prefs.pref.maxwidth.set(0);
+		if ( l.value == "max"  ) prefs.pref.maxwidth.set(-1);
 	},
 	
 	launchWizard: function () {
-		autosizer.launchWizard();
+		Autosizer.launchWizard();
 		window.close();
 	},
 }
 
-/* vi:set filetype=javascript: */
+// vi:ft=javascript
