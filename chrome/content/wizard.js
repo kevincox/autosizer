@@ -33,7 +33,7 @@ function d ( msg, important )
 {
 	if ( !important && typeof Autosizer != "undefined" )
 	{
-		if (Autosizer.prefs.pref.debug.get())
+		if (Autosizer.prefs.debug.value)
 			important = true;
 	}
 	
@@ -75,10 +75,10 @@ if ((!e.searchbox) || (!e.searcharea))
 	window.close();
 }
 
-var autosizer = e.searchbox.autosizer;
-var strings   = Autosizer.strings;
-var prefs     = Autosizer.prefs;
-var pref      = prefs.pref;
+let autosizer = e.searchbox.autosizer;
+let strings   = Autosizer.strings;
+let prefs     = Autosizer.prefs;
+let prefroot  = Autosizer.prefroot;
 
 var asw = {
 	init: function ( ) {
@@ -86,12 +86,12 @@ var asw = {
 		
 		d("asw.init() returned.");
 	},
-
+	
 	end: function ( ) {
 		autosizer.stopManualResize();
 		autosizer.autosize();
 	},
-
+	
 	/*** First Page - When to size ***/
 	initSize: function()
 	{
@@ -99,7 +99,7 @@ var asw = {
 		
 		var rbuttons = document.getElementById("sizemode");
 		
-		var mode = pref.sizestyle.get();
+		var mode = prefs.sizestyle.value;
 		
 		if      ( mode == "none" ) rbuttons.selectedIndex = 2;
 		else if ( mode == "once" ) rbuttons.selectedIndex = 1;
@@ -111,7 +111,7 @@ var asw = {
 	{
 		d("asw.endSize() called.");
 		
-		pref.sizestyle.set(document.getElementById("sizemode").value);
+		prefs.sizestyle.value = document.getElementById("sizemode").value;
 		
 		d("asw.endSize() returned.");
 	},
@@ -133,7 +133,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.minwidthSizeChange, true);
 		
-		pref.minwidth.set(asw.minWidthSolve());
+		prefs.minwidth.value = asw.minWidthSolve();
 		
 		d("asw.initMinWidth() returned.");
 	},
@@ -147,7 +147,7 @@ var asw = {
 		var v = e.searchbox.value;
 		e.searchbox.value = '';
 		
-		var smallSize = autosizer.getRequiredWidth();
+		var smallSize = autosizer.requiredWidth;
 		
 		e.searchbox.value = v;
 		
@@ -193,7 +193,7 @@ var asw = {
 		autosizer.stopManualResize();
 		e.searchbox.removeEventListener("autosizer-manualresize", this.maxwidthSizeChange, true);
 		
-		pref.maxwidth.set(asw.maxWidthSolve());
+		prefs.maxwidth.value = asw.maxWidthSolve();
 		
 		d("asw.endMaxWidth() returned.");
 	},
@@ -224,9 +224,9 @@ var asw = {
 		
 		var w = e.searcharea.width;
 		
-		if ( Math.abs(w-autosizer.getAllAvailableWidth()) < 100 )
+		if ( Math.abs(w-autosizer.allAvailableWidth) < 100 )
 			w = -1;
-		else if ( Math.abs(w-autosizer.getAvailableWidth()) < 100 )
+		else if ( Math.abs(w-autosizer.availableWidth) < 100 )
 			w = 0;
 		
 		d("asw.maxWidthSolve() returned "+w+".");
@@ -238,9 +238,11 @@ var asw = {
 	{
 		d("asw.initAfterSearch() called.");
 		
-		document.getElementById("cleanOnSubmit").checked = pref.clean.get();
-		document.getElementById("revertOnSubmit").checked = pref.resetengine.get();
-		document.getElementById("shrinkToButton").checked = pref.buttonify.get();
+		let asprefs = prefs.aftersearch.children;
+		
+		document.getElementById("cleanOnSubmit").checked  = asprefs.clean.value;
+		document.getElementById("revertOnSubmit").checked = asprefs.resetengine.value;
+		document.getElementById("shrinkToButton").checked = prefs.buttonify.value;
 		
 		d("asw.initAfterSearch() returned.");
 	},
@@ -249,7 +251,7 @@ var asw = {
 	{
 		d("asw.cleanOnSubmitChange() called.");
 		
-		pref.clean.set(document.getElementById("cleanOnSubmit").checked);
+		prefroot.pref("aftersearch.clean").value = document.getElementById("cleanOnSubmit").checked;
 		
 		d("asw.cleanOnSubmitChange() returned.");
 	},
@@ -257,7 +259,7 @@ var asw = {
 	{
 		d("asw.revertOnSubmitChange() called.");
 		
-		pref.resetengine.set(document.getElementById("revertOnSubmit").checked);
+		prefroot.pref("aftersearch.resetengine").value = document.getElementById("revertOnSubmit").checked;
 		
 		d("asw.revertOnSubmitChange() returned.");
 	},
@@ -265,7 +267,7 @@ var asw = {
 	{
 		d("asw.shrinkToButtonChange() called.");
 		
-		pref.buttonify.set(document.getElementById("shrinkToButton").checked);
+		prefs.buttonify.value = document.getElementById("shrinkToButton").checked;
 		
 		d("asw.shrinkToButtonChange() returned.");
 	},

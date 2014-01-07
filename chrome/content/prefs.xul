@@ -7,11 +7,14 @@
 	title="&title;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	buttons="accept"
-	buttonaccesskeyextra2="&wizard.accesskey;"
-	buttonlabelextra2="&wizard.button;"
+	
 	onload="asp.init();"
 	onunload="asp.exit();"
+	
+	buttons="accept,extra2"
+	buttonaccesskeyextra2="&wizard.accesskey;"
+	buttonlabelextra2="&wizard.button;"
+	ondialogextra2="asp.launchWizard();"
 	>
 	<script type="text/javascript" src="prefs.js"/>
 	<tabbox>

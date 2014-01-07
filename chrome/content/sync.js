@@ -33,7 +33,7 @@ function d ( msg, important )
 {
 	if ( !important && typeof Autosizer != "undefined" )
 	{
-		if (Autosizer.prefs.pref.debug.get())
+		if (Autosizer.prefs.debug.value)
 			important = true;
 	}
 	
@@ -43,25 +43,39 @@ function d ( msg, important )
 	Services.console.logStringMessage("autosizer-sync: "+msg);
 }
 
-var strings   = Autosizer.strings;
-var prefs     = Autosizer.prefs;
-var pref      = prefs.pref;
+let strings  = Autosizer.strings;
+let prefs    = Autosizer.prefs;
+let prefroot = Autosizer.prefroot;
 
 var sync = {
 	init: function () {
-		var list = document.getElementById("prefs");
+		let list = document.getElementById("prefs");
 		
-		var names = Object.keys(pref).sort();
-		for (let i in names)
+		let prefixlen = prefroot.path.length + 1; // 1 for trailing dot.
+		
+		function createList(pref)
 		{
-			let p = pref[names[i]];
+			let haschildren = false;
 			
-			d(p.name);
-			var item = list.appendItem(p.name, p.name);
+			for (let pn in pref.children)
+			{
+				haschildren = true;
+				createList(pref.children[pn]);
+			}
+			
+			if (haschildren) return; // Just a branch.
+			
+			d(pref.path);
+			
+			let name = pref.path.substr(prefixlen);
+			
+			var item = list.appendItem(name, name);
 			var cb = document.createElement("checkbox");
 			item.insertBefore(cb, item.firstChild);
-			cb.checked = p.isSynced();
+			cb.checked = pref.sync.value;
 		}
+		
+		createList(prefroot);
 	},
 	exit: function () {
 		sync.save();
@@ -73,7 +87,7 @@ var sync = {
 		{
 			let e = list.getItemAtIndex(i);
 			d(e.value);
-			pref[e.value].sync(e.firstChild.checked);
+			prefroot.pref(e.value).sync.value = e.firstChild.checked;
 		}
 	},
 	

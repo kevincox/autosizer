@@ -1023,7 +1023,7 @@ Object.defineProperties(Autosizer.prototype, {
 			let priv = getPriv(this);
 			
 			if (prefs.buttonify.value) this.toButton();
-			else                       this.searchcont.width = this.getRequiredWidth();
+			else                       this.searchcont.width = this.requiredWidth;
 		},
 	},
 	
