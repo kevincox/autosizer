@@ -44,9 +44,11 @@
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY basic.tab "Basic">
 <!ENTITY adv.caption "Advanced Preferences">
-<!ENTITY preflink.title "Where to place a link to the preferences dialog.">
 <!ENTITY adv.tab "Advanced">
-<!ENTITY preflink.none   "Nowhere.">
-<!ENTITY preflink.search "In the search engine menu.">
 <!ENTITY other.shrinkwhenfull.accesskey "">
 <!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
+<!ENTITY sizeon.title "When To Expand">
+<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
+<!ENTITY sizeon.desc "Expand the searchbar when any of the selected conditions apply.">
+<!ENTITY sizeon.content "Expand when the searchbar has text in it.">
+<!ENTITY sizeon.focus "Expand when the searchbar has focus.">

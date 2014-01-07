@@ -38,9 +38,6 @@
 <!ENTITY other.revertOnSubmit.desc "Tout moteur de recherche en haut de la liste sera celui par défaut. Pour gérer vos moteurs, cliquez sur l'icone du moteur et choisissez &apos;Gérer les moteurs de recherche...&apos;">
 <!ENTITY other.shrinkToButton "Réduire la barre de recherche à un Bouton si celle-ci est vide">
 <!ENTITY other.shrinkToButton.accesskey "B">
-<!ENTITY preflink.title "Où placer un lien vers la fenêtre des options">
-<!ENTITY preflink.search "Dans le menu des moteurs de recherche">
-<!ENTITY preflink.none   "Nulle part">
 <!ENTITY suggestions.title "Fenêtre des Suggestions">
 <!ENTITY sync.title "Options de Sync">
 <!ENTITY sync.desc.before "Searchbar Autosizer synchronise vos options grâce à Firefox Sync.">
@@ -50,3 +47,8 @@
 <!ENTITY wizard.accesskey "t">
 <!ENTITY other.shrinkwhenfull.accesskey "">
 <!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
+<!ENTITY sizeon.title "When To Expand">
+<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
+<!ENTITY sizeon.desc "Expand the searchbar when any of the selected conditions apply.">
+<!ENTITY sizeon.content "Expand when the searchbar has text in it.">
+<!ENTITY sizeon.focus "Expand when the searchbar has focus.">

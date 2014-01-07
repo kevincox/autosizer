@@ -32,7 +32,7 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 
 function d ( msg, important )
 {
-	//if (!important) return; // Comment for debugging.
+	if (!important) return; // Comment for debugging.
 	
 	dump("CPref: "+msg+'\n');
 	Services.console.logStringMessage("CPref: "+msg);

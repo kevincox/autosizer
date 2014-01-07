@@ -44,9 +44,11 @@
 <!ENTITY suggestions.title "搜索建议">
 <!ENTITY basic.tab "基本">
 <!ENTITY adv.caption "高级选项">
-<!ENTITY preflink.title "将首选项按钮放置在哪里">
 <!ENTITY adv.tab "高级">
-<!ENTITY preflink.none   "不放置">
-<!ENTITY preflink.search "放置在搜索栏的菜单中">
 <!ENTITY other.shrinkwhenfull.accesskey "">
 <!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
+<!ENTITY sizeon.title "When To Expand">
+<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
+<!ENTITY sizeon.desc "Expand the searchbar when any of the selected conditions apply.">
+<!ENTITY sizeon.content "Expand when the searchbar has text in it.">
+<!ENTITY sizeon.focus "Expand when the searchbar has focus.">

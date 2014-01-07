@@ -36,7 +36,7 @@ function d ( msg, important )
 	if (prefs && prefs.debug.value)
 		important = true;
 	
-	//if (!important) return; // Comment for debugging.
+	if (!important) return; // Comment for debugging.
 	
 	dump("autosizer: "+msg+'\n');
 	Services.console.logStringMessage("autosizer: "+msg);
