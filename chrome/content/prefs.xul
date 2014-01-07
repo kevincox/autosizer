@@ -97,9 +97,9 @@
 					<groupbox>
 						<caption label="&other.title;"/>
 						<vbox>
-							<checkbox id="clean" label="&other.cleanOnSubmit;" 
+							<checkbox id="aftersearch.clean" label="&other.cleanOnSubmit;"
 							          accesskey="&other.cleanOnSubmit.accesskey;" class="pref" />
-							<checkbox id="resetengine" label="&other.revertOnSubmit;"
+							<checkbox id="aftersearch.resetengine" label="&other.revertOnSubmit;"
 							          accesskey="&other.revertOnSubmit.accesskey;" class="pref"/>
 							<checkbox id="buttonify" label="&other.shrinkToButton;"
 							          accesskey="&other.shrinkToButton.accesskey;" class="pref"/>
@@ -121,16 +121,16 @@
 							</columns>
 							<rows>
 								<row align="center">
-								<label control="querypad" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
+								<label control="padding.query" value="&padding.query;" accesskey="&padding.query.accesskey;"/>
 									<textbox type="number" min="-Infinity" size="4"
-									         id="querypad" class="pref" />
+									         id="padding.query" class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_text.png"/>
 								</row>
 								<row align="center">
-									<label control="enginepad" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
+									<label control="paddingengine" value="&padding.engine;" accesskey="&padding.engine.accesskey;"/>
 									<textbox type="number" min="-Infinity" size="4"
-									         id="enginepad" class="pref" />
+									         id="paddingengine" class="pref" />
 									<vbox flex="999"></vbox>
 									<image src="offset_label.png"/>
 								</row>
@@ -148,11 +148,8 @@
 					</groupbox>
 					
 					<groupbox>
-						<caption label="&preflink.title;"/>
-						<radiogroup id="preflink" class="pref" orient="horizontal">
-							<radio value="search" label="&preflink.search;"/>
-							<radio value="none"   label="&preflink.none;"/>
-						</radiogroup>
+						<caption label="&other.title;"/>
+						<checkbox id="preflink.enginemenu" class="pref" label="&preflink.enginemenu;"/>
 					</groupbox>
 				</vbox>
 			</tabpanel>

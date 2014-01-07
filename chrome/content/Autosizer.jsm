@@ -29,14 +29,14 @@ var EXPORTED_SYMBOLS = ["Autosizer"];
 const {classes:Cc, interfaces:Ci, results:Cr, utils:Cu} = Components;
 
 Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("chrome://autosizer/content/cpref.jsm");
+Cu.import("chrome://autosizer/content/CPref.jsm");
 
 function d ( msg, important )
 {
-	if (prefs && prefs.pref.debug.get())
+	if (prefs && prefs.debug.value)
 		important = true;
 	
-	if (!important) return; // Comment for debugging.
+	//if (!important) return; // Comment for debugging.
 	
 	dump("autosizer: "+msg+'\n');
 	Services.console.logStringMessage("autosizer: "+msg);
@@ -46,23 +46,74 @@ function dj ( msg, important )
 	return d(JSON.stringify(msg, undefined, 4), important);
 }
 
-const constants = {
-	prefBranch: "extensions.autosizer.",
-	syncPrefBranch: "services.sync.prefs.sync.",
+///// Preferences.
+let prefroot = new CPrefRoot("extensions.autosizer");
+let prefs = prefroot.children;
+function pref(name, def)
+{
+	let p = prefroot.pref(name);
+	p.default = def;
+	
+	let s = p.sync;
+	s.default = true;
 }
 
-let prefs = CPref.Prefs(constants.prefBranch, {syncByDefault:true});
+/// The minimum width of the searchbar.
+/**
+ * The minimum width of the searchbar in pixels.
+ * 
+ * Special values:
+ * -1:
+ *   A value of `-1` means fit the search engines name.
+ */
+pref("minwidth", -1);
 
-prefs.addPref("minwidth", -1);
-prefs.addPref("maxwidth", 0);
+/// The maximum width of the searchbar.
+/**
+ * The maximum width the searchbar will grow to in pixels.
+ * 
+ * Special values:
+ * 0:
+ *   A value of `0` means to grow as large as possible.
+ * -1:
+ *   A value of `-1` means to grow as large a possible but also allow pushing
+ *   other items off the screen.
+ */
+pref("maxwidth", 0);
 
-prefs.addPref("querypad",  0); // Padding from search text.
-prefs.addPref("enginepad", 5); // Padding from search engine title.
+pref("padding.query",   0); // Padding from search text.
+pref("padding.engine", 5); // Padding from search engine title.
 
-prefs.addPref("popupwidth", 0);
+/// The width of the autocomplete popup.
+/**
+ * Sets the size of the autocomplete popup in pixels.
+ * 
+ * Special values:
+ * 0:
+ *   Don't change the size, keep the default.
+ * -1:
+ *   The popup will be the size of the window.
+ * <= -100:
+ *   The popup will be the size of the searchbar plus the amount this value is
+ *   less than -100 by.
+ *   
+ *   The following formula is used:
+ *   
+ *       width = widthOfSearchBar + (-100) - popupwidth
+ */
+pref("popupwidth", 0);
 
-prefs.addPref("sizeon.focus",   true);
-prefs.addPref("sizeon.content", false);
+/// Size searchbar when focused.
+/**
+ * If set, the searchbar will be enlarged when it has focus.
+ */
+pref("sizeon.focus",   true);
+
+/// Size searchbar when it has content.
+/**
+ * If set, the searchbar will be enlarged when there is text in it.
+ */
+pref("sizeon.content", false);
 
 /// How to size the searchbar.
 /**
@@ -70,20 +121,51 @@ prefs.addPref("sizeon.content", false);
  *   none: Don't size the searchbar.
  *   inc:  Size the searchbar character by character.
  *   once: Size the seachbar all at once.
- * 
+ *
  * Unknown values will be treated like 'inc'.
  */
-prefs.addPref("sizestyle", "inc");
+pref("sizestyle", "inc");
 
-prefs.addPref("aftersearch.clean", false);
-prefs.addPref("aftersearch.resetengine", false);
+/// Clean the searchbar after a query is submitted.
+/**
+ * If set, the text in the searchbar will be cleared after a search is
+ * committed.
+ */
+pref("aftersearch.clean", false);
 
-prefs.addPref("buttonify", false);
+/// Reset engine after a search.
+/**
+ * If set, the engine will be reset to the first one after a search query is
+ * submitted.
+ */
+pref("aftersearch.resetengine", false);
 
-prefs.addPref("firstrun", true);
-prefs.addPref("debug", false);
+/// Shrink to button.
+/**
+ * If set, the search bar will be replaced with a button when collapsed.
+ */
+pref("buttonify", false);
 
-prefs.addPref("preflink", "search");
+/// First run.
+/**
+ * Not really a preference.  If set the wizard will be launched then it will be
+ * cleared.
+ */
+pref("firstrun", true);
+
+/// Debug mode.
+/**
+ * If set, print out debugging info.  If you find a problem with autosizer
+ * please turn this on and capture the output log when the problem occurs.
+ */
+pref("debug", false);
+
+/// Put a pref dialog link in the search engine menu.
+/**
+ * If set, an item will be added to the searchbar search engine dropdown that
+ * opens searchbar autosizer's preference dialog.
+ */
+pref("preflink.enginemenu", true);
 
 var strings = {
 	stringbundle: Services.strings.createBundle("chrome://autosizer/locale/autosizer.properties"),
@@ -228,8 +310,30 @@ Object.defineProperties(Autosizer, {
 	launchSettingsDialog: {value: launchPrefs},
 	launchWizard: {value: launchWizard},
 	prefs: {value: prefs},
+	prefroot: {value: prefroot},
 	instances: {value: []},
 	strings: {value: strings},
+	
+	destroy: {
+		value: function Autosizer_destroy(){
+			d("::destory() called.");
+			///// Shutdown all running instances.
+			while ( Autosizer.instances.length )
+			{
+				let ref = Autosizer.instances.pop().get();
+				if (ref) // Make sure the refrence still exists.
+				{
+					ref.destroy();
+				}
+			}
+			
+			d("::destory() called.");
+			Autosizer.prefroot.destroy();
+			d("::destory() called.");
+			CPref.destroy();
+			d("::destory() returned.");
+		},
+	},
 });
 
 /*** Our Class ***/
@@ -252,12 +356,13 @@ function Autosizer ( window )
 		                           Components.stack.caller);
 	
 	this.init();
+	Autosizer.instances.push(Components.utils.getWeakReference(this));
 	this.window.setTimeout(priv.bound.autosize, 0);
 	
-	if (prefs.pref.firstrun.get())
+	if (prefs.firstrun.value)
 	{
 		launchWizard();
-		prefs.pref.firstrun.set(false);
+		prefs.firstrun.value = false;
 	}
 }
 Object.defineProperties(Autosizer.prototype, {
@@ -274,7 +379,7 @@ Object.defineProperties(Autosizer.prototype, {
 			let priv = getPriv(this);
 			priv.bound = {
 				autosize: this.autosize.bind(this),
-				shutdown: this.shutdown.bind(this),
+				destroy: this.destroy.bind(this),
 				
 				expandButton: this.expandButton.bind(this),
 				
@@ -303,9 +408,9 @@ Object.defineProperties(Autosizer.prototype, {
 			this._addStyleSheet();
 			
 			this._addPrefLink();
-			prefs.pref.preflink.addOnChange(priv.bound._addPrefLink);
+			prefs.preflink.addListener(priv.bound._addPrefLink);
 			
-			this.window.addEventListener("unload",   priv.bound.shutdown);
+			this.window.addEventListener("unload",   priv.bound.destroy);
 			this.searchbox.addEventListener("input", priv.bound._inputReciever);
 			this.searchbox.addEventListener("focus", priv.bound._inputReciever);
 			this.searchbox.addEventListener("blur",  priv.bound._inputReciever);
@@ -319,16 +424,14 @@ Object.defineProperties(Autosizer.prototype, {
 			priv.originalflex = this.searchcont.flex;
 			this.searchcont.flex = 0; // Go to _exactly_ the size I tell you to be.
 			
-			prefs.addOnChange(priv.bound.autosize);
-			
-			Autosizer.instances.push(Components.utils.getWeakReference(this));
+			prefroot.addListener(priv.bound.autosize);
 			
 			d("#init() returning.");
 		},
 	},
-	shutdown: {
-		value: function shutdown() {
-			d("#shutdown() called.");
+	destroy: {
+		value: function destroy() {
+			d("#destroy() called.");
 			
 			let priv = getPriv(this);
 			
@@ -341,9 +444,9 @@ Object.defineProperties(Autosizer.prototype, {
 			this._removeStyleSheet();
 			
 			this._removePrefLink();
-			prefs.pref.preflink.removeOnChange(priv.bound._addPrefLink);
+			prefs.preflink.removeListener(priv.bound._addPrefLink);
 			
-			this.window.removeEventListener("unload",   priv.bound.shutdown);
+			this.window.removeEventListener("unload",   priv.bound.destroy);
 			this.searchbox.removeEventListener("input", priv.bound._inputReciever);
 			this.searchbox.removeEventListener("focus", priv.bound._inputReciever);
 			this.searchbox.removeEventListener("blur",  priv.bound._inputReciever);
@@ -356,7 +459,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			this.searchcont.flex = priv.originalflex;
 			
-			prefs.removeOnChange(priv.boundAutosize);
+			prefroot.removeListener(priv.bound.autosize);
 			
 			/*** Clean up our instances ***/
 			for ( var i = Autosizer.instances.length-1; i >= 0; i-- ) // Go backwards so removing
@@ -366,7 +469,7 @@ Object.defineProperties(Autosizer.prototype, {
 					Autosizer.instances.splice(i, 1); // Remove it.
 			}
 			
-			d("#shutdown() returning.");
+			d("#destroy() returning.");
 		},
 	},
 	
@@ -383,9 +486,7 @@ Object.defineProperties(Autosizer.prototype, {
 	},
 	_removeAfterSubmitCheck: {
 		value: function removeAfterSubmitCheck() {
-			d("FEWFWEWEFWFE");
 			let asc = getPriv(this).removeAfterSubmitCheck;
-			d(typeof asc);
 			if (asc) asc();
 		},
 	},
@@ -476,7 +577,7 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	_addStyleSheet: { //@TODO: Do we need to do this in each instance?
 		value: function addStyleSheet() {
-			d("addStyleSheet() called.");
+			d("#_addStyleSheet() called.");
 			
 			var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
 			                    .getService(Components.interfaces.nsIStyleSheetService);
@@ -485,12 +586,12 @@ Object.defineProperties(Autosizer.prototype, {
 			var uri = ios.newURI("chrome://autosizer/skin/autosizer.css", null, null);
 			sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
 			
-			d("addStyleSheet() returning.");
+			d("#_addStyleSheet() returning.");
 		},
 	},
 	_removeStyleSheet: {
 		value: function removeStyleSheet() {
-			d("removeStyleSheet() called.");
+			d("#_removeStyleSheet() called.");
 			
 			var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
 			                    .getService(Components.interfaces.nsIStyleSheetService);
@@ -500,33 +601,28 @@ Object.defineProperties(Autosizer.prototype, {
 			if(sss.sheetRegistered(uri, sss.USER_SHEET))
 				sss.unregisterSheet(uri, sss.USER_SHEET);
 			
-			d("removeStyleSheet() returning.");
+			d("#_removeStyleSheet() returning.");
 		},
 	},
 	
 	_addPrefLink: {
 		value: function _addPrefLink() {
-			d("_addPrefLink() called.");
+			d("#_addPrefLink() called.");
 			let priv = getPriv(this);
 			
 			this._removePrefLink();
 			
-			if ( prefs.pref.preflink.get() == "none" ) return;
+			let lprefs = prefs.preflink.children;
 			
-			priv.preflinkitem = this.document.createElement("menuitem");
-			priv.preflinkitem.setAttribute("label", strings.get("prefLinkText"));
-			priv.preflinkitem.addEventListener("command", launchPrefs);
-			
-			//if ( prefs.pref.preflink.get() == "search" )
-			//{
+			if (lprefs.enginemenu.value)
+			{
+				priv.preflinkitem = this.document.createElement("menuitem");
+				priv.preflinkitem.setAttribute("label", strings.get("prefLinkText"));
+				priv.preflinkitem.addEventListener("command", launchPrefs);
 				this.searchbox._popup.appendChild(priv.preflinkitem);
-			//}
-			//else //if ( prefs.pref.preflink.get() == "text" )
-			//{
-				//@TODO: Find a way to add it to the searchbar context menu.
-			//}
+			}
 			
-			d("_addPrefLink() returning.");
+			d("#_addPrefLink() returning.");
 		},
 	},
 	_removePrefLink: {
@@ -546,9 +642,9 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	/*** Information Functions ***/
 	
-	getSearchWPRequiredWidth: {
-		value: function getSearchWPRequiredWidth() {
-			d("getSearchWPRequiredWidth() called.");
+	searchWPRequiredWidth: {
+		get: function searchWPRequiredWidth() {
+			d("#searchWPRequiredWidth called.");
 			let priv = getPriv(this);
 			
 			let pf = this.searchbox._textbox._tokensContainer.getAttribute('flex');
@@ -558,68 +654,77 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			this.searchbox._textbox._tokensContainer.setAttribute('flex', pf);
 			
-			d("getSearchWPRequiredWidth() returned '"+w+"'.");
+			d("#searchWPRequiredWidth returned '"+w+"'.");
 			return w;
 		},
 	},
 	
-	// Returns the length of the searchbox's content in pixels.
-	getRequiredWidth: {
-		value: function getRequiredWidth() {
-			d("getRequiredWidth() called.");
+	/// Returns the length of the searchbox's content.
+	/**
+	 * Returns the length required to show the content including any relevant
+	 * padding and in-searchbar overhead.
+	 */
+	requiredWidth: {
+		get: function getRequiredWidth() {
+			d("#contentWidth called.");
 			let priv = getPriv(this);
 			
 			var w = 0;
 			
-			d("Tokenized ("+typeof this.searchbox._textbox.getAttribute("tokenized")+"): "
-			  +this.searchbox._textbox.getAttribute("tokenized"));
 			if (this.searchbox._textbox.getAttribute("tokenized")) // SearchWP has it's
-			{                                                   // buttons up.
-				w += this.getSearchWPRequiredWidth();
+			{                                                      // buttons up.
+				w += this.searchWPRequiredWidth;
 			}
 			else
 			{
-				var tc = this.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
-				var pad = prefs.pref.querypad.get();
+				let padprefs = prefs.padding.children;
 				
-				if ( this.searchbox.value == "" && prefs.pref.minwidth.get() == -1 )
+				var tc = this.searchbox.value+'W'; // The 'W' is to prepare for the next letter.
+				var pad = padprefs.query.value;
+				
+				if ( this.searchbox.value == "" && prefs.minwidth.value == -1 )
 				{
 					tc = this.searchbox.currentEngine.name;
-					pad = prefs.pref.enginepad.get();
+					pad = padprefs.engine.value;
 				}
 				
 				w += this.measureText(tc);
 				w += pad;
 			}
 			
-			w += this.getOverheadWidth();
+			w += this.overheadWidth;
 			
-			var minwidth = prefs.pref.minwidth.get();
-			var maxwidth = this.getMaxWidth();
+			var minwidth = prefs.minwidth.value;
+			var maxwidth = this.maxWidth;
 			
 			if      ( w < minwidth ) w = minwidth;
 			else if ( w > maxwidth ) w = maxwidth;
 			
-			d("getRequiredWidth() returned '"+w+"'.");
+			d("#contentWidth returned '"+w+"'.");
 			return w;
 		},
 	},
 	
-	getMaxWidth: {
-		value: function getMaxWidth() {
-			var maxwidth = prefs.pref.maxwidth.get();
+	/// Return the maximum size the searchbar is allowed to be.
+	/**
+	 * This returns the maximum allowable size, taking into consideration the
+	 * relevant settings.
+	 */
+	maxWidth: {
+		get: function getMaxWidth() {
+			var maxwidth = prefs.maxwidth.value;
 			
-			if      ( maxwidth == 0 ) maxwidth = this.getAvailableWidth();
-			else if ( maxwidth <  0 ) maxwidth = this.getAllAvailableWidth();
+			if      ( maxwidth == 0 ) maxwidth = this.availableWidth;
+			else if ( maxwidth <  0 ) maxwidth = this.allAvailableWidth;
 			
 			return maxwidth;
 		},
 	},
 	
 	/// Returns the maximum width the searchbar can expand to.
-	getAvailableWidth: {
-		value: function getAvailableWidth() {
-			d("getAvailableWidth() called.");
+	availableWidth: {
+		get: function getAvailableWidth() {
+			d("#availableWidth called.");
 			let priv = getPriv(this);
 			
 			var w = this.window.outerWidth; // The size of the window.
@@ -638,16 +743,16 @@ Object.defineProperties(Autosizer.prototype, {
 				ele.setAttribute('flex', f);
 			}
 			
-			d("getAvailableWidth() returned '"+w+"'.");
+			d("#availableWidth returned '"+w+"'.");
 			return w;
 		},
 	},
 	
 	/// Returns the maximum width the searchbar can expand to if allowing items
 	/// to be pushed out of the window.
-	getAllAvailableWidth: {
-		value: function getAllAvailableWidth() {
-			d("getAllAvailableWidth() called.");
+	allAvailableWidth: {
+		get: function getAllAvailableWidth() {
+			d("#allAvailableWidth() called.");
 			let priv = getPriv(this);
 			
 			var w = this.window.outerWidth; // The size of the window.
@@ -669,15 +774,15 @@ Object.defineProperties(Autosizer.prototype, {
 				ele.setAttribute('flex', f);
 			}
 			
-			d("getAllAvailableWidth() returned '"+w+"'.");
+			d("#allAvailableWidth() returned '"+w+"'.");
 			return w;
 		},
 	},
 	
 	/// Return the width of the stuff that will always be in the searchbar.
-	getOverheadWidth: {
-		value: function getOverheadWidth() {
-			d("getOverheadWidth() called.");
+	overheadWidth: {
+		get: function getOverheadWidth() {
+			d("#overheadWidth called.");
 			let priv = getPriv(this);
 			
 			var w = this.searchcont.width;
@@ -689,7 +794,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			this.searchcont.width = w;
 			
-			d("getOverheadWidth() returned '"+width+"'.");
+			d("#overheadWidth returned '"+width+"'.");
 			return width;
 		},
 	},
@@ -819,8 +924,8 @@ Object.defineProperties(Autosizer.prototype, {
 		value: function doShrinkToButton() {
 			d("#doShrinkToButton() called.");
 			
-			if (this.shouldSize()) this.fromButton();
-			else                   this.toButton();
+			if (this.shouldSize) this.fromButton();
+			else                 this.toButton();
 			
 			d("#doShrinkToButton() returned.");
 			return shrunk;
@@ -828,26 +933,28 @@ Object.defineProperties(Autosizer.prototype, {
 	},
 	
 	shouldSize: {
-		value: function shouldSize() {
-			d("shouldSize() called.");
+		get: function shouldSize() {
+			d("#shouldSize called.");
 			let priv = getPriv(this);
+			
+			let soprefs = prefs.sizeon.children;
 			
 			let grow = (
 				(
-					prefs.pref["sizeon.focus"].get() &&
+					soprefs.focus.value &&
 					this.searchbox.hasFocus || this.searchbox._popup.state == "showing"
 				) || (
-					prefs.pref["sizeon.content"].get() &&
+					soprefs.content.value &&
 					this.searchbox.value != ""
 				) || (
 					// When incrementally sizing always expand.
-					prefs.pref.sizestyle.get() == "inc" &&
+					prefs.sizestyle.value == "inc" &&
 					// Unless we are going to a button.
-					!prefs.pref.buttonify.get()
+					!prefs.buttonify.value
 				)
 			);
 			
-			d("shouldSize() returned "+grow+".");
+			d("#shouldSize returned "+grow+".");
 			return grow;
 		},
 	},
@@ -860,12 +967,14 @@ Object.defineProperties(Autosizer.prototype, {
 			d("afterSubmit() called.");
 			let priv = getPriv(this);
 			
-			if (prefs.pref.clean.get())
+			let asprefs = prefs.aftersearch.children;
+			
+			if (asprefs.clean.value)
 			{
 				this.searchbox.value='';
 			}
-			d("Resetval: "+prefs.pref.resetengine.get());
-			if (prefs.pref.resetengine.get())
+			d("Resetval: "+asprefs.resetengine.value);
+			if (asprefs.resetengine.value)
 			{
 				this.searchbox.currentEngine = this.searchbox.engines[0];
 			}
@@ -883,10 +992,10 @@ Object.defineProperties(Autosizer.prototype, {
 			let priv = getPriv(this);
 			
 			if (priv.manualResize) return; // Don't mess around when we are doing manual resize.
-			if ( prefs.pref.sizestyle.get() == "none" ) return; // They don't want us to size it.
+			if ( prefs.sizestyle.value == "none" ) return; // They don't want us to size it.
 			
-			if (this.shouldSize()) this.expand();
-			else                   this.shrink();
+			if (this.shouldSize) this.expand();
+			else                 this.shrink();
 			
 			d("autosize() returned.");
 		},
@@ -897,7 +1006,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("expand() called.");
 			let priv = getPriv(this);
 			
-			let width = this.desiredWidth();
+			let width = this.desiredWidth;
 			
 			this.searchcont.width = width;
 			
@@ -913,15 +1022,15 @@ Object.defineProperties(Autosizer.prototype, {
 		value: function shrink() {
 			let priv = getPriv(this);
 			
-			if (prefs.pref.buttonify.get()) this.toButton();
-			else                            this.searchcont.width = this.getRequiredWidth();
+			if (prefs.buttonify.value) this.toButton();
+			else                       this.searchcont.width = this.getRequiredWidth();
 		},
 	},
 	
 	desiredWidth: {
-		value: function desiredWidth() {
-			if ( prefs.pref.sizestyle.get() == "once" ) return this.getMaxWidth();
-			else                                        return this.getRequiredWidth();
+		get: function desiredWidth() {
+			if ( prefs.sizestyle.value == "once" ) return this.maxWidth;
+			else                                   return this.requiredWidth;
 			
 			return width;
 		},
@@ -929,7 +1038,7 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	desiredPopupWidth: {
 		value: function desiredPopupWidth(width) {
-			let puw = prefs.pref.popupwidth.get();
+			let puw = prefs.popupwidth.value;
 			if      ( puw <= -100 ) width += -(100 + puw);
 			else if ( puw == -1   ) width = this.window.outerWidth;
 			else                    width = puw;
@@ -950,18 +1059,18 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	_leftGripDragCallback: {
 		value: function _leftGripDragCallback(e) {
-			return this.resizeDrag(e, "left");
+			return this._resizeDrag(e, "left");
 		},
 	},
 	_rightGripDragCallback: {
 		value: function _rightGripDragCallback(e) {
-			return this.resizeDrag(e, "right");
+			return this._resizeDrag(e, "right");
 		},
 	},
 	
-	resizeDrag: {
-		value: function resizeDrag(ev, side) {
-			d("resizeDrag() called.");
+	_resizeDrag: {
+		value: function _resizeDrag(ev, side) {
+			d("_resizeDrag() called.");
 			let priv = getPriv(this);
 			
 			let drag = {
@@ -973,7 +1082,7 @@ Object.defineProperties(Autosizer.prototype, {
 			let self = this;
 			function move ( ev )
 			{
-				d("resizeDrag.move() called.");
+				d("_resizeDrag.move() called.");
 				
 				var dx = ev.clientX - drag.startx;
 				
@@ -989,22 +1098,22 @@ Object.defineProperties(Autosizer.prototype, {
 				event.initEvent("autosizer-manualresize", true, false);
 				self.searchbox.dispatchEvent(event);
 				
-				d("resizeDrag.move() returned.");
+				d("_resizeDrag.move() returned.");
 			}
 			function end ( ev )
 			{
-				d("resizeDrag.end() called.");
+				d("_resizeDrag.end() called.");
 				
 				self.window.removeEventListener("mousemove", move, true);
 				self.window.removeEventListener("mouseup", end, true);
 				
-				d("resizeDrag.end() returned.");
+				d("_resizeDrag.end() returned.");
 			}
 			
 			this.window.addEventListener("mousemove", move, true);
 			this.window.addEventListener("mouseup", end, true);
 			
-			d("resizeDrag() returned.");
+			d("_resizeDrag() returned.");
 		},
 	},
 });

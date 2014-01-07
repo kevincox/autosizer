@@ -30,7 +30,7 @@ Cu.import("chrome://autosizer/content/Autosizer.jsm");
 
 function d ( msg, important )
 {
-	if (Autosizer.prefs.pref.debug.get())
+	if (Autosizer.prefs.debug.value)
 	{
 		important = true;
 	}
@@ -42,16 +42,17 @@ function d ( msg, important )
 	else                Services.console.logStringMessage("autosizer-pref: "+msg);
 }
 
-let strings = Autosizer.strings;
-let prefs   = Autosizer.prefs;
+let strings  = Autosizer.strings;
+let prefroot = Autosizer.prefroot;
+let prefs    = Autosizer.prefs;
 
-function updatePrefElement(item, value)
+function updatePrefElement(item, pref)
 {
 	let type = item.tagName;
 	
 	if      ( type == "textbox"   ||
-	          type == "radiogroup" ) item.value   = value;
-	else if ( type == "checkbox"   ) item.checked = value;
+	          type == "radiogroup" ) item.value   = pref.value;
+	else if ( type == "checkbox"   ) item.checked = pref.value;
 	else d("WRN: Don't know how to load '"+type+"' for pref '"+ele+"'.", true);
 }
 
@@ -64,9 +65,11 @@ function updatePrefValue(e)
 		item = item.parentElement;
 	}
 	
+	if (!item.mozMatchesSelector(".pref")) return;
+	
 	let type = item.tagName;
 	
-	let pref = prefs.pref[item.id];
+	let pref = prefroot.pref(item.id);
 	let val;
 	
 	if (!pref) return;
@@ -76,8 +79,8 @@ function updatePrefValue(e)
 	else if ( type == "checkbox"   ) val = item.checked;
 	else d("WRN: Don't know how to store '"+type+"' for pref '"+item.id+"'.");
 	
-	pref.set(val);
-	d("Changed '"+item.id+"' to '"+val+"'.");
+	pref.value = val;
+	d("Changed '"+pref.path+"' to '"+val+"'.");
 }
 
 var asp = {
@@ -89,7 +92,7 @@ var asp = {
 		for (let i = 0; i < eles.length; ++i)
 		{
 			let item = eles[i];
-			let pref = prefs.pref[item.id];
+			let pref = prefroot.pref(item.id);
 			
 			if (!pref)
 			{
@@ -99,14 +102,15 @@ var asp = {
 			
 			let updatefunc = updatePrefElement.bind(null, item);
 			
-			updatefunc(pref.get());
-			pref.addOnChange(updatefunc);
+			updatefunc(pref);
+			pref.addListener(updatefunc);
 			
 			asp.toremove.push([pref, updatefunc]);
 		}
 		
 		///// Update pref when UI changes.
 		document.addEventListener("command", updatePrefValue);
+		document.addEventListener("input", updatePrefValue);
 		
 		asp.updateMinWidthCheck();
 		asp.updateMaxWidthList();
@@ -115,10 +119,7 @@ var asp = {
 		asp.toremove.forEach(function(v){
 			[pref, fun] = v;
 			
-			console.log(pref);
-			console.log(pref._onchange.length);
-			
-			pref.removeOnChange(fun);
+			pref.removeListener(fun);
 		});
 	},
 	
@@ -134,8 +135,8 @@ var asp = {
 		var b = document.getElementById("minwidth");
 		var l = document.getElementById("minwidthcheck");
 		
-		if (l.checked) prefs.pref.minwidth.set(-1);
-		else           prefs.pref.minwidth.set(100);
+		if (l.checked) prefs.minwidth.value = -1;
+		else           prefs.minwidth.value = 100;
 	},
 	
 	updateMaxWidthList: function () {
@@ -152,8 +153,8 @@ var asp = {
 		var b = document.getElementById("maxwidth");
 		var l = document.getElementById("maxwidthlist");
 		
-		if ( l.value == "full" ) prefs.pref.maxwidth.set(0);
-		if ( l.value == "max"  ) prefs.pref.maxwidth.set(-1);
+		if ( l.value == "full" ) prefs.maxwidth.value = 0;
+		if ( l.value == "max"  ) prefs.maxwidth.value = -1;
 	},
 	
 	launchWizard: function () {

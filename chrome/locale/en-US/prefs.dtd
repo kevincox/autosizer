@@ -44,9 +44,7 @@
 <!ENTITY other.shrinkToButton.accesskey "T">
 <!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
 <!ENTITY other.shrinkwhenfull.accesskey "">
-<!ENTITY preflink.title "Where to place a link to the preferences dialog.">
-<!ENTITY preflink.search "In the search engine menu.">
-<!ENTITY preflink.none   "Nowhere.">
+<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
 <!ENTITY suggestions.title "Suggestions Window">
 <!ENTITY sync.title "Prefrence Sync ">
 <!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">

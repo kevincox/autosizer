@@ -29,18 +29,7 @@ Components.utils.import("resource://gre/modules/AddonManager.jsm");
 
 function d ( msg, important )
 {
-	if ( !important )
-	{
-		if (typeof Autosizer != "undefined" &&
-		    Autosizer.prefs                 &&
-		    Autosizer.prefs.pref            &&
-		    Autosizer.prefs.pref.debug      &&
-		    Autosizer.prefs.pref.debug.get()
-		   )
-			important = true;
-	}
-	
-	if (!important) return; // Comment for debugging.
+	//if (!important) return; // Comment for debugging.
 	
 	dump("autosizer-bs: "+msg+"\n");
 	Services.console.logStringMessage("autosizer-bs: "+msg);
@@ -74,7 +63,9 @@ function windowWatcher(subject, topic)
 /*** Bootstrap Functions ***/
 function startup(data, reason)
 {
+	d("Importing Autosizer.");
 	Components.utils.import("chrome://autosizer/content/Autosizer.jsm");
+	d("Autosizer imported.");
 	
 	/*** Add to new windows when they are opened ***/
 	Services.ww.registerNotification(windowWatcher);
@@ -94,23 +85,14 @@ function shutdown(data, reason)
 	
 	Services.ww.unregisterNotification(windowWatcher);
 	
-	while ( Autosizer.instances.length )
-	{
-		let ref = Autosizer.instances.pop().get();
-		if (ref) // Make sure the refrence still exists.
-		{
-			ref.shutdown();
-		}
-	}
+	d("Destroying Autosizer.");
+	Autosizer.destroy();
 	
-	Autosizer.prefs.destroy();
-	
-	d(JSON.stringify(Autosizer.prefs, null, 4));
-	
+	d("Unloading Modules.");
 	Components.utils.unload("chrome://autosizer/content/Autosizer.jsm");
-	Components.utils.unload("chrome://autosizer/content/cpref.jsm");
+	Components.utils.unload("chrome://autosizer/content/CPref.jsm");
 	
-	d("done");
+	d("Shutdown complete.");
 }
 
 function install (data, reason)
@@ -131,19 +113,19 @@ function install (data, reason)
 			prefs.clearUserPref("sizeOn");
 			
 			if (prefs.prefHasUserValue("padding"))
-				prefs.setIntPref("querypad", prefs.getIntPref("padding"));
+				prefs.setIntPref("padding.query", prefs.getIntPref("padding"));
 			prefs.clearUserPref("paddingadding");
 			
 			if (prefs.prefHasUserValue("namePadding"))
-				prefs.setIntPref("enginepad", prefs.getIntPref("namePadding"));
+				prefs.setIntPref("padding.engine", prefs.getIntPref("namePadding"));
 			prefs.clearUserPref("namePadding");
 			
 			if (prefs.prefHasUserValue("cleanOnSubmit"))
-				prefs.setIntPref("clean", prefs.getIntPref("cleanOnSubmit"));
+				prefs.setIntPref("aftersearch.clean", prefs.getIntPref("cleanOnSubmit"));
 			prefs.clearUserPref("cleanOnSubmit");
 			
 			if (prefs.prefHasUserValue("revertOnSubmit"))
-				prefs.setIntPref("resetengine", prefs.getIntPref("revertOnSubmit"));
+				prefs.setIntPref("aftersearch.resetengine", prefs.getIntPref("revertOnSubmit"));
 			prefs.clearUserPref("revertOnSubmit");
 			
 			if (prefs.prefHasUserValue("shrinkToButton"))
