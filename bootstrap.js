@@ -121,24 +121,30 @@ function install (data, reason)
 			prefs.clearUserPref("namePadding");
 			
 			if (prefs.prefHasUserValue("cleanOnSubmit"))
-				prefs.setIntPref("aftersearch.clean", prefs.getIntPref("cleanOnSubmit"));
+				prefs.setBoolPref("aftersearch.clean", prefs.getBoolPref("cleanOnSubmit"));
 			prefs.clearUserPref("cleanOnSubmit");
 			
 			if (prefs.prefHasUserValue("revertOnSubmit"))
-				prefs.setIntPref("aftersearch.resetengine", prefs.getIntPref("revertOnSubmit"));
+				prefs.setBoolPref("aftersearch.resetengine", prefs.getBoolPref("revertOnSubmit"));
 			prefs.clearUserPref("revertOnSubmit");
 			
 			if (prefs.prefHasUserValue("shrinkToButton"))
-				prefs.setIntPref("buttonify", prefs.getIntPref("namePadding"));
+				prefs.setBoolPref("buttonify", prefs.getBoolPref("shrinkToButton"));
 			prefs.clearUserPref("shrinkToButton");
 			
 			if (prefs.prefHasUserValue("expandonfocus"))
-				prefs.setBoolPref("sizeon.focus", true);
+				prefs.setBoolPref("sizeon.focus", prefs.getBoolPref("expandonfocus"));
 			prefs.clearUserPref("expandonfocus");
 			
 			if (prefs.prefHasUserValue("shrinkwhenfull"))
-				as.prefs.setBoolPref("sizeon.content", false);
+				prefs.setBoolPref("sizeon.content", prefs.getBoolPref("shrinkwhenfull"));
 			prefs.clearUserPref("shrinkwhenfull");
+			
+			if (prefs.prefHasUserValue("preflink"))
+				prefs.setBoolPref("preflink.enginemenu", prefs.getCharPref("preflink") != "none");
+			prefs.clearUserPref("preflink");
+			
+			d("Migration completed.");
 		}
 	}
 }
