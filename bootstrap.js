@@ -88,7 +88,6 @@ function shutdown(data, reason)
 	d("Destroying Autosizer.");
 	Autosizer.destroy();
 	
-	d("Unloading Modules.");
 	Components.utils.unload("chrome://autosizer/content/Autosizer.jsm");
 	Components.utils.unload("chrome://autosizer/content/CPref.jsm");
 	

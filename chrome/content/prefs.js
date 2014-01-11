@@ -116,11 +116,13 @@ var asp = {
 		asp.updateMaxWidthList();
 	},
 	exit: function () {
+		d(".exit() called.");
 		asp.toremove.forEach(function(v){
 			[pref, fun] = v;
 			
 			pref.removeListener(fun);
 		});
+		d(".exit() returned.");
 	},
 	
 	updateMinWidthCheck: function () {

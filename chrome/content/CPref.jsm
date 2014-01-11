@@ -141,7 +141,6 @@ Object.defineProperties(CPref, {
 		value: function CPref_destroy(){
 			d("::destory() called.");
 			syncroot.destroy();
-			d("::destory() called.");
 			syncroot = undefined;
 			
 			///// Just in case someone forgot to #destroy() a CPrefRoot.
@@ -366,6 +365,8 @@ Object.defineProperties(CPref.prototype, {
 		},
 	},
 });
+Object.preventExtensions(CPref);
+Object.preventExtensions(CPref.prototype);
 
 /// A Root.
 /**
@@ -410,6 +411,8 @@ CPrefRoot.prototype = Object.create(CPref.prototype, {
 		enumerable: true,
 	},
 });
+Object.preventExtensions(CPrefRoot);
+Object.preventExtensions(CPrefRoot.prototype);
 
 ///// Root for sync tree.
 let syncroot = new CPrefRoot("services.sync.prefs.sync");

@@ -14,6 +14,7 @@
 	buttons="accept,extra2"
 	buttonaccesskeyextra2="&wizard.accesskey;"
 	buttonlabelextra2="&wizard.button;"
+	ondialogaccept="return true"
 	ondialogextra2="asp.launchWizard();"
 	>
 	<script type="text/javascript" src="prefs.js"/>
@@ -29,7 +30,7 @@
 						<caption label="&intro.title;" />
 						<description>
 							&intro.desc.before;
-							<box class="text-link" onclick="window.open('https://sourceforge.net/p/autosizer/wiki/Preferences/')">&intro.desc.link;</box>
+							<box class="text-link" onclick="window.open('https://github.com/kevincox/autosizer/wiki/Preferences')">&intro.desc.link;</box>
 							&intro.desc.after;
 						</description>
 					</groupbox>

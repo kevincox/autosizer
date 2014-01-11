@@ -327,12 +327,11 @@ Object.defineProperties(Autosizer, {
 				}
 			}
 			
-			d("::destory() called.");
 			Autosizer.prefroot.destroy();
-			d("::destory() called.");
 			CPref.destroy();
-			d("::destory() returned.");
+			Components.utils.unload("chrome://autosizer/content/CPref.jsm");
 		},
+		enumerable: true,
 	},
 });
 
@@ -371,6 +370,7 @@ Object.defineProperties(Autosizer.prototype, {
 			window.gBrowser.getBrowserForTab(window.gBrowser.selectedTab)
 			               .contentWindow.wrappedJSObject.console.log(obj);
 		},
+		enumerable: true,
 	},
 	init: {
 		value: function init(){
@@ -471,6 +471,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			d("#destroy() returning.");
 		},
+		enumerable: true,
 	},
 	
 	_addAfterSubmitCheck: {
@@ -703,6 +704,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("#contentWidth returned '"+w+"'.");
 			return w;
 		},
+		enumerable: true,
 	},
 	
 	/// Return the maximum size the searchbar is allowed to be.
@@ -719,6 +721,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			return maxwidth;
 		},
+		enumerable: true,
 	},
 	
 	/// Returns the maximum width the searchbar can expand to.
@@ -746,6 +749,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("#availableWidth returned '"+w+"'.");
 			return w;
 		},
+		enumerable: true,
 	},
 	
 	/// Returns the maximum width the searchbar can expand to if allowing items
@@ -777,6 +781,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("#allAvailableWidth() returned '"+w+"'.");
 			return w;
 		},
+		enumerable: true,
 	},
 	
 	/// Return the width of the stuff that will always be in the searchbar.
@@ -797,6 +802,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("#overheadWidth returned '"+width+"'.");
 			return width;
 		},
+		enumerable: true,
 	},
 	
 	/// Return the size the text will be when rendered.
@@ -813,6 +819,7 @@ Object.defineProperties(Autosizer.prototype, {
 			d("measureText() returned '"+width+"'.");
 			return width;
 		},
+		enumerable: true,
 	},
 	
 	/*** Manual Resizing ***/
@@ -857,6 +864,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			d("startManualResize() returned.");
 		},
+		enumerable: true,
 	},
 	
 	stopManualResize: {
@@ -999,6 +1007,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			d("autosize() returned.");
 		},
+		enumerable: true,
 	},
 	
 	expand: {
@@ -1016,6 +1025,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			if ( puw != 0 ) priv.popup.width = puw;
 		},
+		enumerable: true,
 	},
 	
 	shrink: {
@@ -1025,6 +1035,7 @@ Object.defineProperties(Autosizer.prototype, {
 			if (prefs.buttonify.value) this.toButton();
 			else                       this.searchcont.width = this.requiredWidth;
 		},
+		enumerable: true,
 	},
 	
 	desiredWidth: {
@@ -1034,6 +1045,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			return width;
 		},
+		enumerable: true,
 	},
 	
 	desiredPopupWidth: {
@@ -1117,7 +1129,7 @@ Object.defineProperties(Autosizer.prototype, {
 		},
 	},
 });
-Object.freeze(Autosizer);
-Object.freeze(Autosizer.prototype);
+Object.preventExtensions(Autosizer);
+Object.preventExtensions(Autosizer.prototype);
 
 // vi:ft=javascript
