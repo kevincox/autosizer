@@ -2,7 +2,7 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>{655397ca-4766-496b-b7a8-3a5b176ee4c2}</em:id>
-		<em:version>3.0.0</em:version>
+		<em:version>3.0.0pre</em:version>
 		<em:unpack>false</em:unpack>
 		<em:type>2</em:type>
 		<em:bootstrap>true</em:bootstrap>
@@ -47,7 +47,7 @@
 		<em:contributor>Pike (XBL help)</em:contributor>
 		<em:contributor>zeniko (always on top code)</em:contributor>
 		
-		<em:homepageURL>https://sourceforge.net/p/autosizer/wiki/Home/</em:homepageURL>
+		<em:homepageURL>https://github.com/kevincox/autosizer</em:homepageURL>
 		<!--<em:code>autosizer</em:code> Still will be picked up by our script,
 		                                 but won't bother the Mozilla guys.-->
 		
