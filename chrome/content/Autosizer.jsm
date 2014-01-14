@@ -301,9 +301,16 @@ function launchPrefs ( )
 	                       "chrome,centerscreen", null);
 }
 
-function getPriv(self)
+let autosizerprivmap = new WeakMap();
+function makepriv(self)
 {
-	return self._AutosizerPrivate;
+	let priv = {};
+	autosizerprivmap.set(self, priv);
+	return priv;
+}
+function getpriv(self)
+{
+	return autosizerprivmap.get(self);
 }
 
 Object.defineProperties(Autosizer, {
@@ -344,7 +351,7 @@ function Autosizer ( window )
 	                                         Cr.NS_ERROR_INVALID_ARG,
 	                                         Components.stack.caller);
 	
-	let priv = this._AutosizerPrivate = {};
+	let priv = makepriv(this);
 	
 	this.window   = window;
 	this.document = window.document;
@@ -376,7 +383,7 @@ Object.defineProperties(Autosizer.prototype, {
 		value: function init(){
 			d("#init() called.");
 			
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			priv.bound = {
 				autosize: this.autosize.bind(this),
 				destroy: this.destroy.bind(this),
@@ -433,7 +440,7 @@ Object.defineProperties(Autosizer.prototype, {
 		value: function destroy() {
 			d("#destroy() called.");
 			
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			delete this.searchbox.autosizer;
 			
@@ -476,7 +483,7 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	_addAfterSubmitCheck: {
 		value: function addAfterSubmitCheck() {
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.removeAfterSubmitCheck = modifyFunction(
 				this.searchbox, "handleSearchCommand",
@@ -487,14 +494,14 @@ Object.defineProperties(Autosizer.prototype, {
 	},
 	_removeAfterSubmitCheck: {
 		value: function removeAfterSubmitCheck() {
-			let asc = getPriv(this).removeAfterSubmitCheck;
+			let asc = getpriv(this).removeAfterSubmitCheck;
 			if (asc) asc();
 		},
 	},
 	
 	_addSearchbarJumpHelper: {
 		value: function addSeacrhbarJumpHelper() {
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.removeSearchbarJumpHelper = modifyFunction(
 				this.window.BrowserSearch, "webSearch",
@@ -505,7 +512,7 @@ Object.defineProperties(Autosizer.prototype, {
 	},
 	_removeSearchbarJumpHelper: {
 		value: function removeSearchbarJumpHelper() {
-			let sbjh = getPriv(this).removeSearchbarJumpHelper;
+			let sbjh = getpriv(this).removeSearchbarJumpHelper;
 			if (sbjh) sbjh();
 		},
 	},
@@ -513,7 +520,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_addMeasuringLabel: {
 		value: function addMeasuringLabel() {
 			d("addMeasuringLabel() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.labelItem = this.document.createElement("toolbaritem");
 			priv.labelItem.setAttribute("style","width:0px;height:0px;overflow:hidden;");
@@ -529,7 +536,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_removeMeasuringLabel: {
 		value: function removeMeasuringLabel() {
 			d("removeMeasuringLabel() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (!priv.labelItem) return;
 			
@@ -544,7 +551,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_addButton: {
 		value: function addButton() {
 			d("#_addButton() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.button = this.document.createElement("toolbarbutton")
 			priv.button.setAttribute("id", "autosizer-button");
@@ -561,7 +568,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_removeButton: {
 		value: function removeButton() {
 			d("removeButton() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (!priv.button) return;
 			
@@ -609,7 +616,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_addPrefLink: {
 		value: function _addPrefLink() {
 			d("#_addPrefLink() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			this._removePrefLink();
 			
@@ -629,7 +636,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_removePrefLink: {
 		value: function removePrefLink() {
 			d("removePrefLink() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (!priv.preflinkitem) return;
 			
@@ -646,7 +653,7 @@ Object.defineProperties(Autosizer.prototype, {
 	searchWPRequiredWidth: {
 		get: function searchWPRequiredWidth() {
 			d("#searchWPRequiredWidth called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let pf = this.searchbox._textbox._tokensContainer.getAttribute('flex');
 			this.searchbox._textbox._tokensContainer.setAttribute('flex', 0);
@@ -668,7 +675,7 @@ Object.defineProperties(Autosizer.prototype, {
 	requiredWidth: {
 		get: function getRequiredWidth() {
 			d("#contentWidth called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			var w = 0;
 			
@@ -728,7 +735,7 @@ Object.defineProperties(Autosizer.prototype, {
 	availableWidth: {
 		get: function getAvailableWidth() {
 			d("#availableWidth called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			var w = this.window.outerWidth; // The size of the window.
 			
@@ -757,7 +764,7 @@ Object.defineProperties(Autosizer.prototype, {
 	allAvailableWidth: {
 		get: function getAllAvailableWidth() {
 			d("#allAvailableWidth() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			var w = this.window.outerWidth; // The size of the window.
 			
@@ -788,7 +795,7 @@ Object.defineProperties(Autosizer.prototype, {
 	overheadWidth: {
 		get: function getOverheadWidth() {
 			d("#overheadWidth called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			var w = this.searchcont.width;
 			this.searchcont.width = 0;
@@ -809,7 +816,7 @@ Object.defineProperties(Autosizer.prototype, {
 	measureText: {
 		value: function measureText(txt) {
 			d("measureText() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.label.value = txt; // We will use the label to "test render".
 			                     // Then measure that to get the size.
@@ -827,7 +834,7 @@ Object.defineProperties(Autosizer.prototype, {
 	startManualResize: {
 		value: function startManualResize() {
 			d("startManualResize() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (priv.manualResize) return; // We are already manually resizing.
 			
@@ -870,7 +877,7 @@ Object.defineProperties(Autosizer.prototype, {
 	stopManualResize: {
 		value: function stopManualResize() {
 			d("stopManualResize() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (!priv.manualResize) return; // We are not currently manually resizing.
 			
@@ -889,7 +896,7 @@ Object.defineProperties(Autosizer.prototype, {
 	expandButton: {
 		value: function expandButton() {
 			d("expandButton() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			this.fromButton();
 			this.searchbox.focus();
@@ -901,7 +908,7 @@ Object.defineProperties(Autosizer.prototype, {
 	fromButton: {
 		value: function fromButton() {
 			d("#fromButton() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let changing = priv.button.style.display != "none";
 			
@@ -919,7 +926,7 @@ Object.defineProperties(Autosizer.prototype, {
 	toButton: {
 		value: function toButton() {
 			d("toButton() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			priv.button.style.display = "block";
 			this.searchcont.style.display = "none";
@@ -943,7 +950,7 @@ Object.defineProperties(Autosizer.prototype, {
 	shouldSize: {
 		get: function shouldSize() {
 			d("#shouldSize called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let soprefs = prefs.sizeon.children;
 			
@@ -973,7 +980,7 @@ Object.defineProperties(Autosizer.prototype, {
 	afterSubmit: {
 		value: function afterSubmit() {
 			d("afterSubmit() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let asprefs = prefs.aftersearch.children;
 			
@@ -997,7 +1004,7 @@ Object.defineProperties(Autosizer.prototype, {
 	autosize: {
 		value: function autosize() {
 			d("autosize() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (priv.manualResize) return; // Don't mess around when we are doing manual resize.
 			if ( prefs.sizestyle.value == "none" ) return; // They don't want us to size it.
@@ -1013,7 +1020,7 @@ Object.defineProperties(Autosizer.prototype, {
 	expand: {
 		value: function expand() {
 			d("expand() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let width = this.desiredWidth;
 			
@@ -1030,7 +1037,7 @@ Object.defineProperties(Autosizer.prototype, {
 	
 	shrink: {
 		value: function shrink() {
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			if (prefs.buttonify.value) this.toButton();
 			else                       this.searchcont.width = this.requiredWidth;
@@ -1083,7 +1090,7 @@ Object.defineProperties(Autosizer.prototype, {
 	_resizeDrag: {
 		value: function _resizeDrag(ev, side) {
 			d("_resizeDrag() called.");
-			let priv = getPriv(this);
+			let priv = getpriv(this);
 			
 			let drag = {
 				startWidth: parseInt(this.searchcont.width),
