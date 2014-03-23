@@ -134,9 +134,11 @@ if generateInstallRDF:
 	content = open("install.rdf.in").read();
 	
 	if modifyVersion:
-		v = subprocess.check_output(["git", "describe", "--match", "v*"]).decode().strip()
+		v = subprocess.check_output(["git", "describe", "--long", "--match", "v*"]).decode().strip()
 		
-		v = re.sub("v([0-9.]*)-([0-9]*)-.*", "\\1pre\\2", v)
+		v = re.sub("v([0-9.]*)-([0-9]*)-.*",
+		           lambda m: m.group(1) if m.group(2) == "0" else m.group(1)+"pre"+m.group(2),
+		           v)
 		
 		content = re.sub("(<em:version>)[^<]*(</em:version>)", "\\g<1>"+v+"\\2", content)
 	
