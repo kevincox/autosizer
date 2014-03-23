@@ -138,7 +138,6 @@ if generateInstallRDF:
 		
 		v = re.sub("v([0-9.]*)-([0-9]*)-.*", "\\1pre\\2", v)
 		
-		print(v)
 		content = re.sub("(<em:version>)[^<]*(</em:version>)", "\\g<1>"+v+"\\2", content)
 	
 	newContent = insertLocation+"\n"
