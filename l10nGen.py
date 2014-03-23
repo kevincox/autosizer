@@ -16,6 +16,8 @@ generateManifest = True # Whether or not to generate a chrome.manifest from
                         # chrome.mainfesft.head and the locales in {locales}.
 chromePrefix = "autosizer"
 
+modifyVersion = True
+
 generateInstallRDF = True
 insertFiles = []
 insertLocation = "<!--INSERT_CONTENT_HERE-->"
@@ -33,6 +35,7 @@ insertDescription = True
 ########## START INTERNAL WORK ##########
 
 import os, sys
+import subprocess
 import tempfile
 import shutil
 import string, re
@@ -129,6 +132,14 @@ if generateInstallRDF:
 	rdf = open("install.rdf", "w")
 	
 	content = open("install.rdf.in").read();
+	
+	if modifyVersion:
+		v = subprocess.check_output(["git", "describe", "--match", "v*"]).decode().strip()
+		
+		v = re.sub("v([0-9.]*)-([0-9]*)-.*", "\\1pre\\2", v)
+		
+		print(v)
+		content = re.sub("(<em:version>)[^<]*(</em:version>)", "\\g<1>"+v+"\\2", content)
 	
 	newContent = insertLocation+"\n"
 	
