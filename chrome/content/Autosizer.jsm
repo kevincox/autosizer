@@ -673,7 +673,7 @@ Object.defineProperties(Autosizer.prototype, {
 	 */
 	requiredWidth: {
 		get: function getRequiredWidth() {
-			d("#contentWidth called.");
+			d("#requiredWidth getter called.");
 			let priv = getpriv(this);
 			
 			var w = 0;
@@ -707,7 +707,7 @@ Object.defineProperties(Autosizer.prototype, {
 			if      ( w < minwidth ) w = minwidth;
 			else if ( w > maxwidth ) w = maxwidth;
 			
-			d("#contentWidth returned '"+w+"'.");
+			d("#requiredWidth is '"+w+"'.");
 			return w;
 		},
 		enumerable: true,
@@ -720,11 +720,13 @@ Object.defineProperties(Autosizer.prototype, {
 	 */
 	maxWidth: {
 		get: function getMaxWidth() {
+			d("#maxWidth getter called.");
 			var maxwidth = prefs.maxwidth.value;
 			
 			if      ( maxwidth == 0 ) maxwidth = this.availableWidth;
 			else if ( maxwidth <  0 ) maxwidth = this.allAvailableWidth;
 			
+			d("#maxWidth is '"+maxwidth+"'.");
 			return maxwidth;
 		},
 		enumerable: true,
