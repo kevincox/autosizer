@@ -411,7 +411,6 @@ Object.defineProperties(Autosizer.prototype, {
 			this._addSearchbarJumpHelper();
 			this._addMeasuringLabel();
 			this._addButton();
-				dump(typeof d);
 			this._addStyleSheet();
 			
 			this._addPrefLink();
@@ -557,7 +556,7 @@ Object.defineProperties(Autosizer.prototype, {
 			priv.button.setAttribute("id", "autosizer-button");
 			priv.button.setAttribute("label", strings.get("buttonLabel"));
 			priv.button.setAttribute("tooltiptext", strings.get("buttonTooltip"));
-			
+			priv.button.setAttribute("class", "toolbarbutton-1 chromeclass-toolbar-additional");
 			priv.button.addEventListener("command", priv.bound.expandButton);
 			
 			this.searchcont.parentNode.insertBefore(priv.button, this.searchcont);
