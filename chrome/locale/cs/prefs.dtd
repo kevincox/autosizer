@@ -1,19 +1,19 @@
 <!ENTITY title "Nastavení rozšíření">
-<!ENTITY intro.title "About Preferences">
-<!ENTITY intro.desc.before "For more information about what each preference means see">
-<!ENTITY intro.desc.link "this wiki page">
+<!ENTITY intro.title "O nastavení">
+<!ENTITY intro.desc.before "Pro více informací k tomu, co každé nastavení znamená, viz">
+<!ENTITY intro.desc.link "tuto stránku wiki">
 <!ENTITY intro.desc.after ".">
 <!ENTITY width.title "Šířka vyhledávacího pole">
-<!ENTITY width.desc "All values are in pixels, you can also select special options from the drop-down menu.">
+<!ENTITY width.desc "Všechny hodnoty jsou v pixelech. Můžete též zvolit speciální možnosti z rozbalovacího menu.">
 <!ENTITY width.min "Minimum:">
-<!ENTITY width.min.special.showTitle "Show search engine title.">
+<!ENTITY width.min.special.showTitle "Zobrazovat název vyhledávače.">
 <!ENTITY width.min.accesskey "i">
 <!ENTITY width.max "Maximum:">
-<!ENTITY width.max.special.none "regular">
-<!ENTITY width.max.special.full "Full Size">
-<!ENTITY width.max.special.full.tooltip "The searchbar will expand to the largest size it can be without pushing anything off the screen">
-<!ENTITY width.max.special.max "Maximum Visible Size">
-<!ENTITY width.max.special.max.tooltip "The searchbar will expand, pushing things off the screen until it would push itself off the screen.">
+<!ENTITY width.max.special.none "normální">
+<!ENTITY width.max.special.full "Celá velikost">
+<!ENTITY width.max.special.full.tooltip "Vyhl. pole se rozšíří na největší možnou šířku aniž by něco z lišty vytlačilo">
+<!ENTITY width.max.special.max "Maximální šíře">
+<!ENTITY width.max.special.max.tooltip "Vyhl. pole se bude rozšiřovat tak, že bude vytláčet všechny ostatní z lišty.">
 <!ENTITY width.max.accesskey "a">
 <!ENTITY padding.title "Odsazení textu">
 <!ENTITY padding.desc "Všechny hodnoty jsou v pixelech, záporné hodnoty jsou povoleny.">
@@ -30,25 +30,25 @@
 <!ENTITY other.revertOnSubmit.accesskey "R">
 <!ENTITY other.revertOnSubmit.desc "Vyhledávač nahoře bude považován za výchozí. Správu vyhledávačů otevřete klepnutím na ikonu a vyberte &apos;Správce vyhledávacích modulů...&apos;">
 <!ENTITY other.shrinkToButton "Zkrátit vyhledávací pole až po tlačítko">
-<!ENTITY other.shrinkToButton.accesskey "k">
-<!ENTITY wizard.button "Assistant">
-<!ENTITY wizard.accesskey "t">
-<!ENTITY sync.link "Click here to configure preference sync.">
-<!ENTITY width.sizeOn.key    "On every keypress.">
-<!ENTITY width.sizeOn "How to size the searchbar:">
-<!ENTITY width.sizeOn.atonce "All at once.">
-<!ENTITY width.sizeOn.none   "Don't size the searchbar.">
-<!ENTITY sync.title "Prefrence Sync">
-<!ENTITY sync.desc.before "Searchbar Autosizer automatically synchronizes your preferences through firefox sync.">
-<!ENTITY sync.desc.after "to configure preference sync.">
-<!ENTITY suggestions.title "Suggestions Window">
-<!ENTITY basic.tab "Basic">
-<!ENTITY adv.caption "Advanced Preferences">
-<!ENTITY adv.tab "Advanced">
+<!ENTITY other.shrinkToButton.accesskey "Z">
+<!ENTITY wizard.button "Pomocník">
+<!ENTITY wizard.accesskey "P">
+<!ENTITY sync.link "Zde klikněte pro konfiguraci nastavení synchronizace.">
+<!ENTITY width.sizeOn.key    "Při každém stisku klávesy.">
+<!ENTITY width.sizeOn "Jak nastavit velikost vyhl. pole:">
+<!ENTITY width.sizeOn.atonce "Vše najednout.">
+<!ENTITY width.sizeOn.none   "Neměnit velikost vyhl. pole.">
+<!ENTITY sync.title "Synchronizace nastavení">
+<!ENTITY sync.desc.before "Searchbar Autosizer automaticky synchronizuje vaše nastavení pomocí synhronizace Firefoxu.">
+<!ENTITY sync.desc.after "konfigurovat synchronizaci nastavení.">
+<!ENTITY suggestions.title "Okno našeptávače">
+<!ENTITY basic.tab "Základní">
+<!ENTITY adv.caption "Pokročilá nastavení">
+<!ENTITY adv.tab "Pokoročilé">
 <!ENTITY other.shrinkwhenfull.accesskey "">
-<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
-<!ENTITY sizeon.title "When To Expand">
-<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
-<!ENTITY sizeon.desc "Expand the searchbar when any of the selected conditions apply.">
-<!ENTITY sizeon.content "Expand when the searchbar has text in it.">
-<!ENTITY sizeon.focus "Expand when the searchbar has focus.">
+<!ENTITY other.shrinkwhenfull "Zkrátit vyhl. pole až po tlačítko, i když obsahuje text.">
+<!ENTITY sizeon.title "Kdy rozšířit">
+<!ENTITY preflink.enginemenu "V rozbalocaím menu vyhledávačů umístěte odkaz na dialog nastavení.">
+<!ENTITY sizeon.desc "Rozšířit vyhl. pole když platí jakákoliv z vybraných podmínek.">
+<!ENTITY sizeon.content "Rozšířit vyhl. pole když obsahuje text.">
+<!ENTITY sizeon.focus "Rozšířit vyhl. pole při umístění kurzoru.">
