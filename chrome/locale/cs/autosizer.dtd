@@ -1,30 +1,30 @@
 <!ENTITY pref.other.autocomplete "Šířka našeptávače:">
 <!ENTITY pref.other.autocomplete.accesskey "N">
-<!ENTITY pref.other.cleanOnSubmit "Vyprázdnit vyhledávací pole po odeslání dotazu">
+<!ENTITY pref.other.cleanOnSubmit "Vyprázdnit vyhl. pole po odeslání dotazu">
 <!ENTITY pref.other.cleanOnSubmit.accesskey "Y">
 <!ENTITY pref.other.revertOnSubmit "Po dokončení vyhledávání vrátit k výchozímu vyhledávači">
 <!ENTITY pref.other.revertOnSubmit.accesskey "r">
 <!ENTITY pref.other.revertOnSubmit.desc "Vyhledávač nahoře bude považován za výchozí. Správu vyhledávačů otevřete klepnutím na ikonu a vyberte &apos;Správce vyhledávacích modulů...&apos;">
 <!ENTITY wiz.title "Průvodce nastavením rozšíření">
-<!ENTITY wiz.start.desc "Jak se má Autosizer zachovat, když napíšete něco do vyhledávacího pole?">
+<!ENTITY wiz.start.desc "Jak se má Autosizer zachovat, když napíšete něco do vyhl. pole?">
 <!ENTITY wiz.start.inc "Zvětšovat přírůstkově po každém písmenu">
 <!ENTITY wiz.start.inc.accesskey "Z">
-<!ENTITY wiz.start.alt "Rozšířit vyhledávací pole po prvním písmenu">
+<!ENTITY wiz.start.alt "Rozšířit vyhl. pole po prvním písmenu">
 <!ENTITY wiz.start.alt.accesskey "R">
 <!ENTITY wiz.start.fix "Udržovat stejnou šířku celou dobu">
 <!ENTITY wiz.start.fix.accesskey "U">
-<!ENTITY wiz.norMinWidth.title "Jaká má být minimální šířka vyhledávacího pole?">
+<!ENTITY wiz.norMinWidth.title "Jaká má být minimální šířka vyhl. pole?">
 <!ENTITY wiz.norMinWidth.desc "Určete minimální šířku">
-<!ENTITY wiz.norMaxWidth.title "Jaká má být minimální šířka vyhledávacího pole?">
+<!ENTITY wiz.norMaxWidth.title "Jaká má být minimální šířka vyhl. pole?">
 <!ENTITY wiz.norMaxWidth.desc "Určete maximální šířku">
-<!ENTITY wiz.altWidth.title "Jaká má být šířka vyhledávacího pole při používání?">
+<!ENTITY wiz.altWidth.title "Jaká má být šířka vyhl. pole při používání?">
 <!ENTITY wiz.altWidth.desc "Určete šířku při používání">
-<!ENTITY wiz.fixWidth.title "Jaká má být šířka vyhledávacího pole?">
+<!ENTITY wiz.fixWidth.title "Jaká má být šířka vyhl. pole?">
 <!ENTITY wiz.fixWidth.desc "Určete šířku">
 <!ENTITY wiz.aftersearch.title "Co se má provést po odeslání dotazu?">
-<!ENTITY wiz.resize "Podle svých představ změňte velikost vyhledávacího pole, jak je ukázáno na obrázku.">
+<!ENTITY wiz.resize "Změňte velikost vyhl. pole dle obrázku.">
 <!ENTITY wiz.autodetect "Autosizer odhadne, co chcete, takže pohybujte pomalu myší, dokud to nebude správně.">
-<!ENTITY pref.other.shrinkToButton "Zkrátit vyhledávací pole až po tlačítko">
+<!ENTITY pref.other.shrinkToButton "Zkrátit vyhl. pole až po tlačítko">
 <!ENTITY pref.other.shrinkToButton.accesskey "t">
 <!ENTITY pref.other.addBtn "Přidat tlačítko na lištu">
 <!ENTITY pref.other.addBtn.accesskey "P">
