@@ -6,6 +6,10 @@
 <!ENTITY intro.desc.before "Norėdami sužinoti ką daro kiekvienas nustatymas paskaitykite šį">
 <!ENTITY intro.desc.link "wiki puslapį">
 <!ENTITY intro.desc.after ".">
+<!ENTITY sizeon.title "Kada išplėsti">
+<!ENTITY sizeon.desc "Išplėsti paieškos juostą kai patenkinama bent viena iš šių sąlygų.">
+<!ENTITY sizeon.content "Išplėsti kai paieškos juosta turi tekstą.">
+<!ENTITY sizeon.focus "Išplėsti paieškos juostą kai ji sufokusuota.">
 <!ENTITY width.title "Paieškos lauko plotis">
 <!ENTITY width.desc "Visos reikšmės pikseliais, iš iššokančio meniu galite pasirinkti specialias parinktis.">
 <!ENTITY width.min "Mažiausia:">
@@ -37,7 +41,10 @@
 <!ENTITY other.revertOnSubmit.accesskey "A">
 <!ENTITY other.revertOnSubmit.desc "Numatytuoju bus laikomas viršutinis. Norėdami tvarkyti paieškos variklius, paspauskite ant variklio piktogramos ir pasirinkite „Tvarkyti...“">
 <!ENTITY other.shrinkToButton "Jei laukas tuščias sumažinti iki mygtuko">
-<!ENTITY other.shrinkToButton.accesskey "T">
+<!ENTITY other.shrinkToButton.accesskey "S">
+<!ENTITY other.shrinkwhenfull "Sumažinti paieškos juostą iki mygtuko, net tada kai ji turi teksto.">
+<!ENTITY other.shrinkwhenfull.accesskey "">
+<!ENTITY preflink.enginemenu "Paieškos variklių sąraše pridėti nuorodą į nustatymus.">
 <!ENTITY suggestions.title "Pasiūlymų lange">
 <!ENTITY sync.title "Nustatymų sinchronizavimas ">
 <!ENTITY sync.desc.before "„Searchbar Autosizer“ automatiškai sinchronizuoja nustatymus per „firefox sync“.">
@@ -45,10 +52,3 @@
 <!ENTITY sync.desc.after ".">
 <!ENTITY wizard.button "Padėjėjas">
 <!ENTITY wizard.accesskey "T">
-<!ENTITY other.shrinkwhenfull.accesskey "">
-<!ENTITY other.shrinkwhenfull "Shrink searchbar to button even when it has text in it.">
-<!ENTITY sizeon.title "When To Expand">
-<!ENTITY preflink.enginemenu "Plage a link to settings dialog in search engine dropdown.">
-<!ENTITY sizeon.desc "Expand the searchbar when any of the selected conditions apply.">
-<!ENTITY sizeon.content "Expand when the searchbar has text in it.">
-<!ENTITY sizeon.focus "Expand when the searchbar has focus.">
