@@ -129,3 +129,4 @@ for root, dirs, files in os.walk(extdir):
 		#input("Please enter an integer: ")
 
 xpi.close() # Finalize the archive
+print("Successfully created {}".format(xpiname))
