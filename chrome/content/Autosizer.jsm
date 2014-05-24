@@ -556,7 +556,8 @@ Object.defineProperties(Autosizer.prototype, {
 			priv.button.setAttribute("id", "autosizer-button");
 			priv.button.setAttribute("label", strings.get("buttonLabel"));
 			priv.button.setAttribute("tooltiptext", strings.get("buttonTooltip"));
-			priv.button.setAttribute("class", "toolbarbutton-1 chromeclass-toolbar-additional");
+			priv.button.setAttribute("class", "chromeclass-toolbar-additional");
+			priv.button.style.display = "none";
 			priv.button.addEventListener("command", priv.bound.expandButton);
 			
 			this.searchcont.parentNode.insertBefore(priv.button, this.searchcont);
@@ -571,7 +572,7 @@ Object.defineProperties(Autosizer.prototype, {
 			
 			if (!priv.button) return;
 			
-			this.fromButton();
+			this.fromButton(false);
 			
 			priv.button.removeEventListener("command", priv.bound.expandButton);
 			priv.button.parentNode.removeChild(priv.button);
@@ -907,9 +908,11 @@ Object.defineProperties(Autosizer.prototype, {
 	},
 	
 	fromButton: {
-		value: function fromButton() {
+		value: function fromButton(focus) {
 			d("#fromButton() called.");
 			let priv = getpriv(this);
+			
+			focus = focus !== false;
 			
 			let changing = priv.button.style.display != "none";
 			
@@ -918,7 +921,7 @@ Object.defineProperties(Autosizer.prototype, {
 			                                    // search box from filling the search
 			                                    // area.
 			
-			if (changing) this.searchbox.select();
+			if (focus && changing) this.searchbox.select();
 			
 			d("#fromButton() returned.");
 		},
@@ -954,6 +957,10 @@ Object.defineProperties(Autosizer.prototype, {
 			let priv = getpriv(this);
 			
 			let soprefs = prefs.sizeon.children;
+			
+			d("Focus: " + this.searchbox.hasFocus);
+			d("Popup: " + this.searchbox._popup.state);
+			d("Query: " + JSON.stringify(this.searchbox.value));
 			
 			let grow = (
 				(
@@ -1032,6 +1039,8 @@ Object.defineProperties(Autosizer.prototype, {
 			let puw = this.desiredPopupWidth(width);
 			
 			if ( puw != 0 ) priv.popup.width = puw;
+			
+			d("expand() returned.");
 		},
 		enumerable: true,
 	},
