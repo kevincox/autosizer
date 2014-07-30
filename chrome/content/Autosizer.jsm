@@ -820,6 +820,19 @@ Object.defineProperties(Autosizer.prototype, {
 			d("measureText() called.");
 			let priv = getpriv(this);
 			
+			// Copy styles to testing label.
+			let style = this.window.getComputedStyle(this.searchbox);
+			let tocp = [
+				"fontStyle",
+				"fontVariant",
+				"fontWeight",
+				"fontSize",
+				"lineHeight",
+				"fontFamily",
+			];
+			for (let i = tocp.length; i--; )
+				priv.label.style[tocp[i]] = style[tocp[i]];
+			
 			priv.label.value = txt; // We will use the label to "test render".
 			                     // Then measure that to get the size.
 			
