@@ -821,7 +821,7 @@ Object.defineProperties(Autosizer.prototype, {
 			let priv = getpriv(this);
 			
 			// Copy styles to testing label.
-			let style = this.window.getComputedStyle(this.searchbox);
+			let style = this.window.getComputedStyle(priv.input);
 			let tocp = [
 				"fontStyle",
 				"fontVariant",
